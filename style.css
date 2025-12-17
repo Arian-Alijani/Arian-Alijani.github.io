@@ -78,16 +78,19 @@ cursor: pointer;
 .nav-icon-btn {
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
+    transform: translateZ(0); /* prevent subpixel jitter */
 }
 
-.nav-icon-btn:active {
-    transform: none; /* prevent any active press shift */
+/* Never move on press */
+.nav-icon-btn:active,
+.nav-icon-btn:focus,
+.nav-icon-btn:focus-visible {
+    transform: translateZ(0) !important;
 }
 
 .nav-icon-btn .material-icon {
-    transition: color 160ms ease, transform 160ms ease;
+    transition: color 160ms ease;
 }
-
 .nav-icon-btn.is-active .material-icon {
     color: var(--md-sys-color-primary);
 }
@@ -101,6 +104,13 @@ cursor: pointer;
 @media (max-width: 639px) {
     #mobile-menu {
         border-radius: 0 !important;
+    }
+}
+
+/* Ensure hamburger never appears on desktop (extra safety) */
+@media (min-width: 768px) {
+    #open-menu-btn {
+        display: none !important;
     }
 }
 
@@ -297,6 +307,59 @@ animation: spin-slow 10s linear infinite;
 @media (max-width: 639px) {
     .products-row {
         padding-left: 18px; /* end padding in RTL */
+        gap: 10px !important; /* slightly tighter spacing between cards */
+    }
+
+    /* Mobile: slightly tighter cards (less rounding + a bit shorter) */
+    .product-card {
+        border-radius: 16px !important;
+    }
+
+    .product-card .product-media {
+        border-radius: 14px !important;
+        height: 140px; /* shorter on phones */
+    }
+
+    .product-card .product-media img {
+        padding: 16px !important;
+    }
+
+    /* Mobile: color swatches closer to the edge */
+    .product-card [aria-label="رنگ‌های موجود"] {
+        top: 8px !important;
+        left: 8px !important;
+    }
+
+    /* Mobile: slightly less rounding for action buttons */
+    .product-card .product-like-btn,
+    .product-card .product-add-btn {
+        border-radius: 12px !important;
+    }
+
+    /* Mobile footer: more organized cards */
+    #footer {
+        padding-top: 36px;
+        padding-bottom: 20px;
+    }
+
+    #footer .max-w-7xl > div.grid {
+        gap: 14px !important;
+        margin-bottom: 18px !important;
+    }
+
+    /* Links block + trust block become subtle cards on mobile */
+    #footer .max-w-7xl > div.grid > div:nth-child(2),
+    #footer .max-w-7xl > div.grid > div:nth-child(3) {
+        background: rgba(255, 255, 255, 0.75);
+        border: 1px solid rgba(15, 23, 42, 0.06);
+        border-radius: 18px;
+        padding: 14px;
+        box-shadow: 0 16px 26px -26px rgba(16, 24, 40, 0.45);
+    }
+
+    #footer .max-w-7xl > div.grid > div:nth-child(3) {
+        display: flex;
+        justify-content: center;
     }
 }
 
@@ -440,12 +503,12 @@ animation: spin-slow 10s linear infinite;
 
 /* Product media height: responsive so mobile doesn't feel cramped */
 .product-card .product-media {
-    height: 160px;
+    height: 148px; /* a bit shorter on phones */
 }
 
 @media (min-width: 400px) {
     .product-card .product-media {
-        height: 168px;
+        height: 160px;
     }
 }
 
@@ -466,4 +529,172 @@ animation: spin-slow 10s linear infinite;
     height: 1px;
     margin: 12px 12px 0;
     background: rgba(15, 23, 42, 0.10);
+}
+
+/* ------------------------------------------------------------
+   Product Cards: responsive fixes + consistent layout (mobile)
+   Goals:
+   - keep desktop look
+   - fix mobile overlap
+   - 2 full cards + a peek of 3rd
+   - less rounding
+   - better action buttons
+------------------------------------------------------------ */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px !important; /* less rounding */
+}
+
+@media (min-width: 768px) {
+    .product-card {
+        border-radius: 24px !important;
+    }
+}
+
+.product-card .product-media {
+    border-radius: 18px !important;
+}
+
+@media (min-width: 768px) {
+    .product-card .product-media {
+        border-radius: 22px !important;
+    }
+}
+
+/* Ensure bottom row never overlaps and sits consistently */
+.product-card .product-bottom,
+.product-card > div.mt-3.flex {
+    margin-top: auto;
+}
+
+/* Responsive typography (prevents collisions on narrow cards) */
+.product-card .product-title {
+    font-size: 13px;
+    line-height: 1.35;
+}
+
+@media (min-width: 640px) {
+    .product-card .product-title {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 768px) {
+    .product-card .product-title {
+        font-size: 16px;
+    }
+}
+
+.product-card .product-brand {
+    font-size: 11px;
+    line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+    .product-card .product-brand {
+        font-size: 12px;
+    }
+}
+
+/* Image padding: slightly tighter on mobile for better balance */
+.product-card .product-media img {
+    padding: 18px !important;
+}
+
+@media (min-width: 768px) {
+    .product-card .product-media img {
+        padding: 28px !important;
+    }
+}
+
+/* Action buttons: cleaner + more consistent */
+.product-card .product-like-btn,
+.product-card .product-add-btn {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 14px !important;
+}
+
+@media (max-width: 360px) {
+    .product-card .product-like-btn,
+    .product-card .product-add-btn {
+        width: 34px !important;
+        height: 34px !important;
+        border-radius: 13px !important;
+    }
+}
+
+.product-card .product-like-btn {
+    background: #fff !important;
+    border: 1px solid rgba(15, 23, 42, 0.10) !important;
+    color: #49454F !important;
+}
+
+.product-card .product-like-btn:hover {
+    background: rgba(103, 80, 164, 0.06) !important;
+}
+
+.product-card .product-add-btn {
+    background: #6750A4 !important;
+    color: #fff !important;
+    border: 1px solid rgba(103, 80, 164, 0.22) !important;
+    box-shadow: 0 10px 22px -18px rgba(103, 80, 164, 0.55) !important;
+}
+
+.product-card .product-add-btn:hover {
+    background: #21005D !important;
+}
+
+.product-card .product-like-btn .material-icon,
+.product-card .product-add-btn .material-icon {
+    font-size: 20px !important;
+}
+
+@media (min-width: 768px) {
+    .product-card .product-like-btn .material-icon,
+    .product-card .product-add-btn .material-icon {
+        font-size: 22px !important;
+    }
+}
+
+/* Keep "2 full + peek" stable on very small phones too */
+@media (max-width: 360px) {
+    .products-row .product-card {
+        width: 44vw !important;
+        min-width: 44vw !important;
+    }
+}
+
+/* ------------------------------------------------------------
+   Ripple (JS-driven)
+   - Default: subtle gray
+   - Icons: quicker + branded tint (no movement)
+------------------------------------------------------------ */
+.ripple-effect {
+    position: absolute;
+    border-radius: 999px;
+    background-color: rgba(0, 0, 0, 0.10);
+    transform: scale(0);
+    animation: ripple-animation 0.6s linear;
+    pointer-events: none;
+}
+
+/* Make icon-button feedback feel crisp and fast */
+.nav-icon-btn .ripple-effect {
+    background-color: rgba(103, 80, 164, 0.14);
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(3.6);
+        opacity: 0;
+    }
+}
+
+/* Final mobile overrides (ensure precedence over min-width rules) */
+@media (max-width: 639px) {
+    .product-card .product-media {
+        height: 140px !important;
+    }
 }
