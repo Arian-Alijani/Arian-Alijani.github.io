@@ -61,7 +61,7 @@ document.addEventListener('click', (e) => {
     iconBtn.classList.toggle('is-active');
 });
 
-// --- Product cards: inject divider + normalize brand text (requested) ---
+// --- Product cards: inject divider + normalize brand text + add helper classes ---
 document.querySelectorAll('.product-card').forEach((card) => {
     // Add divider once (between media block and title)
     const mediaBlock = card.querySelector(':scope > .relative');
@@ -72,20 +72,51 @@ document.querySelectorAll('.product-card').forEach((card) => {
         mediaBlock.insertAdjacentElement('afterend', divider);
     }
 
-    // Remove "برند:" prefix; keep only brand name
+    // Title helper class (for responsive sizing)
+    const titleEl = card.querySelector('h3');
+    if (titleEl) {
+        titleEl.classList.add('product-title');
+        // Ensure truncation works everywhere (no line-clamp dependency)
+        titleEl.classList.add('truncate');
+    }
+
+    // Brand: remove "برند:" prefix; keep only brand name
     const brandEl = card.querySelector('p.mt-1.text-gray-500');
     if (brandEl) {
         brandEl.textContent = brandEl.textContent.replace(/^\s*برند\s*:\s*/i, '').trim();
+        brandEl.classList.add('product-brand');
     }
+
+    // Bottom row helper class (for consistent layout)
+    const bottomRow = card.querySelector(':scope > div.mt-3.flex');
+    if (bottomRow) bottomRow.classList.add('product-bottom');
+
+    // Action buttons helper classes
+    const actionBtns = card.querySelectorAll('button.nav-icon-btn');
+    actionBtns.forEach((btn) => {
+        const icon = btn.querySelector('.material-icon');
+        const name = icon?.textContent?.trim();
+        if (name === 'favorite_border' || name === 'favorite') {
+            btn.classList.add('product-like-btn');
+        }
+        if (name === 'add') {
+            btn.classList.add('product-add-btn');
+        }
+    });
 });
 
-// --- Ripple Effect Implementation ---
+// --- Ripple Effect Implementation (icons: faster + subtler, no movement) ---
 document.addEventListener('click', function (e) {
     const target = e.target.closest('.ripple');
     if (!target) return;
 
+    const isIconBtn = target.classList.contains('nav-icon-btn');
+
     const circle = document.createElement('span');
-    const diameter = Math.max(target.clientWidth, target.clientHeight);
+
+    // Slightly smaller/cleaner ripple for icon buttons
+    const base = Math.max(target.clientWidth, target.clientHeight);
+    const diameter = isIconBtn ? base : base;
     const radius = diameter / 2;
 
     const rect = target.getBoundingClientRect();
@@ -93,13 +124,20 @@ document.addEventListener('click', function (e) {
     circle.style.width = circle.style.height = `${diameter}px`;
     circle.style.left = `${e.clientX - rect.left - radius}px`;
     circle.style.top = `${e.clientY - rect.top - radius}px`;
-    circle.classList.add('ripple-effect');
 
+    // Make the feedback faster and more subtle on icons
+    const duration = isIconBtn ? 260 : 600;
+    circle.style.animationDuration = `${duration}ms`;
+    if (isIconBtn) {
+        circle.style.backgroundColor = 'rgba(103, 80, 164, 0.14)';
+    }
+
+    circle.classList.add('ripple-effect');
     target.appendChild(circle);
 
     setTimeout(() => {
         circle.remove();
-    }, 600);
+    }, duration);
 });
 
 // --- Entrance Animations (Intersection Observer) ---
