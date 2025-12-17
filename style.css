@@ -17,6 +17,40 @@ background-color: var(--md-sys-color-surface);
 color: #1C1B1F;
 }
 
+/* Navbar polish (no extra content; only visual differentiation) */
+#navbar {
+    position: fixed;
+    top: 0;
+}
+
+/* Very subtle decorative sheen to differentiate header without adding content */
+#navbar::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(800px 120px at 85% 0%, rgba(103,80,164,0.10), rgba(103,80,164,0) 60%),
+        linear-gradient(180deg, rgba(255,255,255,0.30), rgba(255,255,255,0.00));
+    opacity: 0.9;
+}
+
+#navbar::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 1px;
+    background: linear-gradient(90deg,
+        rgba(103,80,164,0) 0%,
+        rgba(103,80,164,0.45) 35%,
+        rgba(33,0,93,0.18) 55%,
+        rgba(103,80,164,0) 100%
+    );
+    pointer-events: none;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
 width: 8px;
@@ -38,6 +72,36 @@ position: relative;
 overflow: hidden;
 transform: translate3d(0, 0, 0);
 cursor: pointer;
+}
+
+/* Nav icon interaction: prevent click "jump" + toggle active color */
+.nav-icon-btn {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.nav-icon-btn:active {
+    transform: none; /* prevent any active press shift */
+}
+
+.nav-icon-btn .material-icon {
+    transition: color 160ms ease, transform 160ms ease;
+}
+
+.nav-icon-btn.is-active .material-icon {
+    color: var(--md-sys-color-primary);
+}
+
+/* Optional: give a subtle active background without moving */
+.nav-icon-btn.is-active {
+    background-color: rgba(103, 80, 164, 0.10);
+}
+
+/* Mobile menu should feel like a drawer, no rounding on small screens */
+@media (max-width: 639px) {
+    #mobile-menu {
+        border-radius: 0 !important;
+    }
 }
 
 /* Hover Card Effect */
@@ -83,21 +147,54 @@ animation-delay: 2s;
 animation-delay: 4s;
 }
 
+/* Banner Section Offset (Dynamic: calculated from fixed navbar height) */
+.banner-section {
+    /* Fallback keeps it safe even if JS fails */
+    padding-top: calc(var(--navbar-offset, 120px) + 18px);
+    scroll-margin-top: calc(var(--navbar-offset, 120px) + 18px);
+}
+
 /* Banner Slider Styles */
 .banner-container {
-    overflow: hidden;
+    overflow: hidden; /* prevents showing next/prev slides */
     position: relative;
     width: 100%;
     direction: ltr; /* Force LTR for consistent sliding transform math */
     border-radius: 24px;
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 14px 40px -18px rgba(33, 0, 93, 0.35);
+    background: #fff;
+    isolation: isolate;
+    touch-action: pan-y; /* allow vertical scroll, we handle horizontal swipe */
+}
+
+/* Inner shadow / vignette (requested: remove inner shadow in all devices) */
+.banner-container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: none;
+    z-index: 5;
+}
+
+/* Mobile: edge-to-edge (no rounding) */
+@media (max-width: 639px) {
+    .banner-container {
+        border-radius: 0 !important;
+        box-shadow: 0 12px 26px -18px rgba(33, 0, 93, 0.28);
+    }
 }
 
 .banner-wrapper {
     display: flex;
     width: 100%;
     height: 100%;
-    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); /* Smoother bezier */
+    will-change: transform;
+    transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.banner-wrapper.no-anim {
+    transition: none !important;
 }
 
 .banner-slide {
@@ -113,38 +210,44 @@ animation-delay: 4s;
     height: 100%;
     object-fit: cover;
     object-position: center;
-    transition: transform 10s ease; /* Subtle zoom effect */
+    transform: scale(1.01);
+    transition: transform 10s ease;
 }
+
 .banner-slide.active img {
-    transform: scale(1.05);
+    transform: scale(1.06);
 }
 
 /* Slider Indicators */
 .banner-indicators {
     position: absolute;
-    bottom: 16px;
+    bottom: 14px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
+    align-items: center;
     gap: 8px;
     z-index: 10;
-    padding: 6px 10px;
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(4px);
-    border-radius: 20px;
+    padding: 7px 12px;
+    background: rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 999px;
+    box-shadow: 0 10px 25px -18px rgba(0,0,0,0.35);
 }
 
 .banner-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 4px;
-    background-color: rgba(255, 255, 255, 0.5);
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.55);
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .banner-dot.active {
-    width: 24px;
+    width: 22px;
     background-color: #6750A4;
 }
 
@@ -181,4 +284,186 @@ animation: spin-slow 10s linear infinite;
 .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+/* Product rows: allow hover lift + keep "peek" spacing */
+.products-row {
+    overflow-y: visible !important;
+    padding-top: 16px; /* extra room so hover never clips */
+    padding-bottom: 12px;
+}
+
+/* Product rows: small padding at end for "peek" effect on mobile */
+@media (max-width: 639px) {
+    .products-row {
+        padding-left: 18px; /* end padding in RTL */
+    }
+}
+
+/* Product Card (redesigned: clean + minimal + modern) */
+.product-card {
+    /* Accent is used for hover border + subtle colored shadow */
+    --pc-accent: 103, 80, 164; /* rgb for primary */
+
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+
+    /* Base border is ultra subtle; hover makes it brand-colored */
+    border-color: rgba(15, 23, 42, 0.08) !important;
+
+    /* Modern “soft elevation” (very light, not heavy) */
+    box-shadow:
+        0 1px 1px rgba(16, 24, 40, 0.04),
+        0 10px 18px -18px rgba(16, 24, 40, 0.22);
+
+    transform: translateZ(0);
+    transition:
+        transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 180ms ease;
+}
+
+/* No inner highlight (requested) */
+.product-card::before {
+    content: "";
+    display: none !important;
+}
+
+/* Subtle micro-motion for product image (keeps it premium + minimal) */
+.product-card .product-media img {
+    transform: translateZ(0);
+    transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.product-card:hover,
+.product-card:focus-within {
+    transform: translateY(-3px);
+    z-index: 30; /* stays above neighbors */
+
+    /* Hover border color */
+    border-color: rgba(var(--pc-accent), 0.60) !important;
+
+    /* Minimal outer shadow + a very faint colored “brand glow” */
+    box-shadow:
+        0 2px 6px -6px rgba(16, 24, 40, 0.22),
+        0 18px 34px -28px rgba(16, 24, 40, 0.35),
+        0 10px 26px -24px rgba(var(--pc-accent), 0.55);
+}
+
+.product-card:hover .product-media img,
+.product-card:focus-within .product-media img {
+    transform: scale(1.03);
+}
+
+/* Image area: fully white + seamless (no inner line/border) */
+.product-media {
+    background: #fff;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .product-card,
+    .product-media,
+    .product-card .product-media img {
+        transition: none !important;
+    }
+
+    .product-card:hover,
+    .product-card:focus-within {
+        transform: none;
+        box-shadow:
+            0 1px 1px rgba(16, 24, 40, 0.04),
+            0 10px 18px -18px rgba(16, 24, 40, 0.22);
+    }
+
+    .product-card:hover .product-media img,
+    .product-card:focus-within .product-media img {
+        transform: none;
+    }
+}
+
+/* Remove strikethrough old-price line inside product cards (requested) */
+.product-card .line-through {
+    display: none !important;
+}
+
+/* Better focus visibility for product card itself (accessible, minimal) */
+.product-card:focus-within {
+    outline: none;
+}
+
+/* Better focus visibility for buttons inside product cards (minimal, accessible) */
+.product-card button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(103, 80, 164, 0.18);
+}
+
+/* Product Card: sizing tweaks (requested) */
+@media (max-width: 639px) {
+    /* Mobile: keep 2 full cards + a visible peek of the 3rd without crushing content */
+    .products-row .product-card {
+        width: 42vw !important;
+        min-width: 42vw !important;
+    }
+}
+
+/* Extra-small phones: avoid content collision by giving cards a bit more width */
+@media (max-width: 360px) {
+    .products-row .product-card {
+        width: 46vw !important;
+        min-width: 46vw !important;
+    }
+}
+
+@media (min-width: 640px) {
+    .products-row .product-card {
+        width: 240px !important;
+        min-width: 240px !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .products-row .product-card {
+        width: 260px !important;
+        min-width: 260px !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .products-row .product-card {
+        width: 270px !important;
+        min-width: 270px !important;
+    }
+}
+
+/* Product media height: responsive so mobile doesn't feel cramped */
+.product-card .product-media {
+    height: 160px;
+}
+
+@media (min-width: 400px) {
+    .product-card .product-media {
+        height: 168px;
+    }
+}
+
+@media (min-width: 768px) {
+    .product-card .product-media {
+        height: 208px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .product-card .product-media {
+        height: 224px;
+    }
+}
+
+/* Thin divider between image and title (requested) */
+.product-divider {
+    height: 1px;
+    margin: 12px 12px 0;
+    background: rgba(15, 23, 42, 0.10);
 }
