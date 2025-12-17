@@ -1,7 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-// --- Navbar Blur Effect on Scroll ---
+// --- Dynamic Banner Offset (prevent banner hiding under fixed navbar) ---
 const navbar = document.getElementById('navbar');
+function applyNavbarOffset() {
+    if (!navbar) return;
+    // offsetHeight includes the mobile search row too.
+    const h = navbar.offsetHeight || 0;
+    document.documentElement.style.setProperty('--navbar-offset', `${h}px`);
+}
+applyNavbarOffset();
+window.addEventListener('resize', applyNavbarOffset);
+
+// Extra safety: font load / layout shifts
+if ('ResizeObserver' in window && navbar) {
+    const ro = new ResizeObserver(() => applyNavbarOffset());
+    ro.observe(navbar);
+}
+
+// --- Navbar Blur Effect on Scroll ---
 if (navbar) {
     window.addEventListener('scroll', () => {
         if (window.scrollY > 20) {
@@ -11,25 +27,21 @@ if (navbar) {
             navbar.classList.remove('shadow-sm');
             navbar.classList.replace('bg-[#FEF7FF]/95', 'bg-[#FEF7FF]/80');
         }
-    });
+    }, { passive: true });
 }
 
 // --- Add to Cart Interaction (Toast) ---
 const toast = document.getElementById('toast');
 let toastTimeout;
 
-// Delegate listener to document for dynamically added buttons
 document.addEventListener('click', (e) => {
     const btn = e.target.closest('button');
     if (btn && btn.querySelector('.material-icon') && btn.querySelector('.material-icon').textContent === 'add') {
         e.stopPropagation();
-        
-        // Show Toast
+
         if (toast) {
             toast.classList.remove('translate-y-20', 'opacity-0');
-            
             if (toastTimeout) clearTimeout(toastTimeout);
-            
             toastTimeout = setTimeout(() => {
                 toast.classList.add('translate-y-20', 'opacity-0');
             }, 3000);
@@ -37,28 +49,57 @@ document.addEventListener('click', (e) => {
     }
 });
 
+// --- Header icon active-state toggle (requested: click changes color, no shake) ---
+document.addEventListener('click', (e) => {
+    const iconBtn = e.target.closest('.nav-icon-btn');
+    if (!iconBtn) return;
+
+    // do not interfere with add-to-cart buttons
+    const icon = iconBtn.querySelector('.material-icon');
+    if (icon && icon.textContent.trim() === 'add') return;
+
+    iconBtn.classList.toggle('is-active');
+});
+
+// --- Product cards: inject divider + normalize brand text (requested) ---
+document.querySelectorAll('.product-card').forEach((card) => {
+    // Add divider once (between media block and title)
+    const mediaBlock = card.querySelector(':scope > .relative');
+    if (mediaBlock && !card.querySelector('.product-divider')) {
+        const divider = document.createElement('div');
+        divider.className = 'product-divider';
+        divider.setAttribute('aria-hidden', 'true');
+        mediaBlock.insertAdjacentElement('afterend', divider);
+    }
+
+    // Remove "برند:" prefix; keep only brand name
+    const brandEl = card.querySelector('p.mt-1.text-gray-500');
+    if (brandEl) {
+        brandEl.textContent = brandEl.textContent.replace(/^\s*برند\s*:\s*/i, '').trim();
+    }
+});
+
 // --- Ripple Effect Implementation ---
 document.addEventListener('click', function (e) {
     const target = e.target.closest('.ripple');
-    if (target) {
-        const circle = document.createElement('span');
-        const diameter = Math.max(target.clientWidth, target.clientHeight);
-        const radius = diameter / 2;
+    if (!target) return;
 
-        const rect = target.getBoundingClientRect();
-        
-        circle.style.width = circle.style.height = `${diameter}px`;
-        circle.style.left = `${e.clientX - rect.left - radius}px`;
-        circle.style.top = `${e.clientY - rect.top - radius}px`;
-        circle.classList.add('ripple-effect');
+    const circle = document.createElement('span');
+    const diameter = Math.max(target.clientWidth, target.clientHeight);
+    const radius = diameter / 2;
 
-        // Do not remove existing ripples immediately to allow multi-click smoothness
-        target.appendChild(circle);
-        
-        setTimeout(() => {
-            circle.remove();
-        }, 600);
-    }
+    const rect = target.getBoundingClientRect();
+
+    circle.style.width = circle.style.height = `${diameter}px`;
+    circle.style.left = `${e.clientX - rect.left - radius}px`;
+    circle.style.top = `${e.clientY - rect.top - radius}px`;
+    circle.classList.add('ripple-effect');
+
+    target.appendChild(circle);
+
+    setTimeout(() => {
+        circle.remove();
+    }, 600);
 });
 
 // --- Entrance Animations (Intersection Observer) ---
@@ -69,7 +110,6 @@ if (sections.length > 0) {
             if (entry.isIntersecting) {
                 entry.target.classList.add('opacity-100', 'translate-y-0');
                 entry.target.classList.remove('opacity-0', 'translate-y-10');
-                // Stop observing once animated
                 observer.unobserve(entry.target);
             }
         });
@@ -87,78 +127,148 @@ const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
 const openMenuBtn = document.getElementById('open-menu-btn');
 const closeMenuBtn = document.getElementById('close-menu-btn');
 
-function toggleMenu() {
+function openMenu() {
     if (!mobileMenu || !mobileMenuOverlay) return;
-    
-    const isHidden = mobileMenu.classList.contains('translate-x-full');
-    if (isHidden) {
-        // Open
-        mobileMenu.classList.remove('translate-x-full');
-        mobileMenuOverlay.classList.remove('hidden');
-        setTimeout(() => mobileMenuOverlay.classList.remove('opacity-0'), 10);
-        document.body.style.overflow = 'hidden';
-    } else {
-        // Close
-        mobileMenu.classList.add('translate-x-full');
-        mobileMenuOverlay.classList.add('opacity-0');
-        setTimeout(() => mobileMenuOverlay.classList.add('hidden'), 300);
-        document.body.style.overflow = '';
-    }
+
+    mobileMenu.classList.remove('translate-x-full');
+    mobileMenuOverlay.classList.remove('hidden');
+    // force reflow for transition
+    void mobileMenuOverlay.offsetWidth;
+    mobileMenuOverlay.classList.remove('opacity-0');
+    document.body.style.overflow = 'hidden';
 }
 
-if(openMenuBtn) openMenuBtn.addEventListener('click', toggleMenu);
-if(closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMenu);
-if(mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', toggleMenu);
+function closeMenu() {
+    if (!mobileMenu || !mobileMenuOverlay) return;
 
-// --- Banner Slider Logic ---
+    mobileMenu.classList.add('translate-x-full');
+    mobileMenuOverlay.classList.add('opacity-0');
+    setTimeout(() => mobileMenuOverlay.classList.add('hidden'), 280);
+    document.body.style.overflow = '';
+}
+
+function toggleMenu() {
+    if (!mobileMenu) return;
+    const isHidden = mobileMenu.classList.contains('translate-x-full');
+    if (isHidden) openMenu(); else closeMenu();
+}
+
+if (openMenuBtn) openMenuBtn.addEventListener('click', toggleMenu);
+if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+if (mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', closeMenu);
+
+// Close on ESC
+window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+});
+
+// --- Banner Slider Logic (Auto + Dots + Swipe) ---
 const bannerWrapper = document.getElementById('banner-wrapper');
+const bannerContainer = bannerWrapper?.closest('.banner-container') || null;
 const bannerSlides = document.querySelectorAll('.banner-slide');
 const bannerDots = document.querySelectorAll('.banner-dot');
 let bannerIndex = 0;
 let bannerInterval;
 
-function updateBanner(index) {
+function updateBanner(index, { animate = true } = {}) {
     if (!bannerWrapper) return;
-    
-    // Normalize index
+
+    if (!animate) bannerWrapper.classList.add('no-anim');
+
     if (index >= bannerSlides.length) bannerIndex = 0;
     else if (index < 0) bannerIndex = bannerSlides.length - 1;
     else bannerIndex = index;
 
-    // Move Slider
     bannerWrapper.style.transform = `translateX(-${bannerIndex * 100}%)`;
 
-    // Update Active Slide Class (for CSS effects like zoom)
     bannerSlides.forEach((slide, i) => {
-        if (i === bannerIndex) slide.classList.add('active');
-        else slide.classList.remove('active');
+        slide.classList.toggle('active', i === bannerIndex);
     });
 
-    // Update Dots
     bannerDots.forEach((dot, i) => {
-        if (i === bannerIndex) dot.classList.add('active');
-        else dot.classList.remove('active');
+        dot.classList.toggle('active', i === bannerIndex);
+        dot.setAttribute('aria-current', i === bannerIndex ? 'true' : 'false');
     });
+
+    if (!animate) {
+        // allow next tick to re-enable animation
+        requestAnimationFrame(() => bannerWrapper.classList.remove('no-anim'));
+    }
 }
 
 function startBannerTimer() {
     if (bannerInterval) clearInterval(bannerInterval);
-    bannerInterval = setInterval(() => {
-        updateBanner(bannerIndex + 1);
-    }, 10000);
+    bannerInterval = setInterval(() => updateBanner(bannerIndex + 1), 10000);
+}
+
+function stopBannerTimer() {
+    if (bannerInterval) clearInterval(bannerInterval);
 }
 
 if (bannerWrapper && bannerSlides.length > 0) {
-    // Initial Start
-    startBannerTimer();
+    // Ensure initial state is in-sync (and prevents any first-frame glitches)
+    updateBanner(0, { animate: false });
+    requestAnimationFrame(() => {
+        startBannerTimer();
+    });
 
-    // Click events for dots
     bannerDots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
-            clearInterval(bannerInterval);
+            stopBannerTimer();
             updateBanner(index);
-            startBannerTimer(); // Restart timer
+            startBannerTimer();
         });
     });
+
+    // Swipe support (mobile/tablet)
+    if (bannerContainer) {
+        let startX = 0;
+        let startY = 0;
+        let isTouching = false;
+
+        bannerContainer.addEventListener('touchstart', (e) => {
+            if (!e.touches || e.touches.length !== 1) return;
+            isTouching = true;
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            stopBannerTimer();
+        }, { passive: true });
+
+        bannerContainer.addEventListener('touchend', (e) => {
+            if (!isTouching) return;
+            isTouching = false;
+
+            const endTouch = e.changedTouches && e.changedTouches[0];
+            if (!endTouch) {
+                startBannerTimer();
+                return;
+            }
+
+            const dx = endTouch.clientX - startX;
+            const dy = endTouch.clientY - startY;
+
+            // Ignore mostly vertical gestures
+            if (Math.abs(dy) > Math.abs(dx)) {
+                startBannerTimer();
+                return;
+            }
+
+            const threshold = 45; // px
+            if (dx <= -threshold) {
+                // swipe left -> next
+                updateBanner(bannerIndex + 1);
+            } else if (dx >= threshold) {
+                // swipe right -> prev
+                updateBanner(bannerIndex - 1);
+            }
+
+            startBannerTimer();
+        }, { passive: true });
+
+        // Pause timer on hover (desktop)
+        bannerContainer.addEventListener('mouseenter', stopBannerTimer);
+        bannerContainer.addEventListener('mouseleave', startBannerTimer);
+    }
 }
+
 });
