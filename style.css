@@ -9,12 +9,139 @@
 --md-sys-color-surface-variant: #E7E0EC;
 --md-sys-color-outline: #79747E;
 --font-family-base: 'Vazirmatn', sans-serif;
+
+/* exo-like layout widening */
+--site-container-lg: 1440px;
+--site-container-2xl: 1560px;
+--site-gutter: clamp(12px, 2.2vw, 28px);
+--banner-gap: 10px;
 }
 
 body {
 font-family: var(--font-family-base);
 background-color: var(--md-sys-color-surface);
 color: #1C1B1F;
+}
+
+/* Tailwind's max-w-7xl is 1280px. We widen it on large screens. */
+@media (min-width: 1280px) {
+    .max-w-7xl {
+        max-width: var(--site-container-lg) !important;
+    }
+}
+
+@media (min-width: 1536px) {
+    .max-w-7xl {
+        max-width: var(--site-container-2xl) !important;
+    }
+}
+
+/* Unify horizontal paddings across the page */
+#navbar > div,
+#footer > div,
+section.max-w-7xl,
+header.banner-section {
+    padding-left: var(--site-gutter) !important;
+    padding-right: var(--site-gutter) !important;
+}
+
+/* Banner wrapper: keep hero aligned with new container widths */
+#banner-section {
+    width: 100%;
+}
+
+/* Anchor sections should not hide under fixed navbar */
+#favorites {
+    scroll-margin-top: calc(var(--navbar-offset, 120px) + 18px);
+}
+
+@media (min-width: 640px) {
+    #banner-section {
+        max-width: var(--site-container-lg) !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}
+
+@media (min-width: 1536px) {
+    #banner-section {
+        max-width: var(--site-container-2xl) !important;
+    }
+}
+
+/* Banner sizing: bigger presence on desktop + taller on mobile */
+#banner-section .banner-container {
+    height: 320px !important; /* mobile taller */
+}
+
+@media (min-width: 400px) {
+    #banner-section .banner-container {
+        height: 340px !important;
+    }
+}
+
+@media (min-width: 640px) {
+    #banner-section .banner-container {
+        height: 360px !important;
+    }
+}
+
+@media (min-width: 768px) {
+    #banner-section .banner-container {
+        height: 430px !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    #banner-section .banner-container {
+        height: 500px !important;
+    }
+}
+
+@media (min-width: 1280px) {
+    #banner-section .banner-container {
+        height: 540px !important;
+    }
+}
+
+/* Category cards: slightly taller on tablets (keep explicit heights below desktop) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    #categories a.h-44 {
+        height: 210px !important;
+    }
+    #categories a.h-48 {
+        height: 235px !important;
+    }
+}
+
+/* Desktop+: let grid-auto-rows handle equal sizing (so 4-up tiles split evenly) */
+
+/* Categories grid: make tiles split space evenly (fix 4-up tiles in desktop) */
+#categories .grid {
+    align-items: stretch;
+}
+
+/* Force equal row heights on desktop so the 4 small cards divide space perfectly */
+@media (min-width: 1024px) {
+    #categories .grid {
+        /* 2 equal rows on desktop (big card spans 2 rows, 4 small cards become a perfect 2×2) */
+        grid-template-rows: repeat(2, minmax(230px, 1fr));
+        grid-auto-rows: minmax(230px, 1fr);
+        grid-auto-flow: row;
+    }
+}
+
+/* Ensure category cards fill their grid cell height (desktop only) */
+@media (min-width: 1024px) {
+    #categories .grid > a {
+        height: 100% !important;
+    }
+
+    /* Neutralize explicit Tailwind height utilities on desktop so grid rows can size equally */
+    #categories .grid > a.h-44,
+    #categories .grid > a.h-48 {
+        height: 100% !important;
+    }
 }
 
 /* Navbar polish (no extra content; only visual differentiation) */
@@ -74,53 +201,27 @@ transform: translate3d(0, 0, 0);
 cursor: pointer;
 }
 
-/* Nav icon interaction: prevent click "jump" + toggle active color */
+/* Nav icon interaction */
 .nav-icon-btn {
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
-    transform: translateZ(0); /* prevent subpixel jitter */
+    transform: translateZ(0);
 }
 
-/* Never move on press */
 .nav-icon-btn:active,
 .nav-icon-btn:focus,
 .nav-icon-btn:focus-visible {
     transform: translateZ(0) !important;
 }
 
-.nav-icon-btn .material-icon {
-    transition: color 160ms ease;
+/* temporary click highlight (JS adds/removes .is-active quickly) */
+.nav-icon-btn.is-active {
+    background-color: rgba(103, 80, 164, 0.10) !important;
+    box-shadow: 0 0 0 3px rgba(103, 80, 164, 0.16);
 }
+
 .nav-icon-btn.is-active .material-icon {
     color: var(--md-sys-color-primary);
-}
-
-/* Optional: give a subtle active background without moving */
-.nav-icon-btn.is-active {
-    background-color: rgba(103, 80, 164, 0.10);
-}
-
-/* Mobile menu should feel like a drawer, no rounding on small screens */
-@media (max-width: 639px) {
-    #mobile-menu {
-        border-radius: 0 !important;
-    }
-}
-
-/* Ensure hamburger never appears on desktop (extra safety) */
-@media (min-width: 768px) {
-    #open-menu-btn {
-        display: none !important;
-    }
-}
-
-/* Hover Card Effect */
-.card-hover {
-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-.card-hover:hover {
-transform: translateY(-4px);
-box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
 /* Material Icon Standardization */
@@ -140,44 +241,34 @@ direction: ltr;
 -webkit-font-smoothing: antialiased;
 }
 
-/* Blob Animation */
-@keyframes blob {
-0% { transform: translate(0px, 0px) scale(1); }
-33% { transform: translate(30px, -50px) scale(1.1); }
-66% { transform: translate(-20px, 20px) scale(0.9); }
-100% { transform: translate(0px, 0px) scale(1); }
+/* Hover Card Effect */
+.card-hover {
+transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-.animate-blob {
-animation: blob 7s infinite;
-}
-.animation-delay-2000 {
-animation-delay: 2s;
-}
-.animation-delay-4000 {
-animation-delay: 4s;
+.card-hover:hover {
+transform: translateY(-4px);
+box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
 /* Banner Section Offset (Dynamic: calculated from fixed navbar height) */
 .banner-section {
-    /* Fallback keeps it safe even if JS fails */
-    padding-top: calc(var(--navbar-offset, 120px) + 18px);
-    scroll-margin-top: calc(var(--navbar-offset, 120px) + 18px);
+    padding-top: calc(var(--navbar-offset, 120px) + var(--banner-gap, 10px));
+    scroll-margin-top: calc(var(--navbar-offset, 120px) + var(--banner-gap, 10px));
 }
 
 /* Banner Slider Styles */
 .banner-container {
-    overflow: hidden; /* prevents showing next/prev slides */
+    overflow: hidden;
     position: relative;
     width: 100%;
-    direction: ltr; /* Force LTR for consistent sliding transform math */
+    direction: ltr;
     border-radius: 24px;
     box-shadow: 0 14px 40px -18px rgba(33, 0, 93, 0.35);
     background: #fff;
     isolation: isolate;
-    touch-action: pan-y; /* allow vertical scroll, we handle horizontal swipe */
+    touch-action: pan-y;
 }
 
-/* Inner shadow / vignette (requested: remove inner shadow in all devices) */
 .banner-container::after {
     content: "";
     position: absolute;
@@ -187,10 +278,10 @@ animation-delay: 4s;
     z-index: 5;
 }
 
-/* Mobile: edge-to-edge (no rounding) */
+/* Mobile: exo-like (not full edge-to-edge, but slightly rounded) */
 @media (max-width: 639px) {
     .banner-container {
-        border-radius: 0 !important;
+        border-radius: 18px !important;
         box-shadow: 0 12px 26px -18px rgba(33, 0, 93, 0.28);
     }
 }
@@ -261,6 +352,42 @@ animation-delay: 4s;
     background-color: #6750A4;
 }
 
+/* Search redesign */
+.search-shell {
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.75));
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow:
+        0 1px 1px rgba(16, 24, 40, 0.04),
+        0 10px 24px -22px rgba(16, 24, 40, 0.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.search-input {
+    background: transparent;
+    outline: none;
+    border: none;
+    width: 100%;
+    color: #1D1B20;
+}
+
+.search-input::placeholder {
+    color: rgba(73, 69, 79, 0.75);
+}
+
+.search-shell:focus-within {
+    border-color: rgba(103, 80, 164, 0.45);
+    box-shadow:
+        0 1px 1px rgba(16, 24, 40, 0.04),
+        0 18px 34px -28px rgba(16, 24, 40, 0.35),
+        0 0 0 4px rgba(103, 80, 164, 0.12);
+}
+
+.search-icon {
+    font-size: 22px;
+}
+
 /* Product Color Swatches */
 .color-swatch {
 width: 16px;
@@ -278,15 +405,6 @@ box-shadow: 0 2px 5px rgba(0,0,0,0.25);
 z-index: 20;
 }
 
-/* Infinite Spin (Slow) */
-@keyframes spin-slow {
-from { transform: translate(-50%, -50%) rotate(0deg); }
-to { transform: translate(-50%, -50%) rotate(360deg); }
-}
-.animate-spin-slow {
-animation: spin-slow 10s linear infinite;
-}
-
 /* Hide Scrollbar */
 .no-scrollbar::-webkit-scrollbar {
     display: none;
@@ -296,86 +414,42 @@ animation: spin-slow 10s linear infinite;
     scrollbar-width: none;
 }
 
-/* Product rows: allow hover lift + keep "peek" spacing */
+/* Product rows */
 .products-row {
     overflow-y: visible !important;
-    padding-top: 16px; /* extra room so hover never clips */
+    padding-top: 16px;
     padding-bottom: 12px;
+
+    /* align with gutter */
+    padding-left: 6px;
+    padding-right: 6px;
 }
 
-/* Product rows: small padding at end for "peek" effect on mobile */
 @media (max-width: 639px) {
     .products-row {
-        padding-left: 18px; /* end padding in RTL */
-        gap: 10px !important; /* slightly tighter spacing between cards */
-    }
-
-    /* Mobile: slightly tighter cards (less rounding + a bit shorter) */
-    .product-card {
-        border-radius: 16px !important;
-    }
-
-    .product-card .product-media {
-        border-radius: 14px !important;
-        height: 140px; /* shorter on phones */
-    }
-
-    .product-card .product-media img {
-        padding: 16px !important;
-    }
-
-    /* Mobile: color swatches closer to the edge */
-    .product-card [aria-label="رنگ‌های موجود"] {
-        top: 8px !important;
-        left: 8px !important;
-    }
-
-    /* Mobile: slightly less rounding for action buttons */
-    .product-card .product-like-btn,
-    .product-card .product-add-btn {
-        border-radius: 12px !important;
-    }
-
-    /* Mobile footer: more organized cards */
-    #footer {
-        padding-top: 36px;
-        padding-bottom: 20px;
-    }
-
-    #footer .max-w-7xl > div.grid {
-        gap: 14px !important;
-        margin-bottom: 18px !important;
-    }
-
-    /* Links block + trust block become subtle cards on mobile */
-    #footer .max-w-7xl > div.grid > div:nth-child(2),
-    #footer .max-w-7xl > div.grid > div:nth-child(3) {
-        background: rgba(255, 255, 255, 0.75);
-        border: 1px solid rgba(15, 23, 42, 0.06);
-        border-radius: 18px;
-        padding: 14px;
-        box-shadow: 0 16px 26px -26px rgba(16, 24, 40, 0.45);
-    }
-
-    #footer .max-w-7xl > div.grid > div:nth-child(3) {
-        display: flex;
-        justify-content: center;
+        padding-left: calc(var(--site-gutter) - 4px);
+        padding-right: 2px;
+        gap: 10px !important;
     }
 }
 
-/* Product Card (redesigned: clean + minimal + modern) */
+@media (min-width: 1024px) {
+    .products-row {
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+}
+
+/* Product Card (modern minimal) */
 .product-card {
-    /* Accent is used for hover border + subtle colored shadow */
-    --pc-accent: 103, 80, 164; /* rgb for primary */
+    --pc-accent: 103, 80, 164;
 
     position: relative;
     overflow: hidden;
     z-index: 1;
 
-    /* Base border is ultra subtle; hover makes it brand-colored */
     border-color: rgba(15, 23, 42, 0.08) !important;
 
-    /* Modern “soft elevation” (very light, not heavy) */
     box-shadow:
         0 1px 1px rgba(16, 24, 40, 0.04),
         0 10px 18px -18px rgba(16, 24, 40, 0.22);
@@ -385,15 +459,23 @@ animation: spin-slow 10s linear infinite;
         transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
         box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1),
         border-color 180ms ease;
+
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px !important;
 }
 
-/* No inner highlight (requested) */
+@media (min-width: 768px) {
+    .product-card {
+        border-radius: 24px !important;
+    }
+}
+
 .product-card::before {
     content: "";
     display: none !important;
 }
 
-/* Subtle micro-motion for product image (keeps it premium + minimal) */
 .product-card .product-media img {
     transform: translateZ(0);
     transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -402,12 +484,10 @@ animation: spin-slow 10s linear infinite;
 .product-card:hover,
 .product-card:focus-within {
     transform: translateY(-3px);
-    z-index: 30; /* stays above neighbors */
+    z-index: 30;
 
-    /* Hover border color */
     border-color: rgba(var(--pc-accent), 0.60) !important;
 
-    /* Minimal outer shadow + a very faint colored “brand glow” */
     box-shadow:
         0 2px 6px -6px rgba(16, 24, 40, 0.22),
         0 18px 34px -28px rgba(16, 24, 40, 0.35),
@@ -419,11 +499,31 @@ animation: spin-slow 10s linear infinite;
     transform: scale(1.03);
 }
 
-/* Image area: fully white + seamless (no inner line/border) */
 .product-media {
     background: #fff;
     border: none !important;
     box-shadow: none !important;
+    border-radius: 18px !important;
+    height: 148px;
+}
+
+@media (min-width: 400px) {
+    .product-card .product-media {
+        height: 160px;
+    }
+}
+
+@media (min-width: 768px) {
+    .product-card .product-media {
+        height: 208px;
+        border-radius: 22px !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .product-card .product-media {
+        height: 224px;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -436,9 +536,6 @@ animation: spin-slow 10s linear infinite;
     .product-card:hover,
     .product-card:focus-within {
         transform: none;
-        box-shadow:
-            0 1px 1px rgba(16, 24, 40, 0.04),
-            0 10px 18px -18px rgba(16, 24, 40, 0.22);
     }
 
     .product-card:hover .product-media img,
@@ -447,32 +544,27 @@ animation: spin-slow 10s linear infinite;
     }
 }
 
-/* Remove strikethrough old-price line inside product cards (requested) */
 .product-card .line-through {
     display: none !important;
 }
 
-/* Better focus visibility for product card itself (accessible, minimal) */
 .product-card:focus-within {
     outline: none;
 }
 
-/* Better focus visibility for buttons inside product cards (minimal, accessible) */
 .product-card button:focus-visible {
     outline: none;
     box-shadow: 0 0 0 3px rgba(103, 80, 164, 0.18);
 }
 
-/* Product Card: sizing tweaks (requested) */
+/* Product Card: sizing tweaks */
 @media (max-width: 639px) {
-    /* Mobile: keep 2 full cards + a visible peek of the 3rd without crushing content */
     .products-row .product-card {
         width: 42vw !important;
         min-width: 42vw !important;
     }
 }
 
-/* Extra-small phones: avoid content collision by giving cards a bit more width */
 @media (max-width: 360px) {
     .products-row .product-card {
         width: 46vw !important;
@@ -501,74 +593,17 @@ animation: spin-slow 10s linear infinite;
     }
 }
 
-/* Product media height: responsive so mobile doesn't feel cramped */
-.product-card .product-media {
-    height: 148px; /* a bit shorter on phones */
-}
-
-@media (min-width: 400px) {
-    .product-card .product-media {
-        height: 160px;
-    }
-}
-
-@media (min-width: 768px) {
-    .product-card .product-media {
-        height: 208px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .product-card .product-media {
-        height: 224px;
-    }
-}
-
-/* Thin divider between image and title (requested) */
 .product-divider {
     height: 1px;
     margin: 12px 12px 0;
     background: rgba(15, 23, 42, 0.10);
 }
 
-/* ------------------------------------------------------------
-   Product Cards: responsive fixes + consistent layout (mobile)
-   Goals:
-   - keep desktop look
-   - fix mobile overlap
-   - 2 full cards + a peek of 3rd
-   - less rounding
-   - better action buttons
------------------------------------------------------------- */
-.product-card {
-    display: flex;
-    flex-direction: column;
-    border-radius: 20px !important; /* less rounding */
-}
-
-@media (min-width: 768px) {
-    .product-card {
-        border-radius: 24px !important;
-    }
-}
-
-.product-card .product-media {
-    border-radius: 18px !important;
-}
-
-@media (min-width: 768px) {
-    .product-card .product-media {
-        border-radius: 22px !important;
-    }
-}
-
-/* Ensure bottom row never overlaps and sits consistently */
 .product-card .product-bottom,
 .product-card > div.mt-3.flex {
     margin-top: auto;
 }
 
-/* Responsive typography (prevents collisions on narrow cards) */
 .product-card .product-title {
     font-size: 13px;
     line-height: 1.35;
@@ -597,7 +632,6 @@ animation: spin-slow 10s linear infinite;
     }
 }
 
-/* Image padding: slightly tighter on mobile for better balance */
 .product-card .product-media img {
     padding: 18px !important;
 }
@@ -608,7 +642,6 @@ animation: spin-slow 10s linear infinite;
     }
 }
 
-/* Action buttons: cleaner + more consistent */
 .product-card .product-like-btn,
 .product-card .product-add-btn {
     width: 38px !important;
@@ -646,6 +679,18 @@ animation: spin-slow 10s linear infinite;
     background: #21005D !important;
 }
 
+/* Cart state (when already added) */
+.product-card .product-add-btn.in-cart {
+    background: #FEF7FF !important;
+    color: #6750A4 !important;
+    border: 1px solid rgba(103, 80, 164, 0.35) !important;
+    box-shadow: none !important;
+}
+
+.product-card .product-add-btn.in-cart:hover {
+    background: rgba(103, 80, 164, 0.08) !important;
+}
+
 .product-card .product-like-btn .material-icon,
 .product-card .product-add-btn .material-icon {
     font-size: 20px !important;
@@ -658,19 +703,82 @@ animation: spin-slow 10s linear infinite;
     }
 }
 
-/* Keep "2 full + peek" stable on very small phones too */
-@media (max-width: 360px) {
-    .products-row .product-card {
-        width: 44vw !important;
-        min-width: 44vw !important;
+@media (max-width: 639px) {
+    .product-card .product-media {
+        height: 140px !important;
     }
 }
 
-/* ------------------------------------------------------------
-   Ripple (JS-driven)
-   - Default: subtle gray
-   - Icons: quicker + branded tint (no movement)
------------------------------------------------------------- */
+/* Drag scroll rows */
+.drag-scroll {
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: pan-y;
+    overscroll-behavior-x: contain;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+}
+
+/* While dragging: disable snap so movement isn't "step by step" */
+.drag-scroll.is-dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+}
+
+/* During momentum: keep smooth feel */
+.drag-scroll.is-momentum {
+    scroll-snap-type: none;
+}
+
+/* prevent image "ghost drag" + selection */
+.drag-scroll img {
+    -webkit-user-drag: none;
+    user-drag: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Best sellers motion */
+.best-sellers-row {
+    scroll-behavior: smooth;
+    position: relative;
+}
+
+/* subtle edge fade to emphasize motion */
+.best-sellers-row::before,
+.best-sellers-row::after {
+    content: "";
+    position: sticky;
+    top: 0;
+    width: 28px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 20;
+}
+
+.best-sellers-row::before {
+    right: 0;
+    background: linear-gradient(270deg, rgba(254,247,255,1), rgba(254,247,255,0));
+}
+
+.best-sellers-row::after {
+    left: 0;
+    background: linear-gradient(90deg, rgba(254,247,255,1), rgba(254,247,255,0));
+}
+
+@media (min-width: 768px) {
+    .best-sellers-row::before,
+    .best-sellers-row::after {
+        width: 42px;
+    }
+}
+
+.best-sellers-row.is-auto-scrolling {
+    cursor: grabbing;
+}
+
+/* Ripple (JS-driven) */
 .ripple-effect {
     position: absolute;
     border-radius: 999px;
@@ -680,7 +788,6 @@ animation: spin-slow 10s linear infinite;
     pointer-events: none;
 }
 
-/* Make icon-button feedback feel crisp and fast */
 .nav-icon-btn .ripple-effect {
     background-color: rgba(103, 80, 164, 0.14);
 }
@@ -692,9 +799,304 @@ animation: spin-slow 10s linear infinite;
     }
 }
 
-/* Final mobile overrides (ensure precedence over min-width rules) */
+/* Holographic Hover Effect (Categories) */
+.holo-card {
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(0);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    isolation: isolate;
+}
+
+.holo-card > img,
+.category-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1.01);
+    transition: transform 1.1s ease;
+}
+
+.holo-card:hover > img {
+    transform: scale(1.05);
+}
+
+.holo-card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        0deg,
+        transparent,
+        transparent 30%,
+        rgba(0, 255, 255, 0.22)
+    );
+    transform: rotate(-45deg);
+    transition: transform 0.5s ease, opacity 0.35s ease;
+    opacity: 0;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    z-index: 2;
+}
+
+.holo-card:hover {
+    transform: translateY(-3px) scale(1.02) !important;
+    box-shadow:
+        0 0 18px rgba(0, 255, 255, 0.22),
+        0 18px 34px -30px rgba(16, 24, 40, 0.28) !important;
+}
+
+.holo-card:hover::before {
+    opacity: 1;
+    transform: rotate(-45deg) translateY(100%);
+}
+
+.holo-card:active {
+    transform: scale(0.995) !important;
+}
+
+.holo-card:active::before {
+    opacity: 1;
+    transform: rotate(-45deg) translateY(85%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .holo-card,
+    .holo-card::before {
+        transition: none !important;
+    }
+
+    .holo-card:hover {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    .holo-card:hover::before {
+        opacity: 0 !important;
+        transform: rotate(-45deg) !important;
+    }
+}
+
+/* Redesigned features */
+.features-wrap {
+    background: rgba(255,255,255,0.72);
+    box-shadow:
+        0 1px 1px rgba(16, 24, 40, 0.04),
+        0 22px 44px -36px rgba(16, 24, 40, 0.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.features-bg {
+    position: absolute;
+    inset: -40%;
+    background:
+        radial-gradient(600px 300px at 25% 35%, rgba(103,80,164,0.18), rgba(103,80,164,0) 60%),
+        radial-gradient(520px 260px at 90% 55%, rgba(33,0,93,0.12), rgba(33,0,93,0) 60%),
+        radial-gradient(420px 280px at 55% 90%, rgba(0,0,0,0.06), rgba(0,0,0,0) 60%);
+    filter: blur(6px);
+}
+
+.feature-tile {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 14px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.75);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    box-shadow: 0 16px 30px -28px rgba(16, 24, 40, 0.40);
+    transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1), border-color 200ms ease;
+}
+
+.feature-tile:hover {
+    transform: translateY(-3px);
+    border-color: rgba(103, 80, 164, 0.25);
+    box-shadow:
+        0 10px 24px -20px rgba(16, 24, 40, 0.45),
+        0 12px 26px -26px rgba(103, 80, 164, 0.65);
+}
+
+.feature-ico {
+    width: 52px;
+    height: 52px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px -18px rgba(103, 80, 164, 0.55);
+}
+
+@media (min-width: 768px) {
+    .feature-ico {
+        width: 58px;
+        height: 58px;
+        border-radius: 20px;
+    }
+    .feature-tile {
+        padding: 16px;
+    }
+}
+
+/* Footer redesign */
+.footer-wrap {
+    background:
+        radial-gradient(900px 420px at 85% 0%, rgba(103,80,164,0.14), rgba(103,80,164,0) 60%),
+        linear-gradient(180deg, #F3EDF7 0%, #FEF7FF 55%, #FEF7FF 100%);
+    border-top: 1px solid rgba(103, 80, 164, 0.14);
+}
+
+.footer-card {
+    background: rgba(255,255,255,0.80);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    border-radius: 24px;
+    padding: 16px;
+    box-shadow:
+        0 1px 1px rgba(16, 24, 40, 0.04),
+        0 20px 40px -34px rgba(16, 24, 40, 0.45);
+}
+
+@media (min-width: 768px) {
+    .footer-card {
+        padding: 20px;
+    }
+}
+
+.footer-link {
+    transition: color 160ms ease;
+}
+
+.footer-link:hover {
+    color: #6750A4;
+}
+
+.footer-social {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.9);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    box-shadow: 0 16px 26px -26px rgba(16, 24, 40, 0.45);
+}
+
+.footer-social-telegram {
+    color: #6750A4;
+}
+
+.footer-social-telegram:hover {
+    background: #6750A4;
+    color: #fff;
+}
+
+.footer-social-instagram {
+    color: #C13584;
+}
+
+.footer-social-instagram:hover {
+    background: #C13584;
+    color: #fff;
+}
+
+.footer-newsletter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.92);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.footer-newsletter-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 13px;
+}
+
+.footer-newsletter-btn {
+    background: #6750A4;
+    color: #fff;
+    border: 1px solid rgba(103, 80, 164, 0.2);
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-weight: 900;
+    font-size: 12px;
+    box-shadow: 0 18px 30px -26px rgba(103, 80, 164, 0.65);
+}
+
+.footer-newsletter-btn:hover {
+    background: #21005D;
+}
+
+.footer-mini-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.86);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.footer-acc {
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    border-radius: 18px;
+    background: rgba(255,255,255,0.80);
+    overflow: hidden;
+}
+
+.footer-acc-summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    cursor: pointer;
+    font-weight: 900;
+    color: #1D1B20;
+}
+
+.footer-acc-summary::-webkit-details-marker {
+    display: none;
+}
+
+.footer-acc-chevron {
+    transition: transform 200ms ease;
+}
+
+.footer-acc[open] .footer-acc-chevron {
+    transform: rotate(180deg);
+}
+
+.footer-acc-body {
+    padding: 6px 14px 10px;
+}
+
+/* Mobile menu should feel like a drawer */
 @media (max-width: 639px) {
-    .product-card .product-media {
-        height: 140px !important;
+    #mobile-menu {
+        border-radius: 0 !important;
+    }
+}
+
+/* Ensure hamburger never appears on desktop */
+@media (min-width: 768px) {
+    #open-menu-btn {
+        display: none !important;
     }
 }
