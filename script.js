@@ -1,34 +1,78 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-// --- Mobile Menu Toggle ---
-document.addEventListener('DOMContentLoaded', () => {
-    const toggleBtn = document.getElementById('mobile-menu-toggle');
-    const closeBtn = document.getElementById('close-menu-btn');
-    const menu = document.getElementById('mobile-menu');
-
-    // باز کردن منو
-    toggleBtn?.addEventListener('click', () => {
-        menu.classList.remove('hidden');
-        setTimeout(() => {
-            menu.classList.add('active');
-            document.body.classList.add('menu-open');
-        }, 10);
+// --- Footer Mobile Accordion - Enhanced RTL Support ---
+function initFooterAccordion() {
+    const accordionHeaders = document.querySelectorAll('.footer-accordion-header');
+    
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            const content = header.nextElementSibling;
+            const parentSection = header.parentElement;
+            const isActive = header.classList.contains('active');
+            
+            // Toggle current accordion with enhanced animation
+            if (isActive) {
+                // Closing animation
+                header.classList.remove('active');
+                content.classList.remove('active');
+                parentSection.classList.remove('active-section');
+                
+                // Add subtle closing animation
+                content.style.maxHeight = content.scrollHeight + 'px';
+                setTimeout(() => {
+                    content.style.maxHeight = '0';
+                }, 10);
+            } else {
+                // Opening animation
+                header.classList.add('active');
+                content.classList.add('active');
+                parentSection.classList.add('active-section');
+                
+                // Set proper max height for smooth animation
+                content.style.maxHeight = content.scrollHeight + 'px';
+                setTimeout(() => {
+                    content.style.maxHeight = 'none';
+                }, 400);
+            }
+            
+            // Add haptic feedback simulation (visual feedback)
+            header.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                header.style.transform = '';
+            }, 150);
+        });
+        
+        // Add hover state for better UX
+        header.addEventListener('mouseenter', () => {
+            if (!header.classList.contains('active')) {
+                header.style.background = 'rgba(103, 80, 164, 0.05)';
+            }
+        });
+        
+        header.addEventListener('mouseleave', () => {
+            if (!header.classList.contains('active')) {
+                header.style.background = '';
+            }
+        });
     });
-
-    // بستن منو
-    const closeMenu = () => {
-        menu.classList.remove('active');
+    
+    // Auto-open first accordion on mobile for better UX
+    if (window.innerWidth <= 767 && accordionHeaders.length > 0) {
+        const firstHeader = accordionHeaders[0];
+        const firstContent = firstHeader.nextElementSibling;
+        const firstSection = firstHeader.parentElement;
+        
         setTimeout(() => {
-            menu.classList.add('hidden');
-            document.body.classList.remove('menu-open');
-        }, 300);
-    };
+            firstHeader.classList.add('active');
+            firstContent.classList.add('active');
+            firstSection.classList.add('active-section');
+            firstContent.style.maxHeight = firstContent.scrollHeight + 'px';
+        }, 500);
+    }
+}
 
-    closeBtn?.addEventListener('click', closeMenu);
-    menu?.addEventListener('click', (e) => {
-        if (e.target === menu) closeMenu();
-    });
-});
+// Initialize footer accordion
+initFooterAccordion();
 
 // --- Dynamic Banner Offset (prevent banner hiding under fixed navbar) ---
  const navbar = document.querySelector('header.sticky');
@@ -67,6 +111,11 @@ let toastTimeout;
 function showToast(message, { icon = 'check_circle', iconClass = 'text-green-400' } = {}) {
     if (!toast) return;
 
+    // جلوگیری از نمایش toastهای مکرر
+    if (toast.classList.contains('opacity-100') && toastMsg?.textContent === message) {
+        return; // toast مشابه در حال نمایش است
+    }
+
     if (toastMsg) toastMsg.textContent = message;
     if (toastIcon) {
         toastIcon.textContent = icon;
@@ -85,10 +134,80 @@ const cartBtn = document.getElementById('cart-btn');
 const cartBadge = document.getElementById('cart-count-badge');
 const cartSet = new Set();
 
+// Load cart data from localStorage on page load
+function loadCartFromStorage() {
+    // چک پشتیبانی localStorage
+    if (typeof Storage === 'undefined') return;
+
+    try {
+        const savedCart = localStorage.getItem('mahanshop_cart');
+        if (savedCart && savedCart.trim()) {
+            const cartArray = JSON.parse(savedCart);
+            if (Array.isArray(cartArray)) {
+                cartSet.clear(); // پاکسازی قبل از بارگذاری
+                cartArray.forEach(pid => {
+                    if (pid && typeof pid === 'string' && pid.trim()) {
+                        cartSet.add(pid.trim());
+                    }
+                });
+            }
+        }
+    } catch (e) {
+        console.warn('Failed to load cart from localStorage:', e);
+        // پاک کردن داده‌های خراب
+        try {
+            localStorage.removeItem('mahanshop_cart');
+        } catch (e2) {
+            console.warn('Failed to clear corrupted cart data:', e2);
+        }
+    }
+}
+
+// Save cart data to localStorage
+function saveCartToStorage() {
+    // چک پشتیبانی localStorage
+    if (typeof Storage === 'undefined') return;
+
+    try {
+        const cartArray = Array.from(cartSet);
+        if (cartArray.length === 0) {
+            localStorage.removeItem('mahanshop_cart');
+        } else {
+            localStorage.setItem('mahanshop_cart', JSON.stringify(cartArray));
+        }
+    } catch (e) {
+        console.warn('Failed to save cart to localStorage:', e);
+    }
+}
+
 // assign a stable id to each card (in case you later want persistence)
 document.querySelectorAll('.product-card').forEach((card, i) => {
-    if (!card.dataset.pid) card.dataset.pid = `p${i + 1}`;
+    if (!card.dataset.pid) {
+        // Create a more stable ID based on product title and brand
+        const title = card.querySelector('h3')?.textContent?.trim() || '';
+        const brand = card.querySelector('p')?.textContent?.trim() || '';
+        const price = card.querySelector('.font-black')?.textContent?.trim() || '';
+
+        // Create a hash-like ID from product details
+        const productString = `${title}-${brand}-${price}`;
+        let hash = 0;
+        for (let j = 0; j < productString.length; j++) {
+            const char = productString.charCodeAt(j);
+            hash = ((hash << 5) - hash) + char;
+            hash = hash & hash; // Convert to 32-bit integer
+        }
+        card.dataset.pid = `prod_${Math.abs(hash)}`;
+    }
 });
+
+// Track page load status
+let pageFullyLoaded = false;
+window.addEventListener('load', () => {
+    pageFullyLoaded = true;
+});
+
+// Load cart data on page load
+loadCartFromStorage();
 
 function renderCartBadge() {
     if (!cartBadge) return;
@@ -99,9 +218,49 @@ function renderCartBadge() {
 renderCartBadge();
 
 // --- Product interactions (Cart + Favorite) ---
+let cartOperationsAllowed = false;
+let initialInteractionTimer = null;
+
+// اجازه عملیات سبد خرید فقط بعد از تعامل کاربر و گذشت زمان
+function allowCartOperations() {
+    cartOperationsAllowed = true;
+    if (initialInteractionTimer) {
+        clearTimeout(initialInteractionTimer);
+        initialInteractionTimer = null;
+    }
+}
+
+// تعامل اولیه کاربر
 document.addEventListener('click', (e) => {
+    if (!cartOperationsAllowed) {
+        // تأخیر 500 میلی‌ثانیه برای اطمینان از تعامل واقعی
+        initialInteractionTimer = setTimeout(allowCartOperations, 500);
+    }
+}, { once: true });
+
+// پاکسازی تایمر در صورت لزوم
+window.addEventListener('beforeunload', () => {
+    if (initialInteractionTimer) {
+        clearTimeout(initialInteractionTimer);
+    }
+});
+
+document.addEventListener('click', (e) => {
+    // فقط رویدادهای واقعی کاربر (نه برنامه‌ای)
+    if (!e.isTrusted) return;
+
+    // اجازه عملیات سبد خرید فقط بعد از تعامل اولیه کاربر
+    if (!cartOperationsAllowed) return;
+
     const btn = e.target.closest('button');
     if (!btn) return;
+
+    // جلوگیری از پردازش مکرر یک دکمه
+    if (btn.hasAttribute('data-processing')) return;
+    btn.setAttribute('data-processing', 'true');
+
+    // پاک کردن فلگ پس از ۱۰۰ میلی‌ثانیه
+    setTimeout(() => btn.removeAttribute('data-processing'), 100);
 
     const iconEl = btn.querySelector('.material-icon');
     const iconName = iconEl?.textContent?.trim();
@@ -121,6 +280,7 @@ document.addEventListener('click', (e) => {
             if (iconEl) iconEl.textContent = 'remove_shopping_cart';
 
             renderCartBadge();
+            saveCartToStorage();
             showToast('محصول به سبد خرید اضافه شد', { icon: 'check_circle', iconClass: 'text-green-400' });
         } else {
             cartSet.delete(pid);
@@ -128,6 +288,7 @@ document.addEventListener('click', (e) => {
             if (iconEl) iconEl.textContent = 'add';
 
             renderCartBadge();
+            saveCartToStorage();
             showToast('محصول از سبد خرید حذف شد', { icon: 'remove_shopping_cart', iconClass: 'text-red-400' });
         }
         return;
@@ -272,10 +433,44 @@ if (sections.length > 0) {
     });
 }
 
+// --- Add All Favorites to Cart ---
+document.getElementById('add-all-to-cart-btn')?.addEventListener('click', (e) => {
+    // فقط رویدادهای واقعی کاربر
+    if (!e.isTrusted) return;
+
+    // اجازه عملیات سبد خرید فقط بعد از تعامل اولیه کاربر
+    if (!cartOperationsAllowed) return;
+
+    const favoriteCards = document.querySelectorAll('#favorites-grid .product-card');
+    let addedCount = 0;
+
+    favoriteCards.forEach(card => {
+        const pid = card?.dataset?.pid;
+        if (pid && !cartSet.has(pid)) {
+            cartSet.add(pid);
+            addedCount++;
+        }
+    });
+
+    if (addedCount > 0) {
+        renderCartBadge();
+        saveCartToStorage();
+        showToast(`${addedCount} محصول به سبد خرید اضافه شد`, {
+            icon: 'shopping_cart',
+            iconClass: 'text-blue-400'
+        });
+    } else {
+        showToast('تمام محصولات از قبل در سبد خرید هستند', {
+            icon: 'info',
+            iconClass: 'text-blue-400'
+        });
+    }
+});
+
 // --- Mobile Menu Logic ---
 const mobileMenu = document.getElementById('mobile-menu');
 const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-const openMenuBtn = document.getElementById('open-menu-btn');
+const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
 const closeMenuBtn = document.getElementById('close-menu-btn');
 
 function openMenu() {
@@ -303,10 +498,7 @@ function toggleMenu() {
     if (isHidden) openMenu(); else closeMenu();
 }
 
-// Add event listener for menu-toggle button as well
-const menuToggleBtn = document.getElementById('menu-toggle');
-if (menuToggleBtn) menuToggleBtn.addEventListener('click', toggleMenu);
-if (openMenuBtn) openMenuBtn.addEventListener('click', toggleMenu);
+if (mobileMenuToggle) mobileMenuToggle.addEventListener('click', toggleMenu);
 if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
 if (mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', closeMenu);
 
@@ -904,26 +1096,7 @@ document.querySelectorAll('.qty-selector').forEach(selector => {
   }
 });
 
-// --- Simple Tabs for Profile ---
-const tabLinks = document.querySelectorAll('[data-tab-target]');
-const tabContents = document.querySelectorAll('[data-tab-content]');
 
-if(tabLinks.length > 0) {
-    tabLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.dataset.tabTarget;
-            
-            // Toggle active link
-            tabLinks.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
 
-            // Toggle active content
-            tabContents.forEach(c => c.classList.add('hidden'));
-            const targetContent = document.querySelector(targetId);
-            if(targetContent) targetContent.classList.remove('hidden');
-        });
-    });
-}
 
 });

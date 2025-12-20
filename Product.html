@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>محصولات | ماهان شاپ</title>
   
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,6 +14,15 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
   
   <link rel="stylesheet" href="style.css" />
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
 
   <style>
     /* Active category button styling in left filter panel */
@@ -40,34 +49,188 @@
   </style>
 
 </head>
-<body class="bg-[#F8F4FA] text-gray-900 font-[Vazirmatn] min-h-screen products-page-bg">
+<body class="bg-[#FEF7FF] text-gray-900 overflow-x-hidden font-[Vazirmatn] min-h-screen products-page-bg">
   
-  <!-- Navbar from index.html (Simplified for clarity) -->
-  <nav class="sticky top-0 w-full z-50 bg-[#FEF7FF]/85 backdrop-blur-xl border-b border-gray-200/80 shadow-sm">
-    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <a href="index.html" class="flex items-center gap-1.5 group text-gray-600 hover:text-[#6750A4] transition-colors py-2 px-1 rounded-lg">
-          <span class="material-icon text-xl md:text-2xl group-hover:-translate-x-1 transition-transform">arrow_forward</span>
-          <span class="font-bold text-sm md:text-base">بازگشت به خانه</span>
-        </a>
-        <div class="flex items-center gap-2">
-          <span class="material-icon text-2xl md:text-3xl text-[#6750A4]">shopping_bag</span>
-          <span class="font-black text-lg md:text-xl text-[#6750A4] tracking-tight">ماهان شاپ</span>
-        </div>
-        <div class="flex items-center gap-1">
-          <button class="w-11 h-11 rounded-full flex items-center justify-center hover:bg-gray-100 text-gray-700 transition" title="سبد خرید" type="button">
-            <span class="material-icon">shopping_cart</span>
-          </button>
-          <button class="w-11 h-11 rounded-full flex items-center justify-center hover:bg-gray-100 text-gray-700 transition" title="حساب کاربری" type="button">
-            <span class="material-icon">person</span>
-          </button>
-        </div>
+  <!-- Combined Header (Desktop & Mobile Optimized) -->
+  <header id="navbar" class="sticky top-0 z-50 bg-[#FEF7FF]/90 backdrop-blur-md border-b border-gray-200/50 transition-all duration-300">
+      
+      <!-- Top Row: Logo, Search, Actions -->
+      <div class="max-w-7xl mx-auto px-4 pt-3 pb-3 md:pb-0">
+          <div class="flex flex-wrap md:flex-nowrap items-center justify-between gap-4">
+              
+              <!-- Left Section: Mobile Menu & Logo -->
+              <div class="flex items-center gap-3 shrink-0">
+                  <!-- Mobile Menu Trigger -->
+                  <button id="mobile-menu-toggle" class="md:hidden nav-icon-btn ripple p-2 rounded-full text-gray-700">
+                      <span class="material-icon">menu</span>
+                  </button>
+
+                  <!-- Logo -->
+                  <a href="index.html" class="flex items-center gap-2 group">
+                      <div class="w-10 h-10 bg-gradient-to-br from-purple-600 to-purple-700 rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/20 group-hover:scale-105 transition-transform duration-300">
+                          <span class="material-icon text-white text-xl">shopping_bag</span>
+                      </div>
+                      <span class="text-xl md:text-2xl font-black text-gray-800 tracking-tight">ماهان شاپ</span>
+                  </a>
+              </div>
+  
+              <!-- Middle Section: Search Bar (MD3 Style) -->
+              <div class="order-last md:order-none w-full md:max-w-xl mx-auto md:mx-6 transition-all duration-300">
+                  <div class="relative group search-container">
+                      <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
+                          <span class="material-icon text-gray-500 group-focus-within:text-[#6750A4] transition-colors">search</span>
+                      </div>
+                      <input type="text" 
+                             class="w-full h-12 pr-12 pl-4 rounded-full bg-[#F3EDF7] border border-transparent hover:bg-[#EADDFF]/50 focus:bg-white focus:border-[#6750A4] focus:shadow-[0_4px_12px_rgba(103,80,164,0.15)] outline-none transition-all duration-300 placeholder-gray-500 text-sm md:text-base"
+                             placeholder="جستجو در بین هزاران محصول...">
+                  </div>
+              </div>
+  
+              <!-- Right Section: Actions (Cart, Fav, Profile/Auth) -->
+              <div class="flex items-center gap-2 md:gap-3 shrink-0">
+                  
+                  <!-- Favorites -->
+<a href="favorites.html" class="nav-icon-btn ripple w-10 h-10 rounded-full flex items-center justify-center text-gray-600" title="علاقه‌مندی‌ها">
+                       <span class="material-icon">favorite_border</span>
+                   </a>
+
+                  <!-- Cart -->
+                  <a href="cart.html" id="cart-btn" class="nav-icon-btn ripple w-10 h-10 rounded-full flex items-center justify-center text-gray-600 relative" title="سبد خرید">
+                      <span class="material-icon">shopping_cart</span>
+                      <span id="cart-count-badge" class="absolute top-0 right-0 w-4 h-4 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center border border-white hidden">0</span>
+                  </a>
+
+                  <!-- Divider (Desktop only) -->
+                  <div class="hidden md:block w-px h-6 bg-gray-300 mx-1"></div>
+
+                  <!-- Profile (Logged In State) -->
+                  <a href="profile.html" class="hidden md:flex items-center gap-2 pl-1 pr-1 py-1 rounded-full hover:bg-[#F3EDF7] transition-all group">
+                      <div class="w-8 h-8 bg-[#EADDFF] rounded-full flex items-center justify-center text-[#21005D]">
+                          <span class="material-icon text-lg">person</span>
+                      </div>
+                      <span class="text-sm font-bold text-gray-700 group-hover:text-[#6750A4]">حساب کاربری</span>
+                  </a>
+
+                  <!-- Mobile Profile Icon -->
+                  <a href="profile.html" class="md:hidden nav-icon-btn ripple w-10 h-10 rounded-full hover:bg-[#F3EDF7] flex items-center justify-center text-gray-600 hover:text-[#6750A4] transition-colors">
+                      <span class="material-icon">person</span>
+                  </a>
+
+                  <!-- 
+                  =======================================================
+                  Auth Button (For Non-Logged In Users) - COMMENTED OUT
+                  =======================================================
+                  <a href="login.html" class="flex items-center gap-2 bg-[#6750A4] text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-[#523e85] hover:shadow-md transition-all ripple">
+                      <span class="material-icon text-lg">login</span>
+                      <span>ورود | ثبت نام</span>
+                  </a>
+                  -->
+              </div>
+          </div>
       </div>
-    </div>
-  </nav>
+
+      <!-- Bottom Row: Secondary Navigation (Categories) -->
+      <div class="border-t border-gray-100/80 md:border-none hidden md:block">
+          <div class="max-w-7xl mx-auto px-4">
+              <nav class="secondary-nav flex items-center gap-1 md:gap-6 overflow-x-auto no-scrollbar py-2 md:py-3 mask-image-fade">
+                  <a href="index.html" class="secondary-nav-link">
+                      <span class="material-icon text-lg">home</span>
+                      خانه
+                  </a>
+                  <a href="Product.html" class="secondary-nav-link active">
+                      <span class="material-icon text-lg">apps</span>
+                      تمام محصولات
+                  </a>
+                  <div class="w-px h-4 bg-gray-300 mx-1 shrink-0 hidden md:block"></div>
+                  <a href="Product.html?cat=case" class="secondary-nav-link">قاب گوشی</a>
+                  <a href="Product.html?cat=phone" class="secondary-nav-link">گوشی هوشمند</a>
+                  <a href="Product.html?cat=charger" class="secondary-nav-link">شارژر و کابل</a>
+                  <a href="Product.html?cat=airpod" class="secondary-nav-link">کاور ایرپاد</a>
+                  <a href="Product.html?cat=glass" class="secondary-nav-link">گلس و محافظ</a>
+                  <a href="Product.html?cat=gadget" class="secondary-nav-link">گجت</a>
+                  <div class="w-px h-4 bg-gray-300 mx-1 shrink-0 hidden md:block"></div>
+                  <a href="aboutus.html#contact" class="secondary-nav-link">
+                      <span class="material-icon text-lg">contact_support</span>
+                      ارتباط با ما
+                  </a>
+              </nav>
+          </div>
+      </div>
+  </header>
+  
+  <!-- Mobile Menu Drawer -->
+  <div class="md:hidden">
+      <!-- Overlay -->
+      <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/40 z-[99] hidden opacity-0 transition-opacity duration-300"></div>
+      <!-- Menu -->
+      <div id="mobile-menu" class="fixed right-0 top-0 h-full w-4/5 max-w-[300px] bg-[#FEF7FF] shadow-2xl transform translate-x-full z-[100] transition-transform duration-300">
+          <div class="p-5 flex justify-between items-center bg-[#F3EDF7]">
+              <div class="flex items-center gap-2">
+                  <span class="material-icon text-[#6750A4]">shopping_bag</span>
+                  <span class="font-bold text-lg text-[#1D1B20]">منوی اصلی</span>
+              </div>
+              <button id="close-menu-btn" class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-gray-600 hover:text-red-500 shadow-sm transition-colors">
+                  <span class="material-icon text-lg">close</span>
+              </button>
+          </div>
+          <div class="p-4 overflow-y-auto h-[calc(100%-64px)]">
+              <!-- Commented Login for Drawer -->
+              <!-- 
+              <div class="mb-6 p-4 bg-white rounded-2xl border border-gray-100 text-center">
+                  <p class="text-sm text-gray-500 mb-3">هنوز وارد نشده‌اید؟</p>
+                  <a href="login.html" class="block w-full bg-[#6750A4] text-white py-2.5 rounded-xl font-bold text-sm shadow-md ripple">ورود یا ثبت نام</a>
+              </div>
+              -->
+
+              <nav class="flex flex-col gap-1">
+                  <a href="index.html" class="flex items-center gap-3 p-3 rounded-xl text-gray-700 font-medium hover:bg-[#F3EDF7] transition-colors">
+                      <span class="material-icon text-gray-500">home</span>
+                      <span>خانه</span>
+                  </a>
+                  <a href="Product.html" class="flex items-center gap-3 p-3 rounded-xl text-[#1D1B20] bg-[#EADDFF] font-bold">
+                      <span class="material-icon text-[#21005D]">category</span>
+                      <span>همه محصولات</span>
+                  </a>
+                  <div class="border-t border-gray-200 my-2 mx-2"></div>
+                  <span class="text-xs font-bold text-gray-400 px-3 mb-1">دسته‌بندی‌ها</span>
+                  <a href="Product.html?cat=case" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors">
+                      <span class="material-icon text-lg">smartphone</span> قاب گوشی
+                  </a>
+                  <a href="Product.html?cat=phone" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors">
+                      <span class="material-icon text-lg">smartphone</span> گوشی هوشمند
+                  </a>
+                  <a href="Product.html?cat=charger" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors">
+                      <span class="material-icon text-lg">bolt</span> شارژر و کابل
+                  </a>
+                  <a href="Product.html?cat=airpod" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors">
+                      <span class="material-icon text-lg">headphones</span> کاور ایرپاد
+                  </a>
+                  <a href="Product.html?cat=glass" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors">
+                      <span class="material-icon text-lg">shield</span> گلس و محافظ
+                  </a>
+                  <a href="Product.html?cat=gadget" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors">
+                      <span class="material-icon text-lg">diamond</span> گجت
+                  </a>
+                  <div class="border-t border-gray-200 my-2 mx-2"></div>
+                  <a href="profile.html" class="flex items-center gap-3 p-3 rounded-xl text-gray-700 font-medium hover:bg-[#F3EDF7] transition-colors">
+                      <span class="material-icon">person</span>
+                      <span>حساب کاربری</span>
+                  </a>
+                  <a href="aboutus.html" class="flex items-center gap-3 p-3 rounded-xl text-gray-700 font-medium hover:bg-[#F3EDF7] transition-colors">
+                      <span class="material-icon">info</span>
+                      <span>درباره ما</span>
+                  </a>
+                  <a href="aboutus.html#contact" class="flex items-center gap-3 p-3 rounded-xl text-gray-700 font-medium hover:bg-[#F3EDF7] transition-colors">
+                      <span class="material-icon">contact_support</span>
+                      <span>ارتباط با ما</span>
+                  </a>
+              </nav>
+          </div>
+      </div>
+  </div>
 
   <!-- Main Content -->
-  <main class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
+  <main class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-6 md:pb-8">
     <div class="lg:grid lg:grid-cols-12 lg:gap-8">
 
       <!-- Filter Sidebar -->
@@ -461,6 +624,9 @@
       </div>
     </div>
   </main>
+
+  <!-- Favorites anchor (for footer heart link) -->
+  <div id="favorites" aria-hidden="true"></div>
   
   <!-- Mobile Filter Button and Overlay -->
   <div id="filter-overlay" class="filter-overlay" role="presentation"></div>
@@ -967,5 +1133,148 @@ const collectFiltersFromUI = () => {
       filterAndSortProducts();
     });
     </script>
+
+<footer id="footer" class="bg-white border-t border-gray-100 pt-16 pb-8 relative overflow-hidden">
+      <!-- Background decorations -->
+      <div class="absolute inset-0 opacity-40 pointer-events-none">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-purple-100 rounded-full filter blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-100 rounded-full filter blur-3xl"></div>
+      </div>
+  
+      <div class="relative max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 mb-12">
+          
+          <!-- Brand Section - Mobile & Desktop -->
+          <div class="lg:col-span-1">
+            <div class="flex items-center gap-3 mb-4 lg:mb-6">
+              <div class="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-purple-600 to-purple-700 rounded-xl lg:rounded-2xl flex items-center justify-center shadow-lg">
+                <span class="material-icon text-white text-lg lg:text-2xl">shopping_bag</span>
+              </div>
+              <h3 class="text-xl lg:text-2xl font-bold text-gray-900">ماهان شاپ</h3>
+            </div>
+            
+            <p class="text-gray-600 text-sm lg:text-base leading-relaxed mb-4 lg:mb-6">
+              مرجع تخصصی لوازم جانبی موبایل با بهترین کیفیت و قیمت مناسب.
+            </p>
+            <div class="flex gap-2 lg:gap-3">
+              <a href="#" class="w-8 h-8 lg:w-10 lg:h-10 bg-gray-100 rounded-lg lg:rounded-xl flex items-center justify-center text-gray-600 hover:bg-gradient-to-br hover:from-purple-500 hover:to-purple-600 hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 ripple">
+                <span class="material-icon text-sm lg:text-lg">send</span>
+              </a>
+              <a href="#" class="w-8 h-8 lg:w-10 lg:h-10 bg-gray-100 rounded-lg lg:rounded-xl flex items-center justify-center text-gray-600 hover:bg-gradient-to-br hover:from-pink-500 hover:to-rose-500 hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300 ripple">
+                <span class="material-icon text-sm lg:text-lg">photo_camera</span>
+              </a>
+              <a href="#" class="w-8 h-8 lg:w-10 lg:h-10 bg-gray-100 rounded-lg lg:rounded-xl flex items-center justify-center text-gray-600 hover:bg-gradient-to-br hover:from-blue-500 hover:to-cyan-500 hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 ripple">
+                <span class="material-icon text-sm lg:text-lg">public</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links - Mobile & Desktop -->
+          <div class="lg:col-span-1">
+            <h4 class="text-base lg:text-lg font-semibold text-gray-900 mb-3 lg:mb-6">دسترسی سریع</h4>
+            
+            <!-- Mobile Layout: Horizontal -->
+            <div class="lg:hidden">
+              <div class="flex flex-wrap gap-x-3 gap-y-2 text-sm">
+                <a href="Product.html?cat=case" class="text-gray-600 hover:text-purple-600 transition-colors">قاب گوشی</a>
+                <a href="Product.html?cat=phone" class="text-gray-600 hover:text-purple-600 transition-colors">گوشی</a>
+                <a href="Product.html?cat=charger" class="text-gray-600 hover:text-purple-600 transition-colors">شارژر</a>
+                <a href="Product.html?cat=airpod" class="text-gray-600 hover:text-purple-600 transition-colors">ایرپاد</a>
+                <a href="Product.html?cat=glass" class="text-gray-600 hover:text-purple-600 transition-colors">گلس</a>
+                <a href="Product.html?cat=gadget" class="text-gray-600 hover:text-purple-600 transition-colors">گجت</a>
+              </div>
+            </div>
+            
+            <!-- Desktop Layout: Vertical -->
+            <div class="hidden lg:block">
+              <ul class="space-y-4">
+                <li><a href="Product.html?cat=case" class="text-gray-600 hover:text-purple-600 transition-colors">قاب گوشی</a></li>
+                <li><a href="Product.html?cat=phone" class="text-gray-600 hover:text-purple-600 transition-colors">گوشی هوشمند</a></li>
+                <li><a href="Product.html?cat=charger" class="text-gray-600 hover:text-purple-600 transition-colors">شارژر و کابل</a></li>
+                <li><a href="Product.html?cat=airpod" class="text-gray-600 hover:text-purple-600 transition-colors">کاور ایرپاد</a></li>
+                <li><a href="Product.html?cat=glass" class="text-gray-600 hover:text-purple-600 transition-colors">گلس و محافظ</a></li>
+                <li><a href="Product.html?cat=gadget" class="text-gray-600 hover:text-purple-600 transition-colors">گجت</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Customer Service - Mobile & Desktop -->
+          <div class="lg:col-span-1">
+            <h4 class="text-base lg:text-lg font-semibold text-gray-900 mb-3 lg:mb-6">خدمات مشتریان</h4>
+            
+            <!-- Mobile Layout: Horizontal -->
+            <div class="lg:hidden">
+              <div class="flex flex-wrap gap-x-3 gap-y-2 text-sm">
+                <a href="aboutus.html#faq" class="text-gray-600 hover:text-purple-600 transition-colors">سوالات متداول</a>
+                <a href="aboutus.html#returns" class="text-gray-600 hover:text-purple-600 transition-colors">بازگشت کالا</a>
+                <a href="aboutus.html#shipping" class="text-gray-600 hover:text-purple-600 transition-colors">ارسال</a>
+                <a href="aboutus.html#payment" class="text-gray-600 hover:text-purple-600 transition-colors">پرداخت</a>
+                <a href="profile.html" class="text-gray-600 hover:text-purple-600 transition-colors">پروفایل</a>
+                <a href="aboutus.html" class="text-gray-600 hover:text-purple-600 transition-colors">درباره ما</a>
+                <a href="aboutus.html#contact" class="text-gray-600 hover:text-purple-600 transition-colors">تماس</a>
+              </div>
+            </div>
+            
+            <!-- Desktop Layout: Vertical -->
+            <div class="hidden lg:block">
+              <ul class="space-y-4">
+                <li><a href="aboutus.html#faq" class="text-gray-600 hover:text-purple-600 transition-colors">سوالات متداول</a></li>
+                <li><a href="aboutus.html#returns" class="text-gray-600 hover:text-purple-600 transition-colors">بازگشت کالا</a></li>
+                <li><a href="aboutus.html#shipping" class="text-gray-600 hover:text-purple-600 transition-colors">روش‌های ارسال</a></li>
+                <li><a href="aboutus.html#payment" class="text-gray-600 hover:text-purple-600 transition-colors">روش‌های پرداخت</a></li>
+                <li><a href="profile.html" class="text-gray-600 hover:text-purple-600 transition-colors">پروفایل کاربری</a></li>
+                <li><a href="aboutus.html" class="text-gray-600 hover:text-purple-600 transition-colors">درباره ما</a></li>
+                <li><a href="aboutus.html#contact" class="text-gray-600 hover:text-purple-600 transition-colors">تماس با پشتیبانی</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Contact Section - Mobile & Desktop -->
+          <div class="lg:col-span-1">
+            <h4 class="text-base lg:text-lg font-semibold text-gray-900 mb-3 lg:mb-6">اطلاعات تماس</h4>
+            
+            <div class="space-y-3 lg:space-y-4">
+              <div class="flex items-center gap-2 lg:gap-3 text-gray-600">
+                <span class="material-icon text-purple-600 text-sm lg:text-base">call</span>
+                <a href="tel:09121234567" class="text-sm lg:text-base hover:text-purple-600">۰۹۱۲۱۲۳۴۵۶۷</a>
+              </div>
+              <div class="flex items-center gap-2 lg:gap-3 text-gray-600">
+                <span class="material-icon text-purple-600 text-sm lg:text-base">schedule</span>
+                <span class="text-sm lg:text-base">هر روز ۱۰:۰۰ - ۲۲:۰۰</span>
+              </div>
+              <div class="flex items-center gap-2 lg:gap-3 text-gray-600">
+                <span class="material-icon text-purple-600 text-sm lg:text-base">email</span>
+                <a href="mailto:info@mahanshop.com" class="text-sm lg:text-base hover:text-purple-600">info@mahanshop.com</a>
+              </div>
+              <div class="hidden lg:flex items-center gap-3 text-gray-600">
+                <span class="material-icon text-purple-600">location_on</span>
+                <span class="text-sm">تهران، خیابان ولیعصر</span>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Bottom Footer -->
+        <div class="border-t border-gray-200 pt-8">
+          <div class="flex flex-col-reverse sm:flex-row items-center justify-between gap-4 text-center">
+            <p class="text-gray-500 text-sm">© ۱۴۰۳ ماهان شاپ. تمامی حقوق محفوظ است.</p>
+            <div class="flex flex-wrap justify-center gap-4 sm:gap-6">
+              <a href="#top" class="text-gray-500 hover:text-purple-600 text-sm transition-colors flex items-center gap-1">
+                <span>بازگشت به بالا</span>
+                <span class="material-icon text-base">arrow_upward</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  <div id="toast" class="fixed bottom-4 left-4 z-50 transform translate-y-20 opacity-0 transition-all duration-300">
+    <div class="bg-[#322F35] text-[#F5EFF7] px-5 py-3 rounded-xl shadow-lg flex items-center gap-3">
+      <span id="toast-icon" class="material-icon text-green-400">check_circle</span>
+      <span id="toast-message">محصول به سبد خرید اضافه شد</span>
+    </div>
+  </div>
+
 </body>
 </html>
