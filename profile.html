@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>پروفایل کاربری | ماهان شاپ</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-[#F8F4FA] text-gray-900 font-[Vazirmatn]">
+
+  <nav class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+       <a href="index.html" class="flex items-center gap-2">
+          <span class="material-icon text-3xl text-[#6750A4]">shopping_bag</span>
+          <span class="font-bold text-xl text-[#6750A4]">ماهان شاپ</span>
+       </a>
+       <div class="flex items-center gap-2">
+           <span class="text-sm font-bold text-gray-700">علی محمدی</span>
+           <div class="w-10 h-10 bg-[#EADDFF] rounded-full flex items-center justify-center text-[#21005D] font-bold">ع</div>
+       </div>
+    </div>
+  </nav>
+
+  <main class="max-w-7xl mx-auto px-4 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      
+      <aside class="lg:col-span-1">
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden sticky top-24">
+          <div class="p-6 border-b border-gray-100 bg-[#FEF7FF]">
+             <div class="flex items-center gap-3">
+                <div class="w-14 h-14 bg-[#EADDFF] rounded-full flex items-center justify-center text-xl text-[#21005D] font-black">ع</div>
+                <div>
+                   <h3 class="font-bold text-gray-900">علی محمدی</h3>
+                   <p class="text-xs text-gray-500 mt-1">09121234567</p>
+                </div>
+             </div>
+          </div>
+          <nav class="p-2 space-y-1">
+            <a href="#" data-tab-target="#dashboard" class="profile-sidebar-link active flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium">
+              <span class="material-icon">dashboard</span> داشبورد
+            </a>
+            <a href="#" data-tab-target="#details" class="profile-sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-50 text-sm font-medium">
+              <span class="material-icon">person</span> مشخصات حساب
+            </a>
+            <div class="border-t border-gray-100 my-2"></div>
+            <a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-red-600 hover:bg-red-50 text-sm font-medium transition-colors">
+              <span class="material-icon">logout</span> خروج از حساب
+            </a>
+          </nav>
+        </div>
+      </aside>
+
+      <div class="lg:col-span-3">
+        
+        <section id="dashboard" data-tab-content>
+           <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+             <div class="flex items-center justify-between mb-6">
+               <h2 class="font-bold text-lg flex items-center gap-2">
+                 <span class="material-icon text-[#6750A4]">shopping_bag</span>
+                 سفارش‌های من
+               </h2>
+               <div class="flex gap-2">
+                 <button class="px-3 py-1.5 text-sm font-medium bg-[#6750A4] text-white rounded-lg">همه</button>
+                 <button class="px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg">در حال پردازش</button>
+                 <button class="px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg">ارسال شده</button>
+                 <button class="px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg">تحویل شده</button>
+               </div>
+             </div>
+
+             <!-- سفارش در حال پردازش -->
+             <div class="border border-gray-200 rounded-xl p-4 mb-4">
+               <div class="flex flex-wrap items-center justify-between gap-4 mb-4 pb-4 border-b border-gray-100">
+                 <div class="flex items-center gap-4">
+                   <div class="bg-yellow-100 text-yellow-700 p-2 rounded-full">
+                     <span class="material-icon text-xl">hourglass_empty</span>
+                   </div>
+                   <div>
+                     <div class="font-bold text-gray-900">در حال پردازش</div>
+                     <div class="text-xs text-gray-500 font-mono mt-1">کد: M-2490 • ۱۴۰۳/۱۰/۱۸</div>
+                   </div>
+                 </div>
+                 <div class="text-left">
+                   <div class="text-sm text-gray-500">مبلغ کل</div>
+                   <div class="font-bold text-[#6750A4]">۲,۸۵۰,۰۰۰ تومان</div>
+                 </div>
+               </div>
+               <div class="flex items-center gap-3 overflow-x-auto pb-2">
+                 <img src="https://placehold.co/80x80/EADDFF/6750A4?text=Product" class="w-16 h-16 rounded-lg border border-gray-100 object-cover" alt="Product">
+                 <img src="https://placehold.co/80x80/E3F2FD/2196F3?text=Product" class="w-16 h-16 rounded-lg border border-gray-100 object-cover" alt="Product">
+                 <img src="https://placehold.co/80x80/F3E5F5/6750A4?text=Product" class="w-16 h-16 rounded-lg border border-gray-100 object-cover" alt="Product">
+               </div>
+               <div class="mt-4 flex flex-wrap gap-2">
+                 <button class="text-sm font-bold text-[#6750A4] border border-[#6750A4] px-4 py-2 rounded-lg hover:bg-[#F3EDF7] transition">مشاهده جزئیات</button>
+                 <button class="text-sm font-bold text-red-600 border border-red-300 px-4 py-2 rounded-lg hover:bg-red-50 transition">لغو سفارش</button>
+               </div>
+             </div>
+
+             <!-- سفارش ارسال شده -->
+             <div class="border border-gray-200 rounded-xl p-4 mb-4">
+               <div class="flex flex-wrap items-center justify-between gap-4 mb-4 pb-4 border-b border-gray-100">
+                 <div class="flex items-center gap-4">
+                   <div class="bg-blue-100 text-blue-700 p-2 rounded-full">
+                     <span class="material-icon text-xl">local_shipping</span>
+                   </div>
+                   <div>
+                     <div class="font-bold text-gray-900">ارسال شده</div>
+                     <div class="text-xs text-gray-500 font-mono mt-1">کد: M-2485 • ۱۴۰۳/۰۵/۲۴</div>
+                   </div>
+                 </div>
+                 <div class="text-left">
+                   <div class="text-sm text-gray-500">مبلغ کل</div>
+                   <div class="font-bold text-[#6750A4]">۴,۵۰۰,۰۰۰ تومان</div>
+                 </div>
+               </div>
+               <div class="bg-blue-50 rounded-lg p-3 mb-3">
+                 <div class="flex items-center gap-2 text-sm">
+                   <span class="material-icon text-blue-600">info</span>
+                   <span class="text-blue-800">کد رهگیری پستی: <span class="font-mono font-bold">1234567890123</span></span>
+                 </div>
+               </div>
+               <div class="flex items-center gap-3 overflow-x-auto pb-2">
+                 <img src="https://placehold.co/80x80/E8F5E9/4CAF50?text=Product" class="w-16 h-16 rounded-lg border border-gray-100 object-cover" alt="Product">
+               </div>
+               <div class="mt-4 flex flex-wrap gap-2">
+                 <button class="text-sm font-bold text-[#6750A4] border border-[#6750A4] px-4 py-2 rounded-lg hover:bg-[#F3EDF7] transition">مشاهده جزئیات</button>
+                 <button class="text-sm font-bold text-gray-600 border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-50 transition">پیگیری مرسوله</button>
+               </div>
+             </div>
+
+             <!-- سفارش تحویل شده -->
+             <div class="border border-gray-200 rounded-xl p-4 mb-4">
+               <div class="flex flex-wrap items-center justify-between gap-4 mb-4 pb-4 border-b border-gray-100">
+                 <div class="flex items-center gap-4">
+                   <div class="bg-green-100 text-green-700 p-2 rounded-full">
+                     <span class="material-icon text-xl">check_circle</span>
+                   </div>
+                   <div>
+                     <div class="font-bold text-gray-900">تحویل شده</div>
+                     <div class="text-xs text-gray-500 font-mono mt-1">کد: M-2480 • ۱۴۰۳/۰۵/۲۰</div>
+                   </div>
+                 </div>
+                 <div class="text-left">
+                   <div class="text-sm text-gray-500">مبلغ کل</div>
+                   <div class="font-bold text-[#6750A4]">۸۵۰,۰۰۰ تومان</div>
+                 </div>
+               </div>
+               <div class="flex items-center gap-3 overflow-x-auto pb-2">
+                 <img src="https://placehold.co/80x80/F3E5F5/6750A4?text=Product" class="w-16 h-16 rounded-lg border border-gray-100 object-cover" alt="Product">
+                 <img src="https://placehold.co/80x80/E0F2F1/00695C?text=Product" class="w-16 h-16 rounded-lg border border-gray-100 object-cover" alt="Product">
+               </div>
+               <div class="mt-4 flex flex-wrap gap-2">
+                 <button class="text-sm font-bold text-[#6750A4] border border-[#6750A4] px-4 py-2 rounded-lg hover:bg-[#F3EDF7] transition">مشاهده جزئیات</button>
+                 <button class="text-sm font-bold text-gray-600 border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-50 transition">تکمیل نظرسنجی</button>
+                 <button class="text-sm font-bold text-purple-600 border border-purple-300 px-4 py-2 rounded-lg hover:bg-purple-50 transition">خرید مجدد</button>
+               </div>
+             </div>
+           </div>
+        </section>
+
+        <section id="details" class="hidden" data-tab-content>
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+            <!-- User Profile Header -->
+            <div class="text-center mb-8">
+              <div class="inline-flex flex-col items-center gap-4 mb-6">
+                <div class="w-24 h-24 bg-gradient-to-br from-[#6750A4] to-[#21005D] rounded-full flex items-center justify-center text-3xl text-white font-bold shadow-lg">
+                  ع
+                </div>
+                <div>
+                  <h2 class="text-2xl font-bold text-gray-900">علی محمدی</h2>
+                  <p class="text-sm text-gray-500" dir="ltr">09121234567</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Profile Information Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+<!-- Name Card -->
+               <div class="bg-gradient-to-br from-[#F8F9FA] to-[#E8EAF6] rounded-2xl p-6 border border-gray-200 hover:shadow-md transition-all duration-300 relative overflow-hidden profile-card">
+                 <!-- Background Pattern -->
+                 <div class="absolute top-0 right-0 w-24 h-24 bg-[#6750A4]/5 rounded-full -mr-12 -mt-12"></div>
+                 <div class="absolute bottom-0 left-0 w-16 h-16 bg-[#6750A4]/3 rounded-full -ml-8 -mb-8"></div>
+                 
+                 <div class="relative z-10">
+                   <div class="flex items-center justify-between mb-4">
+                     <div class="flex items-center gap-3">
+                       <div class="w-12 h-12 bg-gradient-to-br from-[#6750A4] to-[#21005D] rounded-full flex items-center justify-center shadow-lg shadow-[#6750A4]/20">
+                         <span class="material-icon text-white text-xl">person</span>
+                       </div>
+                       <div>
+                         <h3 class="font-semibold text-gray-900">نام کامل</h3>
+                         <p class="text-xs text-gray-500">اطلاعات هویتی</p>
+                       </div>
+                     </div>
+                     <button class="px-3 py-1.5 text-sm font-medium text-[#6750A4] border border-[#6750A4] rounded-lg hover:bg-[#F3EDF7] transition flex items-center gap-1">
+                       <span class="material-icon text-sm">edit</span>
+                       ویرایش
+                     </button>
+                   </div>
+                   <div class="mt-4 bg-white/70 backdrop-blur-sm rounded-xl p-4 border border-gray-200/50">
+                     <p class="text-gray-900 font-medium">علی محمدی</p>
+                   </div>
+                 </div>
+               </div>
+
+<!-- Phone Card -->
+               <div class="bg-gradient-to-br from-[#F8F9FA] to-[#E8EAF6] rounded-2xl p-6 border border-gray-200 hover:shadow-md transition-all duration-300 relative overflow-hidden profile-card">
+                 <!-- Background Pattern -->
+                 <div class="absolute top-0 right-0 w-24 h-24 bg-[#6750A4]/5 rounded-full -mr-12 -mt-12"></div>
+                 <div class="absolute bottom-0 left-0 w-16 h-16 bg-[#6750A4]/3 rounded-full -ml-8 -mb-8"></div>
+                 
+                 <div class="relative z-10">
+                   <div class="flex items-center justify-between mb-4">
+                     <div class="flex items-center gap-3">
+                       <div class="w-12 h-12 bg-gradient-to-br from-[#6750A4] to-[#21005D] rounded-full flex items-center justify-center shadow-lg shadow-[#6750A4]/20">
+                         <span class="material-icon text-white text-xl">smartphone</span>
+                       </div>
+                       <div>
+                         <h3 class="font-semibold text-gray-900">شماره موبایل</h3>
+                         <p class="text-xs text-gray-500">اطلاعات تماس</p>
+                       </div>
+                     </div>
+                     <button class="px-3 py-1.5 text-sm font-medium text-[#6750A4] border border-[#6750A4] rounded-lg hover:bg-[#F3EDF7] transition flex items-center gap-1">
+                       <span class="material-icon text-sm">edit</span>
+                       ویرایش
+                     </button>
+                   </div>
+                   <div class="mt-4 bg-white/70 backdrop-blur-sm rounded-xl p-4 border border-gray-200/50">
+                     <p class="text-gray-900 font-medium" dir="ltr">09121234567</p>
+                   </div>
+                 </div>
+               </div>
+            </div>
+
+<!-- User Address -->
+             <div class="bg-gradient-to-br from-[#F8F9FA] to-[#E8EAF6] rounded-2xl p-6 border border-gray-200 hover:shadow-lg transition-all duration-300 mb-8 relative overflow-hidden">
+               <!-- Background Pattern -->
+               <div class="absolute top-0 right-0 w-32 h-32 bg-[#6750A4]/5 rounded-full -mr-16 -mt-16"></div>
+               <div class="absolute bottom-0 left-0 w-24 h-24 bg-[#6750A4]/3 rounded-full -ml-12 -mb-12"></div>
+               
+               <div class="relative z-10">
+                 <div class="flex items-center justify-between mb-6">
+                   <div class="flex items-center gap-4">
+                     <div class="w-14 h-14 bg-gradient-to-br from-[#6750A4] to-[#21005D] rounded-full flex items-center justify-center shadow-lg shadow-[#6750A4]/20">
+                       <span class="material-icon text-white text-xl">location_on</span>
+                     </div>
+                     <div>
+                       <h3 class="font-bold text-gray-900 text-lg">آدرس تحویل</h3>
+                       <p class="text-sm text-gray-500">آدرس ثبت شده شما</p>
+                     </div>
+                   </div>
+                   <button class="px-3 py-1.5 text-sm font-medium text-[#6750A4] border border-[#6750A4] rounded-lg hover:bg-[#F3EDF7] transition flex items-center gap-1">
+                     <span class="material-icon text-sm">edit</span>
+                     ویرایش
+                   </button>
+                 </div>
+                
+                <div class="bg-white/70 backdrop-blur-sm rounded-xl p-5 border border-gray-200/50">
+                  <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 bg-[#6750A4]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span class="material-icon text-[#6750A4] text-lg">home</span>
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-gray-700 leading-relaxed text-base">تهران، خیابان ولیعصر، کوچه آزادی، پلاک ۱۲۳، واحد ۴</p>
+                      <div class="flex items-center gap-6 mt-3 text-sm">
+                        <span class="flex items-center gap-1.5 text-gray-600">
+                          <span class="material-icon text-sm">location_city</span>
+                          تهران، تهران
+                        </span>
+                        <span class="flex items-center gap-1.5 text-gray-600">
+                          <span class="material-icon text-sm">markunread_mailbox</span>
+                          <span class="font-mono">1234567890</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+<script src="script.js"></script>
+<script src="iran-data.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Profile sidebar tab switching
+    const sidebarLinks = document.querySelectorAll('.profile-sidebar-link');
+    const tabContents = document.querySelectorAll('[data-tab-content]');
+
+    function showTab(targetId) {
+      // Hide all tab contents
+      tabContents.forEach(content => {
+        content.classList.add('hidden');
+      });
+      
+      // Remove active class from all sidebar links
+      sidebarLinks.forEach(link => {
+        link.classList.remove('active', 'bg-[#F3EDF7]', 'text-[#6750A4]');
+        link.classList.add('text-gray-600');
+      });
+      
+      // Show target tab
+      const targetTab = document.querySelector(targetId);
+      if (targetTab) {
+        targetTab.classList.remove('hidden');
+      }
+      
+      // Add active class to clicked link
+      const activeLink = document.querySelector(`[data-tab-target="${targetId}"]`);
+      if (activeLink) {
+        activeLink.classList.add('active', 'bg-[#F3EDF7]', 'text-[#6750A4]');
+        activeLink.classList.remove('text-gray-600');
+      }
+    }
+
+    // Add click handlers to sidebar links
+    sidebarLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('data-tab-target');
+        if (targetId) {
+          showTab(targetId);
+        }
+      });
+    });
+
+    // Order status filter buttons
+    const filterButtons = document.querySelectorAll('.bg-white.rounded-2xl .flex.items-center.justify-between.mb-6 .flex.gap-2 button');
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active state from all buttons
+        filterButtons.forEach(btn => {
+          btn.classList.remove('bg-[#6750A4]', 'text-white');
+          btn.classList.add('text-gray-600');
+        });
+        
+        // Add active state to clicked button
+        button.classList.add('bg-[#6750A4]', 'text-white');
+        button.classList.remove('text-gray-600');
+        
+        // Here you can add filtering logic based on button text
+        const filterText = button.textContent.trim();
+        console.log('Filter by:', filterText);
+      });
+    });
+
+    // Logout functionality
+    const logoutLink = document.querySelector('a[href="index.html"]');
+    if (logoutLink && logoutLink.textContent.includes('خروج از حساب')) {
+      logoutLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        if (confirm('آیا از خروج از حساب کاربری مطمئن هستید؟')) {
+          // Clear user data from localStorage
+          localStorage.removeItem('authToken');
+          localStorage.removeItem('user');
+          localStorage.removeItem('loginPhone');
+          localStorage.removeItem('registerPhone');
+          
+          // Redirect to login page
+          window.location.href = 'login.html';
+        }
+      });
+    }
+
+    // Initialize active state for first filter button
+    const firstFilterButton = document.querySelector('.bg-white.rounded-2xl .flex.items-center.justify-between.mb-6 .flex.gap-2 button');
+    if (firstFilterButton) {
+      firstFilterButton.classList.add('bg-[#6750A4]', 'text-white');
+      firstFilterButton.classList.remove('text-gray-600');
+    }
+
+    // Edit Name Modal functionality
+    const editNameModal = document.getElementById('editNameModal');
+    const closeNameModal = document.getElementById('closeNameModal');
+    const cancelNameEdit = document.getElementById('cancelNameEdit');
+    const editNameForm = document.getElementById('editNameForm');
+    
+    // Open modal when clicking name edit button
+    function openNameEditModal() {
+      editNameModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      console.log('Name edit modal opened');
+    }
+    
+    // Close modal function
+    function closeNameEditModal() {
+      editNameModal.classList.add('hidden');
+      document.body.style.overflow = '';
+      console.log('Name edit modal closed');
+    }
+    
+    // Event listeners for modal controls
+    closeNameModal?.addEventListener('click', closeNameEditModal);
+    cancelNameEdit?.addEventListener('click', closeNameEditModal);
+    
+    // Close modal when clicking backdrop
+    editNameModal?.addEventListener('click', (e) => {
+      if (e.target === editNameModal) {
+        closeNameEditModal();
+      }
+    });
+    
+    // Handle form submission
+    editNameForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const firstName = document.getElementById('firstNameInput').value;
+      const lastName = document.getElementById('lastNameInput').value;
+      const fullName = `${firstName} ${lastName}`;
+      
+      console.log('Form submitted:', { firstName, lastName, fullName });
+      
+      // Update the name in the profile
+      const nameElements = document.querySelectorAll('h3.font-bold.text-gray-900, p.text-gray-900.font-medium');
+      nameElements.forEach(el => {
+        if (el.textContent.includes('علی محمدی')) {
+          el.textContent = fullName;
+        }
+      });
+      
+      // Update avatar initials
+      const avatarElements = document.querySelectorAll('.rounded-full.flex.items-center.justify-center');
+      avatarElements.forEach(el => {
+        if (el.textContent === 'ع') {
+          el.textContent = firstName.charAt(0);
+        }
+      });
+      
+      // Show success notification
+      if (successNotification) {
+        showSuccessNotification('نام با موفقیت ویرایش شد');
+      } else if (typeof showToast === 'function') {
+        showToast('نام با موفقیت ویرایش شد', { 
+          icon: 'check_circle', 
+          iconClass: 'text-green-400' 
+        });
+      }
+      
+      // Close modal
+      closeNameEditModal();
+    });
+    
+    // Edit Phone Modal functionality
+    const editPhoneModal = document.getElementById('editPhoneModal');
+    const closePhoneModal = document.getElementById('closePhoneModal');
+    const cancelPhoneEdit = document.getElementById('cancelPhoneEdit');
+    const editPhoneForm = document.getElementById('editPhoneForm');
+    const newPhoneInput = document.getElementById('newPhoneInput');
+    
+    // Open modal when clicking phone edit button
+    function openPhoneEditModal() {
+      editPhoneModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      newPhoneInput.value = '';
+      newPhoneInput.focus();
+      console.log('Phone edit modal opened');
+    }
+    
+    // Close modal function
+    function closePhoneEditModal() {
+      editPhoneModal.classList.add('hidden');
+      document.body.style.overflow = '';
+      console.log('Phone edit modal closed');
+    }
+    
+    // Event listeners for modal controls
+    closePhoneModal?.addEventListener('click', closePhoneEditModal);
+    cancelPhoneEdit?.addEventListener('click', closePhoneEditModal);
+    
+    // Close modal when clicking backdrop
+    editPhoneModal?.addEventListener('click', (e) => {
+      if (e.target === editPhoneModal) {
+        closePhoneEditModal();
+      }
+    });
+    
+    // Phone number validation
+    function validatePhoneNumber(phone) {
+      const phoneRegex = /^09[0-9]{9}$/;
+      return phoneRegex.test(phone);
+    }
+    
+    // Phone Verification Modal functionality
+    const phoneVerificationModal = document.getElementById('phoneVerificationModal');
+    const closeVerificationModal = document.getElementById('cancelVerification');
+    const phoneVerificationForm = document.getElementById('phoneVerificationForm');
+    const verificationPhone = document.getElementById('verificationPhone');
+    const resendCodeBtn = document.getElementById('resendCode');
+    const countdownEl = document.getElementById('countdown');
+    
+    let currentNewPhone = '';
+    let countdownInterval;
+    
+    // Open verification modal
+    function openPhoneVerificationModal(phone) {
+      currentNewPhone = phone;
+      
+      // Mask the phone number
+      const maskedPhone = phone.slice(0, 4) + 'XXXX' + phone.slice(-2);
+      if (verificationPhone) verificationPhone.textContent = maskedPhone;
+      
+      // Close phone modal and open verification modal
+      closePhoneEditModal();
+      
+      // Small delay to ensure phone modal is fully closed
+      setTimeout(() => {
+        if (phoneVerificationModal) {
+          phoneVerificationModal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+          
+          // Focus first OTP field
+          const firstOtpField = phoneVerificationModal.querySelector('.otp-field');
+          if (firstOtpField) firstOtpField.focus();
+          
+          // Start countdown
+          startCountdown();
+          
+          console.log('Phone verification modal opened for:', phone);
+        }
+      }, 100);
+    }
+    
+    // Close verification modal
+    function closePhoneVerificationModal() {
+      phoneVerificationModal.classList.add('hidden');
+      document.body.style.overflow = '';
+      
+      // Clear countdown
+      if (countdownInterval) {
+        clearInterval(countdownInterval);
+      }
+      
+      // Reset OTP fields
+      const otpFields = phoneVerificationModal.querySelectorAll('.otp-field');
+      otpFields.forEach(field => field.value = '');
+      
+      console.log('Phone verification modal closed');
+    }
+    
+    // Countdown timer
+    function startCountdown() {
+      let seconds = 120;
+      countdownEl.textContent = seconds;
+      resendCodeBtn.disabled = true;
+      resendCodeBtn.classList.add('opacity-50', 'cursor-not-allowed');
+      
+      countdownInterval = setInterval(() => {
+        seconds--;
+        countdownEl.textContent = seconds;
+        
+        if (seconds <= 0) {
+          clearInterval(countdownInterval);
+          resendCodeBtn.disabled = false;
+          resendCodeBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+          countdownEl.textContent = '0';
+        }
+      }, 1000);
+    }
+    
+    // Event listeners for verification modal
+    closeVerificationModal?.addEventListener('click', closePhoneVerificationModal);
+    
+    // Close modal when clicking backdrop
+    phoneVerificationModal?.addEventListener('click', (e) => {
+      if (e.target === phoneVerificationModal) {
+        closePhoneVerificationModal();
+      }
+    });
+    
+    // Resend code
+    resendCodeBtn?.addEventListener('click', () => {
+      if (!resendCodeBtn.disabled) {
+        if (typeof showToast === 'function') {
+          showToast(`کد تایید مجدد به شماره ${currentNewPhone} ارسال شد`, { 
+            icon: 'check_circle', 
+            iconClass: 'text-green-400' 
+          });
+        }
+        startCountdown();
+        console.log('Code resent to:', currentNewPhone);
+      }
+    });
+    
+    // OTP field navigation
+    const otpFields = phoneVerificationModal?.querySelectorAll('.otp-field');
+    otpFields?.forEach((field, index) => {
+      field.addEventListener('input', (e) => {
+        const value = e.target.value;
+        
+        // Only allow numbers
+        if (value && !/^[0-9]$/.test(value)) {
+          e.target.value = '';
+          return;
+        }
+        
+        // Move to next field
+        if (value && index < otpFields.length - 1) {
+          otpFields[index + 1].focus();
+        }
+        
+        // Auto-submit when all fields are filled
+        const allFilled = Array.from(otpFields).every(f => f.value);
+        if (allFilled) {
+          setTimeout(() => phoneVerificationForm?.requestSubmit(), 100);
+        }
+      });
+      
+      field.addEventListener('keydown', (e) => {
+        // Move to previous field on backspace
+        if (e.key === 'Backspace' && !e.target.value && index > 0) {
+          otpFields[index - 1].focus();
+        }
+      });
+    });
+    
+    // Handle verification form submission
+    phoneVerificationForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Get OTP code
+      const otpCode = Array.from(otpFields).map(f => f.value).join('');
+      
+      if (otpCode.length !== 6) {
+        if (typeof showToast === 'function') {
+          showToast('لطفاً کد تایید ۶ رقمی را وارد کنید', { 
+            icon: 'error', 
+            iconClass: 'text-red-400' 
+          });
+        } else {
+          alert('لطفاً کد تایید ۶ رقمی را وارد کنید');
+        }
+        return;
+      }
+      
+      console.log('OTP verification submitted:', { phone: currentNewPhone, code: otpCode });
+      
+      // Simulate verification (in real app, send to server)
+      if (otpCode === '123456') { // Demo code
+        // Success - update phone number
+        const phoneElements = document.querySelectorAll('p.text-gray-500, p.text-xs.text-gray-500');
+        phoneElements.forEach(el => {
+          if (el.textContent.includes('09121234567')) {
+            el.textContent = currentNewPhone;
+          }
+        });
+        
+        if (typeof showToast === 'function') {
+          showToast('شماره موبایل با موفقیت تغییر کرد', { 
+            icon: 'check_circle', 
+            iconClass: 'text-green-400' 
+          });
+        }
+        
+        closePhoneVerificationModal();
+      } else {
+        if (typeof showToast === 'function') {
+          showToast('کد تایید نامعتبر است', { 
+            icon: 'error', 
+            iconClass: 'text-red-400' 
+          });
+        } else {
+          alert('کد تایید نامعتبر است');
+        }
+        
+        // Clear OTP fields
+        otpFields.forEach(field => field.value = '');
+        otpFields[0].focus();
+      }
+    });
+    
+    // Handle form submission
+    editPhoneForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const newPhone = newPhoneInput.value.trim();
+      
+      console.log('Phone form submitted:', { newPhone });
+      
+      // Validate phone number
+      if (!validatePhoneNumber(newPhone)) {
+        // Use custom toast or alert since showToast is not available here
+        if (typeof showToast === 'function') {
+          showToast('شماره موبایل نامعتبر است. لطفاً شماره صحیح وارد کنید.', { 
+            icon: 'error', 
+            iconClass: 'text-red-400' 
+          });
+        } else {
+          alert('شماره موبایل نامعتبر است. لطفاً شماره صحیح وارد کنید.');
+        }
+        newPhoneInput.focus();
+        return;
+      }
+      
+      // Show success message and open verification modal
+      if (successNotification) {
+        showSuccessNotification(`کد تایید به شماره ${newPhone} ارسال شد`);
+      } else if (typeof showToast === 'function') {
+        showToast(`کد تایید به شماره ${newPhone} ارسال شد`, { 
+          icon: 'check_circle', 
+          iconClass: 'text-green-400' 
+        });
+      }
+      
+      // Open verification modal
+      setTimeout(() => {
+        openPhoneVerificationModal(newPhone);
+      }, 500);
+    });
+    
+    // Input formatting and validation
+    newPhoneInput?.addEventListener('input', (e) => {
+      let value = e.target.value;
+      
+      // Only allow numbers
+      value = value.replace(/[^0-9]/g, '');
+      
+      // Limit to 11 digits
+      if (value.length > 11) {
+        value = value.slice(0, 11);
+      }
+      
+      e.target.value = value;
+      
+      // Visual feedback for valid/invalid phone
+      if (value.length === 11) {
+        if (validatePhoneNumber(value)) {
+          e.target.classList.remove('border-red-300');
+          e.target.classList.add('border-green-300');
+        } else {
+          e.target.classList.remove('border-green-300');
+          e.target.classList.add('border-red-300');
+        }
+      } else {
+        e.target.classList.remove('border-red-300', 'border-green-300');
+      }
+    });
+    
+    // Edit buttons functionality
+    const editButtons = document.querySelectorAll('#details button');
+    editButtons.forEach(button => {
+      if (button.textContent.includes('ویرایش')) {
+        button.addEventListener('click', (e) => {
+          e.preventDefault();
+          const card = button.closest('.bg-gradient-to-br');
+          const title = card.querySelector('h3').textContent;
+          
+          // Check which edit button was clicked
+          if (title.includes('نام کامل')) {
+            openNameEditModal();
+          } else if (title.includes('شماره موبایل')) {
+            openPhoneEditModal();
+          } else if (title.includes('آدرس تحویل')) {
+            openAddressEditModal();
+          } else {
+            // Show edit modal or inline editing for other items
+            if (typeof showToast === 'function') {
+              showToast(`در حال ویرایش ${title}`, { 
+                icon: 'edit', 
+                iconClass: 'text-blue-400' 
+              });
+            }
+            
+            // Here you can add modal logic or inline editing
+            console.log(`Edit clicked for: ${title}`);
+          }
+        });
+      }
+    });
+    
+    // Edit Address Modal functionality
+    const editAddressModal = document.getElementById('editAddressModal');
+    const closeAddressModal = document.getElementById('closeAddressModal');
+    const cancelAddressEdit = document.getElementById('cancelAddressEdit');
+    const editAddressForm = document.getElementById('editAddressForm');
+    const provinceSelect = document.getElementById('provinceSelect');
+    const citySelect = document.getElementById('citySelect');
+    const provinceInput = document.getElementById('provinceInput');
+    const cityInput = document.getElementById('cityInput');
+    const provinceDropdown = document.getElementById('provinceDropdown');
+    const cityDropdown = document.getElementById('cityDropdown');
+    const successNotification = document.getElementById('successNotification');
+    const notificationMessage = document.getElementById('notificationMessage');
+    const closeNotification = document.getElementById('closeNotification');
+    
+    let provinces = [];
+    let cities = [];
+    let selectedProvince = null;
+    let selectedCity = null;
+    let notificationTimeout = null;
+    
+    // Open modal when clicking address edit button
+    async function openAddressEditModal() {
+      editAddressModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      
+      console.log('🚀 Opening address edit modal...');
+      
+      // Reset values
+      selectedProvince = null;
+      selectedCity = null;
+      provinceInput.value = '';
+      cityInput.value = '';
+      cityInput.disabled = true;
+      cityInput.classList.add('bg-gray-50');
+      cityInput.placeholder = 'ابتدا استان را انتخاب کنید';
+      provinceDropdown.classList.add('hidden');
+      cityDropdown.classList.add('hidden');
+      
+      // Load provinces
+      await loadProvinces();
+      
+      console.log('✅ Address edit modal opened');
+    }
+    
+    // Close modal function
+    function closeAddressEditModal() {
+      editAddressModal.classList.add('hidden');
+      document.body.style.overflow = '';
+      console.log('Address edit modal closed');
+    }
+    
+    // Load provinces from Iran Locations API
+    async function loadProvinces() {
+      if (!provinceSelect) return;
+      
+      try {
+        provinceDropdown.innerHTML = '<div class="p-2 text-sm text-gray-500">در حال بارگذاری استان‌ها...</div>';
+        
+        if (window.IranLocationsAPI) {
+          provinces = await window.IranLocationsAPI.fetchStatesFromAPI();
+        } else {
+          throw new Error('IranLocationsAPI not available');
+        }
+        
+        populateProvinceDropdown(provinces);
+        console.log('✅ Provinces loaded from API:', provinces.length);
+        
+      } catch (error) {
+        console.error('❌ Error loading provinces from API:', error);
+        provinceDropdown.innerHTML = '<div class="p-2 text-sm text-red-500">خطا در بارگذاری استان‌ها</div>';
+        
+        if (typeof showToast === 'function') {
+          showToast('خطا در بارگذاری استان‌ها. لطفاً صفحه را رفرش کنید.', { 
+            icon: 'error', 
+            iconClass: 'text-red-400' 
+          });
+        }
+      }
+    }
+    
+    // Populate province dropdown
+    function populateProvinceDropdown(provinceList) {
+      const filteredProvinces = filterProvinces(provinceList, provinceInput?.value || '');
+      
+      if (filteredProvinces.length === 0) {
+        provinceDropdown.innerHTML = '<div class="p-2 text-sm text-gray-500">استانی یافت نشد</div>';
+        return;
+      }
+      
+      let html = '';
+      filteredProvinces.forEach(province => {
+        html += `
+          <div class="px-3 py-2 hover:bg-[#F3EDF7] cursor-pointer text-sm transition-colors" data-province-id="${province.id}" data-province-name="${province.name}">
+            ${province.name}
+          </div>
+        `;
+      });
+      
+      provinceDropdown.innerHTML = html;
+      
+      // Add click handlers
+      provinceDropdown.querySelectorAll('[data-province-id]').forEach(item => {
+        item.addEventListener('click', () => selectProvince(item.dataset.provinceId, item.dataset.provinceName));
+      });
+    }
+    
+    // Filter provinces based on search
+    function filterProvinces(provinceList, searchTerm) {
+      if (!searchTerm) return provinceList;
+      
+      return provinceList.filter(province => 
+        province.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+    
+    // Select a province
+    function selectProvince(id, name) {
+      // Check if this is actually a change
+      if (selectedProvince && selectedProvince.id == id) {
+        provinceDropdown.classList.add('hidden');
+        console.log('🔄 Same province selected, no need to reload cities');
+        return;
+      }
+      
+      selectedProvince = { id, name };
+      provinceInput.value = name;
+      provinceSelect.value = id;
+      provinceDropdown.classList.add('hidden');
+      
+      // Reset city selection and prepare for new cities
+      selectedCity = null;
+      cityInput.value = '';
+      cityInput.disabled = false;
+      cityInput.classList.remove('bg-gray-50');
+      cityInput.placeholder = 'در حال بارگذاری شهرها...';
+      cityDropdown.classList.add('hidden');
+      
+      // Load cities for newly selected province
+      loadCities(id);
+      
+      console.log('✅ Province selected and cities reloaded:', { id, name });
+    }
+    
+    // Load cities based on selected province from Iran Locations API
+    async function loadCities(provinceId) {
+      if (!citySelect) return;
+      
+      cityDropdown.innerHTML = '<div class="p-2 text-sm text-gray-500">در حال بارگذاری شهرها...</div>';
+      
+      try {
+        console.log(`🔄 Loading cities for province ${provinceId} from API...`);
+        
+        const selectedProvince = provinces.find(p => p.id == provinceId);
+        if (!selectedProvince) {
+          throw new Error('Province not found');
+        }
+        
+        if (window.IranLocationsAPI) {
+          cities = await window.IranLocationsAPI.fetchCitiesFromAPI(provinceId);
+        } else {
+          throw new Error('IranLocationsAPI not available');
+        }
+        
+        cityInput.placeholder = 'جستجو و انتخاب شهر';
+        populateCityDropdown(cities);
+        console.log(`✅ Cities loaded for province ${selectedProvince.name}:`, cities.length);
+        
+      } catch (error) {
+        console.error(`❌ Error loading cities from API for province ${provinceId}:`, error);
+        cityDropdown.innerHTML = '<div class="p-2 text-sm text-red-500">خطا در بارگذاری شهرها</div>';
+        
+        if (typeof showToast === 'function') {
+          showToast('خطا در بارگذاری شهرها. لطفاً دوباره تلاش کنید.', { 
+            icon: 'error', 
+            iconClass: 'text-red-400' 
+          });
+        }
+      }
+    }
+    
+    // Populate city dropdown
+    function populateCityDropdown(cityList) {
+      if (cityList.length === 0) {
+        cityDropdown.innerHTML = '<div class="p-2 text-sm text-gray-500">شهری یافت نشد</div>';
+        return;
+      }
+      
+      let html = '';
+      cityList.forEach(city => {
+        html += `
+          <div class="px-3 py-2 hover:bg-[#F3EDF7] cursor-pointer text-sm transition-colors" data-city-id="${city.id}" data-city-name="${city.name}">
+            ${city.name}
+          </div>
+        `;
+      });
+      
+      cityDropdown.innerHTML = html;
+      
+      // Add click handlers
+      cityDropdown.querySelectorAll('[data-city-id]').forEach(item => {
+        item.addEventListener('click', () => selectCity(item.dataset.cityId, item.dataset.cityName));
+      });
+    }
+    
+    // Filter cities based on search
+    function filterCities(cityList, searchTerm) {
+      if (!searchTerm) return cityList;
+      
+      return cityList.filter(city => 
+        city.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+    
+    // Reset city selection
+    function resetCitySelection() {
+      selectedCity = null;
+      cityInput.value = '';
+      cityInput.disabled = true;
+      cityInput.classList.add('bg-gray-50');
+      cityInput.placeholder = 'ابتدا استان را انتخاب کنید';
+      citySelect.value = '';
+      cityDropdown.classList.add('hidden');
+      cities = [];
+      
+      console.log('🔄 City selection reset');
+    }
+
+    // Select a city
+    function selectCity(id, name) {
+      selectedCity = { id, name };
+      cityInput.value = name;
+      citySelect.value = id;
+      cityDropdown.classList.add('hidden');
+      
+      console.log('✅ City selected:', { id, name });
+    }
+    
+
+    
+    // Event listeners for modal controls
+    closeAddressModal?.addEventListener('click', closeAddressEditModal);
+    cancelAddressEdit?.addEventListener('click', closeAddressEditModal);
+    
+    // Close modal when clicking backdrop
+    editAddressModal?.addEventListener('click', (e) => {
+      if (e.target === editAddressModal) {
+        closeAddressEditModal();
+      }
+    });
+    
+    // Province input handlers
+    provinceInput?.addEventListener('focus', () => {
+      if (!provinceDropdown.classList.contains('hidden')) return;
+      provinceDropdown.classList.remove('hidden');
+      populateProvinceDropdown(provinces);
+    });
+    
+    provinceInput?.addEventListener('input', (e) => {
+      const searchTerm = e.target.value;
+      populateProvinceDropdown(provinces);
+    });
+    
+    provinceInput?.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        provinceDropdown.classList.add('hidden');
+      }
+    });
+    
+    // City input handlers
+    cityInput?.addEventListener('focus', () => {
+      if (!selectedProvince) {
+        cityDropdown.classList.remove('hidden');
+        cityDropdown.innerHTML = '<div class="p-2 text-sm text-gray-500">ابتدا استان را انتخاب کنید</div>';
+        return;
+      }
+      if (!cityDropdown.classList.contains('hidden')) return;
+      cityDropdown.classList.remove('hidden');
+      populateCityDropdown(cities);
+    });
+    
+    cityInput?.addEventListener('input', (e) => {
+      const searchTerm = e.target.value;
+      const filteredCities = filterCities(cities, searchTerm);
+      populateCityDropdown(filteredCities);
+    });
+    
+    cityInput?.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        cityDropdown.classList.add('hidden');
+      }
+    });
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('#provinceInput') && !e.target.closest('#provinceDropdown')) {
+        provinceDropdown.classList.add('hidden');
+      }
+      if (!e.target.closest('#cityInput') && !e.target.closest('#cityDropdown')) {
+        cityDropdown.classList.add('hidden');
+      }
+    });
+    
+    // Province change handler (for form submission and real-time updates)
+    provinceSelect?.addEventListener('change', (e) => {
+      const provinceId = e.target.value;
+      const provinceName = provinces.find(p => p.id == provinceId)?.name;
+      
+      if (provinceId && provinceName) {
+        // Check if this is actually a change
+        if (selectedProvince && selectedProvince.id == provinceId) {
+          console.log('🔄 Same province selected via select, no need to reload cities');
+          return;
+        }
+        
+        // Update selected province
+        selectedProvince = { id: provinceId, name: provinceName };
+        provinceInput.value = provinceName;
+        
+        // Reset city selection and prepare for new cities
+        selectedCity = null;
+        cityInput.value = '';
+        cityInput.disabled = false;
+        cityInput.classList.remove('bg-gray-50');
+        cityInput.placeholder = 'در حال بارگذاری شهرها...';
+        cityDropdown.classList.add('hidden');
+        
+        // Load cities for newly selected province
+        loadCities(provinceId);
+        
+        console.log('🔄 Province changed via select, reloading cities:', { id: provinceId, name: provinceName });
+      } else {
+        // Reset everything if no province selected
+        selectedProvince = null;
+        resetCitySelection();
+        console.log('🔄 Province deselected, resetting cities');
+      }
+    });
+    
+    // Postal code validation
+    const postalCodeInput = document.getElementById('postalCodeInput');
+    postalCodeInput?.addEventListener('input', (e) => {
+      let value = e.target.value;
+      
+      // Only allow numbers
+      value = value.replace(/[^0-9]/g, '');
+      
+      // Limit to 10 digits
+      if (value.length > 10) {
+        value = value.slice(0, 10);
+      }
+      
+      e.target.value = value;
+      
+      // Visual feedback for valid postal code
+      if (value.length === 10) {
+        e.target.classList.remove('border-red-300');
+        e.target.classList.add('border-green-300');
+      } else {
+        e.target.classList.remove('border-red-300', 'border-green-300');
+      }
+    });
+    
+    // Handle form submission
+    editAddressForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Get form data from selected values
+      const formData = {
+        province: selectedProvince?.id || '',
+        provinceName: selectedProvince?.name || '',
+        city: selectedCity?.id || '',
+        cityName: selectedCity?.name || '',
+        address: document.getElementById('addressInput').value,
+        postalCode: document.getElementById('postalCodeInput').value
+      };
+      
+      console.log('Address form submitted:', formData);
+      
+      // Validation
+      if (!formData.province || !formData.city || !formData.address || !formData.postalCode) {
+        if (typeof showToast === 'function') {
+          showToast('لطفاً تمام فیلدها را تکمیل کنید', { 
+            icon: 'error', 
+            iconClass: 'text-red-400' 
+          });
+        } else {
+          alert('لطفاً تمام فیلدها را تکمیل کنید');
+        }
+        return;
+      }
+      
+      // Validate postal code
+      if (formData.postalCode.length !== 10) {
+        if (typeof showToast === 'function') {
+          showToast('کد پستی باید ۱۰ رقم باشد', { 
+            icon: 'error', 
+            iconClass: 'text-red-400' 
+          });
+        } else {
+          alert('کد پستی باید ۱۰ رقم باشد');
+        }
+        return;
+      }
+      
+      // Update address in profile
+      updateAddressInProfile(formData);
+      
+      // Show success notification
+      showSuccessNotification('آدرس با موفقیت ویرایش شد');
+      
+      // Close modal
+      closeAddressEditModal();
+    });
+    
+    // Show success notification
+    function showSuccessNotification(message, duration = 4000) {
+      if (notificationTimeout) {
+        clearTimeout(notificationTimeout);
+      }
+      
+      notificationMessage.textContent = message;
+      successNotification.classList.remove('translate-x-full');
+      successNotification.classList.add('translate-x-0');
+      
+      console.log('✅ Success notification shown:', message);
+      
+      // Auto-hide after duration
+      notificationTimeout = setTimeout(() => {
+        hideSuccessNotification();
+      }, duration);
+    }
+    
+    // Hide success notification
+    function hideSuccessNotification() {
+      successNotification.classList.remove('translate-x-0');
+      successNotification.classList.add('translate-x-full');
+      
+      if (notificationTimeout) {
+        clearTimeout(notificationTimeout);
+        notificationTimeout = null;
+      }
+      
+      console.log('🔔 Success notification hidden');
+    }
+    
+    // Close notification handler
+    closeNotification?.addEventListener('click', hideSuccessNotification);
+    
+    // Update address in profile
+    function updateAddressInProfile(data) {
+      // Update address text in profile
+      const addressElements = document.querySelectorAll('p.text-gray-700.leading-relaxed');
+      addressElements.forEach(el => {
+        if (el.textContent.includes('تهران، خیابان ولیعصر')) {
+          el.textContent = `${data.provinceName}، ${data.cityName}، ${data.address}`;
+        }
+      });
+      
+      // Update location info
+      const locationElements = document.querySelectorAll('.flex.items-center.gap-1\\.5.text-gray-600');
+      locationElements.forEach(el => {
+        const locationIcon = el.querySelector('.material-icon');
+        if (locationIcon?.textContent === 'location_city') {
+          el.innerHTML = `
+            <span class="material-icon text-sm">location_city</span>
+            ${data.provinceName}، ${data.cityName}
+          `;
+        } else if (locationIcon?.textContent === 'markunread_mailbox') {
+          el.innerHTML = `
+            <span class="material-icon text-sm">markunread_mailbox</span>
+            <span class="font-mono">${data.postalCode}</span>
+          `;
+        }
+      });
+      
+      console.log('Address updated in profile:', data);
+    }
+  });
+</script>
+
+<!-- Edit Name Modal -->
+<div id="editNameModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden">
+  <div class="flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 transform transition-all">
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="font-bold text-lg text-gray-900">ویرایش نام کامل</h3>
+        <button id="closeNameModal" class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition">
+          <span class="material-icon text-gray-600">close</span>
+        </button>
+      </div>
+      
+      <form id="editNameForm" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">نام</label>
+          <input type="text" id="firstNameInput" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6750A4] focus:border-[#6750A4] transition" placeholder="نام خود را وارد کنید" value="علی">
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">نام خانوادگی</label>
+          <input type="text" id="lastNameInput" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6750A4] focus:border-[#6750A4] transition" placeholder="نام خانوادگی خود را وارد کنید" value="محمدی">
+        </div>
+        
+        <div class="flex gap-3 pt-4">
+          <button type="button" id="cancelNameEdit" class="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition font-medium">
+            انصراف
+          </button>
+          <button type="submit" class="flex-1 px-4 py-2 bg-[#6750A4] text-white rounded-lg hover:bg-[#5A3F8A] transition font-medium">
+            ذخیره تغییرات
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Phone Modal -->
+<div id="editPhoneModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden">
+  <div class="flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 transform transition-all">
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="font-bold text-lg text-gray-900">ویرایش شماره موبایل</h3>
+        <button id="closePhoneModal" class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition">
+          <span class="material-icon text-gray-600">close</span>
+        </button>
+      </div>
+      
+      <form id="editPhoneForm" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">شماره موبایل فعلی</label>
+          <div class="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-700" dir="ltr">09121234567</div>
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">شماره موبایل جدید</label>
+          <input type="tel" id="newPhoneInput" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6750A4] focus:border-[#6750A4] transition" placeholder="شماره موبایل جدید را وارد کنید" maxlength="11" dir="ltr">
+        </div>
+        
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-3">
+          <div class="flex items-start gap-2">
+            <span class="material-icon text-blue-600 text-sm mt-0.5">info</span>
+            <div class="text-sm text-blue-800">
+              <p class="font-medium mb-1">توجه:</p>
+              <ul class="space-y-1 text-xs">
+                <li>• شماره موبایل باید با 09 شروع شود</li>
+                <li>• پس از تغییر شماره، کد تایید به شماره جدید ارسال می‌شود</li>
+                <li>• برای ورود بعدی باید از شماره جدید استفاده کنید</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flex gap-3 pt-4">
+          <button type="button" id="cancelPhoneEdit" class="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition font-medium">
+            انصراف
+          </button>
+          <button type="submit" class="flex-1 px-4 py-2 bg-[#6750A4] text-white rounded-lg hover:bg-[#5A3F8A] transition font-medium">
+            ارسال کد تایید
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Phone Verification Modal -->
+<div id="phoneVerificationModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden">
+  <div class="flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 transform transition-all">
+      <div class="text-center mb-6">
+        <div class="w-16 h-16 bg-[#EADDFF] rounded-full flex items-center justify-center mx-auto mb-4">
+          <span class="material-icon text-[#6750A4] text-2xl">smartphone</span>
+        </div>
+        <h3 class="font-bold text-lg text-gray-900 mb-2">تایید شماره موبایل</h3>
+        <p class="text-sm text-gray-600">کد ۶ رقمی ارسال شده به شماره موبایل را وارد کنید</p>
+        <p class="text-xs text-gray-500 mt-1" dir="ltr" id="verificationPhone">0912XXXXXXX</p>
+      </div>
+      
+      <form id="phoneVerificationForm" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2 text-center">کد تایید</label>
+          <div class="flex justify-center gap-2" dir="ltr">
+            <input type="text" maxlength="1" class="otp-field w-12 h-12 text-center border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6750A4] focus:border-[#6750A4] transition text-lg font-bold">
+            <input type="text" maxlength="1" class="otp-field w-12 h-12 text-center border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6750A4] focus:border-[#6750A4] transition text-lg font-bold">
+            <input type="text" maxlength="1" class="otp-field w-12 h-12 text-center border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6750A4] focus:border-[#6750A4] transition text-lg font-bold">
+            <input type="text" maxlength="1" class="otp-field w-12 h-12 text-center border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6750A4] focus:border-[#6750A4] transition text-lg font-bold">
+            <input type="text" maxlength="1" class="otp-field w-12 h-12 text-center border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6750A4] focus:border-[#6750A4] transition text-lg font-bold">
+            <input type="text" maxlength="1" class="otp-field w-12 h-12 text-center border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6750A4] focus:border-[#6750A4] transition text-lg font-bold">
+          </div>
+        </div>
+        
+        <div class="text-center">
+          <button type="button" id="resendCode" class="text-sm text-[#6750A4] hover:text-[#5A3F8A] transition font-medium">
+            ارسال مجدد کد
+          </button>
+          <div class="text-xs text-gray-500 mt-1">
+            <span id="countdown">120</span> ثانیه تا ارسال مجدد
+          </div>
+        </div>
+        
+        <div class="flex gap-3 pt-4">
+          <button type="button" id="cancelVerification" class="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition font-medium">
+            انصراف
+          </button>
+          <button type="submit" class="flex-1 px-4 py-2 bg-[#6750A4] text-white rounded-lg hover:bg-[#5A3F8A] transition font-medium">
+            تایید
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Address Modal -->
+<div id="editAddressModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden">
+  <div class="flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white rounded-2xl shadow-sm max-w-md w-full p-6 transform transition-all" id="modalContent">
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="font-bold text-lg text-gray-900">ویرایش آدرس</h3>
+        <button id="closeAddressModal" class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition">
+          <span class="material-icon text-gray-600">close</span>
+        </button>
+      </div>
+      
+      <form id="editAddressForm" class="space-y-4">
+        <!-- Province and City -->
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">استان</label>
+            <div class="relative">
+              <input 
+                type="text" 
+                id="provinceInput" 
+                class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#6750A4] focus:border-[#6750A4] transition text-sm" 
+                placeholder="جستجو و انتخاب استان"
+                autocomplete="off"
+              >
+              <select id="provinceSelect" class="absolute inset-0 w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#6750A4] focus:border-[#6750A4] transition text-sm opacity-0 pointer-events-none" tabindex="-1">
+                <option value="">انتخاب استان</option>
+              </select>
+              <div id="provinceDropdown" class="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-y-auto z-10 hidden">
+                <div class="p-2 text-sm text-gray-500">در حال بارگذاری...</div>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">شهر</label>
+            <div class="relative">
+              <input 
+                type="text" 
+                id="cityInput" 
+                class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#6750A4] focus:border-[#6750A4] transition text-sm bg-gray-50" 
+                placeholder="ابتدا استان را انتخاب کنید"
+                autocomplete="off"
+                disabled
+              >
+              <select id="citySelect" class="absolute inset-0 w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#6750A4] focus:border-[#6750A4] transition text-sm opacity-0 pointer-events-none" tabindex="-1" disabled>
+                <option value="">انتخاب شهر</option>
+              </select>
+              <div id="cityDropdown" class="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-y-auto z-10 hidden">
+                <div class="p-2 text-sm text-gray-500">ابتدا استان را انتخاب کنید</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Address -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">آدرس دقیق</label>
+          <textarea id="addressInput" rows="2" class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#6750A4] focus:border-[#6750A4] transition resize-none text-sm" placeholder="آدرس خود را وارد کنید">تهران، خیابان ولیعصر، کوچه آزادی، پلاک ۱۲۳، واحد ۴</textarea>
+        </div>
+        
+        <!-- Postal Code -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">کد پستی</label>
+          <input type="text" id="postalCodeInput" maxlength="10" class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#6750A4] focus:border-[#6750A4] transition text-sm" placeholder="کد پستی ۱۰ رقمی" value="1234567890" dir="ltr">
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="flex gap-3 pt-2">
+          <button type="button" id="cancelAddressEdit" class="flex-1 px-4 py-2 border border-gray-200 text-gray-600 rounded-lg hover:bg-gray-50 transition text-sm font-medium">
+            انصراف
+          </button>
+          <button type="submit" class="flex-1 px-4 py-2 bg-[#6750A4] text-white rounded-lg hover:bg-[#5A3F8A] transition text-sm font-medium">
+            ذخیره
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Success Notification -->
+<div id="successNotification" class="fixed bottom-8 right-8 bg-white rounded-xl shadow-lg border border-gray-200 p-4 transform translate-x-full transition-transform duration-300 z-50 max-w-sm">
+  <div class="flex items-center gap-3">
+    <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+      <span class="material-icon text-green-600">check_circle</span>
+    </div>
+    <div class="flex-1">
+      <h4 class="font-semibold text-gray-900 text-sm">موفقیت آمیز</h4>
+      <p class="text-xs text-gray-600 mt-1" id="notificationMessage">تغییرات با موفقیت ذخیره شد</p>
+    </div>
+    <button id="closeNotification" class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition flex-shrink-0">
+      <span class="material-icon text-gray-500 text-sm">close</span>
+    </button>
+  </div>
+</div>
+
+</body>
+</html>
