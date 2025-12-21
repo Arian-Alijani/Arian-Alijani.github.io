@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-// --- Footer Mobile Accordion - Enhanced RTL Support ---
+// --- Footer Mobile Accordion ---
 function initFooterAccordion() {
     const accordionHeaders = document.querySelectorAll('.footer-accordion-header');
     
@@ -10,58 +10,37 @@ function initFooterAccordion() {
             const parentSection = header.parentElement;
             const isActive = header.classList.contains('active');
             
-            // Toggle current accordion with enhanced animation
             if (isActive) {
-                // Closing animation
                 header.classList.remove('active');
                 content.classList.remove('active');
                 parentSection.classList.remove('active-section');
-                
-                // Add subtle closing animation
                 content.style.maxHeight = content.scrollHeight + 'px';
-                setTimeout(() => {
-                    content.style.maxHeight = '0';
-                }, 10);
+                setTimeout(() => { content.style.maxHeight = '0'; }, 10);
             } else {
-                // Opening animation
                 header.classList.add('active');
                 content.classList.add('active');
                 parentSection.classList.add('active-section');
-                
-                // Set proper max height for smooth animation
                 content.style.maxHeight = content.scrollHeight + 'px';
-                setTimeout(() => {
-                    content.style.maxHeight = 'none';
-                }, 400);
+                setTimeout(() => { content.style.maxHeight = 'none'; }, 400);
             }
             
-            // Add haptic feedback simulation (visual feedback)
             header.style.transform = 'scale(0.98)';
-            setTimeout(() => {
-                header.style.transform = '';
-            }, 150);
+            setTimeout(() => { header.style.transform = ''; }, 150);
         });
         
-        // Add hover state for better UX
         header.addEventListener('mouseenter', () => {
-            if (!header.classList.contains('active')) {
-                header.style.background = 'rgba(103, 80, 164, 0.05)';
-            }
+            if (!header.classList.contains('active')) header.style.background = 'rgba(103, 80, 164, 0.05)';
         });
         
         header.addEventListener('mouseleave', () => {
-            if (!header.classList.contains('active')) {
-                header.style.background = '';
-            }
+            if (!header.classList.contains('active')) header.style.background = '';
         });
     });
     
-    // Auto-open first accordion on mobile for better UX
     if (window.innerWidth <= 767 && accordionHeaders.length > 0) {
         const firstHeader = accordionHeaders[0];
         const firstContent = firstHeader.nextElementSibling;
         const firstSection = firstHeader.parentElement;
-        
         setTimeout(() => {
             firstHeader.classList.add('active');
             firstContent.classList.add('active');
@@ -70,12 +49,10 @@ function initFooterAccordion() {
         }, 500);
     }
 }
-
-// Initialize footer accordion
 initFooterAccordion();
 
-// --- Dynamic Banner Offset (prevent banner hiding under fixed navbar) ---
- const navbar = document.querySelector('header.sticky');
+// --- Dynamic Banner Offset ---
+const navbar = document.querySelector('header.sticky');
 function applyNavbarOffset() {
     if (!navbar) return;
     const h = navbar.offsetHeight || 0;
@@ -89,37 +66,75 @@ if ('ResizeObserver' in window && navbar) {
     ro.observe(navbar);
 }
 
-// --- Navbar Blur Effect on Scroll ---
-if (navbar) {
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 20) {
+// --- Navbar Hide/Show Logic ---
+function initNavbarScroll() {
+    const navbar = document.getElementById('navbar');
+    const navbarBottom = document.getElementById('navbar-bottom');
+    if (!navbar || !navbarBottom) return;
+
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function updateNavbar() {
+        const currentScrollY = window.scrollY;
+        const scrollDiff = currentScrollY - lastScrollY;
+        const direction = scrollDiff > 0 ? 'down' : 'up';
+        
+        // Visual Polish: Add shadow/blur intensity when scrolled
+        if (currentScrollY > 10) {
             navbar.classList.add('shadow-sm');
-            navbar.classList.replace('bg-[#FEF7FF]/80', 'bg-[#FEF7FF]/95');
+            if (navbar.classList.contains('bg-[#FEF7FF]/90')) {
+                navbar.classList.replace('bg-[#FEF7FF]/90', 'bg-[#FEF7FF]/95');
+            }
         } else {
             navbar.classList.remove('shadow-sm');
-            navbar.classList.replace('bg-[#FEF7FF]/95', 'bg-[#FEF7FF]/80');
+            if (navbar.classList.contains('bg-[#FEF7FF]/95')) {
+                navbar.classList.replace('bg-[#FEF7FF]/95', 'bg-[#FEF7FF]/90');
+            }
+        }
+
+        // Logic: Hide bottom row on scroll down, Show on scroll up
+        // Always show if near top (< 60px) to prevent hiding initial state
+        if (currentScrollY < 60) {
+             navbarBottom.classList.remove('navbar-hidden');
+        } else if (Math.abs(scrollDiff) > 5) {
+            // Threshold prevents jitter on small movements
+            if (direction === 'down') {
+                navbarBottom.classList.add('navbar-hidden');
+            } else {
+                navbarBottom.classList.remove('navbar-hidden');
+            }
+        }
+
+        lastScrollY = currentScrollY;
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(updateNavbar);
+            ticking = true;
         }
     }, { passive: true });
+    
+    // Set initial state
+    updateNavbar();
 }
-
-
+initNavbarScroll();
 
 // --- Cart state (per product) + Header badge ---
 const cartBtn = document.getElementById('cart-btn');
 const cartBadge = document.getElementById('cart-count-badge');
 const cartSet = new Set();
 
-// Load cart data from localStorage on page load
 function loadCartFromStorage() {
-    // چک پشتیبانی localStorage
     if (typeof Storage === 'undefined') return;
-
     try {
         const savedCart = localStorage.getItem('mahanshop_cart');
         if (savedCart && savedCart.trim()) {
             const cartArray = JSON.parse(savedCart);
             if (Array.isArray(cartArray)) {
-                cartSet.clear(); // پاکسازی قبل از بارگذاری
+                cartSet.clear();
                 cartArray.forEach(pid => {
                     if (pid && typeof pid === 'string' && pid.trim()) {
                         cartSet.add(pid.trim());
@@ -128,21 +143,12 @@ function loadCartFromStorage() {
             }
         }
     } catch (e) {
-        console.warn('Failed to load cart from localStorage:', e);
-        // پاک کردن داده‌های خراب
-        try {
-            localStorage.removeItem('mahanshop_cart');
-        } catch (e2) {
-            console.warn('Failed to clear corrupted cart data:', e2);
-        }
+        console.warn('Failed to load cart:', e);
     }
 }
 
-// Save cart data to localStorage
 function saveCartToStorage() {
-    // چک پشتیبانی localStorage
     if (typeof Storage === 'undefined') return;
-
     try {
         const cartArray = Array.from(cartSet);
         if (cartArray.length === 0) {
@@ -151,37 +157,29 @@ function saveCartToStorage() {
             localStorage.setItem('mahanshop_cart', JSON.stringify(cartArray));
         }
     } catch (e) {
-        console.warn('Failed to save cart to localStorage:', e);
+        console.warn('Failed to save cart:', e);
     }
 }
 
-// assign a stable id to each card (in case you later want persistence)
-document.querySelectorAll('.product-card').forEach((card, i) => {
+document.querySelectorAll('.product-card').forEach((card) => {
     if (!card.dataset.pid) {
-        // Create a more stable ID based on product title and brand
         const title = card.querySelector('h3')?.textContent?.trim() || '';
         const brand = card.querySelector('p')?.textContent?.trim() || '';
         const price = card.querySelector('.font-black')?.textContent?.trim() || '';
-
-        // Create a hash-like ID from product details
         const productString = `${title}-${brand}-${price}`;
         let hash = 0;
         for (let j = 0; j < productString.length; j++) {
             const char = productString.charCodeAt(j);
             hash = ((hash << 5) - hash) + char;
-            hash = hash & hash; // Convert to 32-bit integer
+            hash = hash & hash; 
         }
         card.dataset.pid = `prod_${Math.abs(hash)}`;
     }
 });
 
-// Track page load status
 let pageFullyLoaded = false;
-window.addEventListener('load', () => {
-    pageFullyLoaded = true;
-});
+window.addEventListener('load', () => { pageFullyLoaded = true; });
 
-// Load cart data on page load
 loadCartFromStorage();
 
 function renderCartBadge() {
@@ -192,29 +190,19 @@ function renderCartBadge() {
 }
 renderCartBadge();
 
-// --- Product interactions (Cart + Favorite) ---
-
 document.addEventListener('click', (e) => {
-    // فقط رویدادهای واقعی کاربر (نه برنامه‌ای)
     if (!e.isTrusted) return;
-
     const btn = e.target.closest('button');
     if (!btn) return;
-
-    // جلوگیری از پردازش مکرر یک دکمه
     if (btn.hasAttribute('data-processing')) return;
     btn.setAttribute('data-processing', 'true');
-
-    // پاک کردن فلگ پس از ۱۰۰ میلی‌ثانیه
     setTimeout(() => btn.removeAttribute('data-processing'), 100);
 
     const iconEl = btn.querySelector('.material-icon');
     const iconName = iconEl?.textContent?.trim();
 
-    // Cart toggle (only product add button)
     if (btn.classList.contains('product-add-btn')) {
         e.stopPropagation();
-
         const card = btn.closest('.product-card');
         const pid = card?.dataset?.pid;
         if (!pid) return;
@@ -224,38 +212,29 @@ document.addEventListener('click', (e) => {
             cartSet.add(pid);
             btn.classList.add('in-cart');
             if (iconEl) iconEl.textContent = 'remove_shopping_cart';
-
             renderCartBadge();
             saveCartToStorage();
         } else {
             cartSet.delete(pid);
             btn.classList.remove('in-cart');
             if (iconEl) iconEl.textContent = 'add';
-
             renderCartBadge();
             saveCartToStorage();
         }
         return;
     }
 
-    // Favorite handling (ONLY inside product cards)
     if ((iconName === 'favorite_border' || iconName === 'favorite') && btn.closest('.product-card')) {
         e.stopPropagation();
-
         const isFav = iconName === 'favorite';
         if (iconEl) iconEl.textContent = isFav ? 'favorite_border' : 'favorite';
-
-
         return;
     }
 });
 
-// --- Header icon temporary click highlight (no persistent active state) ---
 document.addEventListener('click', (e) => {
-    // only buttons inside navbar (avoid product buttons)
     const iconBtn = e.target.closest('#navbar .nav-icon-btn');
     if (!iconBtn) return;
-
     iconBtn.classList.add('is-active');
     clearTimeout(iconBtn._activeT);
     iconBtn._activeT = setTimeout(() => {
@@ -263,7 +242,6 @@ document.addEventListener('click', (e) => {
     }, 220);
 });
 
-// --- Product cards: inject divider + normalize brand text + add helper classes ---
 document.querySelectorAll('.product-card').forEach((card) => {
     const mediaBlock = card.querySelector(':scope > .relative');
     if (mediaBlock && !card.querySelector('.product-divider')) {
@@ -272,19 +250,16 @@ document.querySelectorAll('.product-card').forEach((card) => {
         divider.setAttribute('aria-hidden', 'true');
         mediaBlock.insertAdjacentElement('afterend', divider);
     }
-
     const titleEl = card.querySelector('h3');
     if (titleEl) {
         titleEl.classList.add('product-title');
         titleEl.classList.add('truncate');
     }
-
     const brandEl = card.querySelector('p.mt-1.text-gray-500');
     if (brandEl) {
         brandEl.textContent = brandEl.textContent.replace(/^\s*برند\s*:\s*/i, '').trim();
         brandEl.classList.add('product-brand');
     }
-
     const bottomRow = card.querySelector(':scope > div.mt-3.flex');
     if (bottomRow) bottomRow.classList.add('product-bottom');
 
@@ -300,7 +275,6 @@ document.querySelectorAll('.product-card').forEach((card) => {
         }
     });
 
-    // Ensure every card has a visible favorite button. Insert it before add button if present, otherwise append to the bottom row.
     const hasLike = card.querySelector('button.product-like-btn');
     const addBtn = card.querySelector('button.product-add-btn');
     if (!hasLike) {
@@ -312,50 +286,34 @@ document.querySelectorAll('.product-card').forEach((card) => {
         if (addBtn && addBtn.parentNode) {
             addBtn.parentNode.insertBefore(likeBtn, addBtn);
         } else if (bottomRow) {
-            // append to bottomRow's right side
             const wrap = document.createElement('div');
             wrap.className = 'flex items-center gap-2';
-            // move existing children (price) into wrap if needed
-            // place likeBtn then addBtn placeholder
             wrap.appendChild(likeBtn);
             bottomRow.appendChild(wrap);
         }
     }
 });
 
-// --- Ripple Effect Implementation ---
 document.addEventListener('click', function (e) {
     const target = e.target.closest('.ripple');
     if (!target) return;
-
     const isIconBtn = target.classList.contains('nav-icon-btn');
-
     const circle = document.createElement('span');
     const base = Math.max(target.clientWidth, target.clientHeight);
     const diameter = base;
     const radius = diameter / 2;
-
     const rect = target.getBoundingClientRect();
-
     circle.style.width = circle.style.height = `${diameter}px`;
     circle.style.left = `${e.clientX - rect.left - radius}px`;
     circle.style.top = `${e.clientY - rect.top - radius}px`;
-
     const duration = isIconBtn ? 260 : 600;
     circle.style.animationDuration = `${duration}ms`;
-    if (isIconBtn) {
-        circle.style.backgroundColor = 'rgba(103, 80, 164, 0.14)';
-    }
-
+    if (isIconBtn) circle.style.backgroundColor = 'rgba(103, 80, 164, 0.14)';
     circle.classList.add('ripple-effect');
     target.appendChild(circle);
-
-    setTimeout(() => {
-        circle.remove();
-    }, duration);
+    setTimeout(() => { circle.remove(); }, duration);
 });
 
-// --- Entrance Animations (Intersection Observer) ---
 const sections = document.querySelectorAll('section');
 if (sections.length > 0) {
     const observer = new IntersectionObserver((entries) => {
@@ -367,21 +325,16 @@ if (sections.length > 0) {
             }
         });
     }, { threshold: 0.1 });
-
     sections.forEach(section => {
         section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
         observer.observe(section);
     });
 }
 
-// --- Add All Favorites to Cart ---
 document.getElementById('add-all-to-cart-btn')?.addEventListener('click', (e) => {
-    // فقط رویدادهای واقعی کاربر
     if (!e.isTrusted) return;
-
     const favoriteCards = document.querySelectorAll('#favorites-grid .product-card');
     let addedCount = 0;
-
     favoriteCards.forEach(card => {
         const pid = card?.dataset?.pid;
         if (pid && !cartSet.has(pid)) {
@@ -389,16 +342,12 @@ document.getElementById('add-all-to-cart-btn')?.addEventListener('click', (e) =>
             addedCount++;
         }
     });
-
     if (addedCount > 0) {
         renderCartBadge();
         saveCartToStorage();
-    } else {
-
     }
 });
 
-// --- Mobile Menu Logic ---
 const mobileMenu = document.getElementById('mobile-menu');
 const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
 const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
@@ -406,7 +355,6 @@ const closeMenuBtn = document.getElementById('close-menu-btn');
 
 function openMenu() {
     if (!mobileMenu || !mobileMenuOverlay) return;
-
     mobileMenu.classList.remove('translate-x-full');
     mobileMenuOverlay.classList.remove('hidden');
     void mobileMenuOverlay.offsetWidth;
@@ -416,7 +364,6 @@ function openMenu() {
 
 function closeMenu() {
     if (!mobileMenu || !mobileMenuOverlay) return;
-
     mobileMenu.classList.add('translate-x-full');
     mobileMenuOverlay.classList.add('opacity-0');
     setTimeout(() => mobileMenuOverlay.classList.add('hidden'), 280);
@@ -437,7 +384,6 @@ window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeMenu();
 });
 
-// --- Banner Slider Logic (Auto + Dots + Swipe) ---
 const bannerWrapper = document.getElementById('banner-wrapper');
 const bannerContainer = bannerWrapper?.closest('.banner-container') || null;
 const bannerSlides = document.querySelectorAll('.banner-slide');
@@ -447,7 +393,6 @@ let bannerInterval;
 
 function updateBanner(index, { animate = true } = {}) {
     if (!bannerWrapper) return;
-
     if (!animate) bannerWrapper.classList.add('no-anim');
 
     if (index >= bannerSlides.length) bannerIndex = 0;
@@ -455,11 +400,7 @@ function updateBanner(index, { animate = true } = {}) {
     else bannerIndex = index;
 
     bannerWrapper.style.transform = `translateX(-${bannerIndex * 100}%)`;
-
-    bannerSlides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === bannerIndex);
-    });
-
+    bannerSlides.forEach((slide, i) => slide.classList.toggle('active', i === bannerIndex));
     bannerDots.forEach((dot, i) => {
         dot.classList.toggle('active', i === bannerIndex);
         dot.setAttribute('aria-current', i === bannerIndex ? 'true' : 'false');
@@ -481,9 +422,7 @@ function stopBannerTimer() {
 
 if (bannerWrapper && bannerSlides.length > 0) {
     updateBanner(0, { animate: false });
-    requestAnimationFrame(() => {
-        startBannerTimer();
-    });
+    requestAnimationFrame(() => startBannerTimer());
 
     bannerDots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
@@ -509,28 +448,14 @@ if (bannerWrapper && bannerSlides.length > 0) {
         bannerContainer.addEventListener('touchend', (e) => {
             if (!isTouching) return;
             isTouching = false;
-
             const endTouch = e.changedTouches && e.changedTouches[0];
-            if (!endTouch) {
-                startBannerTimer();
-                return;
-            }
-
+            if (!endTouch) { startBannerTimer(); return; }
             const dx = endTouch.clientX - startX;
             const dy = endTouch.clientY - startY;
-
-            if (Math.abs(dy) > Math.abs(dx)) {
-                startBannerTimer();
-                return;
-            }
-
+            if (Math.abs(dy) > Math.abs(dx)) { startBannerTimer(); return; }
             const threshold = 45;
-            if (dx <= -threshold) {
-                updateBanner(bannerIndex + 1);
-            } else if (dx >= threshold) {
-                updateBanner(bannerIndex - 1);
-            }
-
+            if (dx <= -threshold) updateBanner(bannerIndex + 1);
+            else if (dx >= threshold) updateBanner(bannerIndex - 1);
             startBannerTimer();
         }, { passive: true });
 
@@ -539,20 +464,16 @@ if (bannerWrapper && bannerSlides.length > 0) {
     }
 }
 
-// --- Search clear button UX ---
 document.querySelectorAll('.search-shell').forEach((shell) => {
     const input = shell.querySelector('.search-input');
     const clearBtn = shell.querySelector('.search-clear');
     if (!input || !clearBtn) return;
-
     function sync() {
         const has = (input.value || '').trim().length > 0;
         clearBtn.classList.toggle('hidden', !has);
     }
-
     input.addEventListener('input', sync);
     input.addEventListener('blur', sync);
-
     clearBtn.addEventListener('click', () => {
         input.value = '';
         input.focus();
@@ -560,8 +481,6 @@ document.querySelectorAll('.search-shell').forEach((shell) => {
     });
 });
 
-// --- Drag to scroll (pointer events + momentum) for product rows ---
-// Prevent ghost image dragging on product images
 document.addEventListener('dragstart', (e) => {
     const img = e.target?.closest?.('.products-row img');
     if (img) e.preventDefault();
@@ -572,94 +491,47 @@ document.querySelectorAll('.drag-scroll').forEach((row) => {
     let startX = 0;
     let startScrollLeft = 0;
     let moved = false;
-
-    // velocity tracking
-    let lastX = 0;
-    let lastT = 0;
-    let velocity = 0;
-    let momentumRaf = null;
-
     const threshold = 6;
 
     function canStartFrom(target) {
         return !target.closest('button, a, input, textarea, select, details, summary');
     }
 
-    function stopMomentum() {
-        if (momentumRaf) cancelAnimationFrame(momentumRaf);
-        momentumRaf = null;
-    }
-
-    function startMomentum() {
-        // Don't implement momentum scrolling - just stop at current position
-        // This ensures the slider stays where the user releases it
-    }
-
     row.addEventListener('pointerdown', (e) => {
         if (e.pointerType === 'mouse' && e.button !== 0) return;
         if (!canStartFrom(e.target)) return;
-
-        stopMomentum();
-
         isDown = true;
         moved = false;
         startX = e.clientX;
         startScrollLeft = row.scrollLeft;
-
-        lastX = e.clientX;
-        lastT = performance.now();
-        velocity = 0;
-
         row.classList.add('is-dragging');
         row.style.scrollBehavior = 'auto';
-
         try { row.setPointerCapture(e.pointerId); } catch {}
     });
 
     row.addEventListener('pointermove', (e) => {
         if (!isDown) return;
-
-        const now = performance.now();
         const dx = e.clientX - startX;
         if (Math.abs(dx) > threshold) moved = true;
-
-        // update scroll
         row.scrollLeft = startScrollLeft - dx;
-
-        // velocity (px/ms)
-        const dt = Math.max(10, now - lastT);
-        const ddx = e.clientX - lastX;
-        velocity = (ddx / dt);
-
-        lastX = e.clientX;
-        lastT = now;
-
         if (moved) e.preventDefault();
     }, { passive: false });
 
     function endDrag(e) {
         if (!isDown) return;
         isDown = false;
-
         row.classList.remove('is-dragging');
-        row.style.scrollSnapType = 'none'; // Keep it where it was released
+        row.style.scrollSnapType = 'none';
         row.style.scrollBehavior = '';
-
         try { row.releasePointerCapture(e.pointerId); } catch {}
-
         if (moved) {
             row.dataset.justDragged = '1';
             setTimeout(() => { delete row.dataset.justDragged; }, 100);
         }
-
-        // Don't start momentum after releasing - just stop at current position
-        stopMomentum();
     }
 
     row.addEventListener('pointerup', endDrag);
     row.addEventListener('pointercancel', endDrag);
-
-    // Capture click to avoid accidental clicks after dragging
     row.addEventListener('click', (e) => {
         if (row.dataset.justDragged === '1') {
             e.preventDefault();
@@ -668,11 +540,7 @@ document.querySelectorAll('.drag-scroll').forEach((row) => {
     }, true);
 });
 
-// --- Auto scrollers (Suggested + Best) ---
-// Goal: always moves (never gets stuck) across RTL implementations.
 function getRtlScrollType() {
-    // Detect RTL scrollLeft behavior: "default" | "reverse" | "negative"
-    // Based on the widely used detection pattern.
     const el = document.createElement('div');
     el.dir = 'rtl';
     el.style.width = '100px';
@@ -680,68 +548,36 @@ function getRtlScrollType() {
     el.style.overflow = 'scroll';
     el.style.position = 'absolute';
     el.style.top = '-9999px';
-
     const inner = document.createElement('div');
     inner.style.width = '200px';
     inner.style.height = '1px';
     el.appendChild(inner);
     document.body.appendChild(el);
-
-    // If setting 0 results in a positive value, it's the "default" type.
     el.scrollLeft = 0;
-    if (el.scrollLeft > 0) {
-        document.body.removeChild(el);
-        return 'default';
-    }
-
-    // Otherwise distinguish between negative and reverse.
+    if (el.scrollLeft > 0) { document.body.removeChild(el); return 'default'; }
     el.scrollLeft = 1;
     const type = (el.scrollLeft === 0) ? 'negative' : 'reverse';
-
     document.body.removeChild(el);
     return type;
 }
-
 const RTL_SCROLL_TYPE = getRtlScrollType();
 
 function getScrollPos(row) {
-    // normalized: 0 .. max
     const max = row.scrollWidth - row.clientWidth;
     if (max <= 0) return 0;
-
     const sl = row.scrollLeft;
-    if (row.dir !== 'rtl' && getComputedStyle(row).direction !== 'rtl') {
-        return Math.max(0, Math.min(max, sl));
-    }
-
-    if (RTL_SCROLL_TYPE === 'negative') {
-        return Math.max(0, Math.min(max, -sl));
-    }
-
-    if (RTL_SCROLL_TYPE === 'reverse') {
-        return Math.max(0, Math.min(max, max - sl));
-    }
-
-    // default
+    if (row.dir !== 'rtl' && getComputedStyle(row).direction !== 'rtl') return Math.max(0, Math.min(max, sl));
+    if (RTL_SCROLL_TYPE === 'negative') return Math.max(0, Math.min(max, -sl));
+    if (RTL_SCROLL_TYPE === 'reverse') return Math.max(0, Math.min(max, max - sl));
     return Math.max(0, Math.min(max, sl));
 }
 
 function rawScrollLeftFromPos(row, pos) {
     const max = row.scrollWidth - row.clientWidth;
     const p = Math.max(0, Math.min(max, pos));
-
-    if (row.dir !== 'rtl' && getComputedStyle(row).direction !== 'rtl') {
-        return p;
-    }
-
-    if (RTL_SCROLL_TYPE === 'negative') {
-        return -p;
-    }
-
-    if (RTL_SCROLL_TYPE === 'reverse') {
-        return max - p;
-    }
-
+    if (row.dir !== 'rtl' && getComputedStyle(row).direction !== 'rtl') return p;
+    if (RTL_SCROLL_TYPE === 'negative') return -p;
+    if (RTL_SCROLL_TYPE === 'reverse') return max - p;
     return p;
 }
 
@@ -751,12 +587,7 @@ function setScrollPos(row, pos) {
 
 function scrollToPos(row, pos, behavior = 'auto') {
     const left = rawScrollLeftFromPos(row, pos);
-    try {
-        row.scrollTo({ left, behavior });
-    } catch {
-        // fallback
-        row.scrollLeft = left;
-    }
+    try { row.scrollTo({ left, behavior }); } catch { row.scrollLeft = left; }
 }
 
 function stepSize(row) {
@@ -766,76 +597,36 @@ function stepSize(row) {
     return card.getBoundingClientRect().width + gap;
 }
 
-function setupAutoScroller(row, {
-    mode = 'step', // 'step' or 'drift'
-    intervalMs = 5000,
-    driftPxPerFrame = 0.55,
-    pauseOnHover = true,
-    pauseOnDrag = true,
-    manualPauseMs = 20000
-} = {}) {
+function setupAutoScroller(row, { mode = 'step', intervalMs = 5000, driftPxPerFrame = 0.55, pauseOnDrag = true, manualPauseMs = 20000 } = {}) {
     if (!row) return;
-
     let timer = null;
     let raf = null;
-    let paused = false;
-    let dir = 1; // 1 forward, -1 backward (normalized direction)
-
-    // When user interacts manually, pause autoplay for a while (per-row)
+    let dir = 1;
     let pauseUntil = 0;
-    function pauseFor(ms = manualPauseMs) {
-        pauseUntil = Math.max(pauseUntil, Date.now() + ms);
-    }
-
-    function maxScroll() {
-        return Math.max(0, row.scrollWidth - row.clientWidth);
-    }
-
+    function pauseFor(ms = manualPauseMs) { pauseUntil = Math.max(pauseUntil, Date.now() + ms); }
+    function maxScroll() { return Math.max(0, row.scrollWidth - row.clientWidth); }
     function isPausedByInteraction() {
-        if (paused) return true;
         if (Date.now() < pauseUntil) return true;
         if (pauseOnDrag && (row.classList.contains('is-dragging') || row.classList.contains('is-momentum'))) return true;
         return false;
     }
-
     function nudgeIfStuck(prevPos) {
-        // If scroll didn't change (RTL weirdness or near boundary), flip direction and try again.
         const cur = getScrollPos(row);
-        if (Math.abs(cur - prevPos) < 0.5) {
-            dir *= -1;
-            return false;
-        }
+        if (Math.abs(cur - prevPos) < 0.5) { dir *= -1; return false; }
         return true;
     }
-
     function tickStep() {
         if (isPausedByInteraction()) return;
-
         const max = maxScroll();
         if (max <= 0) return;
-
         const prev = getScrollPos(row);
         const step = stepSize(row);
-
-        // If already at an edge, make sure we move inward
         if (prev >= max - 1 && dir > 0) dir = -1;
         if (prev <= 1 && dir < 0) dir = 1;
-
         let next = prev + dir * step;
-
-        // If going out of bounds, flip direction and try once more
-        if (next > max || next < 0) {
-            dir *= -1;
-            next = prev + dir * step;
-        }
-
-        // Clamp
+        if (next > max || next < 0) { dir *= -1; next = prev + dir * step; }
         next = Math.max(0, Math.min(max, next));
-
-        // Smooth step
         scrollToPos(row, next, 'smooth');
-
-        // Safety: if browser didn't move (RTL edge-case), flip direction and nudge
         setTimeout(() => {
             if (isPausedByInteraction()) return;
             const cur = getScrollPos(row);
@@ -846,175 +637,73 @@ function setupAutoScroller(row, {
             }
         }, 420);
     }
-
     function loopDrift() {
         if (!raf) return;
-        if (isPausedByInteraction()) {
-            raf = requestAnimationFrame(loopDrift);
-            return;
-        }
-
+        if (isPausedByInteraction()) { raf = requestAnimationFrame(loopDrift); return; }
         const max = maxScroll();
-        if (max <= 0) {
-            raf = requestAnimationFrame(loopDrift);
-            return;
-        }
-
+        if (max <= 0) { raf = requestAnimationFrame(loopDrift); return; }
         const prev = getScrollPos(row);
-
-        // keep dir valid at edges
         if (prev >= max - 1 && dir > 0) dir = -1;
         if (prev <= 1 && dir < 0) dir = 1;
-
         let next = prev + dir * driftPxPerFrame;
-
-        if (next >= max - 1) {
-            dir = -1;
-            next = max;
-        } else if (next <= 1) {
-            dir = 1;
-            next = 0;
-        }
-
+        if (next >= max - 1) { dir = -1; next = max; } else if (next <= 1) { dir = 1; next = 0; }
         setScrollPos(row, next);
-
-        // If stuck, flip direction and move more
-        if (!nudgeIfStuck(prev)) {
-            setScrollPos(row, Math.max(0, Math.min(max, prev + dir * 10)));
-        }
-
+        if (!nudgeIfStuck(prev)) setScrollPos(row, Math.max(0, Math.min(max, prev + dir * 10)));
         raf = requestAnimationFrame(loopDrift);
     }
-
     function start() {
         stop();
-        row.style.scrollSnapType = 'x mandatory'; // Re-enable snap when auto-scrolling starts
-        if (mode === 'step') {
-            timer = setInterval(tickStep, intervalMs);
-        } else {
-            raf = requestAnimationFrame(loopDrift);
-        }
+        row.style.scrollSnapType = 'x mandatory';
+        if (mode === 'step') timer = setInterval(tickStep, intervalMs);
+        else raf = requestAnimationFrame(loopDrift);
     }
-
     function stop() {
-        if (timer) clearInterval(timer);
-        timer = null;
-        if (raf) cancelAnimationFrame(raf);
-        raf = null;
+        if (timer) clearInterval(timer); timer = null;
+        if (raf) cancelAnimationFrame(raf); raf = null;
     }
-
-    function scheduleResume() {
-        // Schedule the auto-scrolling to resume after 20 seconds
-        setTimeout(() => {
-            // Check if we're still in the pause period
-            if (Date.now() >= pauseUntil) {
-                // Only start if auto-scrolling should be active
-                start();
-            }
-        }, 20000); // Fixed 20 second delay
-    }
-
-    // Manual interactions => pause for 20s
-    row.addEventListener('pointerdown', () => {
-        pauseFor();
-        // Stop any existing timer to reset the 20-second countdown
-        if (timer) clearInterval(timer);
-        timer = null;
-        // Schedule to resume later
-        scheduleResume();
-    });
-    row.addEventListener('pointerup', () => {
-        // Auto-scrolling will resume after 20 seconds via the scheduled timeout
-    });
-    row.addEventListener('touchstart', () => {
-        pauseFor();
-        // Stop any existing timer to reset the 20-second countdown
-        if (timer) clearInterval(timer);
-        timer = null;
-        // Schedule to resume later
-        scheduleResume();
-    });
-    row.addEventListener('touchend', () => {
-        // Auto-scrolling will resume after 20 seconds via the scheduled timeout
-    });
-    row.addEventListener('wheel', () => {
-        pauseFor();
-        // Stop any existing timer to reset the 20-second countdown
-        if (timer) clearInterval(timer);
-        timer = null;
-        // Schedule to resume later
-        scheduleResume();
-    });
-
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden) stop(); else start();
-    });
-
-    // Keep moving after resize (maxScroll changes)
-    window.addEventListener('resize', () => {
-        // ensure not out of bounds
-        setScrollPos(row, getScrollPos(row));
-    }, { passive: true });
-
+    function scheduleResume() { setTimeout(() => { if (Date.now() >= pauseUntil) start(); }, 20000); }
+    const interact = () => { pauseFor(); if (timer) clearInterval(timer); timer = null; scheduleResume(); };
+    row.addEventListener('pointerdown', interact);
+    row.addEventListener('touchstart', interact);
+    row.addEventListener('wheel', interact);
+    document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); else start(); });
+    window.addEventListener('resize', () => { setScrollPos(row, getScrollPos(row)); }, { passive: true });
     start();
 }
 
-// Suggested: step 1 card every 5s (as requested)
-setupAutoScroller(document.querySelector('.products-row[data-autoplay="suggested"]'), {
-    mode: 'step',
-    intervalMs: 5000
-});
+setupAutoScroller(document.querySelector('.products-row[data-autoplay="suggested"]'), { mode: 'step', intervalMs: 5000 });
+setupAutoScroller(document.querySelector('.products-row[data-autoplay="best"]'), { mode: 'drift', driftPxPerFrame: 0.6 });
 
-// Best sellers: smooth drift (continuous motion)
-setupAutoScroller(document.querySelector('.products-row[data-autoplay="best"]'), {
-    mode: 'drift',
-    driftPxPerFrame: 0.6
-});
-
-// --- OTP Input Logic ---
 const otpInputs = document.querySelectorAll('.otp-field input');
 if (otpInputs.length > 0) {
   otpInputs.forEach((input, index) => {
     input.addEventListener('input', (e) => {
-      if (e.target.value.length === 1 && index < otpInputs.length - 1) {
-        otpInputs[index + 1].focus();
-      }
+      if (e.target.value.length === 1 && index < otpInputs.length - 1) otpInputs[index + 1].focus();
     });
     input.addEventListener('keydown', (e) => {
-      if (e.key === 'Backspace' && e.target.value.length === 0 && index > 0) {
-        otpInputs[index - 1].focus();
-      }
+      if (e.key === 'Backspace' && e.target.value.length === 0 && index > 0) otpInputs[index - 1].focus();
     });
   });
 }
 
-// --- Product Gallery Logic ---
 const mainImage = document.getElementById('main-product-image');
 const thumbnails = document.querySelectorAll('.gallery-thumb');
 if (mainImage && thumbnails.length > 0) {
   thumbnails.forEach(thumb => {
     thumb.addEventListener('click', () => {
-      // Remove active class from all
       thumbnails.forEach(t => t.classList.remove('active'));
-      // Add to clicked
       thumb.classList.add('active');
-      // Change main image
       const newSrc = thumb.querySelector('img').src;
       mainImage.classList.add('opacity-50');
-      setTimeout(() => {
-        mainImage.src = newSrc;
-        mainImage.classList.remove('opacity-50');
-      }, 200);
+      setTimeout(() => { mainImage.src = newSrc; mainImage.classList.remove('opacity-50'); }, 200);
     });
   });
 }
 
-// --- Quantity Selector Logic ---
 document.querySelectorAll('.qty-selector').forEach(selector => {
   const minusBtn = selector.querySelector('.qty-minus');
   const plusBtn = selector.querySelector('.qty-plus');
   const input = selector.querySelector('input');
-
   if (minusBtn && plusBtn && input) {
     minusBtn.addEventListener('click', () => {
       const val = parseInt(input.value) || 1;
@@ -1026,8 +715,5 @@ document.querySelectorAll('.qty-selector').forEach(selector => {
     });
   }
 });
-
-
-
 
 });

@@ -30,25 +30,25 @@
   <!-- Combined Header (Desktop & Mobile Optimized) -->
   <header id="navbar" class="sticky top-0 z-50 bg-[#FEF7FF]/90 backdrop-blur-md border-b border-gray-200/50 transition-all duration-300">
       
-      <!-- Top Row: Logo, Search, Actions -->
-      <div class="max-w-7xl mx-auto px-4 pt-3 pb-3 md:pb-0">
+      <!-- Top Row: Logo, Search, Actions (Always Visible) -->
+      <div id="navbar-top" class="max-w-7xl mx-auto px-4 pt-3 pb-3 md:pb-0">
           <div class="flex flex-wrap md:flex-nowrap items-center justify-between gap-4">
               
-              <!-- Left Section: Mobile Menu & Logo -->
-              <div class="flex items-center gap-3 shrink-0">
-                  <!-- Mobile Menu Trigger -->
-                  <button id="mobile-menu-toggle" class="md:hidden nav-icon-btn ripple p-2 rounded-full text-gray-700">
-                      <span class="material-icon">menu</span>
-                  </button>
+<!-- Left Section: Mobile Menu & Logo -->
+               <div class="flex items-center gap-3 shrink-0">
+                   <!-- Mobile Menu Trigger -->
+                   <button id="mobile-menu-toggle" class="md:hidden nav-icon-btn ripple p-2 rounded-full text-gray-700">
+                       <span class="material-icon">menu</span>
+                   </button>
 
-                  <!-- Logo -->
-                  <a href="index.html" class="flex items-center gap-2 group">
-                      <div class="w-10 h-10 bg-gradient-to-br from-purple-600 to-purple-700 rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/20 group-hover:scale-105 transition-transform duration-300">
-                          <span class="material-icon text-white text-xl">shopping_bag</span>
-                      </div>
-                      <span class="text-xl md:text-2xl font-black text-gray-800 tracking-tight">ماهان شاپ</span>
-                  </a>
-              </div>
+                   <!-- Logo -->
+                   <a href="index.html" class="flex items-center gap-2 group logo-container">
+                       <div class="w-10 h-10 bg-gradient-to-br from-purple-600 to-purple-700 rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/20 group-hover:scale-105 transition-transform duration-300">
+                           <span class="material-icon text-white text-xl">shopping_bag</span>
+                       </div>
+                       <span class="text-xl md:text-2xl font-black text-gray-800 tracking-tight">ماهان شاپ</span>
+                   </a>
+               </div>
   
               <!-- Middle Section: Search Bar (MD3 Style) -->
               <div class="order-last md:order-none w-full md:max-w-xl mx-auto md:mx-6 transition-all duration-300">
@@ -79,13 +79,13 @@
                   <!-- Divider (Desktop only) -->
                   <div class="hidden md:block w-px h-6 bg-gray-300 mx-1"></div>
 
-                  <!-- Profile (Logged In State) -->
-                  <a href="profile.html" class="hidden md:flex items-center gap-2 pl-1 pr-1 py-1 rounded-full hover:bg-[#F3EDF7] transition-all group">
-                      <div class="w-8 h-8 bg-[#EADDFF] rounded-full flex items-center justify-center text-[#21005D]">
-                          <span class="material-icon text-lg">person</span>
-                      </div>
-                      <span class="text-sm font-bold text-gray-700 group-hover:text-[#6750A4]">حساب کاربری</span>
-                  </a>
+<!-- Profile (Logged In State) -->
+                   <a href="profile.html" class="hidden md:flex items-center gap-2 pl-1 pr-1 py-1 rounded-full hover:bg-[#F3EDF7] transition-all group profile-section">
+                       <div class="w-8 h-8 bg-[#EADDFF] rounded-full flex items-center justify-center text-[#21005D]">
+                           <span class="material-icon text-lg">person</span>
+                       </div>
+                       <span class="text-sm font-bold text-gray-700 group-hover:text-[#6750A4]">حساب کاربری</span>
+                   </a>
 
                   <!-- Mobile Profile Icon -->
                   <a href="profile.html" class="md:hidden nav-icon-btn ripple w-10 h-10 rounded-full hover:bg-[#F3EDF7] flex items-center justify-center text-gray-600 hover:text-[#6750A4] transition-colors">
@@ -105,8 +105,8 @@
           </div>
       </div>
 
-      <!-- Bottom Row: Secondary Navigation (Categories) -->
-      <div class="border-t border-gray-100/80 md:border-none hidden md:block">
+      <!-- Bottom Row: Secondary Navigation (Categories) - Hide on Scroll -->
+      <div id="navbar-bottom" class="border-t border-gray-100/80 md:border-none hidden md:block transition-all duration-300">
           <div class="max-w-7xl mx-auto px-4">
               <nav class="secondary-nav flex items-center gap-1 md:gap-6 overflow-x-auto no-scrollbar py-2 md:py-3 mask-image-fade">
                   <a href="index.html" class="secondary-nav-link active">

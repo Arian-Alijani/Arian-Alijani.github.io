@@ -1089,6 +1089,76 @@ details[open] .price-filter-summary .material-icon:last-child {
 }
 */
 
+/* Header hide/show transition */
+#navbar {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Navbar bottom section transition */
+#navbar-bottom {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: visible;
+    max-height: 200px; /* Give it a reasonable max height */
+}
+
+/* Hide class for navbar bottom */
+#navbar-bottom.navbar-hidden {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0;
+    border: none;
+}
+
+/* Enhanced header design when bottom row is hidden */
+#navbar-bottom.navbar-hidden ~ #navbar::after,
+#navbar:has(#navbar-bottom.navbar-hidden)::after {
+    background: linear-gradient(90deg,
+        rgba(103,80,164,0) 0%,
+        rgba(103,80,164,0.25) 35%,
+        rgba(33,0,93,0.10) 55%,
+        rgba(103,80,164,0) 100%
+    );
+}
+
+/* Subtle background enhancement when bottom is hidden */
+#navbar:has(#navbar-bottom.navbar-hidden) {
+    background: linear-gradient(180deg, 
+        rgba(254, 247, 255, 0.98) 0%, 
+        rgba(254, 247, 255, 0.95) 100%
+    );
+    backdrop-filter: blur(12px);
+    box-shadow: 0 2px 20px rgba(103, 80, 164, 0.08);
+}
+
+/* Better transitions for smooth state changes */
+#navbar-top {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-container input {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-icon-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logo-container {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced visual hierarchy when bottom is hidden */
+#navbar:has(#navbar-bottom.navbar-hidden) {
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(103, 80, 164, 0.12);
+}
+
+/* More padding in top row when bottom is hidden */
+#navbar:has(#navbar-bottom.navbar-hidden) #navbar-top {
+    padding-bottom: 1rem;
+}
+
 /* Very subtle decorative sheen to differentiate header without adding content */
 #navbar::before {
     content: "";
