@@ -67,7 +67,7 @@
                   <!-- Cart -->
                   <a href="cart.html" id="cart-btn" class="nav-icon-btn ripple w-10 h-10 rounded-full flex items-center justify-center text-gray-600 relative" title="سبد خرید">
                       <span class="material-icon">shopping_cart</span>
-                      <span id="cart-count-badge" class="absolute top-0 right-0 w-4 h-4 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center border border-white hidden">0</span>
+                      <span id="cart-count-badge" class="absolute top-0 right-0 w-4 h-4 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center border border-white hidden z-10">0</span>
                   </a>
 
                   <!-- Divider (Desktop only) -->
@@ -232,104 +232,55 @@
         
         <section id="dashboard" data-tab-content>
            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+             <!-- Header -->
              <div class="flex items-center justify-between mb-6">
                <h2 class="font-bold text-lg flex items-center gap-2">
                  <span class="material-icon text-[#6750A4]">shopping_bag</span>
                  سفارش‌های من
                </h2>
-               <div class="flex gap-2">
-                 <button class="px-3 py-1.5 text-sm font-medium bg-[#6750A4] text-white rounded-lg">همه</button>
-                 <button class="px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg">در حال پردازش</button>
-                 <button class="px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg">ارسال شده</button>
-                 <button class="px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg">تحویل شده</button>
+               <div class="flex items-center gap-2">
+                 <button class="px-3 py-1.5 text-sm text-gray-500 hover:bg-gray-100 rounded-lg transition flex items-center gap-1">
+                   <span class="material-icon text-sm">search</span>
+                   جستجو
+                 </button>
                </div>
              </div>
 
-             <!-- سفارش در حال پردازش -->
-             <div class="border border-gray-200 rounded-xl p-4 mb-4">
-               <div class="flex flex-wrap items-center justify-between gap-4 mb-4 pb-4 border-b border-gray-100">
-                 <div class="flex items-center gap-4">
-                   <div class="bg-yellow-100 text-yellow-700 p-2 rounded-full">
-                     <span class="material-icon text-xl">hourglass_empty</span>
-                   </div>
-                   <div>
-                     <div class="font-bold text-gray-900">در حال پردازش</div>
-                     <div class="text-xs text-gray-500 font-mono mt-1">کد: M-2490 • ۱۴۰۳/۱۰/۱۸</div>
-                   </div>
-                 </div>
-                 <div class="text-left">
-                   <div class="text-sm text-gray-500">مبلغ کل</div>
-                   <div class="font-bold text-[#6750A4]">۲,۸۵۰,۰۰۰ تومان</div>
-                 </div>
-               </div>
-               <div class="flex items-center gap-3 overflow-x-auto pb-2">
-                 <img src="https://placehold.co/80x80/EADDFF/6750A4?text=Product" class="w-16 h-16 rounded-lg border border-gray-100 object-cover" alt="Product">
-                 <img src="https://placehold.co/80x80/E3F2FD/2196F3?text=Product" class="w-16 h-16 rounded-lg border border-gray-100 object-cover" alt="Product">
-                 <img src="https://placehold.co/80x80/F3E5F5/6750A4?text=Product" class="w-16 h-16 rounded-lg border border-gray-100 object-cover" alt="Product">
-               </div>
-               <div class="mt-4 flex flex-wrap gap-2">
-                 <button class="text-sm font-bold text-[#6750A4] border border-[#6750A4] px-4 py-2 rounded-lg hover:bg-[#F3EDF7] transition">مشاهده جزئیات</button>
-                 <button class="text-sm font-bold text-red-600 border border-red-300 px-4 py-2 rounded-lg hover:bg-red-50 transition">لغو سفارش</button>
+             <!-- Order Status Tabs -->
+             <div class="flex gap-2 mb-6 border-b border-gray-200">
+               <button class="order-tab active px-4 py-3 text-sm font-medium border-b-2 border-[#6750A4] text-[#6750A4] transition-all duration-200 flex items-center gap-2" data-status="processing">
+                 <span class="material-icon text-lg">hourglass_empty</span>
+                 در حال پردازش
+                 <span class="bg-[#6750A4] text-white text-xs px-2 py-1 rounded-full">2</span>
+               </button>
+               <button class="order-tab px-4 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300 transition-all duration-200 flex items-center gap-2" data-status="shipped">
+                 <span class="material-icon text-lg">local_shipping</span>
+                 ارسال شده
+                 <span class="bg-gray-200 text-gray-600 text-xs px-2 py-1 rounded-full">1</span>
+               </button>
+             </div>
+
+             <!-- Order Content Container -->
+             <div id="order-content" class="space-y-4">
+               <!-- Orders will be dynamically inserted here -->
+             </div>
+
+             <!-- Loading State -->
+             <div id="loading-state" class="hidden">
+               <div class="flex flex-col items-center justify-center py-12">
+                 <div class="animate-spin w-10 h-10 border-3 border-[#6750A4] border-t-transparent rounded-full mb-4"></div>
+                 <p class="text-gray-500 text-sm">در حال بارگذاری سفارش‌ها...</p>
                </div>
              </div>
 
-             <!-- سفارش ارسال شده -->
-             <div class="border border-gray-200 rounded-xl p-4 mb-4">
-               <div class="flex flex-wrap items-center justify-between gap-4 mb-4 pb-4 border-b border-gray-100">
-                 <div class="flex items-center gap-4">
-                   <div class="bg-blue-100 text-blue-700 p-2 rounded-full">
-                     <span class="material-icon text-xl">local_shipping</span>
-                   </div>
-                   <div>
-                     <div class="font-bold text-gray-900">ارسال شده</div>
-                     <div class="text-xs text-gray-500 font-mono mt-1">کد: M-2485 • ۱۴۰۳/۰۵/۲۴</div>
-                   </div>
+             <!-- Empty State -->
+             <div id="empty-state" class="hidden">
+               <div class="flex flex-col items-center justify-center py-12">
+                 <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                   <span class="material-icon text-3xl text-gray-400">shopping_bag</span>
                  </div>
-                 <div class="text-left">
-                   <div class="text-sm text-gray-500">مبلغ کل</div>
-                   <div class="font-bold text-[#6750A4]">۴,۵۰۰,۰۰۰ تومان</div>
-                 </div>
-               </div>
-               <div class="bg-blue-50 rounded-lg p-3 mb-3">
-                 <div class="flex items-center gap-2 text-sm">
-                   <span class="material-icon text-blue-600">info</span>
-                   <span class="text-blue-800">کد رهگیری پستی: <span class="font-mono font-bold">1234567890123</span></span>
-                 </div>
-               </div>
-               <div class="flex items-center gap-3 overflow-x-auto pb-2">
-                 <img src="https://placehold.co/80x80/E8F5E9/4CAF50?text=Product" class="w-16 h-16 rounded-lg border border-gray-100 object-cover" alt="Product">
-               </div>
-               <div class="mt-4 flex flex-wrap gap-2">
-                 <button class="text-sm font-bold text-[#6750A4] border border-[#6750A4] px-4 py-2 rounded-lg hover:bg-[#F3EDF7] transition">مشاهده جزئیات</button>
-                 <button class="text-sm font-bold text-gray-600 border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-50 transition">پیگیری مرسوله</button>
-               </div>
-             </div>
-
-             <!-- سفارش تحویل شده -->
-             <div class="border border-gray-200 rounded-xl p-4 mb-4">
-               <div class="flex flex-wrap items-center justify-between gap-4 mb-4 pb-4 border-b border-gray-100">
-                 <div class="flex items-center gap-4">
-                   <div class="bg-green-100 text-green-700 p-2 rounded-full">
-                     <span class="material-icon text-xl">check_circle</span>
-                   </div>
-                   <div>
-                     <div class="font-bold text-gray-900">تحویل شده</div>
-                     <div class="text-xs text-gray-500 font-mono mt-1">کد: M-2480 • ۱۴۰۳/۰۵/۲۰</div>
-                   </div>
-                 </div>
-                 <div class="text-left">
-                   <div class="text-sm text-gray-500">مبلغ کل</div>
-                   <div class="font-bold text-[#6750A4]">۸۵۰,۰۰۰ تومان</div>
-                 </div>
-               </div>
-               <div class="flex items-center gap-3 overflow-x-auto pb-2">
-                 <img src="https://placehold.co/80x80/F3E5F5/6750A4?text=Product" class="w-16 h-16 rounded-lg border border-gray-100 object-cover" alt="Product">
-                 <img src="https://placehold.co/80x80/E0F2F1/00695C?text=Product" class="w-16 h-16 rounded-lg border border-gray-100 object-cover" alt="Product">
-               </div>
-               <div class="mt-4 flex flex-wrap gap-2">
-                 <button class="text-sm font-bold text-[#6750A4] border border-[#6750A4] px-4 py-2 rounded-lg hover:bg-[#F3EDF7] transition">مشاهده جزئیات</button>
-                 <button class="text-sm font-bold text-gray-600 border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-50 transition">تکمیل نظرسنجی</button>
-                 <button class="text-sm font-bold text-purple-600 border border-purple-300 px-4 py-2 rounded-lg hover:bg-purple-50 transition">خرید مجدد</button>
+                 <p class="text-gray-500 text-sm mb-2">سفارشی یافت نشد</p>
+                 <p class="text-gray-400 text-xs">هیچ سفارشی در این بخش وجود ندارد</p>
                </div>
              </div>
            </div>
@@ -508,26 +459,320 @@
       });
     });
 
-    // Order status filter buttons
-    const filterButtons = document.querySelectorAll('.bg-white.rounded-2xl .flex.items-center.justify-between.mb-6 .flex.gap-2 button');
-    
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        // Remove active state from all buttons
-        filterButtons.forEach(btn => {
-          btn.classList.remove('bg-[#6750A4]', 'text-white');
-          btn.classList.add('text-gray-600');
+    // Order Management System
+    const ordersData = {
+      processing: [
+        {
+          id: "M-2490",
+          date: "۱۴۰۳/۱۰/۱۸",
+          status: "در حال پردازش",
+          total: "۲,۸۵۰,۰۰۰ تومان",
+          products: [
+            { name: "قاب گوشی iPhone 15", image: "https://placehold.co/80x80/EADDFF/6750A4?text=قاب" },
+            { name: "شارژر فست شارژ 65W", image: "https://placehold.co/80x80/E3F2FD/2196F3?text=شارژر" },
+            { name: "گلس محافظ شیشه‌ای", image: "https://placehold.co/80x80/F3E5F5/6750A4?text=گلس" }
+          ]
+        },
+        {
+          id: "M-2491",
+          date: "۱۴۰۳/۱۰/۱۶",
+          status: "در حال پردازش",
+          total: "۱,۲۰۰,۰۰۰ تومان",
+          products: [
+            { name: "کاور ایرپاد پرو", image: "https://placehold.co/80x80/E8F5E9/4CAF50?text=ایرپاد" }
+          ]
+        }
+      ],
+      shipped: [
+        {
+          id: "M-2485",
+          date: "۱۴۰۳/۰۵/۲۴",
+          status: "ارسال شده",
+          total: "۴,۵۰۰,۰۰۰ تومان",
+          trackingCode: "1234567890123",
+          trackingStatus: "registered", // 'registered' or 'pending'
+          products: [
+            { name: "گجت هوشمند اپل واچ", image: "https://placehold.co/80x80/FCE4EC/E91E63?text=گجت" }
+          ]
+        },
+        {
+          id: "M-2486",
+          date: "۱۴۰۳/۰۵/۲۰",
+          status: "ارسال شده",
+          total: "۸۵۰,۰۰۰ تومان",
+          trackingCode: null,
+          trackingStatus: "pending", // کد رهگیری هنوز ثبت نشده
+          products: [
+            { name: "کابل تبدیل Type-C", image: "https://placehold.co/80x80/F0F4C3/689F38?text=کابل" }
+          ]
+        }
+      ]
+    };
+
+    let currentOrderStatus = 'processing';
+
+    // Initialize order tabs
+    function initOrderTabs() {
+      const orderTabs = document.querySelectorAll('.order-tab');
+      const orderContent = document.getElementById('order-content');
+      
+      orderTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const status = tab.getAttribute('data-status');
+          switchOrderTab(status);
         });
-        
-        // Add active state to clicked button
-        button.classList.add('bg-[#6750A4]', 'text-white');
-        button.classList.remove('text-gray-600');
-        
-        // Here you can add filtering logic based on button text
-        const filterText = button.textContent.trim();
-        console.log('Filter by:', filterText);
       });
-    });
+      
+      // Load initial orders
+      switchOrderTab('processing');
+    }
+
+    // Switch order tab
+    function switchOrderTab(status) {
+      currentOrderStatus = status;
+      
+      // Update tab states
+      const orderTabs = document.querySelectorAll('.order-tab');
+      orderTabs.forEach(tab => {
+        const tabStatus = tab.getAttribute('data-status');
+        if (tabStatus === status) {
+          tab.classList.add('active', 'border-[#6750A4]', 'text-[#6750A4]');
+          tab.classList.remove('text-gray-500', 'border-transparent');
+          
+          // Update badge color
+          const badge = tab.querySelector('span:last-child');
+          if (badge) {
+            badge.classList.add('bg-[#6750A4]', 'text-white');
+            badge.classList.remove('bg-gray-200', 'text-gray-600');
+          }
+        } else {
+          tab.classList.remove('active', 'border-[#6750A4]', 'text-[#6750A4]');
+          tab.classList.add('text-gray-500', 'border-transparent');
+          
+          // Update badge color
+          const badge = tab.querySelector('span:last-child');
+          if (badge) {
+            badge.classList.remove('bg-[#6750A4]', 'text-white');
+            badge.classList.add('bg-gray-200', 'text-gray-600');
+          }
+        }
+      });
+      
+      // Show loading state
+      showOrderLoading();
+      
+      // Simulate loading delay
+      setTimeout(() => {
+        renderOrders(status);
+      }, 300);
+    }
+
+    // Show loading state
+    function showOrderLoading() {
+      const orderContent = document.getElementById('order-content');
+      const loadingState = document.getElementById('loading-state');
+      const emptyState = document.getElementById('empty-state');
+      
+      orderContent.classList.add('hidden');
+      emptyState.classList.add('hidden');
+      loadingState.classList.remove('hidden');
+    }
+
+    // Render orders for specific status
+    function renderOrders(status) {
+      const orderContent = document.getElementById('order-content');
+      const loadingState = document.getElementById('loading-state');
+      const emptyState = document.getElementById('empty-state');
+      const orders = ordersData[status] || [];
+      
+      loadingState.classList.add('hidden');
+      
+      if (orders.length === 0) {
+        orderContent.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+        return;
+      }
+      
+      emptyState.classList.add('hidden');
+      orderContent.classList.remove('hidden');
+      
+      // Clear existing content
+      orderContent.innerHTML = '';
+      
+      // Render each order
+      orders.forEach(order => {
+        const orderCard = createOrderCard(order);
+        orderContent.appendChild(orderCard);
+      });
+    }
+
+    // Create order card element
+    function createOrderCard(order) {
+      const card = document.createElement('div');
+      card.className = 'order-card border border-gray-200 rounded-xl p-5 hover:shadow-md transition-all duration-300 hover:border-[#6750A4]/30';
+      
+      const isProcessing = order.status === 'در حال پردازش';
+      const isShipped = order.status === 'ارسال شده';
+      
+      // Status icon and color
+      let statusIcon, statusColor, statusBgColor;
+      if (isProcessing) {
+        statusIcon = 'hourglass_empty';
+        statusColor = 'text-yellow-700';
+        statusBgColor = 'bg-yellow-100';
+      } else if (isShipped) {
+        statusIcon = 'local_shipping';
+        statusColor = 'text-blue-700';
+        statusBgColor = 'bg-blue-100';
+      }
+      
+      // Generate products HTML
+      const productsHtml = order.products.map(product => 
+        `<div class="flex flex-col items-center gap-1 min-w-fit">
+          <img src="${product.image}" class="w-16 h-16 rounded-lg border border-gray-100 object-cover hover:scale-105 transition-transform" alt="${product.name}">
+          <span class="text-xs text-gray-600 text-center max-w-[80px] truncate">${product.name}</span>
+        </div>`
+      ).join('');
+      
+      // Tracking code section (only for shipped orders)
+      let trackingSection = '';
+      if (isShipped) {
+        if (order.trackingCode && order.trackingStatus === 'registered') {
+          trackingSection = `
+            <div class="bg-green-50 border border-green-200 rounded-lg p-3 mb-3">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <span class="material-icon text-green-600 text-sm">check_circle</span>
+                  <div>
+                    <span class="text-sm font-medium text-green-800">کد رهگیری پستی:</span>
+                    <span class="font-mono font-bold text-green-700 mr-2">${order.trackingCode}</span>
+                  </div>
+                </div>
+                <button onclick="copyToClipboard('${order.trackingCode}')" class="text-green-600 hover:text-green-800 transition">
+                  <span class="material-icon text-lg">content_copy</span>
+                </button>
+              </div>
+            </div>
+          `;
+        } else {
+          trackingSection = `
+            <div class="bg-orange-50 border border-orange-200 rounded-lg p-3 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="material-icon text-orange-600 text-sm">schedule</span>
+                <div>
+                  <span class="text-sm font-medium text-orange-800">در حال ثبت کد رهگیری...</span>
+                  <div class="text-xs text-orange-600 mt-1">به زودی کد رهگیری ثبت خواهد شد</div>
+                </div>
+              </div>
+            </div>
+          `;
+        }
+      }
+      
+      // Action buttons
+      let actionButtons = `
+        <button onclick="viewOrderDetails('${order.id}')" class="flex-1 text-sm font-medium text-[#6750A4] border border-[#6750A4] px-4 py-2 rounded-lg hover:bg-[#F3EDF7] transition flex items-center justify-center gap-1">
+          <span class="material-icon text-sm">visibility</span>
+          مشاهده جزئیات
+        </button>
+      `;
+      
+      if (isShipped && order.trackingCode) {
+        actionButtons += `
+          <button onclick="trackShipment('${order.trackingCode}')" class="flex-1 text-sm font-medium text-gray-600 border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-50 transition flex items-center justify-center gap-1">
+            <span class="material-icon text-sm">local_shipping</span>
+            پیگیری مرسوله
+          </button>
+        `;
+      }
+      
+      card.innerHTML = `
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-4 pb-4 border-b border-gray-100">
+          <div class="flex items-center gap-4">
+            <div class="${statusBgColor} ${statusColor} p-2.5 rounded-full">
+              <span class="material-icon text-xl">${statusIcon}</span>
+            </div>
+            <div>
+              <div class="font-bold text-gray-900">${order.status}</div>
+              <div class="text-xs text-gray-500 font-mono mt-1">کد: ${order.id} • ${order.date}</div>
+            </div>
+          </div>
+          <div class="text-left min-w-fit">
+            <div class="text-sm text-gray-500">مبلغ کل</div>
+            <div class="font-bold text-[#6750A4]">${order.total}</div>
+          </div>
+        </div>
+        
+        ${trackingSection}
+        
+        <div class="mb-4">
+          <div class="text-sm text-gray-600 mb-2">محصولات (${order.products.length} مورد)</div>
+          <div class="flex items-center gap-3 overflow-x-auto pb-2">
+            ${productsHtml}
+          </div>
+        </div>
+        
+        <div class="flex gap-2">
+          ${actionButtons}
+        </div>
+      `;
+      
+      return card;
+    }
+
+    // Copy to clipboard function
+    window.copyToClipboard = function(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        if (typeof showToast === 'function') {
+          showToast('کد رهگیری کپی شد', { 
+            icon: 'check_circle', 
+            iconClass: 'text-green-400' 
+          });
+        }
+      }).catch(() => {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        
+        if (typeof showToast === 'function') {
+          showToast('کد رهگیری کپی شد', { 
+            icon: 'check_circle', 
+            iconClass: 'text-green-400' 
+          });
+        }
+      });
+    };
+
+    // View order details function
+    window.viewOrderDetails = function(orderId) {
+      if (typeof showToast === 'function') {
+        showToast(`در حال نمایش جزئیات سفارش ${orderId}`, { 
+          icon: 'visibility', 
+          iconClass: 'text-blue-400' 
+        });
+      }
+      console.log('View order details:', orderId);
+      // TODO: Open order details modal or navigate to order details page
+    };
+
+    // Track shipment function
+    window.trackShipment = function(trackingCode) {
+      if (typeof showToast === 'function') {
+        showToast(`در حال پیگیری مرسوله ${trackingCode}`, { 
+          icon: 'local_shipping', 
+          iconClass: 'text-blue-400' 
+        });
+      }
+      console.log('Track shipment:', trackingCode);
+      // TODO: Open shipment tracking modal or navigate to tracking page
+    };
+
+    // Initialize order management
+    initOrderTabs();
 
     // Logout functionality
     const logoutLink = document.querySelector('a[href="index.html"]');
@@ -548,12 +793,7 @@
       });
     }
 
-    // Initialize active state for first filter button
-    const firstFilterButton = document.querySelector('.bg-white.rounded-2xl .flex.items-center.justify-between.mb-6 .flex.gap-2 button');
-    if (firstFilterButton) {
-      firstFilterButton.classList.add('bg-[#6750A4]', 'text-white');
-      firstFilterButton.classList.remove('text-gray-600');
-    }
+    
 
     // Edit Name Modal functionality
     const editNameModal = document.getElementById('editNameModal');
@@ -1796,13 +2036,6 @@
         </div>
       </div>
     </footer>
-
-  <div id="toast" class="fixed bottom-4 left-4 z-50 transform translate-y-20 opacity-0 transition-all duration-300">
-    <div class="bg-[#322F35] text-[#F5EFF7] px-5 py-3 rounded-xl shadow-lg flex items-center gap-3">
-      <span id="toast-icon" class="material-icon text-green-400">check_circle</span>
-      <span id="toast-message">محصول به سبد خرید اضافه شد</span>
-    </div>
-  </div>
 
 </body>
 </html>

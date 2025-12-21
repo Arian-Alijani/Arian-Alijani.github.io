@@ -102,32 +102,7 @@ if (navbar) {
     }, { passive: true });
 }
 
-// --- Toast helper (dynamic message + icon) ---
-const toast = document.getElementById('toast');
-const toastMsg = document.getElementById('toast-message');
-const toastIcon = document.getElementById('toast-icon');
-let toastTimeout;
 
-function showToast(message, { icon = 'check_circle', iconClass = 'text-green-400' } = {}) {
-    if (!toast) return;
-
-    // جلوگیری از نمایش toastهای مکرر
-    if (toast.classList.contains('opacity-100') && toastMsg?.textContent === message) {
-        return; // toast مشابه در حال نمایش است
-    }
-
-    if (toastMsg) toastMsg.textContent = message;
-    if (toastIcon) {
-        toastIcon.textContent = icon;
-        toastIcon.className = `material-icon ${iconClass}`;
-    }
-
-    toast.classList.remove('translate-y-20', 'opacity-0');
-    if (toastTimeout) clearTimeout(toastTimeout);
-    toastTimeout = setTimeout(() => {
-        toast.classList.add('translate-y-20', 'opacity-0');
-    }, 2600);
-}
 
 // --- Cart state (per product) + Header badge ---
 const cartBtn = document.getElementById('cart-btn');
@@ -218,39 +193,10 @@ function renderCartBadge() {
 renderCartBadge();
 
 // --- Product interactions (Cart + Favorite) ---
-let cartOperationsAllowed = false;
-let initialInteractionTimer = null;
-
-// اجازه عملیات سبد خرید فقط بعد از تعامل کاربر و گذشت زمان
-function allowCartOperations() {
-    cartOperationsAllowed = true;
-    if (initialInteractionTimer) {
-        clearTimeout(initialInteractionTimer);
-        initialInteractionTimer = null;
-    }
-}
-
-// تعامل اولیه کاربر
-document.addEventListener('click', (e) => {
-    if (!cartOperationsAllowed) {
-        // تأخیر 500 میلی‌ثانیه برای اطمینان از تعامل واقعی
-        initialInteractionTimer = setTimeout(allowCartOperations, 500);
-    }
-}, { once: true });
-
-// پاکسازی تایمر در صورت لزوم
-window.addEventListener('beforeunload', () => {
-    if (initialInteractionTimer) {
-        clearTimeout(initialInteractionTimer);
-    }
-});
 
 document.addEventListener('click', (e) => {
     // فقط رویدادهای واقعی کاربر (نه برنامه‌ای)
     if (!e.isTrusted) return;
-
-    // اجازه عملیات سبد خرید فقط بعد از تعامل اولیه کاربر
-    if (!cartOperationsAllowed) return;
 
     const btn = e.target.closest('button');
     if (!btn) return;
@@ -281,7 +227,6 @@ document.addEventListener('click', (e) => {
 
             renderCartBadge();
             saveCartToStorage();
-            showToast('محصول به سبد خرید اضافه شد', { icon: 'check_circle', iconClass: 'text-green-400' });
         } else {
             cartSet.delete(pid);
             btn.classList.remove('in-cart');
@@ -289,22 +234,18 @@ document.addEventListener('click', (e) => {
 
             renderCartBadge();
             saveCartToStorage();
-            showToast('محصول از سبد خرید حذف شد', { icon: 'remove_shopping_cart', iconClass: 'text-red-400' });
         }
         return;
     }
 
-    // Favorite toast (ONLY inside product cards)
+    // Favorite handling (ONLY inside product cards)
     if ((iconName === 'favorite_border' || iconName === 'favorite') && btn.closest('.product-card')) {
         e.stopPropagation();
 
         const isFav = iconName === 'favorite';
         if (iconEl) iconEl.textContent = isFav ? 'favorite_border' : 'favorite';
 
-        showToast(isFav ? 'از علاقه‌مندی‌ها حذف شد' : 'به علاقه‌مندی‌ها اضافه شد', {
-            icon: 'favorite',
-            iconClass: isFav ? 'text-gray-300' : 'text-pink-400'
-        });
+
         return;
     }
 });
@@ -438,9 +379,6 @@ document.getElementById('add-all-to-cart-btn')?.addEventListener('click', (e) =>
     // فقط رویدادهای واقعی کاربر
     if (!e.isTrusted) return;
 
-    // اجازه عملیات سبد خرید فقط بعد از تعامل اولیه کاربر
-    if (!cartOperationsAllowed) return;
-
     const favoriteCards = document.querySelectorAll('#favorites-grid .product-card');
     let addedCount = 0;
 
@@ -455,15 +393,8 @@ document.getElementById('add-all-to-cart-btn')?.addEventListener('click', (e) =>
     if (addedCount > 0) {
         renderCartBadge();
         saveCartToStorage();
-        showToast(`${addedCount} محصول به سبد خرید اضافه شد`, {
-            icon: 'shopping_cart',
-            iconClass: 'text-blue-400'
-        });
     } else {
-        showToast('تمام محصولات از قبل در سبد خرید هستند', {
-            icon: 'info',
-            iconClass: 'text-blue-400'
-        });
+
     }
 });
 
