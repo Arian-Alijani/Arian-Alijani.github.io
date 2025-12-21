@@ -74,11 +74,28 @@ function initNavbarScroll() {
 
     let lastScrollY = window.scrollY;
     let ticking = false;
+    let isHidden = false;
+    let hideTimeout = null;
+    let lastDirection = 'none';
+    let directionStreak = 0;
+    let lastScrollTime = Date.now();
 
     function updateNavbar() {
         const currentScrollY = window.scrollY;
+        const currentTime = Date.now();
+        const timeDiff = currentTime - lastScrollTime;
         const scrollDiff = currentScrollY - lastScrollY;
-        const direction = scrollDiff > 0 ? 'down' : 'up';
+        const direction = Math.abs(scrollDiff) > 2 ? (scrollDiff > 0 ? 'down' : 'up') : 'none';
+        
+        // Track direction consistency
+        if (direction !== 'none') {
+            if (direction === lastDirection) {
+                directionStreak++;
+            } else {
+                directionStreak = 1;
+                lastDirection = direction;
+            }
+        }
         
         // Visual Polish: Add shadow/blur intensity when scrolled
         if (currentScrollY > 10) {
@@ -93,25 +110,49 @@ function initNavbarScroll() {
             }
         }
 
-        // Logic: Hide bottom row on scroll down, Show on scroll up
-        // Always show if near top (< 60px) to prevent hiding initial state
-        if (currentScrollY < 60) {
-             navbarBottom.classList.remove('navbar-hidden');
-        } else if (Math.abs(scrollDiff) > 5) {
-            // Threshold prevents jitter on small movements
-            if (direction === 'down') {
-                navbarBottom.classList.add('navbar-hidden');
-            } else {
+        // Clear any pending hide timeout
+        if (hideTimeout) {
+            clearTimeout(hideTimeout);
+            hideTimeout = null;
+        }
+
+        // Always show if near top
+        if (currentScrollY < 80) {
+            if (isHidden) {
                 navbarBottom.classList.remove('navbar-hidden');
+                isHidden = false;
             }
+            directionStreak = 0;
+        } 
+        // Only hide after consistent scrolling in one direction
+        else if (directionStreak >= 3 && Math.abs(scrollDiff) > 20) {
+            if (direction === 'down' && !isHidden) {
+                hideTimeout = setTimeout(() => {
+                    navbarBottom.classList.add('navbar-hidden');
+                    isHidden = true;
+                }, 100);
+            } else if (direction === 'up' && isHidden) {
+                navbarBottom.classList.remove('navbar-hidden');
+                isHidden = false;
+                directionStreak = 0;
+            }
+        }
+        // Reset streak on small movements
+        else if (Math.abs(scrollDiff) < 20) {
+            directionStreak = Math.max(0, directionStreak - 1);
         }
 
         lastScrollY = currentScrollY;
+        lastScrollTime = currentTime;
         ticking = false;
     }
 
+    // Smooth scroll handling
+    let scrollThrottle = 0;
     window.addEventListener('scroll', () => {
-        if (!ticking) {
+        const now = Date.now();
+        if (now - scrollThrottle > 20 && !ticking) { // 50fps
+            scrollThrottle = now;
             window.requestAnimationFrame(updateNavbar);
             ticking = true;
         }
