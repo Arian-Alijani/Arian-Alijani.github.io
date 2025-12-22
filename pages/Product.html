@@ -120,7 +120,7 @@
                   <div class="w-px h-4 bg-gray-300 mx-1 shrink-0 hidden md:block"></div>
                   <a href="Product.html?cat=case" class="secondary-nav-link">قاب گوشی</a>
                   <a href="Product.html?cat=phone" class="secondary-nav-link">گوشی هوشمند</a>
-                  <a href="Product.html?cat=charger" class="secondary-nav-link">شارژر و کابل</a>
+                  <a href="Product.html?cat=charger" class="secondary-nav-link">شارژ</a>
                   <a href="Product.html?cat=airpod" class="secondary-nav-link">کاور ایرپاد</a>
                   <a href="Product.html?cat=glass" class="secondary-nav-link">گلس و محافظ</a>
                   <a href="Product.html?cat=gadget" class="secondary-nav-link">گجت</a>
@@ -176,7 +176,7 @@
                       <span class="material-icon text-lg">smartphone</span> گوشی هوشمند
                   </a>
                   <a href="Product.html?cat=charger" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors">
-                      <span class="material-icon text-lg">bolt</span> شارژر و کابل
+                      <span class="material-icon text-lg">bolt</span> شارژ
                   </a>
                   <a href="Product.html?cat=airpod" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors">
                       <span class="material-icon text-lg">headphones</span> کاور ایرپاد
@@ -211,7 +211,7 @@
 
       <!-- Filter Sidebar -->
       <aside id="filter-sidebar" class="filter-sidebar fixed lg:static top-0 -right-full lg:right-auto w-[90%] sm:w-[80%] md:w-72 lg:max-w-none lg:w-full h-full lg:h-auto bg-white lg:bg-transparent z-[80] lg:z-auto lg:col-span-3 lg:block p-4 lg:p-0" role="navigation" aria-label="فیلترهای محصولات">
-        <div class="bg-white rounded-2xl lg:rounded-3xl border border-gray-200/80 shadow-sm lg:shadow-lg lg:p-4 h-full flex flex-col">
+        <div class="bg-white rounded-xl border border-gray-200/80 shadow-sm lg:shadow-lg lg:p-4 h-full flex flex-col">
 
             <div class="flex items-center justify-between lg:hidden pb-3 border-b border-gray-200">
                 <h2 class="font-bold text-lg text-[#1D1B20]">فیلترها</h2>
@@ -228,7 +228,7 @@
               </div>
             </div>
 
-            <div class="filter-section flex-1 overflow-y-auto max-h-[calc(100vh-240px)] lg:max-h-none pr-2">
+            <div class="filter-section flex-1 overflow-y-auto pr-2">
               <details open class="filter-accordion">
                 <summary class="filter-accordion-summary">
                   <span>دسته ها</span>
@@ -245,7 +245,7 @@
                       <span class="category-label">گوشی هوشمند</span>
                     </button>
                     <button data-category="charger" class="category-filter-btn" type="button">
-                      <span class="category-label">شارژر و کابل</span>
+                      <span class="category-label">شارژ</span>
                     </button>
                     <button data-category="airpod" class="category-filter-btn" type="button">
                       <span class="category-label">کاور ایرپاد</span>
@@ -270,22 +270,19 @@
                 </div>
               </details>
 
-              <details open class="filter-accordion">
-                <summary class="filter-accordion-summary">
-                  <span>موجودی</span>
-                  <span class="material-icon">expand_more</span>
-                </summary>
-                <div class="filter-options">
-                  <label class="filter-option">
-                    <input type="checkbox" id="in-stock-toggle">
-                    <span>فقط کالاهای موجود</span>
-                  </label>
-                </div>
-              </details>
+              <div class="filter-in-stock-panel mt-4 flex items-center justify-between gap-3 px-4 py-3 bg-[#F8F8FB] border border-gray-200/80 rounded-2xl shadow-sm" aria-live="polite">
+                <p class="text-sm font-semibold text-[#1D1B20] whitespace-nowrap">کالاهای موجود</p>
+                <label class="in-stock-toggle-switch" for="in-stock-toggle">
+                  <input type="checkbox" id="in-stock-toggle">
+                  <span class="toggle-track">
+                    <span class="toggle-thumb"></span>
+                  </span>
+                </label>
+              </div>
             </div>
 
             <div class="filter-actions">
-              <div class="pt-3 border-t border-gray-200">
+              <div class="pt-3">
                   <button id="reset-filters" class="w-full text-center py-3 px-4 rounded-xl bg-gray-100 text-gray-700 font-bold hover:bg-gray-200 transition" type="button" aria-label="حذف تمام فیلترها">
                       حذف فیلترها
                   </button>
@@ -302,18 +299,17 @@
       <!-- Products Grid -->
       <div class="lg:col-span-9 mt-6 lg:mt-0">
         <!-- Header: Sort + Results count -->
-        <div class="products-header flex flex-col gap-4 p-4 mb-6 bg-gradient-to-r from-[#EADDFF]/40 to-[#FEF7FF] rounded-2xl border border-gray-200/80 shadow-sm" role="heading" aria-level="2">
+        <div class="products-header flex flex-col gap-4 p-4 mb-6 bg-gradient-to-r from-[#EADDFF]/40 to-[#FEF7FF] rounded-xl border border-gray-200/80 shadow-sm" role="heading" aria-level="2">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div class="products-header-sort flex items-center gap-3 flex-1 md:flex-none">
                   <span class="material-icon text-[#6750A4] text-xl">sort</span>
                   <label for="sort-by" class="font-medium whitespace-nowrap text-sm md:text-base">مرتب‌سازی:</label>
                   <div class="relative flex-1 sm:flex-none sm:w-56">
                     <select id="sort-by" class="sort-select bg-white border border-[#79747E] text-gray-900 text-sm rounded-xl focus:ring-2 focus:ring-[#6750A4] focus:border-[#6750A4] block w-full pr-3 pl-10 py-2.5 appearance-none shadow-sm hover:shadow-md transition">
-                        <option value="popular">محبوب‌ترین</option>
                         <option value="newest">جدیدترین</option>
+                        <option value="oldest">قدیمی‌ترین</option>
                         <option value="price-asc">قیمت: از کم به زیاد</option>
                         <option value="price-desc">قیمت: از زیاد به کم</option>
-                        <option value="rating">بیشترین امتیاز</option>
                     </select>
                     <span class="material-icon absolute left-3 top-1/2 transform -translate-y-1/2 text-[#6750A4] pointer-events-none text-lg">unfold_more</span>
                   </div>
@@ -325,7 +321,7 @@
               <div id="products-grid" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-3 md:gap-4 lg:gap-5">
           <!-- Product cards will be dynamically populated/filtered. -->
           <article
-            class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group"
+            class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-4 border border-gray-100 group"
             data-category="case"
             data-brand="apple"
             data-model="آیفون ۱۵"
@@ -336,8 +332,8 @@
             data-stock="true"
           >
             <div class="relative">
-              <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-                <img src="https://placehold.co/900x900/1f2937/FFFFFF?text=Armor+Case" alt="قاب ضدضربه سری Armor" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
+              <div class="product-media product-media--flush rounded-2xl bg-[#F7F5FA] flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
+                <img src="https://placehold.co/900x900/1f2937/FFFFFF?text=Armor+Case" alt="قاب ضدضربه سری Armor" class="w-full h-full object-contain" width="900" height="900" loading="lazy">
               </div>
 
               <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
@@ -346,12 +342,12 @@
               </div>
             </div>
 
-            <div class="mt-3">
+            <div class="mt-4">
               <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">قاب ضدضربه سری Armor</h3>
               <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Apple</p>
             </div>
 
-            <div class="mt-3 flex items-end justify-between gap-3">
+            <div class="mt-3 flex items-center justify-between gap-3">
               <div class="min-w-0">
                 <div class="text-[10px] md:text-xs text-gray-400 line-through">۸۵۰,۰۰۰</div>
                 <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
@@ -360,10 +356,10 @@
               </div>
 
               <div class="flex items-center gap-2">
-                <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+                <button class="nav-icon-btn ripple product-like-btn w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
                   <span class="material-icon text-[22px]">favorite_border</span>
                 </button>
-                <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+                <button class="nav-icon-btn ripple product-add-btn w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
                   <span class="material-icon text-[22px]">add</span>
                 </button>
               </div>
@@ -371,7 +367,7 @@
           </article>
 
           <article
-            class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group"
+            class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-4 border border-gray-100 group"
             data-category="glass"
             data-brand="samsung"
             data-model="S23"
@@ -382,8 +378,8 @@
             data-stock="true"
           >
             <div class="relative">
-              <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-                <img src="https://placehold.co/900x900/0ea5e9/FFFFFF?text=Privacy+Glass" alt="گلس پرایوسی S23" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
+              <div class="product-media product-media--flush rounded-2xl bg-[#F7F5FA] flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
+                <img src="https://placehold.co/900x900/0ea5e9/FFFFFF?text=Privacy+Glass" alt="گلس پرایوسی S23" class="w-full h-full object-contain" width="900" height="900" loading="lazy">
               </div>
 
               <div class="product-card-color-strip" aria-label="برچسب محصول">
@@ -391,12 +387,12 @@
               </div>
             </div>
 
-            <div class="mt-3">
+            <div class="mt-4">
               <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">گلس پرایوسی S23</h3>
               <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Samsung</p>
             </div>
 
-            <div class="mt-3 flex items-end justify-between gap-3">
+            <div class="mt-3 flex items-center justify-between gap-3">
               <div class="min-w-0">
                 <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
                   ۳۹۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
@@ -404,10 +400,10 @@
               </div>
 
               <div class="flex items-center gap-2">
-                <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+                <button class="nav-icon-btn ripple product-like-btn w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
                   <span class="material-icon text-[22px]">favorite_border</span>
                 </button>
-                <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+                <button class="nav-icon-btn ripple product-add-btn w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
                   <span class="material-icon text-[22px]">add</span>
                 </button>
               </div>
@@ -415,7 +411,7 @@
           </article>
 
           <article
-            class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group"
+            class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-4 border border-gray-100 group"
             data-category="charger"
             data-brand="anker"
             data-type="adapter"
@@ -427,8 +423,8 @@
             data-stock="true"
           >
             <div class="relative">
-              <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-                <img src="https://placehold.co/900x900/f97316/FFFFFF?text=Fast+Charger" alt="شارژر ۳۰ وات Anker" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
+              <div class="product-media product-media--flush rounded-2xl bg-[#F7F5FA] flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
+                <img src="https://placehold.co/900x900/f97316/FFFFFF?text=Fast+Charger" alt="شارژر ۳۰ وات Anker" class="w-full h-full object-contain" width="900" height="900" loading="lazy">
               </div>
 
               <div class="product-card-color-strip" aria-label="ویژگی‌ها">
@@ -436,12 +432,12 @@
               </div>
             </div>
 
-            <div class="mt-3">
+            <div class="mt-4">
               <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">شارژر ۳۰ وات Anker</h3>
               <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Anker</p>
             </div>
 
-            <div class="mt-3 flex items-end justify-between gap-3">
+            <div class="mt-3 flex items-center justify-between gap-3">
               <div class="min-w-0">
                 <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
                   ۹۸۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
@@ -449,10 +445,10 @@
               </div>
 
               <div class="flex items-center gap-2">
-                <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+                <button class="nav-icon-btn ripple product-like-btn w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
                   <span class="material-icon text-[22px]">favorite_border</span>
                 </button>
-                <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+                <button class="nav-icon-btn ripple product-add-btn w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
                   <span class="material-icon text-[22px]">add</span>
                 </button>
               </div>
@@ -460,7 +456,7 @@
           </article>
 
           <article
-            class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group"
+            class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-4 border border-gray-100 group"
             data-category="gadget"
             data-brand="baseus"
             data-type="holder"
@@ -471,8 +467,8 @@
             data-stock="true"
           >
             <div class="relative">
-              <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-                <img src="https://placehold.co/900x900/64748b/FFFFFF?text=Car+Holder" alt="هولدر ماشین Baseus" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
+              <div class="product-media product-media--flush rounded-2xl bg-[#F7F5FA] flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
+                <img src="https://placehold.co/900x900/64748b/FFFFFF?text=Car+Holder" alt="هولدر ماشین Baseus" class="w-full h-full object-contain" width="900" height="900" loading="lazy">
               </div>
 
               <div class="product-card-color-strip" aria-label="رنگ موجود">
@@ -480,12 +476,12 @@
               </div>
             </div>
 
-            <div class="mt-3">
+            <div class="mt-4">
               <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">هولدر ماشین Baseus</h3>
               <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Baseus</p>
             </div>
 
-            <div class="mt-3 flex items-end justify-between gap-3">
+            <div class="mt-3 flex items-center justify-between gap-3">
               <div class="min-w-0">
                 <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
                   ۴۱۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
@@ -493,10 +489,10 @@
               </div>
 
               <div class="flex items-center gap-2">
-                <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+                <button class="nav-icon-btn ripple product-like-btn w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
                   <span class="material-icon text-[22px]">favorite_border</span>
                 </button>
-                <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+                <button class="nav-icon-btn ripple product-add-btn w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
                   <span class="material-icon text-[22px]">add</span>
                 </button>
               </div>
@@ -558,7 +554,6 @@
         ],
         case: [
           { key: 'brand', label: 'برند گوشی', options: ['apple', 'samsung', 'xiaomi'] },
-          { key: 'model', label: 'مدل گوشی' },
           { key: 'material', label: 'جنس قاب', options: ['silicone', 'leather', 'clear', 'tpu'] }
         ],
         phone: [
@@ -569,13 +564,10 @@
         ],
         charger: [
           { key: 'brand', label: 'برند', options: ['anker', 'apple', 'xiaomi'] },
-          { key: 'type', label: 'نوع شارژر', options: ['adapter', 'powerbank', 'cable'] },
-          { key: 'watt', label: 'توان خروجی', options: ['20w', '30w', '33w', '65w'] },
           { key: 'port', label: 'نوع پورت', options: ['usb-c', 'usb-a', 'usb-c+usb-a'] }
         ],
         airpod: [
           { key: 'brand', label: 'برند', options: ['apple', 'baseus'] },
-          { key: 'model', label: 'مدل', options: ['AirPods 2', 'AirPods 3', 'AirPods Pro', 'AirPods Pro 2'] },
           { key: 'material', label: 'جنس کاور', options: ['silicone', 'leather', 'hard'] }
         ],
         glass: [
@@ -611,7 +603,6 @@
         },
         type: {
           adapter: 'آداپتور',
-          powerbank: 'پاوربانک',
           cable: 'کابل',
           popsocket: 'پاپ سوکت',
           holder: 'هولدر',
@@ -885,20 +876,18 @@
           if (isVisible) visibleProducts.push(card);
         });
 
-        const sortBy = sortSelect ? sortSelect.value : 'popular';
+        const sortBy = sortSelect ? sortSelect.value : 'newest';
         visibleProducts.sort((a, b) => {
           switch (sortBy) {
             case 'price-asc':
               return (parseInt(a.dataset.price, 10) || 0) - (parseInt(b.dataset.price, 10) || 0);
             case 'price-desc':
               return (parseInt(b.dataset.price, 10) || 0) - (parseInt(a.dataset.price, 10) || 0);
+            case 'oldest':
+              return (parseInt(a.dataset.new, 10) || 0) - (parseInt(b.dataset.new, 10) || 0);
             case 'newest':
-              return (parseInt(b.dataset.new, 10) || 0) - (parseInt(a.dataset.new, 10) || 0);
-            case 'rating':
-              return (parseInt(b.dataset.popular, 10) || 0) - (parseInt(a.dataset.popular, 10) || 0);
-            case 'popular':
             default:
-              return (parseInt(b.dataset.popular, 10) || 0) - (parseInt(a.dataset.popular, 10) || 0);
+              return (parseInt(b.dataset.new, 10) || 0) - (parseInt(a.dataset.new, 10) || 0);
           }
         });
 
@@ -954,7 +943,7 @@
           renderDynamicFilters();
           if (filterSearch) filterSearch.value = '';
           if (inStockToggle) inStockToggle.checked = false;
-          if (sortSelect) sortSelect.value = 'popular';
+          if (sortSelect) sortSelect.value = 'newest';
           updateCategoryInUrl('all');
           filterAndSortProducts();
         });
@@ -1068,7 +1057,7 @@
               <ul class="space-y-4">
                 <li><a href="Product.html?cat=case" class="text-gray-600 hover:text-purple-600 transition-colors">قاب گوشی</a></li>
                 <li><a href="Product.html?cat=phone" class="text-gray-600 hover:text-purple-600 transition-colors">گوشی هوشمند</a></li>
-                <li><a href="Product.html?cat=charger" class="text-gray-600 hover:text-purple-600 transition-colors">شارژر و کابل</a></li>
+                <li><a href="Product.html?cat=charger" class="text-gray-600 hover:text-purple-600 transition-colors">شارژ</a></li>
                 <li><a href="Product.html?cat=airpod" class="text-gray-600 hover:text-purple-600 transition-colors">کاور ایرپاد</a></li>
                 <li><a href="Product.html?cat=glass" class="text-gray-600 hover:text-purple-600 transition-colors">گلس و محافظ</a></li>
                 <li><a href="Product.html?cat=gadget" class="text-gray-600 hover:text-purple-600 transition-colors">گجت</a></li>

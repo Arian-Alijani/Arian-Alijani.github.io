@@ -132,6 +132,7 @@ function initHeaderCategoryDropdowns() {
     const dropdowns = Array.from(document.querySelectorAll('[data-nav-dropdown]'));
     if (dropdowns.length === 0) return;
 
+    const hoverMediaQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
     const setState = (dropdown, isOpen) => {
         const trigger = dropdown.querySelector('.nav-dropdown-trigger');
         const panel = dropdown.querySelector('.nav-dropdown-panel');
@@ -158,6 +159,32 @@ function initHeaderCategoryDropdowns() {
             closeAll(dropdown);
             setState(dropdown, !isOpen);
         });
+
+        if (hoverMediaQuery.matches) {
+            let hoverCloseTimer = null;
+            const scheduleClose = () => {
+                clearTimeout(hoverCloseTimer);
+                hoverCloseTimer = setTimeout(() => setState(dropdown, false), 180);
+            };
+
+            dropdown.addEventListener('mouseenter', () => {
+                clearTimeout(hoverCloseTimer);
+                closeAll(dropdown);
+                setState(dropdown, true);
+            });
+            dropdown.addEventListener('mouseleave', () => {
+                scheduleClose();
+            });
+            const panel = dropdown.querySelector('.nav-dropdown-panel');
+            if (panel) {
+                panel.addEventListener('mouseenter', () => {
+                    clearTimeout(hoverCloseTimer);
+                });
+                panel.addEventListener('mouseleave', () => {
+                    scheduleClose();
+                });
+            }
+        }
     });
 
     document.addEventListener('click', (event) => {
