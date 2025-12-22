@@ -5,6 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ماهان شاپ | خرید آنلاین محصولات دیجیتال</title>
+  <meta name="description" content="ماهان شاپ؛ فروشگاه آنلاین لوازم جانبی موبایل با تنوع بالا، ارسال سریع و ضمانت اصالت." />
+  <meta name="theme-color" content="#FEF7FF" />
 
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -15,33 +17,26 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
 
   <link rel="stylesheet" href="assets/css/style.css" />
-<script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
-  }
-}
-</script>
 </head>
-<body class="bg-[#FEF7FF] text-gray-900 overflow-x-hidden">
+<body class="bg-[#FEF7FF] text-gray-900 overflow-x-hidden" data-auth="authenticated">
+  <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+  <div id="top" aria-hidden="true"></div>
 
-  <!-- Combined Header (Desktop & Mobile Optimized) -->
+  <!-- هدر اصلی: ناوبری، جستجو و وضعیت ورود کاربر -->
   <header id="navbar" class="fixed top-0 z-50 bg-[#FEF7FF]/90 backdrop-blur-md border-b border-gray-200/50 transition-all duration-300">
       
-      <!-- Top Row: Logo, Search, Actions (Always Visible) -->
+      <!-- ردیف بالا: لوگو، جستجو و اکشن‌های کاربر -->
       <div id="navbar-top" class="max-w-7xl mx-auto px-4 pt-3 pb-3 md:pb-0">
           <div class="flex flex-wrap md:flex-nowrap items-center justify-between gap-4">
-              
-<!-- Left Section: Mobile Menu & Logo -->
+
+               <!-- بخش چپ: منوی موبایل و لوگو -->
                <div class="flex items-center gap-3 shrink-0">
-                   <!-- Mobile Menu Trigger -->
+                   <!-- دکمه باز کردن منو -->
                    <button id="mobile-menu-toggle" type="button" class="md:hidden nav-icon-btn ripple p-2 rounded-full text-gray-700" aria-label="باز کردن منو" aria-controls="mobile-menu" aria-expanded="false">
                        <span class="material-icon" aria-hidden="true">menu</span>
                    </button>
 
-                   <!-- Logo -->
+                   <!-- لوگو -->
                    <a href="index.html" class="flex items-center gap-2 group logo-container">
                        <div class="w-10 h-10 bg-gradient-to-br from-purple-600 to-purple-700 rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/20 group-hover:scale-105 transition-transform duration-300">
                            <span class="material-icon text-white text-xl">shopping_bag</span>
@@ -50,64 +45,63 @@
                    </a>
                </div>
   
-              <!-- Middle Section: Search Bar (MD3 Style) -->
+              <!-- جستجو: مسیر و پارامترها توسط بک‌اند تنظیم شوند -->
                   <div class="order-last md:order-none w-full md:max-w-xl mx-auto md:mx-6 transition-all duration-300">
-                      <div class="relative group search-container">
+                      <form class="relative group search-container" role="search" action="pages/Product.html" method="get">
                           <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
                           <span class="material-icon text-gray-500 group-focus-within:text-[#6750A4] transition-colors" aria-hidden="true">search</span>
                           </div>
-                          <input type="text" 
+                          <input type="search"
+                             name="q"
+                             enterkeyhint="search"
                              aria-label="جستجوی محصولات"
                              class="w-full h-12 pr-12 pl-4 rounded-full bg-[#F3EDF7] border border-transparent hover:bg-[#EADDFF]/50 focus:bg-white focus:border-[#6750A4] focus:shadow-[0_4px_12px_rgba(103,80,164,0.15)] outline-none transition-all duration-300 placeholder-gray-500 text-sm md:text-base"
                              placeholder="جستجو در بین هزاران محصول...">
-                      </div>
+                      </form>
                   </div>
   
-              <!-- Right Section: Actions (Cart, Fav, Profile/Auth) -->
+              <!-- اکشن‌های کاربر: علاقه‌مندی، سبد خرید، حساب -->
               <nav class="flex items-center gap-2 md:gap-3 shrink-0" aria-label="ابزارهای کاربری">
                   
-                  <!-- Favorites -->
+                  <!-- علاقه‌مندی‌ها -->
 <a href="pages/favorites.html" class="nav-icon-btn ripple w-10 h-10 rounded-lg flex items-center justify-center text-gray-600" title="علاقه‌مندی‌ها" aria-label="علاقه‌مندی‌ها">
                        <span class="material-icon" aria-hidden="true">favorite_border</span>
                    </a>
 
-                  <!-- Cart -->
+                  <!-- سبد خرید -->
 <a href="pages/cart.html" id="cart-btn" class="nav-icon-btn ripple w-10 h-10 rounded-lg flex items-center justify-center text-gray-600 relative" title="سبد خرید" aria-label="سبد خرید">
                        <span class="material-icon" aria-hidden="true">shopping_cart</span>
-                       <span id="cart-count-badge" class="absolute top-0 right-0 w-4 h-4 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center border border-white hidden z-10">0</span>
+                       <span id="cart-count-badge" class="absolute top-0 right-0 w-4 h-4 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center border border-white hidden z-10" aria-live="polite" aria-atomic="true">0</span>
                    </a>
 
-                  <!-- Divider (Desktop only) -->
+                  <!-- جداکننده (نمایش در دسکتاپ) -->
                   <div class="hidden md:block w-px h-6 bg-gray-300 mx-1"></div>
 
-<!-- Profile (Logged In State) -->
-                   <a href="pages/profile.html" class="hidden md:flex items-center gap-2 pl-1 pr-1 py-1 rounded-full hover:bg-[#F3EDF7] transition-all group profile-section" aria-label="حساب کاربری">
+                  <!-- وضعیت ورود: بک‌اند مقدار data-auth را روی body تنظیم کند -->
+                   <a href="pages/profile.html" class="auth-only hidden md:flex items-center gap-2 pl-1 pr-1 py-1 rounded-full hover:bg-[#F3EDF7] transition-all group profile-section" aria-label="حساب کاربری">
                        <div class="w-8 h-8 bg-[#EADDFF] rounded-full flex items-center justify-center text-[#21005D]">
                            <span class="material-icon text-lg" aria-hidden="true">person</span>
                        </div>
                        <span class="text-sm font-bold text-gray-700 group-hover:text-[#6750A4]">حساب کاربری</span>
                    </a>
 
-                  <!-- Mobile Profile Icon -->
-                  <a href="pages/profile.html" class="md:hidden nav-icon-btn ripple w-10 h-10 rounded-full hover:bg-[#F3EDF7] flex items-center justify-center text-gray-600 hover:text-[#6750A4] transition-colors" aria-label="حساب کاربری">
+                  <a href="pages/profile.html" class="auth-only md:hidden nav-icon-btn ripple w-10 h-10 rounded-full hover:bg-[#F3EDF7] flex items-center justify-center text-gray-600 hover:text-[#6750A4] transition-colors" aria-label="حساب کاربری">
                       <span class="material-icon" aria-hidden="true">person</span>
                   </a>
 
-                  <!-- 
-                  =======================================================
-                  Auth Button (For Non-Logged In Users) - COMMENTED OUT
-                  =======================================================
-                  <a href="pages/login.html" class="flex items-center gap-2 bg-[#6750A4] text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-[#523e85] hover:shadow-md transition-all ripple">
-                      <span class="material-icon text-lg">login</span>
+                  <a href="pages/login.html" class="guest-only hidden md:flex items-center gap-2 bg-[#6750A4] text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-[#523e85] hover:shadow-md transition-all ripple" aria-label="ورود یا ثبت نام">
+                      <span class="material-icon text-lg" aria-hidden="true">login</span>
                       <span>ورود | ثبت نام</span>
                   </a>
-                  -->
+                  <a href="pages/login.html" class="guest-only md:hidden nav-icon-btn ripple w-10 h-10 rounded-full hover:bg-[#F3EDF7] flex items-center justify-center text-gray-600 hover:text-[#6750A4] transition-colors" aria-label="ورود یا ثبت نام">
+                      <span class="material-icon" aria-hidden="true">login</span>
+                  </a>
               </nav>
           </div>
-          <!-- Bottom Row: Secondary Navigation (Categories) -->
+          <!-- ردیف پایین: دسته‌بندی‌ها -->
           <div id="navbar-bottom" class="border-t border-gray-100/80 md:border-none hidden md:block transition-all duration-300">
               <nav class="secondary-nav flex items-center gap-1 md:gap-6 overflow-x-auto no-scrollbar py-2 md:py-3 mask-image-fade" aria-label="دسته‌بندی‌ها">
-                  <a href="index.html" class="secondary-nav-link active">
+                  <a href="index.html" class="secondary-nav-link active" aria-current="page">
                       <span class="material-icon text-lg" aria-hidden="true">home</span>
                       خانه
                   </a>
@@ -132,11 +126,11 @@
       </div>
   </header>
   
-  <!-- Mobile Menu Drawer -->
+  <!-- منوی موبایل (دراور) -->
   <div class="md:hidden">
-      <!-- Overlay -->
+      <!-- لایه تار (Overlay) -->
       <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/40 z-[99] hidden opacity-0 transition-opacity duration-300" aria-hidden="true"></div>
-      <!-- Menu -->
+      <!-- محتوای منو -->
       <div id="mobile-menu" class="fixed right-0 top-0 h-full w-4/5 max-w-[300px] bg-[#FEF7FF] shadow-2xl transform translate-x-full z-[100] transition-transform duration-300" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="mobile-menu-title">
           <div class="p-5 flex justify-between items-center bg-[#F3EDF7]">
               <div class="flex items-center gap-2">
@@ -148,13 +142,11 @@
               </button>
           </div>
           <div class="p-4 overflow-y-auto h-[calc(100%-64px)]">
-              <!-- Commented Login for Drawer -->
-              <!-- 
-              <div class="mb-6 p-4 bg-white rounded-2xl border border-gray-100 text-center">
+              <!-- نمایش فقط برای کاربر مهمان -->
+              <div class="guest-only mb-6 p-4 bg-white rounded-2xl border border-gray-100 text-center">
                   <p class="text-sm text-gray-500 mb-3">هنوز وارد نشده‌اید؟</p>
                   <a href="pages/login.html" class="block w-full bg-[#6750A4] text-white py-2.5 rounded-xl font-bold text-sm shadow-md ripple">ورود یا ثبت نام</a>
               </div>
-              -->
 
               <nav class="flex flex-col gap-1">
                   <a href="index.html" class="flex items-center gap-3 p-3 rounded-xl text-[#1D1B20] bg-[#EADDFF] font-bold" aria-current="page">
@@ -194,21 +186,26 @@
       </div>
   </div>
 
+  <main id="main-content">
+    <h1 class="sr-only">ماهان شاپ | فروشگاه آنلاین لوازم جانبی موبایل</h1>
+
+  <!-- بنر اصلی: تصاویر و لینک‌ها توسط بک‌اند مدیریت شوند -->
   <section id="banner-section" class="banner-section pt-4 pb-2 px-0 sm:px-4 max-w-none sm:max-w-7xl sm:mx-auto">
+    <!-- ساختار اسلایدر (banner-wrapper/banners) برای اسکریپت ضروری است -->
     <div class="banner-container h-64 sm:h-64 md:h-80 lg:h-96 rounded-none sm:rounded-3xl shadow-md relative overflow-hidden group">
       <div class="banner-wrapper h-full" id="banner-wrapper">
         <div class="banner-slide h-full active">
-          <!-- Image dimensions: 1200x500 -->
-          <img src="https://placehold.co/1200x500/F3E5F5/6750A4?text=Banner+1" alt="Banner 1">
+          <!-- ابعاد پیشنهادی تصویر: 1200x500 -->
+          <img src="https://placehold.co/1200x500/F3E5F5/6750A4?text=Banner+1" alt="Banner 1" width="1200" height="500" loading="eager" fetchpriority="high" decoding="async">
         </div>
         <div class="banner-slide h-full">
-          <img src="https://placehold.co/1200x500/E3F2FD/2196F3?text=Banner+2" alt="Banner 2">
+          <img src="https://placehold.co/1200x500/E3F2FD/2196F3?text=Banner+2" alt="Banner 2" width="1200" height="500" loading="lazy" decoding="async">
         </div>
         <div class="banner-slide h-full">
-          <img src="https://placehold.co/1200x500/E0F2F1/009688?text=Banner+3" alt="Banner 3">
+          <img src="https://placehold.co/1200x500/E0F2F1/009688?text=Banner+3" alt="Banner 3" width="1200" height="500" loading="lazy" decoding="async">
         </div>
         <div class="banner-slide h-full">
-          <img src="https://placehold.co/1200x500/FFEBEE/D32F2F?text=Banner+4" alt="Banner 4">
+          <img src="https://placehold.co/1200x500/FFEBEE/D32F2F?text=Banner+4" alt="Banner 4" width="1200" height="500" loading="lazy" decoding="async">
         </div>
       </div>
 
@@ -221,14 +218,15 @@
     </div>
   </section>
 
+  <!-- دسته‌بندی‌های محبوب: عنوان/تصویر/لینک توسط بک‌اند تنظیم شود -->
   <section id="categories" class="page-section max-w-7xl mx-auto px-4">
     <h2 class="text-xl md:text-2xl font-bold text-[#1D1B20] mb-4 md:mb-6">دسته بندی‌های محبوب</h2>
 
     <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 md:gap-6">
 
-      <!-- Tall box (covers/protectors) - spans 1 column and 2 rows on desktop -->
+      <!-- کارت بلند (قاب و محافظ) - در دسکتاپ دو ردیف را پوشش می‌دهد -->
       <a href="pages/Product.html?cat=case" class="category-card phone-case col-span-2 lg:row-span-2 lg:col-span-1 rounded-2xl category-case" data-icon="smartphone" aria-label="دسته‌بندی قاب گوشی">
-        <!-- Recommended image size: 1200x1600 (3:4 portrait) -->
+        <!-- ابعاد پیشنهادی تصویر: 1200x1600 (نسبت 3:4) -->
         <img
           src="https://placehold.co/1200x1600/3B82F6/FFFFFF"
           alt="تصویر دسته‌بندی قاب گوشی"
@@ -248,9 +246,9 @@
         </div>
       </a>
 
-      <!-- Wide smartphone box - spans 2 columns on desktop -->
+      <!-- کارت افقی گوشی - در دسکتاپ دو ستون را پوشش می‌دهد -->
       <a href="pages/Product.html?cat=phone" class="category-card smartphone-box col-span-2 lg:col-span-2 rounded-lg md:rounded-2xl category-phone" data-icon="smartphone" aria-label="دسته‌بندی گوشی هوشمند">
-        <!-- Recommended image size: 1600x900 (16:9 landscape) -->
+        <!-- ابعاد پیشنهادی تصویر: 1600x900 (نسبت 16:9) -->
         <img
           src="https://placehold.co/1600x900/10B981/FFFFFF"
           alt="تصویر دسته‌بندی گوشی هوشمند"
@@ -268,9 +266,9 @@
         <span class="material-icon absolute -bottom-4 -left-4 text-8xl md:text-[10rem] text-white/15 z-[3]">smartphone</span>
       </a>
 
-      <!-- Normal boxes under the wide smartphone (one per column) -->
+      <!-- کارت‌های استاندارد زیر کارت افقی -->
       <a href="pages/Product.html?cat=glass" class="category-card rounded-lg md:rounded-2xl h-44 md:h-48 category-glass" data-icon="shield" aria-label="دسته‌بندی گلس و محافظ">
-        <!-- Recommended image size: 1200x900 (4:3) -->
+        <!-- ابعاد پیشنهادی تصویر: 1200x900 (نسبت 4:3) -->
         <img
           src="https://placehold.co/1200x900/F59E0B/FFFFFF"
           alt="تصویر دسته‌بندی گلس و محافظ"
@@ -288,7 +286,7 @@
       </a>
 
       <a href="pages/Product.html?cat=charger" class="category-card rounded-lg md:rounded-2xl h-44 md:h-48 category-charger" data-icon="bolt" aria-label="دسته‌بندی شارژر و کابل">
-        <!-- Recommended image size: 1200x900 (4:3) -->
+        <!-- ابعاد پیشنهادی تصویر: 1200x900 (نسبت 4:3) -->
         <img
           src="https://placehold.co/1200x900/EF4444/FFFFFF"
           alt="تصویر دسته‌بندی شارژر و کابل"
@@ -305,9 +303,9 @@
         <span class="material-icon absolute -bottom-4 -left-4 text-8xl md:text-[10rem] text-white/15 z-[3]">bolt</span>
       </a>
 
-      <!-- Two boxes in same row: کاور ایرپاد and گجت -->
+      <!-- دو کارت کنار هم: کاور ایرپاد و گجت -->
       <a href="pages/Product.html?cat=airpod" class="category-card lg:col-span-1 rounded-2xl h-44 md:h-48 category-ipad" data-icon="headphones" aria-label="دسته‌بندی کاور ایرپاد">
-        <!-- Recommended image size: 1200x900 (4:3) -->
+        <!-- ابعاد پیشنهادی تصویر: 1200x900 (نسبت 4:3) -->
         <img
           src="https://placehold.co/1200x900/EC4899/FFFFFF"
           alt="تصویر دسته‌بندی کاور ایرپاد"
@@ -325,7 +323,7 @@
       </a>
 
       <a href="pages/Product.html?cat=gadget" class="category-card lg:col-span-1 rounded-lg md:rounded-2xl h-44 md:h-48 category-gadget" data-icon="diamond" aria-label="دسته‌بندی گجت">
-        <!-- Recommended image size: 1200x900 (4:3) -->
+        <!-- ابعاد پیشنهادی تصویر: 1200x900 (نسبت 4:3) -->
         <img
           src="https://placehold.co/1200x900/8B5CF6/FFFFFF"
           alt="تصویر دسته‌بندی گجت"
@@ -345,12 +343,14 @@
     </div>
   </section>
 
+  <!-- محصولات پیشنهادی: لیست از API پیشنهادها -->
   <section class="page-section max-w-7xl mx-auto px-4">
     <div class="flex justify-between items-center mb-6 md:mb-8">
       <h2 class="text-xl md:text-2xl font-bold text-[#1D1B20]">محصولات پیشنهادی</h2>
       <a href="pages/Product.html" class="text-sm md:text-base text-[#6750A4] font-medium hover:underline">مشاهده همه</a>
     </div>
 
+    <!-- کارت‌ها توسط بک‌اند رندر شوند؛ data-* (pid, sku, price, compare-price, category, image) برای سبد/علاقه‌مندی استفاده می‌شود -->
     <div class="products-row drag-scroll flex gap-3 md:gap-6 overflow-x-auto no-scrollbar pb-8 px-2 snap-x snap-mandatory" data-autoplay="suggested" role="region" aria-roledescription="carousel" aria-label="محصولات پیشنهادی" aria-live="off" tabindex="0">
 
       <article
@@ -640,10 +640,11 @@
   <section class="page-section max-w-7xl mx-auto px-4">
     <div class="flex justify-between items-center mb-6 md:mb-8">
       <h2 class="text-xl md:text-2xl font-bold text-[#1D1B20]">پرفروش‌ترین‌ها</h2>
-      <a href="#" class="text-sm md:text-base text-[#6750A4] font-medium hover:underline">مشاهده همه</a>
+      <a href="pages/Product.html?sort=best" class="text-sm md:text-base text-[#6750A4] font-medium hover:underline">مشاهده همه</a>
     </div>
 
-    <div class="products-row best-sellers-row drag-scroll flex gap-3 md:gap-6 overflow-x-auto no-scrollbar pb-8 px-2 snap-x snap-mandatory" data-autoplay="best">
+    <!-- کارت‌ها توسط بک‌اند رندر شوند؛ data-* برای سبد/علاقه‌مندی استفاده می‌شود -->
+    <div class="products-row best-sellers-row drag-scroll flex gap-3 md:gap-6 overflow-x-auto no-scrollbar pb-8 px-2 snap-x snap-mandatory" data-autoplay="best" role="region" aria-roledescription="carousel" aria-label="پرفروش‌ترین‌ها" aria-live="off" tabindex="0">
 
       <article
         class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
@@ -974,6 +975,7 @@
     </div>
   </section>
 
+  <!-- بنر میانی: تصویر پس‌زمینه و متن‌ها قابل مدیریت از بک‌اند -->
   <section class="page-section max-w-7xl mx-auto px-4">
     <div class="case-promo-min case-promo-min--banner rounded-2xl md:rounded-3xl p-5 md:p-7" style="--case-promo-img: url('https://placehold.co/1200x520/efe9ff/6750A4?text=Banner');">
       <div class="case-promo-grid">
@@ -1004,7 +1006,8 @@
       <a href="pages/Product.html?cat=case" class="text-sm md:text-base text-[#6750A4] font-medium hover:underline">مشاهده همه</a>
     </div>
 
-    <div class="products-row drag-scroll flex gap-3 md:gap-6 overflow-x-auto no-scrollbar pb-8 px-2 snap-x snap-mandatory" aria-label="اسلایدر قاب و محافظ‌های جدید">
+    <!-- کارت‌ها توسط بک‌اند رندر شوند؛ data-* برای سبد/علاقه‌مندی استفاده می‌شود -->
+    <div class="products-row drag-scroll flex gap-3 md:gap-6 overflow-x-auto no-scrollbar pb-8 px-2 snap-x snap-mandatory" aria-label="اسلایدر قاب و محافظ‌های جدید" role="region" aria-roledescription="carousel" aria-live="off" tabindex="0">
 
       <article
         class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
@@ -1288,6 +1291,7 @@
     </div>
   </section>
 
+  <!-- کارت‌های تبلیغاتی: لینک‌ها/متن‌ها توسط بک‌اند تنظیم شوند -->
   <section class="page-section page-section--compact max-w-7xl mx-auto px-4">
     <div class="grid md:grid-cols-2 gap-4 md:gap-6">
       <div class="bg-[#21005D] rounded-2xl md:rounded-3xl p-6 md:p-8 relative overflow-hidden flex items-center text-white min-h-[200px] md:min-h-[240px] group cursor-pointer card-hover">
@@ -1295,7 +1299,7 @@
         <div class="relative z-10 w-3/4 md:w-2/3">
           <span class="text-[#EADDFF] text-xs md:text-sm font-medium mb-1 md:mb-2 block">استایل خود را بسازید</span>
           <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">بند و آویز موبایل</h3>
-          <button class="text-white border-b border-white pb-1 text-xs md:text-sm hover:text-[#EADDFF] transition" type="button">مشاهده محصولات</button>
+          <a href="pages/Product.html?cat=gadget" class="text-white border-b border-white pb-1 text-xs md:text-sm hover:text-[#EADDFF] transition">مشاهده محصولات</a>
         </div>
         <div class="absolute left-2 md:left-4 bottom-2 md:bottom-4 w-24 h-24 md:w-32 md:h-32 flex items-center justify-center opacity-80">
           <span class="material-icon text-6xl md:text-8xl text-white/20 transform -rotate-12">style</span>
@@ -1307,7 +1311,7 @@
         <div class="relative z-10 w-3/4 md:w-2/3">
           <span class="text-[#6750A4] text-xs md:text-sm font-medium mb-1 md:mb-2 block">محافظت حرفه‌ای</span>
           <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">محافظ لنز دوربین</h3>
-          <button class="text-[#21005D] border-b border-[#21005D] pb-1 text-xs md:text-sm hover:text-[#6750A4] transition" type="button">مشاهده محصولات</button>
+          <a href="pages/Product.html?cat=glass" class="text-[#21005D] border-b border-[#21005D] pb-1 text-xs md:text-sm hover:text-[#6750A4] transition">مشاهده محصولات</a>
         </div>
         <div class="absolute left-2 md:left-4 bottom-2 md:bottom-4 w-24 h-24 md:w-32 md:h-32 flex items-center justify-center opacity-80">
           <span class="material-icon text-6xl md:text-8xl text-[#6750A4]/20 transform rotate-12">camera_enhance</span>
@@ -1316,14 +1320,15 @@
     </div>
   </section>
 
-  <!-- New Arrivals Slider (Inserted after promo banners) -->
+  <!-- جدیدترین محصولات -->
   <section class="page-section max-w-7xl mx-auto px-4">
     <div class="flex justify-between items-center mb-6 md:mb-8">
       <h2 class="text-xl md:text-2xl font-bold text-[#1D1B20]">جدیدترین محصولات</h2>
-      <a href="#" class="text-sm md:text-base text-[#6750A4] font-medium hover:underline">مشاهده همه</a>
+      <a href="pages/Product.html?sort=new" class="text-sm md:text-base text-[#6750A4] font-medium hover:underline">مشاهده همه</a>
     </div>
 
-    <div class="products-row drag-scroll flex gap-3 md:gap-6 overflow-x-auto no-scrollbar pb-8 px-2 snap-x snap-mandatory" aria-label="اسلایدر جدیدترین محصولات">
+    <!-- کارت‌ها توسط بک‌اند رندر شوند؛ data-* برای سبد/علاقه‌مندی استفاده می‌شود -->
+    <div class="products-row drag-scroll flex gap-3 md:gap-6 overflow-x-auto no-scrollbar pb-8 px-2 snap-x snap-mandatory" aria-label="اسلایدر جدیدترین محصولات" role="region" aria-roledescription="carousel" aria-live="off" tabindex="0">
 
       <article
         class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
@@ -1656,11 +1661,13 @@
     </div>
   </section>
 
-  <!-- Favorites anchor (for footer heart link) -->
+  <!-- لنگر کمکی برای لینک علاقه‌مندی‌ها در فوتر -->
   <div id="favorites" aria-hidden="true"></div>
+  </main>
 
   <footer id="footer" class="bg-white border-t border-gray-100 pt-16 pb-8 relative overflow-hidden">
-      <!-- Background decorations -->
+      <!-- بک‌اند: اطلاعات تماس، شبکه‌های اجتماعی و لینک‌ها را از دیتابیس مدیریت کند -->
+      <!-- تزئینات پس‌زمینه -->
       <div class="absolute inset-0 opacity-40 pointer-events-none">
         <div class="absolute top-0 right-0 w-96 h-96 bg-purple-100 rounded-full filter blur-3xl"></div>
         <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-100 rounded-full filter blur-3xl"></div>
@@ -1669,7 +1676,7 @@
       <div class="relative max-w-7xl mx-auto px-4">
         <div class="footer-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 mb-12">
           
-          <!-- Brand Section - Mobile & Desktop -->
+          <!-- برند و توضیحات فروشگاه -->
           <div class="lg:col-span-1">
             <div class="flex items-center gap-3 mb-4 lg:mb-6">
               <div class="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-purple-600 to-purple-700 rounded-xl lg:rounded-2xl flex items-center justify-center shadow-lg">
@@ -1694,24 +1701,22 @@
             </div>
 
             <div class="footer-auth">
-              <a href="pages/profile.html" class="footer-auth-btn footer-auth-btn--profile ripple" aria-label="حساب کاربری">
+              <a href="pages/profile.html" class="footer-auth-btn footer-auth-btn--profile ripple auth-only" aria-label="حساب کاربری">
                 <span class="material-icon text-lg" aria-hidden="true">person</span>
                 حساب کاربری
               </a>
-              <!--
-              <a href="pages/login.html" class="footer-auth-btn footer-auth-btn--login ripple" aria-label="ورود یا ثبت نام">
+              <a href="pages/login.html" class="footer-auth-btn footer-auth-btn--login ripple guest-only" aria-label="ورود یا ثبت نام">
                 <span class="material-icon text-lg" aria-hidden="true">login</span>
                 ورود | ثبت نام
               </a>
-              -->
             </div>
           </div>
 
-          <!-- Quick Links - Mobile & Desktop -->
+          <!-- دسترسی سریع -->
           <div class="lg:col-span-1">
             <h4 class="text-base lg:text-lg font-semibold text-gray-900 mb-3 lg:mb-6">دسترسی سریع</h4>
             
-            <!-- Mobile Layout: Horizontal -->
+            <!-- موبایل: چینش افقی -->
             <div class="lg:hidden">
               <div class="footer-links flex flex-wrap gap-x-3 gap-y-2 text-sm">
                 <a href="pages/Product.html?cat=case" class="text-gray-600 hover:text-purple-600 transition-colors">قاب گوشی</a>
@@ -1723,7 +1728,7 @@
               </div>
             </div>
             
-            <!-- Desktop Layout: Vertical -->
+            <!-- دسکتاپ: چینش عمودی -->
             <div class="hidden lg:block">
               <ul class="space-y-4">
                 <li><a href="pages/Product.html?cat=case" class="text-gray-600 hover:text-purple-600 transition-colors">قاب گوشی</a></li>
@@ -1736,11 +1741,11 @@
             </div>
           </div>
 
-          <!-- Customer Service - Mobile & Desktop -->
+          <!-- خدمات مشتریان -->
           <div class="lg:col-span-1">
             <h4 class="text-base lg:text-lg font-semibold text-gray-900 mb-3 lg:mb-6">خدمات مشتریان</h4>
             
-            <!-- Mobile Layout: Horizontal -->
+            <!-- موبایل: چینش افقی -->
             <div class="lg:hidden">
               <div class="footer-links flex flex-wrap gap-x-3 gap-y-2 text-sm">
                 <a href="pages/aboutus.html#faq" class="text-gray-600 hover:text-purple-600 transition-colors">سوالات متداول</a>
@@ -1753,7 +1758,7 @@
               </div>
             </div>
             
-            <!-- Desktop Layout: Vertical -->
+            <!-- دسکتاپ: چینش عمودی -->
             <div class="hidden lg:block">
               <ul class="space-y-4">
                 <li><a href="pages/aboutus.html#faq" class="text-gray-600 hover:text-purple-600 transition-colors">سوالات متداول</a></li>
@@ -1767,7 +1772,7 @@
             </div>
           </div>
 
-          <!-- Contact Section - Mobile & Desktop -->
+          <!-- اطلاعات تماس -->
           <div class="lg:col-span-1">
             <h4 class="text-base lg:text-lg font-semibold text-gray-900 mb-3 lg:mb-6">اطلاعات تماس</h4>
             
@@ -1792,7 +1797,7 @@
           </div>
         </div>
   
-        <!-- Bottom Footer -->
+        <!-- نوار پایانی -->
         <div class="border-t border-gray-200 pt-8">
           <div class="flex flex-col-reverse sm:flex-row items-center justify-between gap-4 text-center">
             <p class="text-gray-500 text-sm">© ۱۴۰۳ ماهان شاپ. تمامی حقوق محفوظ است.</p>

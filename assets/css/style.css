@@ -25,6 +25,45 @@ color: #1C1B1F;
 padding-top: var(--navbar-offset, 120px);
 }
 
+/* Auth toggle: backend should set body[data-auth="guest|authenticated"] */
+body[data-auth="guest"] .auth-only {
+  display: none !important;
+}
+
+body[data-auth="authenticated"] .guest-only {
+  display: none !important;
+}
+
+/* Accessibility helpers */
+.skip-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateY(-120%);
+  background: #21005D;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 0 0 0.75rem 0.75rem;
+  z-index: 1000;
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
 /* Tailwind's max-w-7xl is 1280px. We widen it on large screens. */
 @media (min-width: 1280px) {
     .max-w-7xl {
@@ -42,7 +81,7 @@ padding-top: var(--navbar-offset, 120px);
 #navbar > div,
 #footer > div,
 section.max-w-7xl,
-header.banner-section {
+.banner-section {
     padding-left: var(--site-gutter) !important;
     padding-right: var(--site-gutter) !important;
 }
@@ -261,10 +300,10 @@ header.banner-section {
 
 /* Address badge animation */
 #default-address-badge {
-  animation: pulse 2s infinite;
+  animation: pulse-soft 2s infinite;
 }
 
-@keyframes pulse {
+@keyframes pulse-soft {
   0%, 100% {
     opacity: 1;
   }
@@ -873,7 +912,8 @@ select:disabled {
 }
 
 /* Focus styles for search inputs */
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="search"]:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(103, 80, 164, 0.1);
 }
@@ -1745,7 +1785,6 @@ box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         padding: 12px;
     }
 }
-}
 
 .banner-dot:focus-visible {
     outline: 2px solid rgba(103, 80, 164, 0.5);
@@ -2274,21 +2313,20 @@ body.menu-open {
 }
 
 /* Adjust main content to account for mobile footer */
-body {
+body.has-mobile-footer {
   padding-bottom: 60px; /* Height of the mobile footer */
 }
 
-/* Ensure content doesn't overlap with fixed footer */
-main {
+body.has-mobile-footer main {
   padding-bottom: 70px;
 }
 
 @media (min-width: 768px) {
-  body {
+  body.has-mobile-footer {
     padding-bottom: 0;
   }
 
-  main {
+  body.has-mobile-footer main {
     padding-bottom: 0;
   }
 }
@@ -2314,53 +2352,4 @@ main {
 .page-transition-exit-active {
     opacity: 0;
     transform: translateY(-20px);
-}
-
-/* Mobile Navigation Footer - Icon Only */
-#mobile-footer {
-  padding-bottom: env(safe-area-inset-bottom, 0);
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-  background-color: #ffffff;
-}
-
-#mobile-footer .nav-footer-item {
-  flex: 1;
-  min-width: 0;
-  padding: 0.25rem 0.5rem;
-  transition: all 0.2s ease;
-  position: relative;
-}
-
-#mobile-footer .nav-footer-item:hover {
-  transform: translateY(-2px);
-}
-
-#mobile-footer .nav-footer-item .material-icon {
-  transition: all 0.2s ease;
-}
-
-#mobile-footer .nav-footer-item.active .material-icon,
-#mobile-footer .nav-footer-item:active .material-icon {
-  color: #6750A4;
-  transform: scale(1.1);
-}
-
-/* Adjust main content to account for mobile footer */
-body {
-  padding-bottom: 60px; /* Height of the mobile footer */
-}
-
-/* Ensure content doesn't overlap with fixed footer */
-main {
-  padding-bottom: 70px;
-}
-
-@media (min-width: 768px) {
-  body {
-    padding-bottom: 0;
-  }
-
-  main {
-    padding-bottom: 0;
-  }
 }

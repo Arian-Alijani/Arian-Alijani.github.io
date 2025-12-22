@@ -51,6 +51,12 @@ function initFooterAccordion() {
 }
 initFooterAccordion();
 
+// Add layout helper when mobile footer exists
+const mobileFooter = document.getElementById('mobile-footer');
+if (mobileFooter) {
+    document.body.classList.add('has-mobile-footer');
+}
+
 // --- Dynamic Banner Offset ---
 const navbar = document.getElementById('navbar');
 function applyNavbarOffset() {
@@ -379,19 +385,26 @@ document.addEventListener('click', function (e) {
 
 const sections = document.querySelectorAll('section');
 if (sections.length > 0) {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('opacity-100', 'translate-y-0');
-                entry.target.classList.remove('opacity-0', 'translate-y-10');
-                observer.unobserve(entry.target);
-            }
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (reduceMotion.matches) {
+        sections.forEach(section => {
+            section.classList.add('opacity-100', 'translate-y-0');
         });
-    }, { threshold: 0.1 });
-    sections.forEach(section => {
-        section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
-        observer.observe(section);
-    });
+    } else {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        sections.forEach(section => {
+            section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+            observer.observe(section);
+        });
+    }
 }
 
 document.getElementById('add-all-to-cart-btn')?.addEventListener('click', (e) => {
@@ -422,7 +435,7 @@ function openMenu() {
     mobileMenuOverlay.classList.remove('hidden');
     void mobileMenuOverlay.offsetWidth;
     mobileMenuOverlay.classList.remove('opacity-0');
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('menu-open');
     mobileMenu.setAttribute('aria-hidden', 'false');
     mobileMenuOverlay.setAttribute('aria-hidden', 'false');
     if (mobileMenuToggle) {
@@ -435,7 +448,7 @@ function closeMenu() {
     mobileMenu.classList.add('translate-x-full');
     mobileMenuOverlay.classList.add('opacity-0');
     setTimeout(() => mobileMenuOverlay.classList.add('hidden'), 280);
-    document.body.style.overflow = '';
+    document.body.classList.remove('menu-open');
     mobileMenu.setAttribute('aria-hidden', 'true');
     mobileMenuOverlay.setAttribute('aria-hidden', 'true');
     if (mobileMenuToggle) {
@@ -754,14 +767,24 @@ function setupAutoScroller(row, { mode = 'step', intervalMs = 5000, driftPxPerFr
         if (timer) clearInterval(timer); timer = null;
         if (raf) cancelAnimationFrame(raf); raf = null;
     }
-    function scheduleResume() { setTimeout(() => { if (Date.now() >= pauseUntil) start(); }, manualPauseMs); }
+    function scheduleResume() {
+        setTimeout(() => {
+            if (Date.now() >= pauseUntil) {
+                delete row.dataset.userPaused;
+                start();
+            }
+        }, manualPauseMs);
+    }
     const interact = () => {
         row.style.scrollSnapType = 'none';
         row.dataset.userPaused = '1';
         stop();
     };
     row.addEventListener('pointerdown', interact);
+    row.addEventListener('pointerup', scheduleResume);
+    row.addEventListener('pointercancel', scheduleResume);
     row.addEventListener('touchstart', interact);
+    row.addEventListener('touchend', scheduleResume);
     row.addEventListener('wheel', interact);
     row.addEventListener('mouseenter', interact);
     row.addEventListener('focusin', interact);
