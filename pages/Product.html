@@ -24,30 +24,6 @@
 }
 </script>
 
-  <style>
-    /* Active category button styling in left filter panel */
-    #filter-sidebar .category-filter-btn.active {
-      border-color: #6750A4 !important;
-      background: #EADDFF !important;
-      color: #21005D !important;
-    }
-    #filter-sidebar .category-filter-btn.active .material-icon {
-      color: #6750A4 !important;
-    }
-
-    /* Selected brand/model label */
-    #filter-sidebar .filter-checkbox-label.selected {
-      background: #EADDFF;
-      color: #21005D;
-      border-radius: 0.5rem;
-      padding: 0.25rem 0.5rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      border: 1px solid rgba(103,80,164,0.18);
-    }
-  </style>
-
 </head>
 <body class="bg-[#FEF7FF] text-gray-900 overflow-x-hidden font-[Vazirmatn] min-h-screen products-page-bg">
   
@@ -230,7 +206,7 @@
   </div>
 
   <!-- Main Content -->
-  <main class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-6 md:pb-8">
+  <main class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-6 md:pb-8">
     <div class="lg:grid lg:grid-cols-12 lg:gap-8">
 
       <!-- Filter Sidebar -->
@@ -245,93 +221,79 @@
             </div>
 
             <!-- Search in filters -->
-            <div class="p-3 border-b border-gray-200 hidden lg:block">
+            <div class="p-3 border-b border-gray-200 hidden lg:block filter-search">
               <div class="search-shell relative w-full">
                 <input type="search" id="filter-search" placeholder="جستجو در محصولات..." class="search-input text-sm pr-3 pl-10 py-2 w-full">
                 <span class="material-icon search-icon absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">search</span>
               </div>
-              <div class="selected-filters mt-3" id="selected-filters" aria-hidden="false" style="display:none"></div>
             </div>
 
             <div class="filter-section flex-1 overflow-y-auto max-h-[calc(100vh-240px)] lg:max-h-none pr-2">
-              <!-- Category Filter (with nested submenus) -->
-              <details open class="filter-section">
-                <summary>
-                  <span>دسته بندی</span>
+              <details open class="filter-accordion">
+                <summary class="filter-accordion-summary">
+                  <span>دسته ها</span>
                   <span class="material-icon">expand_more</span>
                 </summary>
-                <div class="p-2 space-y-2">
-                    <button data-category="all" class="category-filter-btn w-full text-right p-3 rounded-lg border-2 border-transparent hover:bg-gray-50 transition">همه محصولات</button>
-
-                    <details class="pl-2" role="group">
-                      <summary class="text-right py-1 cursor-pointer">قاب و کاور <span class="material-icon align-middle">expand_more</span></summary>
-                      <div class="p-1 space-y-1">
-                        <button data-category="case" class="category-filter-btn w-full text-right p-2 rounded-lg border-2 border-transparent hover:bg-gray-50 transition" aria-label="قاب و کاور"><span class="sr-only">قاب و کاور</span></button>
-                        <div class="text-sm text-gray-600">برندها (قاب و کاور):</div>
-                        <div id="brand-list-case" class="grid grid-cols-1 gap-1">
-                          <label class="filter-checkbox-label"><input type="checkbox" name="brand" value="apple"> اپل (Apple)</label>
-                          <label class="filter-checkbox-label"><input type="checkbox" name="brand" value="samsung"> سامسونگ (Samsung)</label>
-                          <label class="filter-checkbox-label"><input type="checkbox" name="brand" value="xiaomi"> شیائومی (Xiaomi)</label>
-                        </div>
-                      </div>
-                    </details>
-
-                    <details class="pl-2" role="group">
-                      <summary class="text-right py-1 cursor-pointer">گلس و محافظ <span class="material-icon align-middle">expand_more</span></summary>
-                      <div class="p-1 space-y-1">
-                        <button data-category="glass" class="category-filter-btn w-full text-right p-2 rounded-lg border-2 border-transparent hover:bg-gray-50 transition" aria-label="گلس و محافظ"><span class="sr-only">گلس و محافظ</span></button>
-                        <div class="text-sm text-gray-600">برندها (گلس):</div>
-                        <div id="brand-list-glass" class="grid grid-cols-1 gap-1">
-                          <label class="filter-checkbox-label"><input type="checkbox" name="brand" value="samsung"> سامسونگ (Samsung)</label>
-                          <label class="filter-checkbox-label"><input type="checkbox" name="brand" value="apple"> اپل (Apple)</label>
-                          <label class="filter-checkbox-label"><input type="checkbox" name="brand" value="xiaomi"> شیائومی (Xiaomi)</label>
-                        </div>
-                      </div>
-                    </details>
-
-                    <button data-category="charger" class="category-filter-btn w-full text-right p-3 rounded-lg border-2 border-transparent hover:bg-gray-50 transition">شارژر و کابل</button>
-                    <button data-category="accessory" class="category-filter-btn w-full text-right p-3 rounded-lg border-2 border-transparent hover:bg-gray-50 transition">گجت</button>
+                <div class="category-filter-list">
+                    <button data-category="all" class="category-filter-btn" type="button">
+                      <span class="category-label">تمام محصولات</span>
+                    </button>
+                    <button data-category="case" class="category-filter-btn" type="button">
+                      <span class="category-label">قاب گوشی</span>
+                    </button>
+                    <button data-category="phone" class="category-filter-btn" type="button">
+                      <span class="category-label">گوشی هوشمند</span>
+                    </button>
+                    <button data-category="charger" class="category-filter-btn" type="button">
+                      <span class="category-label">شارژر و کابل</span>
+                    </button>
+                    <button data-category="airpod" class="category-filter-btn" type="button">
+                      <span class="category-label">کاور ایرپاد</span>
+                    </button>
+                    <button data-category="glass" class="category-filter-btn" type="button">
+                      <span class="category-label">گلس و محافظ</span>
+                    </button>
+                    <button data-category="gadget" class="category-filter-btn" type="button">
+                      <span class="category-label">گجت</span>
+                    </button>
                 </div>
               </details>
 
-              <!-- Brand Filter placeholder (kept for JS compatibility) -->
-              <details id="brand-filter-section" class="filter-section hidden">
-                  <summary>برند</summary>
-                  <div class="p-2 space-y-2">
-                    <div class="brand-search">
-                      <input type="search" id="brand-search" placeholder="جستجوی برند..." />
-                    </div>
-                    <div class="p-1" id="brand-list">
-                      <!-- dynamically populated by JS when needed -->
-                    </div>
-                  </div>
+              <details open class="filter-accordion">
+                <summary class="filter-accordion-summary">
+                  <span>فیلترها</span>
+                  <span class="material-icon">expand_more</span>
+                </summary>
+                <div id="dynamic-filters" class="dynamic-filters"></div>
+                <div id="dynamic-filters-empty" class="filter-empty hidden">
+                  <p>برای این دسته فیلتر دیگری ثبت نشده است.</p>
+                </div>
               </details>
 
-              <!-- Price filter removed per request -->
-
-              <!-- In Stock Filter -->
-              <details open class="filter-section">
-                <summary>موجودی</summary>
-                <div class="p-3 flex items-center justify-between">
-                    <span class="font-medium text-sm text-gray-700">فقط کالاهای موجود</span>
-                    <label class="in-stock-toggle-switch">
-                        <input type="checkbox" id="in-stock-toggle">
-                        <div class="toggle-track">
-                          <div class="toggle-thumb"></div>
-                        </div>
-                    </label>
+              <details open class="filter-accordion">
+                <summary class="filter-accordion-summary">
+                  <span>موجودی</span>
+                  <span class="material-icon">expand_more</span>
+                </summary>
+                <div class="filter-options">
+                  <label class="filter-option">
+                    <input type="checkbox" id="in-stock-toggle">
+                    <span>فقط کالاهای موجود</span>
+                  </label>
                 </div>
               </details>
             </div>
 
-            <div class="pt-3 border-t border-gray-200">
-                <button id="reset-filters" class="w-full text-center py-3 px-4 rounded-xl bg-gray-100 text-gray-700 font-bold hover:bg-gray-200 transition" type="button" aria-label="حذف تمام فیلترها">
-                    حذف فیلترها
-                </button>
-            </div>
-            <div class="lg:hidden pt-3">
-              <div class="flex gap-2">
-                <button id="apply-filters-btn" class="flex-1 py-3 px-4 rounded-xl bg-[#6750A4] text-white font-bold hover:bg-[#4b2f86] transition" type="button">اعمال فیلترها</button>
+            <div class="filter-actions">
+              <div class="pt-3 border-t border-gray-200">
+                  <button id="reset-filters" class="w-full text-center py-3 px-4 rounded-xl bg-gray-100 text-gray-700 font-bold hover:bg-gray-200 transition" type="button" aria-label="حذف تمام فیلترها">
+                      حذف فیلترها
+                  </button>
+              </div>
+              <div class="lg:hidden pt-3">
+                <div class="flex gap-2">
+                  <button id="apply-filters-btn" class="flex-1 py-3 px-4 rounded-xl bg-[#6750A4] text-white font-bold hover:bg-[#4b2f86] transition" type="button">اعمال فیلترها</button>
+                </div>
               </div>
             </div>
         </div>
@@ -362,257 +324,184 @@
 
               <div id="products-grid" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-3 md:gap-4 lg:gap-5">
           <!-- Product cards will be dynamically populated/filtered. -->
-          <!-- Note: data-* attributes are used for filtering -->
-
-          <!-- Product 1: iPhone Case -->
-          <article class="product-card bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100" data-category="case" data-brand="apple" data-price="450000" data-popular="9" data-new="1" data-stock="true">
+          <article
+            class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group"
+            data-category="case"
+            data-brand="apple"
+            data-model="آیفون ۱۵"
+            data-material="silicone"
+            data-price="690000"
+            data-popular="9"
+            data-new="1"
+            data-stock="true"
+          >
             <div class="relative">
-              <div class="product-media rounded-2xl bg-white border border-gray-100 flex items-center justify-center overflow-hidden"><img src="https://placehold.co/800x800/F3E5F5/6750A4?text=Product" alt="قاب آیفون" class="w-full h-full object-contain p-6 md:p-8"></div>
-              <span class="absolute top-3 right-3 text-[10px] font-black px-2.5 py-1 rounded-full bg-[#EADDFF] text-[#21005D]">٪۳۰-</span>
-              <button class="absolute top-3 left-3 w-9 h-9 bg-white rounded-full flex items-center justify-center text-gray-700 shadow-sm hover:bg-gray-50 transition" aria-label="افزودن به علاقه‌مندی">
-                <span class="material-icon text-sm">favorite_border</span>
-              </button>
-            </div>
-            <div class="mt-3 p-1">
-              <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">قاب سیلیکونی آیفون ۱۵</h3>
-              <p class="text-[11px] text-gray-500 mt-1">Apple</p>
-            </div>
-              <div class="mt-3 flex items-end justify-between p-1">
-              <div>
-                <div class="text-base font-black text-[#6750A4]">۴۵۰,۰۰۰ <span class="text-[10px] font-medium text-gray-500">تومان</span></div>
+              <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
+                <img src="https://placehold.co/900x900/1f2937/FFFFFF?text=Armor+Case" alt="قاب ضدضربه سری Armor" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
               </div>
+
+              <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
+                <span class="color-swatch bg-slate-900" data-color-hex="#0f172a" title="مشکی" aria-label="مشکی"></span>
+                <span class="color-swatch bg-zinc-400" data-color-hex="#a1a1aa" title="خاکستری" aria-label="خاکستری"></span>
+              </div>
+            </div>
+
+            <div class="mt-3">
+              <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">قاب ضدضربه سری Armor</h3>
+              <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Apple</p>
+            </div>
+
+            <div class="mt-3 flex items-end justify-between gap-3">
+              <div class="min-w-0">
+                <div class="text-[10px] md:text-xs text-gray-400 line-through">۸۵۰,۰۰۰</div>
+                <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+                  ۶۹۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
+                </div>
+              </div>
+
               <div class="flex items-center gap-2">
-                <button class="nav-icon-btn product-add-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" aria-label="اضافه کردن"><span class="material-icon text-[22px]">add</span></button>
+                <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+                  <span class="material-icon text-[22px]">favorite_border</span>
+                </button>
+                <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+                  <span class="material-icon text-[22px]">add</span>
+                </button>
               </div>
             </div>
           </article>
 
-          <!-- Product 2: Samsung Glass -->
-          <article class="product-card bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100" data-category="glass" data-brand="samsung" data-price="390000" data-popular="8" data-new="0" data-stock="true">
+          <article
+            class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group"
+            data-category="glass"
+            data-brand="samsung"
+            data-model="S23"
+            data-type="privacy"
+            data-price="390000"
+            data-popular="8"
+            data-new="0"
+            data-stock="true"
+          >
             <div class="relative">
-              <div class="product-media rounded-2xl bg-white border border-gray-100 flex items-center justify-center overflow-hidden"><img src="https://placehold.co/800x800/E3F2FD/2196F3?text=Product" alt="گلس سامسونگ" class="w-full h-full object-contain p-6 md:p-8"></div>
-              <span class="absolute top-3 right-3 text-[10px] font-black px-2.5 py-1 rounded-full bg-[#E3F2FD] text-[#0B3C6E]">پرایوسی</span>
-              <button class="absolute top-3 left-3 w-9 h-9 bg-white rounded-full flex items-center justify-center text-gray-700 shadow-sm hover:bg-gray-50 transition" aria-label="افزودن به علاقه‌مندی">
-                <span class="material-icon text-sm">favorite_border</span>
-              </button>
+              <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
+                <img src="https://placehold.co/900x900/0ea5e9/FFFFFF?text=Privacy+Glass" alt="گلس پرایوسی S23" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
+              </div>
+
+              <div class="product-card-color-strip" aria-label="برچسب محصول">
+                <span class="color-swatch bg-sky-500" title="پرایوسی" aria-label="پرایوسی"></span>
+              </div>
             </div>
-            <div class="mt-3 p-1">
-              <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">گلس سرامیکی S23</h3>
-              <p class="text-[11px] text-gray-500 mt-1">برند: Samsung</p>
+
+            <div class="mt-3">
+              <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">گلس پرایوسی S23</h3>
+              <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Samsung</p>
             </div>
-            <div class="mt-3 flex items-end justify-between p-1">
-              <div><div class="text-base font-black text-[#6750A4]">۳۹۰,۰۰۰ <span class="text-[10px] font-medium text-gray-500">تومان</span></div></div>
+
+            <div class="mt-3 flex items-end justify-between gap-3">
+              <div class="min-w-0">
+                <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+                  ۳۹۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
+                </div>
+              </div>
+
               <div class="flex items-center gap-2">
-                <button class="nav-icon-btn product-add-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" aria-label="اضافه کردن"><span class="material-icon text-[22px]">add</span></button>
+                <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+                  <span class="material-icon text-[22px]">favorite_border</span>
+                </button>
+                <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+                  <span class="material-icon text-[22px]">add</span>
+                </button>
               </div>
             </div>
           </article>
 
-          <!-- Product 3: Anker Charger -->
-          <article class="product-card bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100" data-category="charger" data-brand="anker" data-price="980000" data-popular="10" data-new="1" data-stock="true">
+          <article
+            class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group"
+            data-category="charger"
+            data-brand="anker"
+            data-type="adapter"
+            data-watt="30w"
+            data-port="usb-c"
+            data-price="980000"
+            data-popular="7"
+            data-new="0"
+            data-stock="true"
+          >
             <div class="relative">
-              <div class="product-media rounded-2xl bg-white border border-gray-100 flex items-center justify-center overflow-hidden"><img src="https://placehold.co/800x800/FFF3E0/FB8C00?text=Product" alt="شارژر انکر" class="w-full h-full object-contain p-6 md:p-8"></div>
-              <span class="absolute top-3 right-3 text-[10px] font-black px-2.5 py-1 rounded-full bg-[#F3EDF7] text-[#49454F]">پرفروش</span>
-              <button class="absolute top-3 left-3 w-9 h-9 bg-white rounded-full flex items-center justify-center text-gray-700 shadow-sm hover:bg-gray-50 transition" aria-label="افزودن به علاقه‌مندی">
-                <span class="material-icon text-sm">favorite_border</span>
-              </button>
+              <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
+                <img src="https://placehold.co/900x900/f97316/FFFFFF?text=Fast+Charger" alt="شارژر ۳۰ وات Anker" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
+              </div>
+
+              <div class="product-card-color-strip" aria-label="ویژگی‌ها">
+                <span class="color-swatch bg-orange-500" title="فست شارژ" aria-label="فست شارژ"></span>
+              </div>
             </div>
-            <div class="mt-3 p-1">
+
+            <div class="mt-3">
               <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">شارژر ۳۰ وات Anker</h3>
-              <p class="text-[11px] text-gray-500 mt-1">برند: Anker</p>
+              <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Anker</p>
             </div>
-              <div class="mt-3 flex items-end justify-between p-1">
-              <div><div class="text-base font-black text-[#6750A4]">۲۸۰,۰۰۰ <span class="text-[10px] font-medium text-gray-500">تومان</span></div></div>
+
+            <div class="mt-3 flex items-end justify-between gap-3">
+              <div class="min-w-0">
+                <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+                  ۹۸۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
+                </div>
+              </div>
+
               <div class="flex items-center gap-2">
-                <button class="nav-icon-btn product-add-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" aria-label="اضافه کردن"><span class="material-icon text-[22px]">add</span></button>
+                <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+                  <span class="material-icon text-[22px]">favorite_border</span>
+                </button>
+                <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+                  <span class="material-icon text-[22px]">add</span>
+                </button>
               </div>
             </div>
           </article>
 
-          <!-- Product 4: Xiaomi Case -->
-          <article class="product-card bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100" data-category="case" data-brand="xiaomi" data-price="280000" data-popular="6" data-new="0" data-stock="true">
+          <article
+            class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group"
+            data-category="gadget"
+            data-brand="baseus"
+            data-type="holder"
+            data-material="metal"
+            data-price="410000"
+            data-popular="6"
+            data-new="0"
+            data-stock="true"
+          >
             <div class="relative">
-              <div class="product-media rounded-2xl bg-white border border-gray-100 flex items-center justify-center overflow-hidden"><img src="https://placehold.co/800x800/F3E5F5/6750A4?text=Product" alt="قاب شیائومی" class="w-full h-full object-contain p-6 md:p-8"></div>
-              <button class="absolute top-3 left-3 w-9 h-9 bg-white rounded-full flex items-center justify-center text-gray-700 shadow-sm hover:bg-gray-50 transition" aria-label="افزودن به علاقه‌مندی">
-                <span class="material-icon text-sm">favorite_border</span>
-              </button>
-            </div>
-            <div class="mt-3 p-1">
-              <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">قاب شفاف نوت ۱۲</h3>
-              <p class="text-[11px] text-gray-500 mt-1">برند: Xiaomi</p>
-            </div>
-            <div class="mt-3 flex items-end justify-between p-1">
-              <div><div class="text-base font-black text-[#6750A4]">۲۸۰,۰۰۰ <span class="text-[10px] font-medium text-gray-500">تومان</span></div></div>
-              <div class="flex items-center gap-2">
-                <button class="nav-icon-btn product-add-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" aria-label="اضافه کردن"><span class="material-icon text-[22px]">add</span></button>
+              <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
+                <img src="https://placehold.co/900x900/64748b/FFFFFF?text=Car+Holder" alt="هولدر ماشین Baseus" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
               </div>
-            </div>
-          </article>
-          
-          <!-- Product 5: Pop Socket Accessory -->
-          <article class="product-card bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100" data-category="accessory" data-brand="baseus" data-price="150000" data-popular="7" data-new="1" data-stock="true">
-            <div class="relative">
-              <div class="product-media rounded-2xl bg-white border border-gray-100 flex items-center justify-center overflow-hidden"><img src="https://placehold.co/800x800/E8EAF6/5C6BC0?text=Product" alt="پاپ سوکت" class="w-full h-full object-contain p-6 md:p-8"></div>
-              <button class="absolute top-3 left-3 w-9 h-9 bg-white rounded-full flex items-center justify-center text-gray-700 shadow-sm hover:bg-gray-50 transition" aria-label="افزودن به علاقه‌مندی">
-                <span class="material-icon text-sm">favorite_border</span>
-              </button>
-            </div>
-            <div class="mt-3 p-1">
-              <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">پاپ سوکت فانتزی</h3>
-              <p class="text-[11px] text-gray-500 mt-1">برند: Baseus</p>
-            </div>
-            <div class="mt-3 flex items-end justify-between p-1">
-              <div><div class="text-base font-black text-[#6750A4]">۱۵۰,۰۰۰ <span class="text-[10px] font-medium text-gray-500">تومان</span></div></div>
-              <div class="flex items-center gap-2">
-                <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" aria-label="اضافه کردن"><span class="material-icon text-[22px]">add</span></button>
-              </div>
-            </div>
-          </article>
-          
-          <!-- Product 6: Samsung Case -->
-          <article class="product-card bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100" data-category="case" data-brand="samsung" data-price="680000" data-popular="8" data-new="1" data-stock="false">
-            <div class="relative">
-              <div class="product-media rounded-2xl bg-white border border-gray-100 flex items-center justify-center overflow-hidden"><img src="https://placehold.co/800x800/F3E5F5/6750A4?text=Product" alt="قاب سامسونگ" class="w-full h-full object-contain p-6 md:p-8"></div>
-              <span class="absolute top-3 right-3 text-[10px] font-black px-2.5 py-1 rounded-full bg-gray-200 text-gray-700">تمام شد</span>
-              <button class="absolute top-3 left-3 w-9 h-9 bg-white rounded-full flex items-center justify-center text-gray-700 shadow-sm hover:bg-gray-50 transition" aria-label="افزودن به علاقه‌مندی">
-                <span class="material-icon text-sm">favorite_border</span>
-              </button>
-            </div>
-            <div class="mt-3 p-1">
-              <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">قاب شفاف S24 Ultra</h3>
-              <p class="text-[11px] text-gray-500 mt-1">برند: Samsung</p>
-            </div>
-            <div class="mt-3 flex items-end justify-between p-1">
-              <div><div class="text-base font-black text-gray-400">۶۸۰,۰۰۰ <span class="text-[10px] font-medium text-gray-500">تومان</span></div></div>
-              <div class="flex items-center gap-2">
-                <button disabled class="w-10 h-10 rounded-2xl bg-gray-300 text-white flex items-center justify-center" aria-label="ناموجود"><span class="material-icon text-[22px]">remove_shopping_cart</span></button>
-              </div>
-            </div>
-          </article>
-          
-          <!-- Product 7: iPhone Glass -->
-          <article class="product-card bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100" data-category="glass" data-brand="apple" data-price="270000" data-popular="5" data-new="0" data-stock="true">
-            <div class="relative">
-              <div class="product-media rounded-2xl bg-white border border-gray-100 flex items-center justify-center overflow-hidden"><img src="https://placehold.co/800x800/E3F2FD/2196F3?text=Product" alt="گلس آیفون" class="w-full h-full object-contain p-6 md:p-8"></div>
-              <button class="absolute top-3 left-3 w-9 h-9 bg-white rounded-full flex items-center justify-center text-gray-700 shadow-sm hover:bg-gray-50 transition" aria-label="افزودن به علاقه‌مندی">
-                <span class="material-icon text-sm">favorite_border</span>
-              </button>
-            </div>
-            <div class="mt-3 p-1">
-              <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">گلس سرامیکی آیفون</h3>
-              <p class="text-[11px] text-gray-500 mt-1">برند: ESR</p>
-            </div>
-            <div class="mt-3 flex items-end justify-between p-1">
-              <div><div class="text-base font-black text-[#6750A4]">۲۷۰,۰۰۰ <span class="text-[10px] font-medium text-gray-500">تومان</span></div></div>
-              <div class="flex items-center gap-2">
-                <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" aria-label="اضافه کردن"><span class="material-icon text-[22px]">add</span></button>
-              </div>
-            </div>
-          </article>
-          
-          <!-- Product 8: Fast Charger -->
-          <article class="product-card bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100" data-category="charger" data-brand="xiaomi" data-price="620000" data-popular="7" data-new="0" data-stock="true">
-            <div class="relative">
-              <div class="product-media rounded-2xl bg-white border border-gray-100 flex items-center justify-center overflow-hidden"><img src="https://placehold.co/800x800/FFF3E0/FB8C00?text=Product" alt="شارژر سریع" class="w-full h-full object-contain p-6 md:p-8"></div>
-              <button class="absolute top-3 left-3 w-9 h-9 bg-white rounded-full flex items-center justify-center text-gray-700 shadow-sm hover:bg-gray-50 transition" aria-label="افزودن به علاقه‌مندی">
-                <span class="material-icon text-sm">favorite_border</span>
-              </button>
-            </div>
-            <div class="mt-3 p-1">
-              <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">شارژر فست ۳۳ وات</h3>
-              <p class="text-[11px] text-gray-500 mt-1">برند: Xiaomi</p>
-            </div>
-            <div class="mt-3 flex items-end justify-between p-1">
-              <div><div class="text-base font-black text-[#6750A4]">۶۲۰,۰۰۰ <span class="text-[10px] font-medium text-gray-500">تومان</span></div></div>
-              <div class="flex items-center gap-2">
-                <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" aria-label="اضافه کردن"><span class="material-icon text-[22px]">add</span></button>
-              </div>
-            </div>
-          </article>
-          
-          <!-- Add more products -->
-            <article class="product-card bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100" data-category="case" data-brand="apple" data-price="520000" data-popular="8" data-new="1" data-stock="true">
-              <div class="relative">
-                <div class="product-media rounded-2xl bg-white border border-gray-100 flex items-center justify-center overflow-hidden"><img src="https://placehold.co/800x800/F3E5F5/6750A4?text=Product" alt="قاب آیفون" class="w-full h-full object-contain p-6 md:p-8"></div>
-                <button class="absolute top-3 left-3 w-9 h-9 bg-white rounded-full flex items-center justify-center text-gray-700 shadow-sm hover:bg-gray-50 transition" aria-label="افزودن به علاقه‌مندی">
-                  <span class="material-icon text-sm">favorite_border</span>
-                </button>
-              </div>
-              <div class="mt-3 p-1"><h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">قاب چرمی آیفون ۱۴</h3><p class="text-[11px] text-gray-500 mt-1">برند: Apple</p></div>
-              <div class="mt-3 flex items-end justify-between p-1"><div><div class="text-base font-black text-[#6750A4]">۵۲۰,۰۰۰ <span class="text-[10px] font-medium text-gray-500">تومان</span></div></div><div class="flex items-center gap-2"><button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" aria-label="اضافه کردن"><span class="material-icon text-[22px]">add</span></button></div></div>
-            </article>
-            <article class="product-card bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100" data-category="accessory" data-brand="ugreen" data-price="320000" data-popular="6" data-new="1" data-stock="true">
-              <div class="relative">
-                <div class="product-media rounded-2xl bg-white border border-gray-100 flex items-center justify-center overflow-hidden"><img src="https://placehold.co/800x800/E8EAF6/5C6BC0?text=Product" alt="کابل" class="w-full h-full object-contain p-6 md:p-8"></div>
-                <button class="absolute top-3 left-3 w-9 h-9 bg-white rounded-full flex items-center justify-center text-gray-700 shadow-sm hover:bg-gray-50 transition" aria-label="افزودن به علاقه‌مندی">
-                  <span class="material-icon text-sm">favorite_border</span>
-                </button>
-              </div>
-              <div class="mt-3 p-1"><h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">کابل تایپ سی UGREEN</h3><p class="text-[11px] text-gray-500 mt-1">برند: UGREEN</p></div>
-              <div class="mt-3 flex items-end justify-between p-1"><div><div class="text-base font-black text-[#6750A4]">۳۲۰,۰۰۰ <span class="text-[10px] font-medium text-gray-500">تومان</span></div></div><div class="flex items-center gap-2"><button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" aria-label="اضافه کردن"><span class="material-icon text-[22px]">add</span></button></div></div>
-            </article>
-            <article class="product-card bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100" data-category="charger" data-brand="anker" data-price="1350000" data-popular="9" data-new="1" data-stock="true">
-              <div class="relative">
-                <div class="product-media rounded-2xl bg-white border border-gray-100 flex items-center justify-center overflow-hidden"><img src="https://placehold.co/800x800/FFF3E0/FB8C00?text=Product" alt="پاوربانک" class="w-full h-full object-contain p-6 md:p-8"></div>
-                <button class="absolute top-3 left-3 w-9 h-9 bg-white rounded-full flex items-center justify-center text-gray-700 shadow-sm hover:bg-gray-50 transition" aria-label="افزودن به علاقه‌مندی">
-                  <span class="material-icon text-sm">favorite_border</span>
-                </button>
-              </div>
-              <div class="mt-3 p-1"><h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">پاوربانک ۶۵ وات Anker</h3><p class="text-[11px] text-gray-500 mt-1">برند: Anker</p></div>
-              <div class="mt-3 flex items-end justify-between p-1"><div><div class="text-base font-black text-[#6750A4]">۱,۳۵۰,۰۰۰ <span class="text-[10px] font-medium text-gray-500">تومان</span></div></div><div class="flex items-center gap-2"><button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" aria-label="اضافه کردن"><span class="material-icon text-[22px]">add</span></button></div></div>
-            </article>
-            <article class="product-card bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100" data-category="case" data-brand="xiaomi" data-price="190000" data-popular="4" data-new="0" data-stock="true">
-              <div class="relative">
-                <div class="product-media rounded-2xl bg-white border border-gray-100 flex items-center justify-center overflow-hidden"><img src="https://placehold.co/800x800/F3E5F5/6750A4?text=Product" alt="قاب شیائومی" class="w-full h-full object-contain p-6 md:p-8"></div>
-                <button class="absolute top-3 left-3 w-9 h-9 bg-white rounded-full flex items-center justify-center text-gray-700 shadow-sm hover:bg-gray-50 transition" aria-label="افزودن به علاقه‌مندی">
-                  <span class="material-icon text-sm">favorite_border</span>
-                </button>
-              </div>
-              <div class="mt-3 p-1"><h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">کاور سیلیکونی Poco X3</h3><p class="text-[11px] text-gray-500 mt-1">برند: Xiaomi</p></div>
-              <div class="mt-3 flex items-end justify-between p-1"><div><div class="text-base font-black text-[#6750A4]">۱۹۰,۰۰۰ <span class="text-[10px] font-medium text-gray-500">تومان</span></div></div><div class="flex items-center gap-2"><button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" aria-label="اضافه کردن"><span class="material-icon text-[22px]">add</span></button></div></div>
-            </article>
-            <article class="product-card bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100" data-category="glass" data-brand="xiaomi" data-price="210000" data-popular="3" data-new="0" data-stock="false">
-              <div class="relative">
-                <div class="product-media rounded-2xl bg-white border border-gray-100 flex items-center justify-center overflow-hidden"><img src="https://placehold.co/800x800/E3F2FD/2196F3?text=Product" alt="گلس" class="w-full h-full object-contain p-6 md:p-8"></div>
-                <span class="absolute top-3 right-3 text-[10px] font-black px-2.5 py-1 rounded-full bg-gray-200 text-gray-700">تمام شد</span>
-                <button class="absolute top-3 left-3 w-9 h-9 bg-white rounded-full flex items-center justify-center text-gray-700 shadow-sm hover:bg-gray-50 transition" aria-label="افزودن به علاقه‌مندی">
-                  <span class="material-icon text-sm">favorite_border</span>
-                </button>
-              </div>
-              <div class="mt-3 p-1"><h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">گلس پرایوسی Redmi 9</h3><p class="text-[11px] text-gray-500 mt-1">برند: Xiaomi</p></div>
-              <div class="mt-3 flex items-end justify-between p-1"><div><div class="text-base font-black text-gray-400">۲۱۰,۰۰۰ <span class="text-[10px] font-medium text-gray-500">تومان</span></div></div><div class="flex items-center gap-2"><button disabled class="w-10 h-10 rounded-2xl bg-gray-300 text-white flex items-center justify-center" aria-label="ناموجود"><span class="material-icon text-[22px]">remove_shopping_cart</span></button></div></div>
-            </article>
-            <article class="product-card bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100" data-category="case" data-brand="samsung" data-price="340000" data-popular="7" data-new="0" data-stock="true">
-              <div class="relative">
-                <div class="product-media rounded-2xl bg-white border border-gray-100 flex items-center justify-center overflow-hidden"><img src="https://placehold.co/800x800/F3E5F5/6750A4?text=Product" alt="قاب" class="w-full h-full object-contain p-6 md:p-8"></div>
-                <button class="absolute top-3 left-3 w-9 h-9 bg-white rounded-full flex items-center justify-center text-gray-700 shadow-sm hover:bg-gray-50 transition" aria-label="افزودن به علاقه‌مندی">
-                  <span class="material-icon text-sm">favorite_border</span>
-                </button>
-              </div>
-              <div class="mt-3 p-1"><h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">قاب ژله ای A54</h3><p class="text-[11px] text-gray-500 mt-1">برند: Samsung</p></div>
-              <div class="mt-3 flex items-end justify-between p-1"><div><div class="text-base font-black text-[#6750A4]">۳۴۰,۰۰۰ <span class="text-[10px] font-medium text-gray-500">تومان</span></div></div><div class="flex items-center gap-2"><button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" aria-label="اضافه کردن"><span class="material-icon text-[22px]">add</span></button></div></div>
-            </article>
-            <article class="product-card bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100" data-category="accessory" data-brand="baseus" data-price="410000" data-popular="5" data-new="0" data-stock="true">
-              <div class="relative">
-                <div class="product-media rounded-2xl bg-white border border-gray-100 flex items-center justify-center overflow-hidden"><img src="https://placehold.co/800x800/E8EAF6/5C6BC0?text=Product" alt="هولدر" class="w-full h-full object-contain p-6 md:p-8"></div>
-                <button class="absolute top-3 left-3 w-9 h-9 bg-white rounded-full flex items-center justify-center text-gray-700 shadow-sm hover:bg-gray-50 transition" aria-label="افزودن به علاقه‌مندی">
-                  <span class="material-icon text-sm">favorite_border</span>
-                </button>
-              </div>
-              <div class="mt-3 p-1"><h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">هولدر ماشین Baseus</h3><p class="text-[11px] text-gray-500 mt-1">برند: Baseus</p></div>
-              <div class="mt-3 flex items-end justify-between p-1"><div><div class="text-base font-black text-[#6750A4]">۴۱۰,۰۰۰ <span class="text-[10px] font-medium text-gray-500">تومان</span></div></div><div class="flex items-center gap-2"><button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" aria-label="اضافه کردن"><span class="material-icon text-[22px]">add</span></button></div></div>
-            </article>
-             <article class="product-card bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100" data-category="charger" data-brand="apple" data-price="830000" data-popular="8" data-new="0" data-stock="true">
-            <div class="relative">
-              <div class="product-media rounded-2xl bg-white border border-gray-100 flex items-center justify-center overflow-hidden"><img src="https://placehold.co/800x800/FFF3E0/FB8C00?text=Product" alt="شارژر اپل" class="w-full h-full object-contain p-6 md:p-8"></div>
-              <button class="absolute top-3 left-3 w-9 h-9 bg-white rounded-full flex items-center justify-center text-gray-700 shadow-sm hover:bg-gray-50 transition" aria-label="افزودن به علاقه‌مندی">
-                <span class="material-icon text-sm">favorite_border</span>
-              </button>
-            </div>
-            <div class="mt-3 p-1"><h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">شارژر ۲۰ وات اپل</h3><p class="text-[11px] text-gray-500 mt-1">برند: Apple</p></div>
-            <div class="mt-3 flex items-end justify-between p-1"><div><div class="text-base font-black text-[#6750A4]">۸۳۰,۰۰۰ <span class="text-[10px] font-medium text-gray-500">تومان</span></div></div><div class="flex items-center gap-2"><button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" aria-label="اضافه کردن"><span class="material-icon text-[22px]">add</span></button></div></div>
-            </article>
 
+              <div class="product-card-color-strip" aria-label="رنگ موجود">
+                <span class="color-swatch bg-slate-600" title="خاکستری" aria-label="خاکستری"></span>
+              </div>
+            </div>
+
+            <div class="mt-3">
+              <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">هولدر ماشین Baseus</h3>
+              <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Baseus</p>
+            </div>
+
+            <div class="mt-3 flex items-end justify-between gap-3">
+              <div class="min-w-0">
+                <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+                  ۴۱۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2">
+                <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+                  <span class="material-icon text-[22px]">favorite_border</span>
+                </button>
+                <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+                  <span class="material-icon text-[22px]">add</span>
+                </button>
+              </div>
+            </div>
+          </article>
         </div>
         
         <div id="no-results" class="no-results hidden" role="status" aria-live="polite">
@@ -634,502 +523,491 @@
       <span class="material-icon text-3xl">filter_list</span>
   </button>
   
-    <script>
+        <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // --- Element Selectors ---
       const productsGrid = document.getElementById('products-grid');
+      if (!productsGrid) return;
+
       const productCards = Array.from(productsGrid.querySelectorAll('.product-card'));
       const resultsCountEl = document.getElementById('results-count');
       const noResultsEl = document.getElementById('no-results');
-        
-      // Filter Controls
+
       const filterSearch = document.getElementById('filter-search');
       const categoryButtons = document.querySelectorAll('.category-filter-btn');
-      let brandCheckboxes = document.querySelectorAll('input[name="brand"]'); // will be rebuilt dynamically
-      const priceMinInput = document.getElementById('price-range-min');
-      const priceMaxInput = document.getElementById('price-range-max');
-      const priceMinLabel = document.getElementById('price-min-display');
-      const priceMaxLabel = document.getElementById('price-max-display');
       const inStockToggle = document.getElementById('in-stock-toggle');
-      const brandFilterSection = document.getElementById('brand-filter-section');
-      const brandSearchInput = document.getElementById('brand-search');
       const selectedFiltersEl = document.getElementById('selected-filters');
       const sortSelect = document.getElementById('sort-by');
-        
-      // Mobile Filter UI
+      const dynamicFiltersEl = document.getElementById('dynamic-filters');
+      const dynamicFiltersEmptyEl = document.getElementById('dynamic-filters-empty');
+
       const mobileFilterBtn = document.getElementById('mobile-filter-btn');
       const closeFiltersBtn = document.getElementById('close-filters-btn');
       const filterSidebar = document.getElementById('filter-sidebar');
       const filterOverlay = document.getElementById('filter-overlay');
       const resetFiltersBtn = document.getElementById('reset-filters');
       const applyFiltersBtn = document.getElementById('apply-filters-btn');
-        
-      // --- State ---
-      let currentFilters = {
+
+      const CATEGORY_ALIASES = {
+        accessory: 'gadget',
+        accessories: 'gadget'
+      };
+
+      const FILTER_GROUPS = {
+        all: [
+          { key: 'brand', label: 'برند' }
+        ],
+        case: [
+          { key: 'brand', label: 'برند گوشی', options: ['apple', 'samsung', 'xiaomi'] },
+          { key: 'model', label: 'مدل گوشی' },
+          { key: 'material', label: 'جنس قاب', options: ['silicone', 'leather', 'clear', 'tpu'] }
+        ],
+        phone: [
+          { key: 'brand', label: 'برند', options: ['apple', 'samsung', 'xiaomi'] },
+          { key: 'model', label: 'مدل', options: ['iPhone 15', 'S24', 'Xiaomi 13'] },
+          { key: 'storage', label: 'حافظه', options: ['128', '256', '512'] },
+          { key: 'ram', label: 'رم', options: ['8', '12', '16'] }
+        ],
+        charger: [
+          { key: 'brand', label: 'برند', options: ['anker', 'apple', 'xiaomi'] },
+          { key: 'type', label: 'نوع شارژر', options: ['adapter', 'powerbank', 'cable'] },
+          { key: 'watt', label: 'توان خروجی', options: ['20w', '30w', '33w', '65w'] },
+          { key: 'port', label: 'نوع پورت', options: ['usb-c', 'usb-a', 'usb-c+usb-a'] }
+        ],
+        airpod: [
+          { key: 'brand', label: 'برند', options: ['apple', 'baseus'] },
+          { key: 'model', label: 'مدل', options: ['AirPods 2', 'AirPods 3', 'AirPods Pro', 'AirPods Pro 2'] },
+          { key: 'material', label: 'جنس کاور', options: ['silicone', 'leather', 'hard'] }
+        ],
+        glass: [
+          { key: 'brand', label: 'برند گوشی', options: ['apple', 'samsung', 'xiaomi'] },
+          { key: 'model', label: 'مدل گوشی' },
+          { key: 'type', label: 'نوع محافظ', options: ['privacy', 'ceramic', 'standard'] }
+        ],
+        gadget: [
+          { key: 'brand', label: 'برند', options: ['baseus', 'ugreen'] },
+          { key: 'type', label: 'نوع گجت', options: ['popsocket', 'holder', 'cable'] },
+          { key: 'material', label: 'جنس', options: ['plastic', 'metal', 'nylon'] }
+        ]
+      };
+
+      const FILTER_LABELS = {
+        brand: {
+          apple: 'اپل',
+          samsung: 'سامسونگ',
+          xiaomi: 'شیائومی',
+          anker: 'Anker',
+          baseus: 'Baseus',
+          ugreen: 'UGREEN'
+        },
+        material: {
+          silicone: 'سیلیکونی',
+          leather: 'چرمی',
+          clear: 'شفاف',
+          tpu: 'ژله‌ای',
+          plastic: 'پلاستیکی',
+          metal: 'فلزی',
+          nylon: 'نایلون',
+          hard: 'سخت'
+        },
+        type: {
+          adapter: 'آداپتور',
+          powerbank: 'پاوربانک',
+          cable: 'کابل',
+          popsocket: 'پاپ سوکت',
+          holder: 'هولدر',
+          privacy: 'پرایوسی',
+          ceramic: 'سرامیکی',
+          standard: 'معمولی'
+        },
+        watt: {
+          '20w': '۲۰ وات',
+          '30w': '۳۰ وات',
+          '33w': '۳۳ وات',
+          '65w': '۶۵ وات'
+        },
+        port: {
+          'usb-c': 'USB-C',
+          'usb-a': 'USB-A',
+          'usb-c+usb-a': 'USB-C + USB-A'
+        },
+        storage: {
+          '128': '۱۲۸ گیگ',
+          '256': '۲۵۶ گیگ',
+          '512': '۵۱۲ گیگ'
+        },
+        ram: {
+          '8': '۸ گیگ',
+          '12': '۱۲ گیگ',
+          '16': '۱۶ گیگ'
+        }
+      };
+
+      const normalize = (value) => String(value || '').trim().toLowerCase();
+
+      const getLabel = (key, value) => {
+        const map = FILTER_LABELS[key];
+        return map && map[value] ? map[value] : value;
+      };
+
+      const getCardValues = (card, key) => {
+        const raw = card?.dataset?.[key];
+        if (!raw) return [];
+        return raw.split(/[|,]/).map((val) => normalize(val));
+      };
+
+      const getGroupValues = (category, group) => {
+        const valuesMap = new Map();
+        const cards = category === 'all'
+          ? productCards
+          : productCards.filter((card) => card.dataset.category === category);
+
+        cards.forEach((card) => {
+          const raw = card.dataset[group.key];
+          if (!raw) return;
+          raw.split(/[|,]/).forEach((val) => {
+            const trimmed = val.trim();
+            if (!trimmed) return;
+            const normalized = normalize(trimmed);
+            if (!valuesMap.has(normalized)) valuesMap.set(normalized, trimmed);
+          });
+        });
+
+        if (valuesMap.size === 0 && Array.isArray(group.options)) {
+          group.options.forEach((opt) => {
+            const normalized = normalize(opt);
+            if (!valuesMap.has(normalized)) valuesMap.set(normalized, opt);
+          });
+        }
+
+        return Array.from(valuesMap.values());
+      };
+
+      const currentFilters = {
         category: 'all',
-        brands: [],
-        models: [],
-        priceMin: 0,
-        priceMax: 2000000,
+        attributes: {},
         inStock: false,
         search: ''
       };
 
-      // --- Helpers ---
-      const updateSelectedFiltersUI = () => {
-        const chips = [];
-        // Category
-        if (currentFilters.category && currentFilters.category !== 'all') {
-          chips.push({type: 'category', label: document.querySelector('.category-filter-btn.active').textContent.trim(), value: currentFilters.category});
-        }
-        // Brands
-        currentFilters.brands.forEach(b => chips.push({type: 'brand', label: b, value: b}));
-        // models
-        (currentFilters.models || []).forEach(m => chips.push({type: 'model', label: m, value: m}));
-        // Price range
-        if (typeof currentFilters.priceMin !== 'undefined' && typeof currentFilters.priceMax !== 'undefined') {
-          const min = Number(currentFilters.priceMin) || 0;
-          const max = Number(currentFilters.priceMax) || 2000000;
-          if (!(min === 0 && max === 2000000)) {
-            const lbl = `${min.toLocaleString()} – ${max >= 2000000 ? 'و بیشتر' : max.toLocaleString()} تومان`;
-            chips.push({type: 'price', label: lbl, value: `${min}-${max}`});
-          }
-        }
-        // In stock
-        if (currentFilters.inStock) chips.push({type: 'stock', label: 'فقط کالاهای موجود', value: 'inStock'});
-        // Search
-        if (currentFilters.search) chips.push({type: 'search', label: `جستجو: ${currentFilters.search}`, value: currentFilters.search});
+      const setActiveCategory = (cat) => {
+        const normalized = CATEGORY_ALIASES[cat] || cat || 'all';
+        categoryButtons.forEach((btn) => {
+          btn.classList.toggle('active', btn.dataset.category === normalized);
+        });
+        currentFilters.category = normalized;
+      };
 
-        // Render chips
+      const renderDynamicFilters = () => {
+        if (!dynamicFiltersEl) return;
+        dynamicFiltersEl.innerHTML = '';
+        const groups = FILTER_GROUPS[currentFilters.category] || FILTER_GROUPS.all;
+        let hasAnyOptions = false;
+
+        groups.forEach((group) => {
+          const values = getGroupValues(currentFilters.category, group);
+          const details = document.createElement('details');
+          details.className = 'filter-subgroup';
+          details.open = true;
+
+          const summary = document.createElement('summary');
+          summary.className = 'filter-subgroup-summary';
+          summary.innerHTML = `<span>${group.label}</span><span class="material-icon">expand_more</span>`;
+          details.appendChild(summary);
+
+          const optionsWrap = document.createElement('div');
+          optionsWrap.className = 'filter-options';
+
+          if (values.length === 0) {
+            const empty = document.createElement('div');
+            empty.className = 'filter-group-empty';
+            empty.textContent = 'فعلا گزینه‌ای برای این فیلتر ثبت نشده است.';
+            optionsWrap.appendChild(empty);
+          } else {
+            hasAnyOptions = true;
+            values.forEach((rawValue) => {
+              const normalized = normalize(rawValue);
+              const label = getLabel(group.key, rawValue);
+              const labelEl = document.createElement('label');
+              labelEl.className = 'filter-option';
+              labelEl.innerHTML = `
+                <input type="checkbox" class="filter-input" data-filter-key="${group.key}" data-normalized="${normalized}" value="${rawValue}">
+                <span>${label}</span>
+              `;
+              optionsWrap.appendChild(labelEl);
+            });
+          }
+
+          details.appendChild(optionsWrap);
+          dynamicFiltersEl.appendChild(details);
+        });
+
+        if (dynamicFiltersEmptyEl) {
+          dynamicFiltersEmptyEl.classList.toggle('hidden', hasAnyOptions);
+        }
+
+        const inputs = dynamicFiltersEl.querySelectorAll('input.filter-input');
+        inputs.forEach((input) => {
+          input.addEventListener('change', () => {
+            const label = input.closest('label');
+            if (label) label.classList.toggle('selected', input.checked);
+            filterAndSortProducts();
+          });
+        });
+      };
+
+      const collectFiltersFromUI = () => {
+        const activeCategoryBtn = document.querySelector('.category-filter-btn.active');
+        currentFilters.category = activeCategoryBtn ? activeCategoryBtn.dataset.category : 'all';
+        currentFilters.inStock = Boolean(inStockToggle && inStockToggle.checked);
+        currentFilters.search = filterSearch ? normalize(filterSearch.value) : '';
+        currentFilters.attributes = {};
+
+        if (dynamicFiltersEl) {
+          dynamicFiltersEl.querySelectorAll('input.filter-input:checked').forEach((input) => {
+            const key = input.dataset.filterKey;
+            const normalized = input.dataset.normalized || normalize(input.value);
+            if (!currentFilters.attributes[key]) currentFilters.attributes[key] = [];
+            currentFilters.attributes[key].push(normalized);
+          });
+        }
+      };
+
+      const updateSelectedFiltersUI = () => {
+        if (!selectedFiltersEl) return;
+        const chips = [];
+
+        const activeCategoryBtn = document.querySelector('.category-filter-btn.active');
+        if (activeCategoryBtn && activeCategoryBtn.dataset.category !== 'all') {
+          const label = activeCategoryBtn.querySelector('.category-label')?.textContent?.trim()
+            || activeCategoryBtn.textContent.trim();
+          chips.push({
+            type: 'category',
+            label,
+            value: activeCategoryBtn.dataset.category
+          });
+        }
+
+        if (dynamicFiltersEl) {
+          dynamicFiltersEl.querySelectorAll('input.filter-input:checked').forEach((input) => {
+            const key = input.dataset.filterKey;
+            const normalized = input.dataset.normalized || normalize(input.value);
+            const label = input.closest('label')?.querySelector('.filter-option-label')?.textContent?.trim() || input.value;
+            chips.push({
+              type: 'attribute',
+              key,
+              normalized,
+              label
+            });
+          });
+        }
+
+        if (currentFilters.inStock) {
+          chips.push({ type: 'stock', label: 'فقط کالاهای موجود' });
+        }
+
+        const searchLabel = filterSearch?.value?.trim();
+        if (searchLabel) {
+          chips.push({ type: 'search', label: `جستجو: ${searchLabel}` });
+        }
+
         selectedFiltersEl.innerHTML = '';
         if (chips.length === 0) {
           selectedFiltersEl.style.display = 'none';
           return;
         }
+
         selectedFiltersEl.style.display = '';
-        chips.forEach(ch => {
+        chips.forEach((chip) => {
           const btn = document.createElement('button');
           btn.type = 'button';
-          btn.className = 'chip inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 text-sm text-gray-700 mr-2 mb-2';
-          btn.textContent = ch.label;
-          btn.setAttribute('data-type', ch.type);
-          btn.setAttribute('data-value', ch.value);
+          btn.className = 'filter-chip';
+          btn.textContent = chip.label;
           btn.addEventListener('click', () => {
-            // Remove that filter
-            switch(ch.type) {
-              case 'brand':
-                const target = Array.from(brandCheckboxes).find(cb => cb.value === ch.value);
-                if (target) target.checked = false;
-                break;
-              case 'model':
-                const targetM = Array.from(document.querySelectorAll('input[name="model"]')).find(cb => cb.value === ch.value);
-                if (targetM) targetM.checked = false;
-                break;
-              case 'price':
-                if (priceMinInput) priceMinInput.value = 0;
-                if (priceMaxInput) priceMaxInput.value = 2000000;
-                if (priceMinLabel) priceMinLabel.textContent = '0';
-                if (priceMaxLabel) priceMaxLabel.textContent = '2,000,000+';
-                break;
-              case 'stock':
-                inStockToggle.checked = false;
-                break;
-              case 'search':
-                if (filterSearch) filterSearch.value = '';
-                break;
-              case 'category':
-                categoryButtons.forEach(b => b.classList.toggle('active', b.dataset.category === 'all'));
-                break;
+            if (chip.type === 'category') {
+              setActiveCategory('all');
+              renderDynamicFilters();
+            } else if (chip.type === 'attribute' && dynamicFiltersEl) {
+              const target = dynamicFiltersEl.querySelector(
+                `input.filter-input[data-filter-key="${chip.key}"][data-normalized="${chip.normalized}"]`
+              );
+              if (target) {
+                target.checked = false;
+                target.closest('label')?.classList.remove('selected');
+              }
+            } else if (chip.type === 'stock' && inStockToggle) {
+              inStockToggle.checked = false;
+            } else if (chip.type === 'search' && filterSearch) {
+              filterSearch.value = '';
             }
-            // Refresh
-            collectFiltersFromUI();
             filterAndSortProducts();
           });
           selectedFiltersEl.appendChild(btn);
         });
       };
 
-const collectFiltersFromUI = () => {
-        const activeCategoryBtn = document.querySelector('.category-filter-btn.active');
-        currentFilters.category = activeCategoryBtn ? activeCategoryBtn.dataset.category : 'all';
-        currentFilters.brands = Array.from(brandCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
-        currentFilters.models = Array.from(document.querySelectorAll('input[name="model"]')).filter(cb => cb.checked).map(cb => cb.value);
-        currentFilters.priceMin = priceMinInput ? parseInt(priceMinInput.value, 10) : 0;
-        currentFilters.priceMax = priceMaxInput ? parseInt(priceMaxInput.value, 10) : 2000000;
-        currentFilters.inStock = inStockToggle.checked;
-        currentFilters.search = filterSearch ? filterSearch.value.toLowerCase() : '';
+      const buildSearchText = (card) => {
+        const title = card.querySelector('h3')?.textContent || '';
+        const brand = card.dataset.brand || '';
+        const model = card.dataset.model || '';
+        const material = card.dataset.material || '';
+        const type = card.dataset.type || '';
+        const watt = card.dataset.watt || '';
+        const port = card.dataset.port || '';
+        const searchParts = [
+          title,
+          brand,
+          getLabel('brand', brand),
+          model,
+          getLabel('material', material),
+          getLabel('type', type),
+          getLabel('watt', watt),
+          getLabel('port', port)
+        ];
+        return normalize(searchParts.join(' '));
       };
 
-      // Build brand -> models UI dynamically from product cards
-      const buildBrandModelFilters = () => {
-        const brandListEl = document.getElementById('brand-list');
-        const brandListCase = document.getElementById('brand-list-case');
-        const brandListGlass = document.getElementById('brand-list-glass');
-        if (!brandListEl) return;
-
-        const brands = {};
-        const caseBrands = new Set();
-        const glassBrands = new Set();
-
-        productCards.forEach(card => {
-          const brand = (card.dataset.brand || 'unknown').toLowerCase();
-          const title = card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : '';
-          if (!brands[brand]) brands[brand] = new Set();
-          if (title) brands[brand].add(title);
-          if (card.dataset.category === 'case') caseBrands.add(brand);
-          if (card.dataset.category === 'glass') glassBrands.add(brand);
-        });
-
-        // Render main detailed brand list
-        brandListEl.innerHTML = '';
-        Object.keys(brands).sort().forEach(brand => {
-          const details = document.createElement('details');
-          details.className = 'brand-group filter-section';
-          const summary = document.createElement('summary');
-          summary.innerHTML = `<label class="inline-flex items-center gap-2"><input type="checkbox" name="brand" value="${brand}" /> <span class="font-medium">${brand}</span></label> <span class="material-icon">expand_more</span>`;
-          const modelsWrap = document.createElement('div');
-          modelsWrap.className = 'p-2 space-y-1 model-list';
-          Array.from(brands[brand]).slice(0, 30).forEach(model => {
-            const id = `model-${brand}-${btoa(model).slice(0,6)}`;
-            const lbl = document.createElement('label');
-            lbl.className = 'filter-checkbox-label block';
-            lbl.innerHTML = `<input type="checkbox" name="model" value="${escapeHtml(model)}" data-brand="${brand}" id="${id}" /> <span class="text-sm">${model}</span>`;
-            modelsWrap.appendChild(lbl);
-          });
-          details.appendChild(summary);
-          details.appendChild(modelsWrap);
-          brandListEl.appendChild(details);
-        });
-
-        // Render compact lists for Case and Glass quick-filters
-        if (brandListCase) {
-          brandListCase.innerHTML = '';
-          Array.from(caseBrands).sort().forEach(b => {
-            const lbl = document.createElement('label');
-            lbl.className = 'filter-checkbox-label';
-            lbl.innerHTML = `<input type="checkbox" name="brand" value="${b}" /> <span class="text-sm mr-2">${b}</span>`;
-            brandListCase.appendChild(lbl);
-          });
-        }
-
-        if (brandListGlass) {
-          brandListGlass.innerHTML = '';
-          Array.from(glassBrands).sort().forEach(b => {
-            const lbl = document.createElement('label');
-            lbl.className = 'filter-checkbox-label';
-            lbl.innerHTML = `<input type="checkbox" name="brand" value="${b}" /> <span class="text-sm mr-2">${b}</span>`;
-            brandListGlass.appendChild(lbl);
-          });
-        }
-
-        // refresh brandCheckboxes
-        brandCheckboxes = document.querySelectorAll('input[name="brand"]');
-      };
-
-      // small helper to escape simple HTML in values
-      function escapeHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-
-      // --- Functions ---
       const filterAndSortProducts = () => {
         collectFiltersFromUI();
 
-        // Show/hide brand filter based on category (cases and glass need brand/models)
-        brandFilterSection.classList.toggle('hidden', !(currentFilters.category === 'case' || currentFilters.category === 'glass'));
-
-        // 2. Filter logic
-        let visibleProducts = productCards.filter(card => {
+        const visibleProducts = [];
+        productCards.forEach((card) => {
           const categoryMatch = currentFilters.category === 'all' || card.dataset.category === currentFilters.category;
-          const brandMatch = currentFilters.brands.length === 0 || currentFilters.brands.includes(card.dataset.brand);
-          // Model matching: if models selected, title must match one of them
-          const title = card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : '';
-          const modelMatch = !currentFilters.models || currentFilters.models.length === 0 || currentFilters.models.includes(title);
+          const attributesMatch = Object.entries(currentFilters.attributes).every(([key, values]) => {
+            if (!values || values.length === 0) return true;
+            const cardValues = getCardValues(card, key);
+            if (cardValues.length === 0) return false;
+            return values.some((val) => cardValues.includes(val));
+          });
           const stockMatch = !currentFilters.inStock || card.dataset.stock === 'true';
-
-          const price = parseInt(card.dataset.price, 10) || 0;
-          const min = currentFilters.priceMin != null ? Number(currentFilters.priceMin) : 0;
-          const max = currentFilters.priceMax != null ? Number(currentFilters.priceMax) : 2000000;
-          const priceMatch = price >= min && price <= max;
-
-          const ratingMatch = true; // rating filter removed
-
-          // Search in product title and brand
-          const searchMatch = !currentFilters.search || 
-            card.querySelector('h3').textContent.toLowerCase().includes(currentFilters.search) ||
-            card.querySelector('p').textContent.toLowerCase().includes(currentFilters.search);
-
-          // For a card to be visible, all conditions must be true
-          const isVisible = categoryMatch && brandMatch && modelMatch && stockMatch && priceMatch && ratingMatch && searchMatch;
+          const searchMatch = !currentFilters.search || buildSearchText(card).includes(currentFilters.search);
+          const isVisible = categoryMatch && attributesMatch && stockMatch && searchMatch;
           card.classList.toggle('hidden', !isVisible);
-          return isVisible;
+          if (isVisible) visibleProducts.push(card);
         });
-            
-        // 3. Sort logic
-        const sortBy = sortSelect.value;
+
+        const sortBy = sortSelect ? sortSelect.value : 'popular';
         visibleProducts.sort((a, b) => {
-          switch(sortBy) {
+          switch (sortBy) {
             case 'price-asc':
-              return parseInt(a.dataset.price) - parseInt(b.dataset.price);
+              return (parseInt(a.dataset.price, 10) || 0) - (parseInt(b.dataset.price, 10) || 0);
             case 'price-desc':
-              return parseInt(b.dataset.price) - parseInt(a.dataset.price);
+              return (parseInt(b.dataset.price, 10) || 0) - (parseInt(a.dataset.price, 10) || 0);
             case 'newest':
-              return parseInt(b.dataset.new) - parseInt(a.dataset.new);
+              return (parseInt(b.dataset.new, 10) || 0) - (parseInt(a.dataset.new, 10) || 0);
             case 'rating':
-              return parseInt(b.dataset.popular) - parseInt(a.dataset.popular);
+              return (parseInt(b.dataset.popular, 10) || 0) - (parseInt(a.dataset.popular, 10) || 0);
             case 'popular':
             default:
-              return parseInt(b.dataset.popular) - parseInt(a.dataset.popular);
+              return (parseInt(b.dataset.popular, 10) || 0) - (parseInt(a.dataset.popular, 10) || 0);
           }
         });
 
-        // 4. Determine layout mode and re-append to grid
-        const anyFilterActive = (
-          currentFilters.category !== 'all' ||
-          (currentFilters.brands && currentFilters.brands.length > 0) ||
-          (currentFilters.priceMin && currentFilters.priceMin > 0) ||
-          (currentFilters.priceMax && currentFilters.priceMax < 2000000) ||
-          !!currentFilters.inStock ||
-          (currentFilters.search && currentFilters.search.length > 0)
-        );
-        productsGrid.classList.toggle('column-flow', anyFilterActive);
+        visibleProducts.forEach((card) => productsGrid.appendChild(card));
 
-        visibleProducts.forEach(card => productsGrid.appendChild(card));
+        if (resultsCountEl) {
+          resultsCountEl.textContent = `نمایش ${visibleProducts.length} از ${productCards.length} محصول`;
+        }
+        if (noResultsEl) {
+          noResultsEl.classList.toggle('hidden', visibleProducts.length > 0);
+        }
 
-        // Update UI
-        resultsCountEl.textContent = `نمایش ${visibleProducts.length} از ${productCards.length} محصول`;
-        noResultsEl.classList.toggle('hidden', visibleProducts.length > 0);
-
-        // update chips
         updateSelectedFiltersUI();
       };
 
-      const resetFilters = () => {
-        // remove active state from category buttons (user can click 'همه محصولات' to activate it)
-        categoryButtons.forEach(btn => btn.classList.remove('active'));
-        brandCheckboxes.forEach(cb => cb.checked = false);
-        // clear visual selection classes from brand/model labels
-        document.querySelectorAll('#filter-sidebar .filter-checkbox-label').forEach(l => l.classList.remove('selected'));
-        
-        // Reset price controls (slider removed)
-        if (priceMinInput) priceMinInput.value = 0;
-        if (priceMaxInput) priceMaxInput.value = 2000000;
-        // Reset displays/labels if present
-        if (priceMinLabel) priceMinLabel.textContent = '۰';
-        if (priceMaxLabel) priceMaxLabel.textContent = '۲,۰۰۰,۰۰۰+';
-        
-        // Reset preset buttons
-        const presetBtns = document.querySelectorAll('.preset-btn');
-        presetBtns.forEach(btn => btn.classList.remove('bg-[#EADDFF]', 'text-[#6750A4]'));
-        
-        inStockToggle.checked = false;
-        if (filterSearch) filterSearch.value = '';
-        if (brandSearchInput) brandSearchInput.value = '';
-        sortSelect.value = 'popular';
-        collectFiltersFromUI();
-        filterAndSortProducts();
-      };
-
-      // Helper to set active category button by name
-      function setActiveCategory(cat) {
-        categoryButtons.forEach(b => {
-          if (b.dataset.category === cat) b.classList.add('active'); else b.classList.remove('active');
-        });
-      }
-
-      // --- Event Listeners ---
-      if (filterSearch) {
-        filterSearch.addEventListener('input', () => {
-        filterAndSortProducts();
-        });
-      }
-
-      if (brandSearchInput) {
-        brandSearchInput.addEventListener('input', () => {
-          const term = brandSearchInput.value.trim().toLowerCase();
-          // Filter all brand groups (main list and any compact lists)
-          const brandGroups = document.querySelectorAll('.brand-group');
-          brandGroups.forEach(group => {
-            const text = group.textContent.toLowerCase();
-            group.classList.toggle('hidden', term !== '' && !text.includes(term));
-          });
-
-          // Also filter compact brand lists by hiding labels that don't match
-          ['brand-list-case', 'brand-list-glass', 'brand-list'].forEach(id => {
-            const el = document.getElementById(id);
-            if (!el) return;
-            Array.from(el.querySelectorAll('label')).forEach(lbl => {
-              const t = lbl.textContent.toLowerCase();
-              lbl.classList.toggle('hidden', term !== '' && !t.includes(term));
-            });
-          });
-        });
-      }
-
-      // Price slider removed per request. Inputs and displays are no longer present in DOM.
-
-      // Build brand/model filters dynamically and wire their events
-      buildBrandModelFilters();
-      // attach listeners for dynamically created inputs and add selection effects
-      const attachDynamicFilterListeners = () => {
-        brandCheckboxes = document.querySelectorAll('input[name="brand"]');
-        brandCheckboxes.forEach(cb => {
-          cb.addEventListener('change', (e) => {
-            const lbl = cb.closest('label');
-            if (lbl) {
-              if (cb.checked) {
-                lbl.classList.add('selected');
-              } else {
-                lbl.classList.remove('selected');
-              }
-            }
-
-            // If selecting a brand from compact lists, auto-activate corresponding category
-            if (cb.closest('#brand-list-case')) setActiveCategory('case');
-            if (cb.closest('#brand-list-glass')) setActiveCategory('glass');
-
-            collectFiltersFromUI(); filterAndSortProducts();
-          });
-        });
-
-        const modelCheckboxes = document.querySelectorAll('input[name="model"]');
-        modelCheckboxes.forEach(cb => {
-          cb.addEventListener('change', (e) => {
-            const lbl = cb.closest('label');
-            if (lbl) {
-              if (cb.checked) {
-                lbl.classList.add('selected');
-              } else {
-                lbl.classList.remove('selected');
-              }
-            }
-            // If model belongs to a brand that maps to a category, activate it
-            const brand = cb.dataset.brand;
-            if (brand) {
-              const hasCase = productCards.some(c => c.dataset.brand === brand && c.dataset.category === 'case');
-              const hasGlass = productCards.some(c => c.dataset.brand === brand && c.dataset.category === 'glass');
-              if (hasCase) setActiveCategory('case');
-              else if (hasGlass) setActiveCategory('glass'); 
-
-              
-            }
-            collectFiltersFromUI(); filterAndSortProducts();
-          });
-        });
-      };
-      attachDynamicFilterListeners();
-
-      categoryButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          // activate the clicked category
-          setActiveCategory(btn.dataset.category);
-          // small visual feedback
-          btn.classList.add('animate-pulse');
-          setTimeout(() => btn.classList.remove('animate-pulse'), 300);
-
-          // When changing category, clear brand/model filters if switching away from those categories
-          if (btn.dataset.category !== 'case' && btn.dataset.category !== 'glass') {
-            brandCheckboxes.forEach(cb => cb.checked = false);
+      const updateCategoryInUrl = (category) => {
+        try {
+          const params = new URLSearchParams(window.location.search);
+          if (category === 'all') {
+            params.delete('cat');
+          } else {
+            params.set('cat', category);
           }
+          params.delete('category');
+          const query = params.toString();
+          const newUrl = `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`;
+          history.replaceState(null, '', newUrl);
+        } catch (e) {}
+      };
 
-          // update URL param
-          try { history.replaceState(null, '', '?category=' + encodeURIComponent(btn.dataset.category)); } catch(e){}
+      if (filterSearch) {
+        filterSearch.addEventListener('input', () => filterAndSortProducts());
+      }
+      if (inStockToggle) {
+        inStockToggle.addEventListener('change', () => filterAndSortProducts());
+      }
+      if (sortSelect) {
+        sortSelect.addEventListener('change', () => filterAndSortProducts());
+      }
 
-          collectFiltersFromUI();
+      categoryButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          setActiveCategory(btn.dataset.category);
+          renderDynamicFilters();
+          updateCategoryInUrl(btn.dataset.category);
           filterAndSortProducts();
         });
       });
 
-      // Make <summary> elements that represent grouped categories activate their category when clicked
-      const categoryDetails = document.querySelectorAll('#filter-sidebar > .bg-white details, #filter-sidebar details');
-      categoryDetails.forEach(d => {
-        const summary = d.querySelector('summary');
-        if (!summary) return;
-        summary.addEventListener('click', (ev) => {
-          // find an internal category button inside this details (if any) and activate it
-          const btn = d.querySelector('.category-filter-btn[data-category]');
-          if (btn) {
-            // don't prevent details open/close; just activate category
-            setActiveCategory(btn.dataset.category);
-            btn.classList.add('animate-pulse');
-            setTimeout(() => btn.classList.remove('animate-pulse'), 300);
-            collectFiltersFromUI(); filterAndSortProducts();
-          }
+      if (resetFiltersBtn) {
+        resetFiltersBtn.addEventListener('click', () => {
+          setActiveCategory('all');
+          renderDynamicFilters();
+          if (filterSearch) filterSearch.value = '';
+          if (inStockToggle) inStockToggle.checked = false;
+          if (sortSelect) sortSelect.value = 'popular';
+          updateCategoryInUrl('all');
+          filterAndSortProducts();
         });
-      });
+      }
 
-      // brand/model listeners are attached by attachDynamicFilterListeners()
-      inStockToggle.addEventListener('change', () => filterAndSortProducts());
-      sortSelect.addEventListener('change', () => filterAndSortProducts());
-      resetFiltersBtn.addEventListener('click', resetFilters);
-
-      // Mobile Filter Listeners
       const openFilterMenu = () => {
+        if (!filterSidebar || !filterOverlay) return;
         filterSidebar.classList.add('open');
         filterOverlay.classList.add('visible');
-        mobileFilterBtn.setAttribute('aria-expanded', 'true');
+        if (mobileFilterBtn) mobileFilterBtn.setAttribute('aria-expanded', 'true');
         document.body.style.overflow = 'hidden';
-        // Set focus to close button for accessibility
         setTimeout(() => closeFiltersBtn && closeFiltersBtn.focus(), 100);
       };
-        
+
       const closeFilterMenu = () => {
+        if (!filterSidebar || !filterOverlay) return;
         filterSidebar.classList.remove('open');
         filterOverlay.classList.remove('visible');
-        mobileFilterBtn.setAttribute('aria-expanded', 'false');
+        if (mobileFilterBtn) mobileFilterBtn.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
-        // Return focus to filter button
-        mobileFilterBtn.focus();
+        if (mobileFilterBtn) mobileFilterBtn.focus();
       };
 
-      mobileFilterBtn.addEventListener('click', openFilterMenu);
-      closeFiltersBtn.addEventListener('click', closeFilterMenu);
-      filterOverlay.addEventListener('click', closeFilterMenu);
+      if (mobileFilterBtn) mobileFilterBtn.addEventListener('click', openFilterMenu);
+      if (closeFiltersBtn) closeFiltersBtn.addEventListener('click', closeFilterMenu);
+      if (filterOverlay) filterOverlay.addEventListener('click', closeFilterMenu);
+      if (applyFiltersBtn) applyFiltersBtn.addEventListener('click', () => {
+        filterAndSortProducts();
+        closeFilterMenu();
+      });
 
-      if (applyFiltersBtn) applyFiltersBtn.addEventListener('click', () => { filterAndSortProducts(); closeFilterMenu(); });
-
-      // Keyboard support: Escape key to close filter drawer
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && filterSidebar.classList.contains('open')) {
+        if (e.key === 'Escape' && filterSidebar && filterSidebar.classList.contains('open')) {
           closeFilterMenu();
         }
       });
 
-      // Initial run: read URL params (category, brand, price) if provided
-      (function applyUrlParams() {
+      const applyUrlParams = () => {
         const params = new URLSearchParams(window.location.search);
-        const hashParams = window.location.hash ? new URLSearchParams(window.location.hash.replace(/^#/, '')) : null;
-        const cat = params.get('category') || (hashParams && hashParams.get('category'));
-        const brand = params.get('brand') || (hashParams && hashParams.get('brand'));
-        const pmin = params.get('priceMin') || (hashParams && hashParams.get('priceMin'));
-        const pmax = params.get('priceMax') || (hashParams && hashParams.get('priceMax'));
-        if (cat) {
-          categoryButtons.forEach(b => b.classList.toggle('active', b.dataset.category === cat));
+        const catParam = params.get('category') || params.get('cat');
+        if (catParam) {
+          setActiveCategory(CATEGORY_ALIASES[catParam] || catParam);
+        } else {
+          setActiveCategory('all');
         }
-        if (brand) {
-          const target = Array.from(brandCheckboxes).find(cb => cb.value === brand);
-          if (target) target.checked = true;
-        }
-        if (pmin && priceMinInput) priceMinInput.value = pmin;
-        if (pmax && priceMaxInput) priceMaxInput.value = pmax;
-        if (priceMinLabel) priceMinLabel.textContent = priceMinInput ? Number(priceMinInput.value).toLocaleString() : '0';
-        if (priceMaxLabel) priceMaxLabel.textContent = priceMaxInput ? (Number(priceMaxInput.value) >= 2000000 ? '2,000,000+' : Number(priceMaxInput.value).toLocaleString()) : '2,000,000+';
-      })();
-
-      // Initialize with default filters
-      currentFilters = {
-        category: 'all',
-        brands: [],
-        models: [],
-        priceMin: 0,
-        priceMax: 2000000,
-        inStock: false,
-        search: ''
       };
-      // Ensure a default active category is set (show all products by default)
+
+      applyUrlParams();
       if (!document.querySelector('.category-filter-btn.active')) {
         setActiveCategory('all');
       }
-      
-      collectFiltersFromUI();
+
+      renderDynamicFilters();
       filterAndSortProducts();
     });
     </script>
@@ -1269,5 +1147,6 @@ const collectFiltersFromUI = () => {
       </div>
     </footer>
 
+  <script src="../assets/js/script.js"></script>
 </body>
 </html>

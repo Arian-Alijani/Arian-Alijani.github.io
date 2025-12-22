@@ -127,6 +127,51 @@ function initNavbarBottomScroll() {
 }
 initNavbarBottomScroll();
 
+// --- Header category dropdowns ---
+function initHeaderCategoryDropdowns() {
+    const dropdowns = Array.from(document.querySelectorAll('[data-nav-dropdown]'));
+    if (dropdowns.length === 0) return;
+
+    const setState = (dropdown, isOpen) => {
+        const trigger = dropdown.querySelector('.nav-dropdown-trigger');
+        const panel = dropdown.querySelector('.nav-dropdown-panel');
+        if (!trigger || !panel) return;
+        dropdown.classList.toggle('is-open', isOpen);
+        trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        panel.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+    };
+
+    const closeAll = (except) => {
+        dropdowns.forEach((dropdown) => {
+            if (dropdown === except) return;
+            setState(dropdown, false);
+        });
+    };
+
+    dropdowns.forEach((dropdown) => {
+        const trigger = dropdown.querySelector('.nav-dropdown-trigger');
+        if (!trigger) return;
+        setState(dropdown, false);
+        trigger.addEventListener('click', (event) => {
+            event.preventDefault();
+            const isOpen = dropdown.classList.contains('is-open');
+            closeAll(dropdown);
+            setState(dropdown, !isOpen);
+        });
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!event.target.closest('[data-nav-dropdown]')) closeAll();
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeAll();
+    });
+
+    window.addEventListener('resize', () => closeAll());
+}
+initHeaderCategoryDropdowns();
+
 // --- Cart state (per product) + Header badge ---
 const cartBtn = document.getElementById('cart-btn');
 const cartBadge = document.getElementById('cart-count-badge');

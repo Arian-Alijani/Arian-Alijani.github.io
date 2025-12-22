@@ -110,9 +110,79 @@
                       تمام محصولات
                   </a>
                   <div class="w-px h-4 bg-gray-300 mx-1 shrink-0 hidden md:block"></div>
-                  <a href="pages/Product.html?cat=case" class="secondary-nav-link">قاب گوشی</a>
-                  <a href="pages/Product.html?cat=phone" class="secondary-nav-link">گوشی هوشمند</a>
-                  <a href="pages/Product.html?cat=charger" class="secondary-nav-link">شارژر و کابل</a>
+                  <div class="nav-dropdown" data-nav-dropdown>
+                      <button type="button" class="secondary-nav-link nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-case" aria-haspopup="true">
+                          قاب گوشی
+                          <span class="material-icon nav-caret" aria-hidden="true">expand_more</span>
+                      </button>
+                      <div id="dropdown-case" class="nav-dropdown-panel" aria-hidden="true">
+                          <div class="nav-dropdown-section">
+                              <div class="nav-dropdown-title">جنس قاب</div>
+                              <div class="nav-dropdown-links">
+                                  <a href="pages/Product.html?cat=case&material=silicone" class="nav-dropdown-link">سیلیکونی</a>
+                                  <a href="pages/Product.html?cat=case&material=leather" class="nav-dropdown-link">چرمی</a>
+                                  <a href="pages/Product.html?cat=case&material=soft" class="nav-dropdown-link">ژله‌ای</a>
+                                  <a href="pages/Product.html?cat=case&material=hard" class="nav-dropdown-link">سخت</a>
+                                  <a href="pages/Product.html?cat=case&material=clear" class="nav-dropdown-link">شفاف</a>
+                                  <a href="pages/Product.html?cat=case&material=shockproof" class="nav-dropdown-link">ضدضربه</a>
+                                  <a href="pages/Product.html?cat=case&material=magsafe" class="nav-dropdown-link">مگ‌سیف</a>
+                              </div>
+                          </div>
+                          <a href="pages/Product.html?cat=case" class="nav-dropdown-all">مشاهده همه قاب‌ها</a>
+                      </div>
+                  </div>
+                  <div class="nav-dropdown" data-nav-dropdown>
+                      <button type="button" class="secondary-nav-link nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-phone" aria-haspopup="true">
+                          گوشی هوشمند
+                          <span class="material-icon nav-caret" aria-hidden="true">expand_more</span>
+                      </button>
+                      <div id="dropdown-phone" class="nav-dropdown-panel" aria-hidden="true">
+                          <div class="nav-dropdown-section">
+                              <div class="nav-dropdown-title">برندها</div>
+                              <div class="nav-dropdown-links">
+                                  <a href="pages/Product.html?cat=phone&brand=apple" class="nav-dropdown-link">اپل</a>
+                                  <a href="pages/Product.html?cat=phone&brand=samsung" class="nav-dropdown-link">سامسونگ</a>
+                                  <a href="pages/Product.html?cat=phone&brand=xiaomi" class="nav-dropdown-link">شیائومی</a>
+                                  <a href="pages/Product.html?cat=phone&brand=honor" class="nav-dropdown-link">آنر</a>
+                                  <a href="pages/Product.html?cat=phone&brand=huawei" class="nav-dropdown-link">هواوی</a>
+                                  <a href="pages/Product.html?cat=phone&brand=nokia" class="nav-dropdown-link">نوکیا</a>
+                                  <a href="pages/Product.html?cat=phone&brand=oneplus" class="nav-dropdown-link">وان پلاس</a>
+                              </div>
+                          </div>
+                          <a href="pages/Product.html?cat=phone" class="nav-dropdown-all">مشاهده همه گوشی‌ها</a>
+                      </div>
+                  </div>
+                  <div class="nav-dropdown" data-nav-dropdown>
+                      <button type="button" class="secondary-nav-link nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-charger" aria-haspopup="true">
+                          شارژر و کابل
+                          <span class="material-icon nav-caret" aria-hidden="true">expand_more</span>
+                      </button>
+                      <div id="dropdown-charger" class="nav-dropdown-panel nav-dropdown-panel-wide" aria-hidden="true">
+                          <div class="nav-dropdown-columns">
+                              <div class="nav-dropdown-column">
+                                  <div class="nav-dropdown-title">پاور بانک</div>
+                                  <div class="nav-dropdown-links">
+                                      <a href="pages/Product.html?cat=charger&type=powerbank&feature=magsafe" class="nav-dropdown-link">مگ‌سیف</a>
+                                      <a href="pages/Product.html?cat=charger&type=powerbank&feature=fast" class="nav-dropdown-link">فست شارژ</a>
+                                      <a href="pages/Product.html?cat=charger&type=powerbank&feature=high-capacity" class="nav-dropdown-link">پرظرفیت</a>
+                                      <a href="pages/Product.html?cat=charger&type=powerbank&feature=mini" class="nav-dropdown-link">مینی</a>
+                                  </div>
+                              </div>
+                              <div class="nav-dropdown-column">
+                                  <div class="nav-dropdown-title">شارژر</div>
+                                  <div class="nav-dropdown-links">
+                                      <a href="pages/Product.html?cat=charger&type=adapter" class="nav-dropdown-link">دیواری</a>
+                                      <a href="pages/Product.html?cat=charger&type=car" class="nav-dropdown-link">فندکی</a>
+                                      <a href="pages/Product.html?cat=charger&type=wireless" class="nav-dropdown-link">بی‌سیم</a>
+                                      <a href="pages/Product.html?cat=charger&type=cable&type2=type-c" class="nav-dropdown-link">کابل Type-C</a>
+                                      <a href="pages/Product.html?cat=charger&type=cable&type2=lightning" class="nav-dropdown-link">کابل لایتنینگ</a>
+                                      <a href="pages/Product.html?cat=charger&type=cable&type2=micro" class="nav-dropdown-link">کابل Micro-USB</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <a href="pages/Product.html?cat=charger" class="nav-dropdown-all">مشاهده همه شارژرها</a>
+                      </div>
+                  </div>
                   <a href="pages/Product.html?cat=airpod" class="secondary-nav-link">کاور ایرپاد</a>
                   <a href="pages/Product.html?cat=glass" class="secondary-nav-link">گلس و محافظ</a>
                   <a href="pages/Product.html?cat=gadget" class="secondary-nav-link">گجت</a>
@@ -367,10 +437,12 @@
       >
         <div class="relative">
           <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/FF0000/FFFFFF?text=Test" alt="قاب سیلیکونی آیفون ۱۵" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
+            <img src="/assets/img/111254.webp" alt="قاب سیلیکونی آیفون ۱۵" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
+          <!-- برای فیت شدن کامل کارت از تصویر ۹۰۰×۹۰۰ استفاده کنید -->
+          <span class="sr-only">بهترین اندازه تصویر: ۹۰۰×۹۰۰ پیکسل.</span>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-red-400" data-color-hex="#f87171" title="قرمز" aria-label="قرمز"></span>
             <span class="color-swatch bg-blue-400" data-color-hex="#60a5fa" title="آبی" aria-label="آبی"></span>
             <span class="color-swatch bg-black" data-color-hex="#000000" title="مشکی" aria-label="مشکی"></span>
@@ -419,7 +491,7 @@
             <img src="https://placehold.co/900x900/0ea5e9/FFFFFF?text=Privacy+Glass" alt="گلس پرایوسی آیفون ۱۴" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-gray-400" data-color-hex="#9ca3af" title="دودی" aria-label="دودی"></span>
             <span class="color-swatch bg-slate-600" data-color-hex="#475569" title="دودی تیره" aria-label="دودی تیره"></span>
           </div>
@@ -466,7 +538,7 @@
             <img src="https://placehold.co/900x900/22c55e/FFFFFF?text=Fast+Charger+25W" alt="شارژر فست ۲۵ وات سامسونگ" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-white" data-color-hex="#ffffff" title="سفید" aria-label="سفید"></span>
           </div>
         </div>
@@ -512,7 +584,7 @@
             <img src="https://placehold.co/900x900/f97316/FFFFFF?text=Type-C+Cable" alt="کابل تایپ C نایلونی ۱.۲م" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-black" data-color-hex="#000000" title="مشکی" aria-label="مشکی"></span>
             <span class="color-swatch bg-blue-500" data-color-hex="#3b82f6" title="آبی" aria-label="آبی"></span>
           </div>
@@ -559,7 +631,7 @@
             <img src="https://placehold.co/900x900/ec4899/FFFFFF?text=AirPods+Case" alt="کاور ایرپاد پرو سیلیکونی" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-rose-400" data-color-hex="#fb7185" title="صورتی" aria-label="صورتی"></span>
             <span class="color-swatch bg-green-400" data-color-hex="#4ade80" title="سبز" aria-label="سبز"></span>
           </div>
@@ -606,7 +678,7 @@
             <img src="https://placehold.co/900x900/6366f1/FFFFFF?text=Magnetic+Holder" alt="هولدر مغناطیسی خودرو" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-slate-800" data-color-hex="#1f2937" title="مشکی" aria-label="مشکی"></span>
           </div>
         </div>
@@ -663,7 +735,7 @@
             <img src="https://placehold.co/900x900/FF0000/FFFFFF?text=Test" alt="قاب سیلیکونی آیفون ۱۵" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-red-400" data-color-hex="#f87171" title="قرمز" aria-label="قرمز"></span>
             <span class="color-swatch bg-blue-400" data-color-hex="#60a5fa" title="آبی" aria-label="آبی"></span>
             <span class="color-swatch bg-black" data-color-hex="#000000" title="مشکی" aria-label="مشکی"></span>
@@ -712,7 +784,7 @@
             <img src="https://placehold.co/900x900/14b8a6/FFFFFF?text=Wireless+Charger" alt="شارژر وایرلس ۱۵ وات" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-gray-900" data-color-hex="#111827" title="مشکی" aria-label="مشکی"></span>
           </div>
         </div>
@@ -758,7 +830,7 @@
             <img src="https://placehold.co/900x900/93c5fd/1e3a8a?text=Clear+MagSafe+Case" alt="قاب شفاف مگ‌سیف آیفون ۱۵" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-slate-200" data-color-hex="#e2e8f0" title="شفاف" aria-label="شفاف"></span>
             <span class="color-swatch bg-slate-400" data-color-hex="#94a3b8" title="دودی" aria-label="دودی"></span>
           </div>
@@ -805,7 +877,7 @@
             <img src="https://placehold.co/900x900/f59e0b/FFFFFF?text=Ceramic+Glass" alt="گلس سرامیکی سامسونگ S23" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-gray-400" data-color-hex="#9ca3af" title="دودی" aria-label="دودی"></span>
           </div>
         </div>
@@ -851,7 +923,7 @@
             <img src="https://placehold.co/900x900/64748b/FFFFFF?text=Powerbank+10000" alt="پاوربانک ۱۰,۰۰۰ میلی‌آمپر" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-slate-500" data-color-hex="#64748b" title="خاکستری" aria-label="خاکستری"></span>
           </div>
         </div>
@@ -897,7 +969,7 @@
             <img src="https://placehold.co/900x900/ef4444/FFFFFF?text=TWS+Earbuds" alt="هندزفری بلوتوثی TWS" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-black" data-color-hex="#000000" title="مشکی" aria-label="مشکی"></span>
             <span class="color-swatch bg-gray-300" data-color-hex="#d1d5db" title="سفید" aria-label="سفید"></span>
           </div>
@@ -944,7 +1016,7 @@
             <img src="https://placehold.co/900x900/a3e635/FFFFFF?text=Desk+Stand" alt="پایه رومیزی موبایل" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-gray-700" data-color-hex="#374151" title="خاکستری تیره" aria-label="خاکستری تیره"></span>
           </div>
         </div>
@@ -1026,7 +1098,7 @@
             <img src="https://placehold.co/900x900/1f2937/FFFFFF?text=Armor+Case" alt="قاب ضدضربه سری Armor" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-slate-900" data-color-hex="#0f172a" title="مشکی" aria-label="مشکی"></span>
             <span class="color-swatch bg-zinc-400" data-color-hex="#a1a1aa" title="خاکستری" aria-label="خاکستری"></span>
           </div>
@@ -1073,7 +1145,7 @@
             <img src="https://placehold.co/900x900/0f172a/FFFFFF?text=Privacy+Glass" alt="گلس پرایوسی سرامیکی" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-slate-900" data-color-hex="#0f172a" title="مشکی" aria-label="مشکی"></span>
           </div>
         </div>
@@ -1119,7 +1191,7 @@
             <img src="https://placehold.co/900x900/f97316/FFFFFF?text=Silicon+Case" alt="قاب سیلیکونی مات" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-orange-500" data-color-hex="#f97316" title="نارنجی" aria-label="نارنجی"></span>
             <span class="color-swatch bg-amber-300" data-color-hex="#fcd34d" title="زرد" aria-label="زرد"></span>
           </div>
@@ -1166,7 +1238,7 @@
             <img src="https://placehold.co/900x900/4f46e5/FFFFFF?text=Lens+Guard" alt="محافظ لنز دوربین Pro" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-indigo-600" data-color-hex="#4f46e5" title="آبی" aria-label="آبی"></span>
             <span class="color-swatch bg-gray-300" data-color-hex="#d1d5db" title="نقره‌ای" aria-label="نقره‌ای"></span>
           </div>
@@ -1213,7 +1285,7 @@
             <img src="https://placehold.co/900x900/713f12/FFFFFF?text=Leather+Case" alt="قاب چرمی کلاسیک" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-amber-700" data-color-hex="#b45309" title="قهوه‌ای" aria-label="قهوه‌ای"></span>
             <span class="color-swatch bg-stone-300" data-color-hex="#d6d3d1" title="کرم" aria-label="کرم"></span>
           </div>
@@ -1260,7 +1332,7 @@
             <img src="https://placehold.co/900x900/38bdf8/0f172a?text=Full+Glue+Glass" alt="گلس فول چسب HD" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-sky-400" data-color-hex="#38bdf8" title="آبی روشن" aria-label="آبی روشن"></span>
           </div>
         </div>
@@ -1347,7 +1419,7 @@
             <img src="https://placehold.co/900x900/FF0000/FFFFFF?text=Test" alt="قاب سیلیکونی آیفون ۱۵" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-red-400" data-color-hex="#f87171" title="قرمز" aria-label="قرمز"></span>
             <span class="color-swatch bg-blue-400" data-color-hex="#60a5fa" title="آبی" aria-label="آبی"></span>
             <span class="color-swatch bg-black" data-color-hex="#000000" title="مشکی" aria-label="مشکی"></span>
@@ -1396,7 +1468,7 @@
             <img src="https://placehold.co/900x900/78350f/FFFFFF?text=Leather+Case" alt="کاور چرمی آیفون ۱۵ پرو" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-amber-800" data-color-hex="#92400e" title="قهوه‌ای" aria-label="قهوه‌ای"></span>
             <span class="color-swatch bg-neutral-900" data-color-hex="#111827" title="مشکی" aria-label="مشکی"></span>
           </div>
@@ -1443,7 +1515,7 @@
             <img src="https://placehold.co/900x900/22c55e/FFFFFF?text=Phone+Strap" alt="بند و آویز موبایل" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-pink-400" data-color-hex="#f472b6" title="صورتی" aria-label="صورتی"></span>
             <span class="color-swatch bg-violet-500" data-color-hex="#8b5cf6" title="بنفش" aria-label="بنفش"></span>
             <span class="color-swatch bg-yellow-400" data-color-hex="#facc15" title="زرد" aria-label="زرد"></span>
@@ -1491,7 +1563,7 @@
             <img src="https://placehold.co/900x900/0f172a/FFFFFF?text=Lens+Protector" alt="محافظ لنز دوربین" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-slate-900" data-color-hex="#0f172a" title="مشکی" aria-label="مشکی"></span>
           </div>
         </div>
@@ -1537,7 +1609,7 @@
             <img src="https://placehold.co/900x900/6b7280/FFFFFF?text=GaN+45W" alt="آداپتور GaN ۴۵ وات" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-gray-200" data-color-hex="#e5e7eb" title="سفید" aria-label="سفید"></span>
           </div>
         </div>
@@ -1583,7 +1655,7 @@
             <img src="https://placehold.co/900x900/3b82f6/FFFFFF?text=Lightning+PD" alt="کابل لایتنینگ PD" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-gray-100" data-color-hex="#f3f4f6" title="سفید" aria-label="سفید"></span>
             <span class="color-swatch bg-gray-800" data-color-hex="#1f2937" title="مشکی" aria-label="مشکی"></span>
           </div>
@@ -1630,7 +1702,7 @@
             <img src="https://placehold.co/900x900/f472b6/FFFFFF?text=Ring+Light" alt="رینگ لایت موبایل" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
           </div>
 
-          <div class="absolute top-2 left-0 flex flex-col gap-1.5" aria-label="رنگ‌های موجود">
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
             <span class="color-swatch bg-white" data-color-hex="#ffffff" title="سفید" aria-label="سفید"></span>
           </div>
         </div>
