@@ -2780,7 +2780,7 @@ body.menu-open {
     }
 }
 
-/* Product listing: minimal variant (Product.html only) */
+/* Product listing: minimal variant (products.html only) */
 .products-page-bg .product-card--minimal {
   border-radius: 10px !important;
   padding: 16px !important;
