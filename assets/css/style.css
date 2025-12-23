@@ -196,9 +196,10 @@ section.max-w-7xl,
 
 /* cart menu simplified */
 #cart-menu {
-    position: fixed;
-    top: calc(var(--navbar-offset, 120px) + 0.5rem);
-    right: 3.5rem;
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: auto;
+    right: 0;
     width: min(350px, 92vw);
     border-radius: 1rem;
     background: transparent;
@@ -209,7 +210,7 @@ section.max-w-7xl,
     transform-origin: top right;
     transform: translateY(6px) scale(0.98);
     transition: opacity 0.22s ease, transform 0.22s ease;
-    z-index: 120;
+    z-index: 125;
 }
 
 #cart-menu.is-open {
@@ -414,9 +415,11 @@ section.max-w-7xl,
 
 @media (max-width: 768px) {
     #cart-menu {
-        bottom: calc(100% + 0.2rem);
+        top: calc(100% + 0.5rem);
         width: min(320px, 95vw);
         left: auto;
+        right: 0;
+        z-index: 125;
     }
 }
 
@@ -509,6 +512,109 @@ section.max-w-7xl,
 .header-cta-mobile--primary:focus-visible {
     background: #4C1D95;
     transform: translateY(-0.5px);
+}
+
+
+/* Mobile header optimizations */
+@media (max-width: 767px) {
+    #navbar-top {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        align-items: center;
+    }
+
+    .flex.items-center.gap-3.shrink-0 { /* Left section with menu and logo */
+        flex: 0 0 auto;
+    }
+
+    .order-last.md\\:order-none { /* Search container */
+        order: 2 !important;
+        margin: 0.5rem 0;
+        width: 100%;
+    }
+
+    nav[aria-label="ابزارهای کاربری"] { /* Right navigation */
+        order: 3;
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+    /* Ensure proper spacing for mobile header icons */
+    nav[aria-label="ابزارهای کاربری"] .nav-icon-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    /* Adjust logo size on mobile */
+    .logo-container .text-xl {
+        font-size: 1.25rem;
+    }
+
+    /* Ensure proper spacing for auth buttons in mobile header */
+    .header-cta-mobile-group {
+        display: flex !important;
+        gap: 0.25rem;
+    }
+
+    .header-cta-mobile {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* Hide login and register buttons in header */
+.guest-only.md\\:hidden.header-cta-mobile-group,
+.guest-only.hidden.md\\:flex.header-cta-group {
+    display: none !important;
+}
+
+/* Round header */
+#navbar {
+    border-radius: 0 0 1.5rem 1.5rem; /* Rounded bottom corners only for the header */
+}
+
+/* Improve main menu structure */
+.secondary-nav {
+    padding: 0.5rem 0; /* Add some vertical padding */
+}
+
+.secondary-nav-link {
+    position: relative;
+    padding: 0.6rem 1.1rem; /* Slightly adjust padding for better touch targets */
+    transition: all 0.25s ease; /* Smooth transitions */
+}
+
+.secondary-nav-link:hover {
+    background-color: rgba(103, 80, 164, 0.1); /* Consistent hover effect */
+    color: #1D1B20;
+    transform: translateY(-1px); /* Subtle lift effect */
+}
+
+.secondary-nav-link.active {
+    transform: translateY(-1px); /* Consistent active state */
+}
+
+/* Add subtle indicator for dropdowns */
+.nav-dropdown-trigger::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #6750A4;
+    transition: width 0.3s ease;
+}
+
+.nav-dropdown:hover .nav-dropdown-trigger::after {
+    width: 100%;
+}
+
+/* Hide login and register options in footer */
+.footer-auth {
+    display: none !important;
 }
 
 /* Header category dropdowns */
@@ -2909,9 +3015,20 @@ z-index: 20;
 /* NEW MOBILE MENU STYLES */
 #mobile-menu {
   transition: transform 0.3s ease-out;
+  border-radius: 2rem 2rem 0 0; /* Rounded top corners, sharp bottom corners */
+  z-index: 200; /* Ensure it's above all other elements */
 }
 #mobile-menu-overlay {
   transition: opacity 0.3s ease-in-out;
+  z-index: 199; /* Slightly below the menu but above other content */
+}
+/* Remove margins/padding for sharp mobile menu */
+#mobile-menu .p-5 { /* Header section - override p-5 to make sharp */
+  padding: 0.25rem 0.5rem !important; /* Minimal padding */
+}
+#mobile-menu .p-4 { /* Content area - override p-4 to make sharp */
+  padding: 0 !important; /* Remove all padding */
+  margin: 0 !important; /* Remove all margin */
 }
 body.menu-open {
   overflow: hidden;

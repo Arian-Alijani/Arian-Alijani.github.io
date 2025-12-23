@@ -1,5 +1,283 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+// --- Auth State Management ---
+function initAuthButtons() {
+    // Check the current auth state from body attribute
+    const authState = document.body.getAttribute('data-auth');
+    const loginRegisterDesktop = document.querySelector('.guest-only.hidden.md\\:flex.header-cta-group');
+    const loginRegisterMobile = document.querySelector('.guest-only.md\\:hidden.header-cta-mobile-group');
+
+    // If user is authenticated, hide login/register buttons (since user is already logged in)
+    if (authState === 'authenticated') {
+        // Hide login/register buttons if they exist
+        if (loginRegisterDesktop) {
+            loginRegisterDesktop.style.display = 'none';
+        }
+        if (loginRegisterMobile) {
+            loginRegisterMobile.style.display = 'none';
+        }
+    }
+    // If user is a guest, ensure login/register are visible (default behavior)
+    else {
+        // Make sure login/register buttons are visible
+        if (loginRegisterDesktop) {
+            loginRegisterDesktop.style.display = '';
+        }
+        if (loginRegisterMobile) {
+            loginRegisterMobile.style.display = '';
+        }
+    }
+}
+
+initAuthButtons();
+
+
+// --- Mobile Menu Modifications ---
+function initMobileMenuModifications() {
+    // Wait for the mobile menu to be available in the DOM
+    const observer = new MutationObserver(() => {
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenu) {
+            modifyMobileMenu(mobileMenu);
+            observer.disconnect(); // Stop observing once we've modified the menu
+        }
+    });
+
+    // Start observing
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Also try immediately in case the element already exists
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) {
+        modifyMobileMenu(mobileMenu);
+        observer.disconnect();
+    }
+}
+
+function modifyMobileMenu(mobileMenu) {
+    try {
+        // Remove login/register option for guests
+        const guestSection = mobileMenu.querySelector('.guest-only.mb-6');
+        if (guestSection) {
+            guestSection.remove();
+        }
+
+        // Remove profile link
+        const profileLink = mobileMenu.querySelector('a[href="pages/profile.html"]');
+        if (profileLink) {
+            profileLink.remove();
+        }
+
+        // Remove about us link
+        const aboutUsLink = mobileMenu.querySelector('a[href="pages/about-us.html"]');
+        if (aboutUsLink) {
+            aboutUsLink.remove();
+        }
+
+        // Remove contact link (we'll add it back later)
+        const contactLink = mobileMenu.querySelector('a[href="pages/about-us.html#contact"]');
+        if (contactLink) {
+            contactLink.remove();
+        }
+
+        // Remove duplicate "همه محصولات" entries, keeping only one
+        const allProductsLinks = mobileMenu.querySelectorAll('a[href="pages/products.html"]');
+        if (allProductsLinks.length > 1) {
+            // Keep the first one, remove the rest
+            for (let i = 1; i < allProductsLinks.length; i++) {
+                allProductsLinks[i].remove();
+            }
+        }
+
+        // Add more desktop categories to the mobile menu
+        const navContainer = mobileMenu.querySelector('.p-4.overflow-y-auto nav');
+        if (navContainer) {
+            // Create categories section if it doesn't exist
+            let categoriesSection = mobileMenu.querySelector('.mobile-categories-section');
+            if (!categoriesSection) {
+                categoriesSection = document.createElement('div');
+                categoriesSection.className = 'mobile-categories-section mt-4';
+
+                // Add heading for categories (combine with existing categories)
+                const heading = document.createElement('span');
+                heading.className = 'text-xs font-bold text-gray-400 px-3 mb-1 block';
+                heading.textContent = 'دسته‌بندی‌ها'; // Changed to just "Categories"
+                categoriesSection.appendChild(heading);
+
+                // Add additional category links
+                const additionalCategories = [
+                    { name: 'گوشی هوشمند', icon: 'phone_iphone', url: 'pages/products.html?cat=phone' },
+                    { name: 'گلس و محافظ', icon: 'screen_search_desktop', url: 'pages/products.html?cat=glass' },
+                    { name: 'گجت', icon: 'devices', url: 'pages/products.html?cat=gadget' }
+                ];
+
+                additionalCategories.forEach(cat => {
+                    const link = document.createElement('a');
+                    link.href = cat.url;
+                    link.className = 'flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors';
+                    link.innerHTML = `
+                        <span class="material-icon text-lg" aria-hidden="true">${cat.icon}</span>
+                        <span>${cat.name}</span>
+                    `;
+                    categoriesSection.appendChild(link);
+                });
+
+                // Add the section before the end of the nav container
+                navContainer.appendChild(categoriesSection);
+            }
+
+            // Remove the original "دسته‌بندی‌ها" heading if it exists to avoid duplication
+            const originalCategoryHeading = mobileMenu.querySelector('.text-xs.font-bold.text-gray-400:not(.mobile-categories-section .text-xs.font-bold.text-gray-400)');
+            if (originalCategoryHeading && !originalCategoryHeading.closest('.mobile-categories-section')) {
+                originalCategoryHeading.remove();
+            }
+
+            // Move existing category links (like case, airpod, charger) into our new combined section
+            const existingCategoryLinks = mobileMenu.querySelectorAll('a[href^="pages/products.html?cat="]');
+            const ourCategorySection = mobileMenu.querySelector('.mobile-categories-section');
+            if (ourCategorySection) {
+                existingCategoryLinks.forEach(link => {
+                    // Only move links that aren't already in our section
+                    if (!link.closest('.mobile-categories-section')) {
+                        ourCategorySection.appendChild(link);
+                    }
+                });
+            }
+        }
+
+        // Add separator and contact option at the end of the mobile menu
+        const finalNavContainer = mobileMenu.querySelector('.p-4.overflow-y-auto nav');
+        if (finalNavContainer) {
+            // Check if separator and contact option already exist to avoid duplicates
+            if (!finalNavContainer.querySelector('.contact-us-section')) {
+                // Add separator line
+                const separator = document.createElement('div');
+                separator.className = 'border-t border-gray-200 my-2 mx-2 contact-us-separator';
+
+                // Add contact us option
+                const contactOption = document.createElement('a');
+                contactOption.href = 'pages/about-us.html#contact';
+                contactOption.className = 'flex items-center gap-3 p-3 rounded-xl text-gray-700 font-medium hover:bg-[#F3EDF7] transition-colors contact-us-section';
+                contactOption.innerHTML = `
+                    <span class="material-icon" aria-hidden="true">contact_support</span>
+                    <span>ارتباط با ما</span>
+                `;
+
+                // Add them at the end of the nav container
+                finalNavContainer.appendChild(separator);
+                finalNavContainer.appendChild(contactOption);
+            }
+        }
+    } catch (error) {
+        console.error('Error modifying mobile menu:', error);
+    }
+}
+
+initMobileMenuModifications();
+
+
+// --- Footer Modifications ---
+function initFooterModifications() {
+    // Wait for the footer to be available in the DOM
+    const footerObserver = new MutationObserver(() => {
+        const footer = document.getElementById('footer');
+        if (footer) {
+            modifyFooter(footer);
+            footerObserver.disconnect(); // Stop observing once we've modified the footer
+        }
+    });
+
+    // Start observing
+    footerObserver.observe(document.body, { childList: true, subtree: true });
+
+    // Also try immediately in case the element already exists
+    const footer = document.getElementById('footer');
+    if (footer) {
+        modifyFooter(footer);
+        footerObserver.disconnect();
+    }
+}
+
+function modifyFooter(footer) {
+    try {
+        // Remove the existing footer content and replace with organized structure
+        const footerContent = footer.querySelector('.footer-grid');
+        if (footerContent) {
+            // Clear existing content
+            footerContent.innerHTML = '';
+
+            // Create new structure
+            footerContent.className = 'footer-grid grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 mb-12';
+
+            // Create Pages section
+            const pagesSection = document.createElement('div');
+            pagesSection.className = 'col-span-1 lg:col-span-1';
+            pagesSection.innerHTML = `
+                <h4 class="text-base lg:text-lg font-semibold text-gray-900 mb-3 lg:mb-6">صفحات</h4>
+                <ul class="space-y-4">
+                    <li><a href="index.html" class="text-gray-600 hover:text-purple-600 transition-colors">خانه</a></li>
+                    <li><a href="pages/products.html" class="text-gray-600 hover:text-purple-600 transition-colors">محصولات</a></li>
+                    <li><a href="pages/about-us.html" class="text-gray-600 hover:text-purple-600 transition-colors">درباره ما</a></li>
+                    <li><a href="pages/profile.html" class="text-gray-600 hover:text-purple-600 transition-colors">پروفایل</a></li>
+                    <li><a href="pages/cart.html" class="text-gray-600 hover:text-purple-600 transition-colors">سبد خرید</a></li>
+                    <li><a href="pages/favorites.html" class="text-gray-600 hover:text-purple-600 transition-colors">علاقه‌مندی‌ها</a></li>
+                </ul>
+            `;
+
+            // Create Categories section
+            const categoriesSection = document.createElement('div');
+            categoriesSection.className = 'col-span-1 lg:col-span-1';
+            categoriesSection.innerHTML = `
+                <h4 class="text-base lg:text-lg font-semibold text-gray-900 mb-3 lg:mb-6">دسته‌بندی‌ها</h4>
+                <ul class="space-y-4">
+                    <li><a href="pages/products.html?cat=case" class="text-gray-600 hover:text-purple-600 transition-colors">قاب گوشی</a></li>
+                    <li><a href="pages/products.html?cat=phone" class="text-gray-600 hover:text-purple-600 transition-colors">گوشی هوشمند</a></li>
+                    <li><a href="pages/products.html?cat=charger" class="text-gray-600 hover:text-purple-600 transition-colors">شارژ</a></li>
+                    <li><a href="pages/products.html?cat=airpod" class="text-gray-600 hover:text-purple-600 transition-colors">کاور ایرپاد</a></li>
+                    <li><a href="pages/products.html?cat=glass" class="text-gray-600 hover:text-purple-600 transition-colors">گلس و محافظ</a></li>
+                    <li><a href="pages/products.html?cat=gadget" class="text-gray-600 hover:text-purple-600 transition-colors">گجت</a></li>
+                </ul>
+            `;
+
+
+            // Create Contact section
+            const contactSection = document.createElement('div');
+            contactSection.className = 'col-span-2 lg:col-span-1'; // Span 2 columns on mobile, 1 on large screens
+            contactSection.innerHTML = `
+                <h4 class="text-base lg:text-lg font-semibold text-gray-900 mb-3 lg:mb-6">اطلاعات تماس</h4>
+                <div class="space-y-3 lg:space-y-4">
+                  <div class="flex items-center gap-2 lg:gap-3 text-gray-600">
+                    <span class="material-icon text-purple-600 text-sm lg:text-base">call</span>
+                    <a href="tel:09121234567" class="text-sm lg:text-base hover:text-purple-600">۰۹۱۲۱۲۳۴۵۶۷</a>
+                  </div>
+                  <div class="flex items-center gap-2 lg:gap-3 text-gray-600">
+                    <span class="material-icon text-purple-600 text-sm lg:text-base">schedule</span>
+                    <span class="text-sm lg:text-base">هر روز ۱۰:۰۰ - ۲۲:۰۰</span>
+                  </div>
+                  <div class="flex items-center gap-2 lg:gap-3 text-gray-600">
+                    <span class="material-icon text-purple-600 text-sm lg:text-base">email</span>
+                    <a href="mailto:info@mahanshop.com" class="text-sm lg:text-base hover:text-purple-600">info@mahanshop.com</a>
+                  </div>
+                  <div class="hidden lg:flex items-center gap-3 text-gray-600">
+                    <span class="material-icon text-purple-600">location_on</span>
+                    <span class="text-sm">تهران، خیابان ولیعصر</span>
+                  </div>
+                </div>
+            `;
+
+            // Add all sections to the footer
+            footerContent.appendChild(pagesSection);
+            footerContent.appendChild(categoriesSection);
+            footerContent.appendChild(contactSection);
+        }
+    } catch (error) {
+        console.error('Error modifying footer:', error);
+    }
+}
+
+initFooterModifications();
+
+
 // --- Footer Mobile Accordion ---
 function initFooterAccordion() {
     const accordionHeaders = document.querySelectorAll('.footer-accordion-header');
@@ -542,10 +820,8 @@ function renderCartBadge() {
 renderCartBadge();
 
 function syncCartMenuPosition() {
+    // Positioning is now handled by CSS relative to parent container
     if (!cartBtn || !cartMenu) return;
-    const rect = cartBtn.getBoundingClientRect();
-    const right = Math.max(12, window.innerWidth - rect.right);
-    cartMenu.style.setProperty('--cart-menu-right', `${right}px`);
 }
 
 function openCartMenu() {
@@ -611,7 +887,7 @@ window.addEventListener('resize', () => {
     if (!cartMenuOpen) return;
     if (cartMenuResizeRaf) cancelAnimationFrame(cartMenuResizeRaf);
     cartMenuResizeRaf = requestAnimationFrame(() => {
-        syncCartMenuPosition();
+        // Positioning is now handled by CSS relative to parent container
         cartMenuResizeRaf = 0;
     });
 });
