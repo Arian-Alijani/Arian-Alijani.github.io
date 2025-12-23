@@ -18,7 +18,7 @@
 
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-<body class="bg-[#FEF7FF] text-gray-900 overflow-x-hidden" data-auth="authenticated">
+<body class="bg-[#FEF7FF] text-gray-900 overflow-x-hidden" data-auth="guest">
   <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
   <div id="top" aria-hidden="true"></div>
 
@@ -78,24 +78,40 @@
                   <div class="hidden md:block w-px h-6 bg-gray-300 mx-1"></div>
 
                   <!-- وضعیت ورود: بک‌اند مقدار data-auth را روی body تنظیم کند -->
-                   <a href="pages/profile.html" class="auth-only hidden md:flex items-center gap-2 pl-1 pr-1 py-1 rounded-full hover:bg-[#F3EDF7] transition-all group profile-section" aria-label="حساب کاربری">
-                       <div class="w-8 h-8 bg-[#EADDFF] rounded-full flex items-center justify-center text-[#21005D]">
-                           <span class="material-icon text-lg" aria-hidden="true">person</span>
-                       </div>
-                       <span class="text-sm font-bold text-gray-700 group-hover:text-[#6750A4]">حساب کاربری</span>
-                   </a>
+                  <!--
+                  <a href="pages/profile.html" class="auth-only hidden md:flex items-center gap-2 pl-1 pr-1 py-1 rounded-full hover:bg-[#F3EDF7] transition-all group profile-section" aria-label="حساب کاربری">
+                      <div class="w-8 h-8 bg-[#EADDFF] rounded-full flex items-center justify-center text-[#21005D]">
+                          <span class="material-icon text-lg" aria-hidden="true">person</span>
+                      </div>
+                      <span class="text-sm font-bold text-gray-700 group-hover:text-[#6750A4]">حساب کاربری</span>
+                  </a>
 
                   <a href="pages/profile.html" class="auth-only md:hidden nav-icon-btn ripple w-10 h-10 rounded-full hover:bg-[#F3EDF7] flex items-center justify-center text-gray-600 hover:text-[#6750A4] transition-colors" aria-label="حساب کاربری">
                       <span class="material-icon" aria-hidden="true">person</span>
                   </a>
+                  -->
 
-                  <a href="pages/login.html" class="guest-only hidden md:flex items-center gap-2 bg-[#6750A4] text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-[#523e85] hover:shadow-md transition-all ripple" aria-label="ورود یا ثبت نام">
-                      <span class="material-icon text-lg" aria-hidden="true">login</span>
-                      <span>ورود | ثبت نام</span>
-                  </a>
-                  <a href="pages/login.html" class="guest-only md:hidden nav-icon-btn ripple w-10 h-10 rounded-full hover:bg-[#F3EDF7] flex items-center justify-center text-gray-600 hover:text-[#6750A4] transition-colors" aria-label="ورود یا ثبت نام">
-                      <span class="material-icon" aria-hidden="true">login</span>
-                  </a>
+                  <div class="guest-only hidden md:flex header-cta-group">
+                      <a href="pages/login.html" class="header-cta header-cta--ghost" aria-label="ورود">
+                          <span class="material-icon text-lg" aria-hidden="true">login</span>
+                          <span>ورود</span>
+                      </a>
+                      <a href="pages/register.html" class="header-cta header-cta--primary" aria-label="ثبت نام">
+                          <span class="material-icon text-lg" aria-hidden="true">person_add</span>
+                          <span>ثبت نام</span>
+                      </a>
+                  </div>
+
+                  <div class="guest-only md:hidden header-cta-mobile-group">
+                      <a href="pages/login.html" class="header-cta-mobile header-cta-mobile--ghost ripple" aria-label="ورود">
+                          <span class="material-icon text-lg" aria-hidden="true">login</span>
+                          <span class="sr-only">ورود</span>
+                      </a>
+                      <a href="pages/register.html" class="header-cta-mobile header-cta-mobile--primary ripple" aria-label="ثبت نام">
+                          <span class="material-icon text-lg" aria-hidden="true">person_add</span>
+                          <span class="sr-only">ثبت نام</span>
+                      </a>
+                  </div>
               </nav>
           </div>
           <!-- ردیف پایین: دسته‌بندی‌ها -->
@@ -169,9 +185,84 @@
                           </div>
                       </div>
                   </div>
-                  <a href="pages/products.html?cat=airpod" class="secondary-nav-link">کاور ایرپاد</a>
-                  <a href="pages/products.html?cat=glass" class="secondary-nav-link">گلس و محافظ</a>
-                  <a href="pages/products.html?cat=gadget" class="secondary-nav-link">گجت</a>
+                  <div class="nav-dropdown" data-nav-dropdown>
+                      <button type="button" class="secondary-nav-link nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-airpod" aria-haspopup="true">
+                          کاور ایرپاد
+                          <span class="material-icon nav-caret" aria-hidden="true">expand_more</span>
+                      </button>
+                      <div id="dropdown-airpod" class="nav-dropdown-panel nav-dropdown-panel-wide nav-dropdown-columns" aria-hidden="true">
+                          <div class="nav-dropdown-column">
+                              <div class="nav-dropdown-title">سازگار با</div>
+                              <div class="nav-dropdown-links">
+                                  <a href="pages/products.html?cat=airpod&model=airpods-1-2" class="nav-dropdown-link">ایرپاد ۱ و ۲</a>
+                                  <a href="pages/products.html?cat=airpod&model=airpods-3" class="nav-dropdown-link">ایرپاد نسل سوم</a>
+                                  <a href="pages/products.html?cat=airpod&model=airpods-pro" class="nav-dropdown-link">ایرپاد پرو</a>
+                                  <a href="pages/products.html?cat=airpod&model=airpods-max" class="nav-dropdown-link">ایرپاد مکس</a>
+                              </div>
+                          </div>
+                          <div class="nav-dropdown-column">
+                              <div class="nav-dropdown-title">سبک کاور</div>
+                              <div class="nav-dropdown-links">
+                                  <a href="pages/products.html?cat=airpod&material=silicone" class="nav-dropdown-link">سیلیکونی</a>
+                                  <a href="pages/products.html?cat=airpod&material=leather" class="nav-dropdown-link">چرمی</a>
+                                  <a href="pages/products.html?cat=airpod&style=clear" class="nav-dropdown-link">شفاف</a>
+                                  <a href="pages/products.html?cat=airpod&feature=shockproof" class="nav-dropdown-link">ضدضربه</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="nav-dropdown" data-nav-dropdown>
+                      <button type="button" class="secondary-nav-link nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-glass" aria-haspopup="true">
+                          گلس و محافظ
+                          <span class="material-icon nav-caret" aria-hidden="true">expand_more</span>
+                      </button>
+                      <div id="dropdown-glass" class="nav-dropdown-panel nav-dropdown-panel-wide nav-dropdown-columns" aria-hidden="true">
+                          <div class="nav-dropdown-column">
+                              <div class="nav-dropdown-title">نوع گلس</div>
+                              <div class="nav-dropdown-links">
+                                  <a href="pages/products.html?cat=glass&type=privacy" class="nav-dropdown-link">پرایوسی</a>
+                                  <a href="pages/products.html?cat=glass&type=ceramic" class="nav-dropdown-link">سرامیکی</a>
+                                  <a href="pages/products.html?cat=glass&type=full" class="nav-dropdown-link">تمام صفحه</a>
+                                  <a href="pages/products.html?cat=glass&type=matte" class="nav-dropdown-link">مات</a>
+                              </div>
+                          </div>
+                          <div class="nav-dropdown-column">
+                              <div class="nav-dropdown-title">قابلیت‌ها</div>
+                              <div class="nav-dropdown-links">
+                                  <a href="pages/products.html?cat=glass&feature=anti-blue" class="nav-dropdown-link">ضد تابش</a>
+                                  <a href="pages/products.html?cat=glass&feature=anti-scratch" class="nav-dropdown-link">ضد خش</a>
+                                  <a href="pages/products.html?cat=glass&feature=anti-shock" class="nav-dropdown-link">ضد ضربه</a>
+                                  <a href="pages/products.html?cat=glass&feature=easy-install" class="nav-dropdown-link">نصب آسان</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="nav-dropdown" data-nav-dropdown>
+                      <button type="button" class="secondary-nav-link nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-gadget" aria-haspopup="true">
+                          گجت
+                          <span class="material-icon nav-caret" aria-hidden="true">expand_more</span>
+                      </button>
+                      <div id="dropdown-gadget" class="nav-dropdown-panel nav-dropdown-panel-wide nav-dropdown-columns" aria-hidden="true">
+                          <div class="nav-dropdown-column">
+                              <div class="nav-dropdown-title">گجت‌های محبوب</div>
+                              <div class="nav-dropdown-links">
+                                  <a href="pages/products.html?cat=gadget&type=powerbank" class="nav-dropdown-link">پاوربانک</a>
+                                  <a href="pages/products.html?cat=gadget&type=holder" class="nav-dropdown-link">هولدر و پایه</a>
+                                  <a href="pages/products.html?cat=gadget&type=audio" class="nav-dropdown-link">ایرفون و اسپیکر</a>
+                                  <a href="pages/products.html?cat=gadget&type=smart" class="nav-dropdown-link">گجت هوشمند</a>
+                              </div>
+                          </div>
+                          <div class="nav-dropdown-column">
+                              <div class="nav-dropdown-title">کاربری</div>
+                              <div class="nav-dropdown-links">
+                                  <a href="pages/products.html?cat=gadget&type=health" class="nav-dropdown-link">سلامت و فیتنس</a>
+                                  <a href="pages/products.html?cat=gadget&type=office" class="nav-dropdown-link">دفتر و میزکار</a>
+                                  <a href="pages/products.html?cat=gadget&type=travel" class="nav-dropdown-link">سفر و لوازم همراه</a>
+                                  <a href="pages/products.html?cat=gadget&type=home" class="nav-dropdown-link">خانه هوشمند</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
                   <div class="w-px h-4 bg-gray-300 mx-1 shrink-0 hidden md:block"></div>
                   <a href="pages/about-us.html#contact" class="secondary-nav-link">
                       <span class="material-icon text-lg" aria-hidden="true">contact_support</span>

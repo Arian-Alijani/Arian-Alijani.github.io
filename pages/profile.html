@@ -361,7 +361,7 @@
             </div>
 
 <!-- User Address -->
-             <div class="bg-gradient-to-br from-[#F8F9FA] to-[#E8EAF6] rounded-2xl p-6 border border-gray-200 hover:shadow-lg transition-all duration-300 mb-8 relative overflow-hidden">
+             <div id="profile-address" class="bg-gradient-to-br from-[#F8F9FA] to-[#E8EAF6] rounded-2xl p-6 border border-gray-200 hover:shadow-lg transition-all duration-300 mb-8 relative overflow-hidden">
                <!-- Background Pattern -->
                <div class="absolute top-0 right-0 w-32 h-32 bg-[#6750A4]/5 rounded-full -mr-16 -mt-16"></div>
                <div class="absolute bottom-0 left-0 w-24 h-24 bg-[#6750A4]/3 rounded-full -ml-12 -mb-12"></div>
@@ -377,7 +377,7 @@
                        <p class="text-sm text-gray-500">آدرس ثبت شده شما</p>
                      </div>
                    </div>
-                   <button class="px-3 py-1.5 text-sm font-medium text-[#6750A4] border border-[#6750A4] rounded-lg hover:bg-[#F3EDF7] transition flex items-center gap-1">
+                   <button id="addressEditButton" class="px-3 py-1.5 text-sm font-medium text-[#6750A4] border border-[#6750A4] rounded-lg hover:bg-[#F3EDF7] transition flex items-center gap-1">
                      <span class="material-icon text-sm">edit</span>
                      ویرایش
                    </button>
@@ -422,7 +422,23 @@
     const sidebarLinks = document.querySelectorAll('.profile-sidebar-link');
     const tabContents = document.querySelectorAll('[data-tab-content]');
 
-    function showTab(targetId) {
+    function parseHashTarget(rawHash) {
+      const source = (rawHash || '#dashboard').trim();
+      const questionIndex = source.indexOf('?');
+      const tabSegment = questionIndex === -1 ? source : source.slice(0, questionIndex);
+      const queryString = questionIndex === -1 ? '' : source.slice(questionIndex + 1);
+      const tabId = tabSegment || '#dashboard';
+      const params = new URLSearchParams(queryString);
+      return { tabId, params };
+    }
+
+    function showTab(targetRaw) {
+      const { tabId, params } = parseHashTarget(targetRaw);
+      let normalizedId = tabId === '#profile-address' ? '#details' : tabId;
+      if (!document.querySelector(normalizedId)) {
+        normalizedId = '#dashboard';
+      }
+
       // Hide all tab contents
       tabContents.forEach(content => {
         content.classList.add('hidden');
@@ -435,16 +451,20 @@
       });
       
       // Show target tab
-      const targetTab = document.querySelector(targetId);
+      const targetTab = document.querySelector(normalizedId);
       if (targetTab) {
         targetTab.classList.remove('hidden');
       }
       
       // Add active class to clicked link
-      const activeLink = document.querySelector(`[data-tab-target="${targetId}"]`);
+      const activeLink = document.querySelector(`[data-tab-target="${normalizedId}"]`);
       if (activeLink) {
         activeLink.classList.add('active', 'bg-[#F3EDF7]', 'text-[#6750A4]');
         activeLink.classList.remove('text-gray-600');
+      }
+
+      if (params.get('addAddress') === '1') {
+        openAddressEditModal();
       }
     }
 
@@ -457,6 +477,13 @@
           showTab(targetId);
         }
       });
+    });
+
+    // Show initial tab based on URL hash (default to dashboard)
+    const hashTarget = window.location.hash || '#dashboard';
+    showTab(hashTarget);
+    window.addEventListener('hashchange', () => {
+      showTab(window.location.hash || '#dashboard');
     });
 
     // Order Management System

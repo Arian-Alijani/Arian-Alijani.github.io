@@ -23,6 +23,160 @@
   }
 }
 </script>
+  <style>
+    .cart-item {
+      position: relative;
+      background: #fff;
+      border: 1px solid rgba(103, 80, 164, 0.25);
+      border-radius: 1.75rem;
+      padding: 1.1rem 1.3rem;
+      box-shadow: 0 15px 28px rgba(15, 23, 42, 0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      content-visibility: auto;
+      contain-intrinsic-size: 200px;
+    }
+    .cart-item:hover:not(.is-updating) {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+    }
+    .cart-item-details {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      min-width: 0;
+    }
+    .cart-item-main {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      width: 100%;
+    }
+    .cart-item-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      align-items: flex-start;
+      width: 100%;
+    }
+    .cart-item-meta {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.35rem;
+      flex-wrap: nowrap;
+      width: auto;
+      min-width: 0;
+      direction: ltr;
+    }
+    .cart-actions-row {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      flex-wrap: nowrap;
+      width: auto;
+    }
+    .cart-item-qty {
+      display: flex;
+      width: 100%;
+      justify-content: flex-start;
+    }
+    .cart-qty-group {
+      min-width: 160px;
+      gap: 0.35rem;
+      background: #f6f2ff;
+      padding: 0.2rem 0.25rem;
+      border-radius: 999px;
+      border: 1px solid rgba(103, 80, 164, 0.25);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      justify-content: center;
+    }
+    .cart-qty-group button {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      color: #4b3068;
+      font-size: 1.35rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.15s ease, background 0.15s ease;
+    }
+    .cart-qty-group button:hover {
+      color: #391b60;
+      background: rgba(103, 80, 164, 0.08);
+    }
+    .cart-qty-group button:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(103, 80, 164, 0.35);
+    }
+    .cart-qty-group input {
+      min-width: 46px;
+      border: none;
+      background: transparent;
+      font-size: 1rem;
+      font-weight: 700;
+      text-align: center;
+      color: #1d162e;
+    }
+    .cart-qty-group input::-webkit-inner-spin-button,
+    .cart-qty-group input::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .cart-price-amount {
+      font-size: 1.15rem;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+    .cart-toast {
+      position: fixed;
+      left: 1.1rem;
+      bottom: 1.1rem;
+      background: #1f1b2c;
+      color: #fff;
+      padding: 0.6rem 1.1rem;
+      border-radius: 999px;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.35);
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      font-size: 0.95rem;
+      z-index: 70;
+      pointer-events: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .cart-toast .material-icon {
+      font-size: 1.15rem;
+      margin-inline-end: 0.25rem;
+    }
+    .cart-toast.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (min-width: 640px) {
+      .cart-item {
+        gap: 1.1rem;
+      }
+      .cart-item-main {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1.4rem;
+      }
+      .cart-item-controls {
+        width: auto;
+        min-width: 250px;
+      }
+    }
+  </style>
 </head>
 <body class="bg-[#FEF7FF] text-gray-900 overflow-x-hidden">
 
@@ -187,98 +341,182 @@
       </div>
   </div>
 
-  <main class="max-w-7xl mx-auto px-4 py-8 md:py-12">
-    <h1 class="text-3xl font-bold text-gray-900 mb-6 md:mb-8">سبد خرید شما</h1>
+  <main class="relative max-w-7xl mx-auto px-4 py-6 md:py-10">
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -top-16 right-0 w-72 h-72 bg-gradient-to-br from-[#EAD9FF] via-[#F8F4FF] to-transparent blur-3xl opacity-80"></div>
+      <div class="absolute -bottom-20 left-0 w-80 h-80 bg-gradient-to-tr from-[#DFF3FF] via-[#F8FBFF] to-transparent blur-3xl opacity-70"></div>
+    </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      <!-- Cart Items Section -->
-      <div class="lg:col-span-2 space-y-4">
-        <!-- Example Cart Item -->
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 flex flex-col sm:flex-row items-center gap-4">
-          <img src="https://placehold.co/100x100" alt="نام محصول" class="w-24 h-24 object-cover rounded-xl border border-gray-100 flex-shrink-0">
-          <div class="flex-grow text-center sm:text-right">
-            <h2 class="font-bold text-lg text-gray-900">قاب سیلیکونی آیفون ۱۵</h2>
-            <p class="text-sm text-gray-500">رنگ: مشکی | برند: Apple</p>
-            <div class="flex items-center justify-center sm:justify-end mt-2">
-              <span class="font-bold text-lg text-[#6750A4]">۴۵۰,۰۰۰ تومان</span>
-            </div>
-          </div>
-          <div class="flex items-center gap-2 qty-selector">
-            <button class="qty-minus w-8 h-8 rounded-full bg-gray-100 text-gray-700 flex items-center justify-center hover:bg-gray-200 transition" type="button">
-              <span class="material-icon text-lg">remove</span>
-            </button>
-            <input type="text" value="1" class="w-12 text-center border-none focus:ring-0 bg-transparent text-gray-800 font-bold" readonly>
-            <button class="qty-plus w-8 h-8 rounded-full bg-gray-100 text-gray-700 flex items-center justify-center hover:bg-gray-200 transition" type="button">
-              <span class="material-icon text-lg">add</span>
-            </button>
-          </div>
-          <button class="text-red-500 hover:text-red-700 transition" type="button" aria-label="حذف از سبد خرید">
-            <span class="material-icon">delete</span>
-          </button>
+    <div class="flex flex-col gap-3 mb-6">
+      <p class="text-xs uppercase tracking-[0.35em] text-gray-400">یک قدم تا تکمیل سفارش</p>
+      <h1 class="text-3xl md:text-4xl font-black text-gray-900">سبد خرید شما</h1>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-[1.65fr_0.75fr] gap-12 items-start" data-cart-main data-cart-empty="false">
+      <section class="space-y-8">
+        <div class="flex flex-wrap items-end justify-between gap-4 border-b border-gray-200/70 pb-6">
+          <div></div>
         </div>
-        <!-- End Example Cart Item -->
 
-        <!-- Another Example Cart Item -->
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 flex flex-col sm:flex-row items-center gap-4">
-            <img src="https://placehold.co/100x100" alt="نام محصول" class="w-24 h-24 object-cover rounded-xl border border-gray-100 flex-shrink-0">
-            <div class="flex-grow text-center sm:text-right">
-              <h2 class="font-bold text-lg text-gray-900">کابل شارژ انکر</h2>
-              <p class="text-sm text-gray-500">رنگ: سفید | برند: Anker</p>
-              <div class="flex items-center justify-center sm:justify-end mt-2">
-                <span class="font-bold text-lg text-[#6750A4]">۳۵۰,۰۰۰ تومان</span>
+      <div id="cart-items-wrapper" class="flex flex-col gap-4 rounded-3xl bg-transparent px-3 py-3 max-h-[65vh] overflow-y-auto">
+          <article class="cart-item" data-cart-item="case-iphone-15-silicone" data-unit-price="450000">
+            <div class="cart-item-main">
+              <div class="cart-item-details">
+                <img src="https://placehold.co/100x100" alt="قاب سیلیکونی آیفون ۱۵" class="w-20 h-20 rounded-2xl object-cover">
+                <div class="flex flex-col gap-2">
+                  <h2 class="text-lg font-extrabold text-gray-900">قاب سیلیکونی آیفون ۱۵</h2>
+                  <p class="text-sm text-gray-500">برند: Apple</p>
+                </div>
+              </div>
+              <div class="cart-item-controls">
+                <div class="cart-item-meta">
+                  <div class="cart-actions-row">
+                    <button class="w-10 h-10 rounded-2xl border border-gray-200/70 bg-white text-[#6750A4] hover:bg-[#F7F2FA] transition flex items-center justify-center shadow-sm" type="button" aria-label="انتقال به علاقه‌مندی‌ها" data-action="move-to-favorites">
+                      <span class="material-icon text-base">favorite_border</span>
+                    </button>
+                    <button class="text-sm font-semibold text-red-600 bg-white border border-red-100 hover:bg-red-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400 transition flex items-center gap-1 px-3 py-1.5 rounded-full shadow-sm shadow-red-50" type="button" aria-label="حذف از سبد خرید" data-action="remove-cart-item">
+                      <span class="material-icon text-sm">delete</span>
+                      حذف
+                    </button>
+                  </div>
+                  <div class="cart-price-amount text-[#6750A4] font-black" data-item-total>۴۵۰,۰۰۰ تومان</div>
+                </div>
+                <div class="cart-item-qty">
+                  <div class="cart-qty-group flex items-center justify-center">
+                    <button class="qty-minus" type="button" aria-label="کاهش تعداد">
+                      -
+                    </button>
+                    <input type="text" value="1" class="border-none bg-transparent font-bold focus:outline-none" readonly>
+                    <button class="qty-plus" type="button" aria-label="افزایش تعداد">
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </article>
+
+          <article class="cart-item" data-cart-item="anker-charge-usb-cable" data-unit-price="350000">
+            <div class="cart-item-main">
+              <div class="cart-item-details">
+                <img src="https://placehold.co/100x100" alt="کابل شارژ انکر" class="w-20 h-20 rounded-2xl object-cover">
+                <div class="flex flex-col gap-2">
+                  <h2 class="text-lg font-extrabold text-gray-900">کابل شارژ انکر</h2>
+                  <p class="text-sm text-gray-500">برند: Anker</p>
+                </div>
+              </div>
+              <div class="cart-item-controls">
+                <div class="cart-item-meta">
+                  <div class="cart-actions-row">
+                    <button class="w-10 h-10 rounded-2xl border border-gray-200/70 bg-white text-[#6750A4] hover:bg-[#F7F2FA] transition flex items-center justify-center shadow-sm" type="button" aria-label="انتقال به علاقه‌مندی‌ها" data-action="move-to-favorites">
+                      <span class="material-icon text-base">favorite_border</span>
+                    </button>
+                    <button class="text-sm font-semibold text-red-600 bg-white border border-red-100 hover:bg-red-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400 transition flex items-center gap-1 px-3 py-1.5 rounded-full shadow-sm shadow-red-50" type="button" aria-label="حذف از سبد خرید" data-action="remove-cart-item">
+                      <span class="material-icon text-sm">delete</span>
+                      حذف
+                    </button>
+                  </div>
+                  <div class="cart-price-amount text-[#1D1B20] font-black" data-item-total>۳۵۰,۰۰۰ تومان</div>
+                </div>
+                <div class="cart-item-qty">
+                  <div class="cart-qty-group flex items-center justify-center">
+                    <button class="qty-minus" type="button" aria-label="کاهش تعداد">
+                      -
+                    </button>
+                    <input type="text" value="2" class="border-none bg-transparent font-bold focus:outline-none" readonly>
+                    <button class="qty-plus" type="button" aria-label="افزایش تعداد">
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
+          </article>
+        </div>
+
+        <div id="cart-empty-state" class="hidden rounded-3xl bg-white/80 backdrop-blur-sm shadow-[0_18px_45px_rgba(103,80,164,0.1)] px-6 py-10 text-center text-gray-500 space-y-3">
+          <span class="material-icon text-4xl text-[#A855F7]">shopping_bag</span>
+          <p class="text-lg font-bold text-gray-900">سبد خرید شما خالی است</p>
+          <p class="text-sm">برای شروع، وارد فروشگاه شوید و بهترین لوازم جانبی را انتخاب کنید.</p>
+          <a href="../index.html" class="inline-flex items-center justify-center gap-2 text-sm font-semibold text-[#6750A4] hover:text-[#4c2f91] transition">
+            <span class="material-icon text-base">arrow_forward</span>
+            برگشت به فروشگاه
+          </a>
+        </div>
+        <!-- این بلوک فقط زمانی فعال شود که سبد واقعا خالی باشد -->
+      </section>
+
+      <div id="cart-confirm-modal" class="fixed inset-0 z-[60] hidden flex items-center justify-center px-4">
+        <div data-confirm-overlay class="absolute inset-0 bg-black/40"></div>
+        <div class="relative w-full max-w-sm rounded-3xl bg-white p-6 text-center shadow-[0_20px_60px_rgba(15,23,42,0.3)]">
+          <span class="material-icon text-4xl text-red-500 block mb-3">warning</span>
+          <p class="text-lg font-bold text-gray-900 mb-1">حذف محصول از سبد</p>
+          <p class="text-sm text-gray-500 mb-4">آیا مطمئن هستید که می‌خواهید این کالا را از سبد حذف کنید؟</p>
+          <div class="flex items-center justify-center gap-3">
+            <button data-confirm-cancel class="px-4 py-2 rounded-full border border-gray-200 text-gray-700 text-sm font-semibold hover:bg-gray-100 transition">خیر</button>
+            <button data-confirm-ok class="px-4 py-2 rounded-full bg-red-600 text-white text-sm font-semibold hover:bg-red-700 transition flex items-center gap-2 justify-center">
+              <span class="material-icon text-base">delete</span>
+              حذف کنم
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <section class="space-y-6 lg:pr-10 lg:border-r lg:border-gray-200/70">
+        <div class="sticky top-0 space-y-6">
+          <div class="rounded-3xl bg-white/80 backdrop-blur-sm shadow-[0_20px_50px_rgba(103,80,164,0.12)] p-6 space-y-4">
+            <h2 class="text-xl font-bold text-gray-900">خلاصه سبد خرید</h2>
+            <div class="space-y-3 text-sm text-gray-700">
+              <div class="flex justify-between items-center">
+                <span>جمع کل</span>
+                <strong data-cart-subtotal class="text-[#6750A4] font-black">۱,۱۵۰,۰۰۰ تومان</strong>
+              </div>
+              <div class="flex justify-between items-center" data-cart-shipping-row data-shipping-value="0">
+                <span>هزینه ارسال</span>
+                <span data-cart-shipping-text>رایگان</span>
+              </div>
+              <div class="flex justify-between items-center border-t border-gray-200/70 pt-3 font-black text-lg">
+                <span>قابل پرداخت</span>
+                <strong class="text-[#6750A4]" data-cart-grandtotal>۱,۱۵۰,۰۰۰ تومان</strong>
               </div>
             </div>
-            <div class="flex items-center gap-2 qty-selector">
-              <button class="qty-minus w-8 h-8 rounded-full bg-gray-100 text-gray-700 flex items-center justify-center hover:bg-gray-200 transition" type="button">
-                <span class="material-icon text-lg">remove</span>
-              </button>
-              <input type="text" value="2" class="w-12 text-center border-none focus:ring-0 bg-transparent text-gray-800 font-bold" readonly>
-              <button class="qty-plus w-8 h-8 rounded-full bg-gray-100 text-gray-700 flex items-center justify-center hover:bg-gray-200 transition" type="button">
-                <span class="material-icon text-lg">add</span>
-              </button>
-            </div>
-            <button class="text-red-500 hover:text-red-700 transition" type="button" aria-label="حذف از سبد خرید">
-              <span class="material-icon">delete</span>
+          </div>
+          <div class="space-y-3">
+            <button class="w-full bg-[#6750A4] text-white font-bold py-3.5 rounded-full hover:bg-[#523e85] transition-colors shadow-lg shadow-[#6750A4]/20 flex items-center justify-center gap-2 ripple">
+              ادامه و ثبت سفارش
+              <span class="material-icon text-sm">shopping_bag</span>
             </button>
+            <a href="../index.html" class="block text-center text-sm text-gray-500 hover:text-gray-800">بازگشت به فروشگاه</a>
           </div>
-          <!-- End Another Example Cart Item -->
-
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 text-center text-gray-500">
-            سبد خرید شما فعلا خالی است.
-            <a href="../index.html" class="text-[#6750A4] hover:underline mr-1">بازگشت به فروشگاه</a>
         </div>
 
-      </div>
-
-      <!-- Cart Summary Section -->
-      <div class="lg:col-span-1">
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sticky top-24">
-          <h2 class="text-xl font-bold text-gray-900 mb-4">خلاصه سبد خرید</h2>
-          <div class="space-y-3 mb-6">
-            <div class="flex justify-between items-center text-gray-700">
-              <span>تعداد کالاها</span>
-              <span>3</span>
+        <div class="rounded-3xl bg-[#F7F2FA] px-6 py-5 shadow-[0_18px_40px_rgba(103,80,164,0.08)] space-y-4" data-address-card data-address-added="false">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-xs uppercase tracking-[0.3em] text-gray-400">آدرس ارسال</p>
+              <h3 class="text-lg font-semibold text-gray-900">آدرسی ثبت نشده است</h3>
             </div>
-            <div class="flex justify-between items-center text-gray-700">
-              <span>جمع کل</span>
-              <span>۱,۱۵۰,۰۰۰ تومان</span>
-            </div>
-            <div class="flex justify-between items-center text-gray-700">
-              <span>هزینه ارسال</span>
-              <span>رایگان</span>
-            </div>
-            <div class="flex justify-between items-center font-bold text-lg border-t border-gray-100 pt-3 mt-3">
-              <span>قابل پرداخت</span>
-              <span class="text-[#6750A4]">۱,۱۵۰,۰۰۰ تومان</span>
-            </div>
+            <span class="text-sm font-bold text-red-500">نیاز به اتمام</span>
           </div>
-          <button class="w-full bg-[#6750A4] text-white font-bold py-3.5 rounded-xl hover:bg-[#523e85] transition-colors shadow-lg shadow-[#6750A4]/20 flex items-center justify-center gap-2 ripple">
-            ادامه و ثبت سفارش
-            <span class="material-icon text-sm">shopping_bag</span>
-          </button>
-          <a href="../index.html" class="block text-center text-sm text-gray-500 hover:text-gray-800 mt-4">بازگشت به فروشگاه</a>
+          <div data-address-empty class="space-y-2 text-sm text-gray-600">
+            <p>در حال حاضر هیچ آدرسی به سبد متصل نیست.</p>
+            <div class="flex items-start gap-2 border-r-2 border-red-300 pr-3 text-red-600 text-xs font-semibold">
+              <span class="material-icon text-base">warning</span>
+              برای ثبت سفارش باید یک آدرس در صفحه پروفایل اضافه کنید.
+            </div>
+            <a href="profile.html#details?addAddress=1" class="inline-flex items-center gap-2 text-sm font-semibold text-[#6750A4] hover:text-[#4c2f91] transition">
+              رفتن به ثبت آدرس
+              <span class="material-icon text-base">arrow_forward</span>
+            </a>
+          </div>
+          <div data-address-filled class="hidden space-y-1 text-sm text-gray-600">
+            <p class="text-gray-500">آدرس پیش‌فرض</p>
+            <p class="font-semibold text-gray-900 leading-tight">تهران، خیابان ولیعصر، پلاک ۲۳، واحد ۴</p>
+            <p class="text-gray-500">محمد رضایی · ۰۹۱۲۱۲۳۴۵۶۷</p>
+          </div>
+          <!-- اگر آدرسی ثبت شود، حالت دوم نمایش پیدا می‌کند -->
         </div>
-      </div>
+      </section>
     </div>
   </main>
 
@@ -422,6 +660,212 @@
 
 
 
+  <div id="cart-toast" class="cart-toast" role="status" aria-live="polite" aria-atomic="true"></div>
   <script src="../assets/js/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cartMain = document.querySelector('[data-cart-main]');
+      const itemWrapper = document.getElementById('cart-items-wrapper');
+      const emptyState = document.getElementById('cart-empty-state');
+      if (cartMain && itemWrapper && emptyState) {
+        const isEmpty = cartMain.dataset.cartEmpty === 'true';
+        itemWrapper.classList.toggle('hidden', isEmpty);
+        emptyState.classList.toggle('hidden', !isEmpty);
+      }
+
+      const addressCard = document.querySelector('[data-address-card]');
+      if (addressCard) {
+        const hasAddress = addressCard.dataset.addressAdded === 'true';
+        const emptyNotice = addressCard.querySelector('[data-address-empty]');
+        const filledNotice = addressCard.querySelector('[data-address-filled]');
+        if (emptyNotice && filledNotice) {
+          emptyNotice.classList.toggle('hidden', hasAddress);
+          filledNotice.classList.toggle('hidden', !hasAddress);
+        }
+      }
+
+      initCartAjax();
+    });
+
+    function initCartAjax() {
+      const cartWrapper = document.getElementById('cart-items-wrapper');
+      if (!cartWrapper) return;
+      const cartMain = document.querySelector('[data-cart-main]');
+      const emptyState = document.getElementById('cart-empty-state');
+      const subtotalEl = document.querySelector('[data-cart-subtotal]');
+      const grandtotalEl = document.querySelector('[data-cart-grandtotal]');
+      const shippingRow = document.querySelector('[data-cart-shipping-row]');
+      const shippingValue = Number(shippingRow?.dataset?.shippingValue ?? '0') || 0;
+      const currencyFormatter = new Intl.NumberFormat('fa-IR');
+      const confirmModal = document.getElementById('cart-confirm-modal');
+      const confirmOverlay = confirmModal?.querySelector('[data-confirm-overlay]');
+      const confirmOk = confirmModal?.querySelector('[data-confirm-ok]');
+      const confirmCancel = confirmModal?.querySelector('[data-confirm-cancel]');
+      const toastEl = document.getElementById('cart-toast');
+      let toastTimeoutId = null;
+      let pendingRemoval = null;
+
+      const closeConfirmModal = () => {
+        if (!confirmModal) return;
+        confirmModal.classList.add('hidden');
+        pendingRemoval = null;
+        document.body.classList.remove('overflow-hidden');
+      };
+
+      const openConfirmModal = (article) => {
+        if (!confirmModal || !article) {
+          handleRemove(article);
+          return;
+        }
+        pendingRemoval = article;
+        confirmModal.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+      };
+
+      confirmOverlay?.addEventListener('click', () => closeConfirmModal());
+      confirmCancel?.addEventListener('click', () => closeConfirmModal());
+      confirmOk?.addEventListener('click', () => {
+        if (!pendingRemoval) {
+          closeConfirmModal();
+          return;
+        }
+        handleRemove(pendingRemoval);
+        closeConfirmModal();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (!pendingRemoval) return;
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          closeConfirmModal();
+        }
+      });
+
+      const formatCurrency = (value) => `${currencyFormatter.format(Math.round(value))} تومان`;
+      const parseQty = (input) => Math.max(1, parseInt(input?.value ?? '1', 10) || 1);
+      const getItems = () => Array.from(cartWrapper.querySelectorAll('[data-cart-item]'));
+
+      const updateVisibility = () => {
+        const hasItems = getItems().length > 0;
+        cartWrapper.classList.toggle('hidden', !hasItems);
+        if (emptyState) emptyState.classList.toggle('hidden', hasItems);
+        if (cartMain) cartMain.dataset.cartEmpty = hasItems ? 'false' : 'true';
+      };
+
+      const recalcSummary = () => {
+        const subtotal = getItems().reduce((sum, article) => {
+          const unitPrice = Number(article.dataset.unitPrice ?? '0') || 0;
+          const qtyInput = article.querySelector('input[type="text"]');
+          const qty = parseQty(qtyInput);
+          return sum + unitPrice * qty;
+        }, 0);
+        if (subtotalEl) subtotalEl.textContent = formatCurrency(subtotal);
+        if (grandtotalEl) grandtotalEl.textContent = formatCurrency(subtotal + shippingValue);
+      };
+
+      const toggleItemLoading = (article, isLoading) => {
+        if (!article) return;
+        article.classList.toggle('is-updating', isLoading);
+        article.setAttribute('aria-busy', isLoading ? 'true' : 'false');
+        article.querySelectorAll('button, input').forEach((control) => {
+          control.disabled = isLoading;
+        });
+      };
+
+      const simulateAjax = () => new Promise((resolve) => {
+        const delay = 220 + Math.random() * 180;
+        setTimeout(resolve, delay);
+      });
+
+      const showToast = (message) => {
+        if (!toastEl || !message) return;
+        toastEl.textContent = message;
+        toastEl.classList.add('is-visible');
+        if (toastTimeoutId) clearTimeout(toastTimeoutId);
+        toastTimeoutId = setTimeout(() => {
+          toastEl.classList.remove('is-visible');
+        }, 2800);
+      };
+
+      const updateItemVisuals = (article, quantity) => {
+        if (!article) return;
+        const qtyInput = article.querySelector('input[type="text"]');
+        const totalEl = article.querySelector('[data-item-total]');
+        const unitPrice = Number(article.dataset.unitPrice ?? '0') || 0;
+        const qty = Math.max(1, quantity);
+        if (qtyInput) qtyInput.value = qty;
+        if (totalEl) totalEl.textContent = formatCurrency(unitPrice * qty);
+      };
+
+      const handleQtyChange = async (article, delta) => {
+        if (!article) return;
+        const qtyInput = article.querySelector('input[type="text"]');
+        const currentQty = parseQty(qtyInput);
+        const nextQty = Math.max(1, currentQty + delta);
+        if (nextQty === currentQty) return;
+        toggleItemLoading(article, true);
+        try {
+          await simulateAjax();
+          updateItemVisuals(article, nextQty);
+          recalcSummary();
+        } finally {
+          toggleItemLoading(article, false);
+        }
+      };
+
+      const handleRemove = async (article, successMessage = 'کالا از سبد حذف شد') => {
+        if (!article) return;
+        toggleItemLoading(article, true);
+        try {
+          await simulateAjax();
+          article.remove();
+        } finally {
+          toggleItemLoading(article, false);
+        }
+        recalcSummary();
+        updateVisibility();
+        showToast(successMessage);
+      };
+
+      const handleMoveToFavorites = async (article) => {
+        if (!article) return;
+        const pid = article.dataset.cartItem;
+        if (pid && typeof favoritesSet !== 'undefined') {
+          favoritesSet.add(pid);
+          if (typeof saveFavoritesToStorage === 'function') {
+            saveFavoritesToStorage();
+          }
+        }
+        await handleRemove(article, 'محصول به علاقه‌مندی‌ها منتقل شد');
+      };
+
+      cartWrapper.addEventListener('click', (event) => {
+        const plusBtn = event.target.closest('.qty-plus');
+        const minusBtn = event.target.closest('.qty-minus');
+        const moveBtn = event.target.closest('[data-action="move-to-favorites"]');
+        const removeBtn = event.target.closest('[data-action="remove-cart-item"]');
+        if (!plusBtn && !minusBtn && !moveBtn && !removeBtn) return;
+        event.preventDefault();
+        const trigger = plusBtn || minusBtn || moveBtn || removeBtn;
+        const article = trigger?.closest('[data-cart-item]');
+        if (!article || article.classList.contains('is-updating')) return;
+        if (moveBtn) {
+          handleMoveToFavorites(article);
+          return;
+        }
+        if (removeBtn) {
+          openConfirmModal(article);
+          return;
+        }
+        if (plusBtn) {
+          handleQtyChange(article, 1);
+        } else if (minusBtn) {
+          handleQtyChange(article, -1);
+        }
+      });
+
+      updateVisibility();
+      recalcSummary();
+    }
+  </script>
 </body>
 </html>

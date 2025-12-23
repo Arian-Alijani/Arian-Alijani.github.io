@@ -79,28 +79,40 @@
                   <!-- Divider (Desktop only) -->
                   <div class="hidden md:block w-px h-6 bg-gray-300 mx-1"></div>
 
-                  <!-- Profile (Logged In State) -->
-                  <a href="profile.html" class="hidden md:flex items-center gap-2 pl-1 pr-1 py-1 rounded-full hover:bg-[#F3EDF7] transition-all group">
+                  <!--
+                  <a href="profile.html" class="auth-only hidden md:flex items-center gap-2 pl-1 pr-1 py-1 rounded-full hover:bg-[#F3EDF7] transition-all group" aria-label="حساب کاربری">
                       <div class="w-8 h-8 bg-[#EADDFF] rounded-full flex items-center justify-center text-[#21005D]">
-                          <span class="material-icon text-lg">person</span>
+                          <span class="material-icon text-lg" aria-hidden="true">person</span>
                       </div>
                       <span class="text-sm font-bold text-gray-700 group-hover:text-[#6750A4]">حساب کاربری</span>
                   </a>
 
-                  <!-- Mobile Profile Icon -->
-                  <a href="profile.html" class="md:hidden nav-icon-btn ripple w-10 h-10 rounded-full hover:bg-[#F3EDF7] flex items-center justify-center text-gray-600 hover:text-[#6750A4] transition-colors">
-                      <span class="material-icon">person</span>
-                  </a>
-
-                  <!-- 
-                  =======================================================
-                  Auth Button (For Non-Logged In Users) - COMMENTED OUT
-                  =======================================================
-                  <a href="login.html" class="flex items-center gap-2 bg-[#6750A4] text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-[#523e85] hover:shadow-md transition-all ripple">
-                      <span class="material-icon text-lg">login</span>
-                      <span>ورود | ثبت نام</span>
+                  <a href="profile.html" class="auth-only md:hidden nav-icon-btn ripple w-10 h-10 rounded-full hover:bg-[#F3EDF7] flex items-center justify-center text-gray-600 hover:text-[#6750A4] transition-colors" aria-label="حساب کاربری">
+                      <span class="material-icon" aria-hidden="true">person</span>
                   </a>
                   -->
+
+                  <div class="guest-only hidden md:flex header-cta-group">
+                      <a href="login.html" class="header-cta header-cta--ghost" aria-label="ورود">
+                          <span class="material-icon text-lg" aria-hidden="true">login</span>
+                          <span>ورود</span>
+                      </a>
+                      <a href="register.html" class="header-cta header-cta--primary" aria-label="ثبت نام">
+                          <span class="material-icon text-lg" aria-hidden="true">person_add</span>
+                          <span>ثبت نام</span>
+                      </a>
+                  </div>
+
+                  <div class="guest-only md:hidden header-cta-mobile-group">
+                      <a href="login.html" class="header-cta-mobile header-cta-mobile--ghost ripple" aria-label="ورود">
+                          <span class="material-icon text-lg" aria-hidden="true">login</span>
+                          <span class="sr-only">ورود</span>
+                      </a>
+                      <a href="register.html" class="header-cta-mobile header-cta-mobile--primary ripple" aria-label="ثبت نام">
+                          <span class="material-icon text-lg" aria-hidden="true">person_add</span>
+                          <span class="sr-only">ثبت نام</span>
+                      </a>
+                  </div>
               </div>
           </div>
       </div>
@@ -299,24 +311,41 @@
       <!-- Products Grid -->
       <div class="lg:col-span-9 mt-6 lg:mt-0">
         <!-- Header: Sort + Results count -->
-        <div class="products-header flex flex-col gap-4 p-4 mb-6 bg-gradient-to-r from-[#EADDFF]/40 to-[#FEF7FF] rounded-xl border border-gray-200/80 shadow-sm" role="heading" aria-level="2">
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div class="products-header-sort flex items-center gap-3 flex-1 md:flex-none">
-                  <span class="material-icon text-[#6750A4] text-xl">sort</span>
-                  <label for="sort-by" class="font-medium whitespace-nowrap text-sm md:text-base">مرتب‌سازی:</label>
+        <div class="products-header flex flex-col gap-4 p-4 mb-6 bg-gradient-to-r from-[#EADDFF]/50 to-[#FEF7FF] rounded-3xl border border-[#D8D4EA] shadow-[0_20px_60px_rgba(103,80,164,0.12)]" role="heading" aria-level="2">
+            <div class="products-header-main flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div class="products-header-sort flex items-center gap-3 flex-1 min-w-[220px]">
+                  <span class="material-icon text-[#6750A4] text-2xl">sort</span>
+                  <label for="sort-by" class="font-semibold text-sm text-[#322653]">مرتب‌سازی</label>
                   <div class="relative flex-1 sm:flex-none sm:w-56">
-                    <select id="sort-by" class="sort-select bg-white border border-[#79747E] text-gray-900 text-sm rounded-xl focus:ring-2 focus:ring-[#6750A4] focus:border-[#6750A4] block w-full pr-3 pl-10 py-2.5 appearance-none shadow-sm hover:shadow-md transition">
+                    <select id="sort-by" class="sort-select bg-white border border-[#C6BEE0] text-gray-900 text-sm rounded-2xl focus:ring-2 focus:ring-[#8A5EEE] focus:border-[#8A5EEE] block w-full pr-3 pl-10 py-2.5 appearance-none shadow-sm hover:shadow-md transition">
                         <option value="newest">جدیدترین</option>
                         <option value="oldest">قدیمی‌ترین</option>
                         <option value="price-asc">قیمت: از کم به زیاد</option>
                         <option value="price-desc">قیمت: از زیاد به کم</option>
                     </select>
-                    <span class="material-icon absolute left-3 top-1/2 transform -translate-y-1/2 text-[#6750A4] pointer-events-none text-lg">unfold_more</span>
+                    <span class="material-icon absolute left-3 top-1/2 -translate-y-1/2 text-[#6750A4] pointer-events-none text-lg">unfold_more</span>
                   </div>
               </div>
-                <div id="results-count" class="results-count text-right sm:text-left text-sm md:text-base font-medium text-[#6750A4]"></div>
+            </div>
+            <div class="filters-toolbar flex flex-col gap-3">
+              <div class="filters-toolbar-row flex flex-wrap gap-3 items-center justify-between">
+                <div class="filters-toolbar-chips flex flex-wrap justify-end gap-2">
+                  <div id="selected-filters" class="selected-filters" style="display:none;" aria-live="polite"></div>
+                </div>
+                <button id="mobile-filter-btn" class="filters-open-btn lg:hidden w-full justify-center" type="button" aria-label="باز کردن فیلترها" aria-expanded="false" aria-controls="filter-sidebar">
+                  <span class="material-icon text-xl font-semibold">tune</span>
+                  <span class="text-sm font-bold">فیلترهای پیشرفته</span>
+                </button>
               </div>
+              <div class="active-category-row flex lg:hidden">
+                <div class="active-category-pill rounded-full border border-[#D8D4EA] bg-white/80 px-3 py-1 text-xs sm:text-sm flex items-center gap-2 shadow-sm">
+                  <span class="material-icon text-[#6750A4] text-base">category</span>
+                  <span>دسته انتخاب‌شده:</span>
+                  <span id="active-category-name" class="font-bold text-[#1A1441]">تمام محصولات</span>
+                </div>
               </div>
+            </div>
+        </div>
 
               <div id="products-grid" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-3 md:gap-4 lg:gap-5">
           <!-- Product cards will be dynamically populated/filtered. -->
@@ -498,12 +527,20 @@
               </div>
             </div>
           </article>
+            </div>
+        <div class="results-summary mt-6 flex justify-end text-sm text-[#5B4D79]">
+            <div id="results-count" class="font-semibold"></div>
         </div>
-        
         <div id="no-results" class="no-results hidden" role="status" aria-live="polite">
-            <span class="material-icon text-6xl text-gray-300">search_off</span>
-            <h3 class="mt-4 text-xl font-bold text-gray-800">محصولی یافت نشد</h3>
-            <p class="mt-2 text-gray-500">فیلترهای خود را تغییر دهید یا آنها را حذف کنید.</p>
+            <div class="no-results-card rounded-3xl border border-dashed border-[#C4B5FD]/70 bg-white/90 shadow-lg shadow-purple-50 p-6 text-center">
+              <span class="material-icon text-6xl text-[#A855F7] mb-4 inline-block">search_off</span>
+              <h3 class="text-xl font-bold text-[#1f1145] mb-2">محصولی یافت نشد</h3>
+              <p class="text-sm text-[#5B4D79] mb-4">فیلترهای خود را بازبینی کنید یا انتخاب دیگری امتحان کنید.</p>
+              <div class="flex flex-wrap justify-center gap-3">
+                <button id="reset-filters-btn-mobile" class="px-4 py-2 rounded-2xl bg-[#6750A4] text-white text-sm font-bold shadow-md hover:bg-[#5930a0] transition">حذف فیلترها</button>
+                <a href="../index.html" class="px-4 py-2 rounded-2xl border border-[#D8D4EA] text-sm font-semibold text-[#322653] hover:bg-[#F3EDF7] transition">بازگشت به صفحه اصلی</a>
+              </div>
+            </div>
         </div>
 
       </div>
@@ -515,9 +552,6 @@
   
   <!-- Mobile Filter Button and Overlay -->
   <div id="filter-overlay" class="filter-overlay" role="presentation"></div>
-  <button id="mobile-filter-btn" class="mobile-filter-btn" type="button" aria-label="باز کردن فیلترها" aria-expanded="false" aria-controls="filter-sidebar">
-      <span class="material-icon text-3xl">filter_list</span>
-  </button>
   
         <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -542,10 +576,19 @@
       const filterOverlay = document.getElementById('filter-overlay');
       const resetFiltersBtn = document.getElementById('reset-filters');
       const applyFiltersBtn = document.getElementById('apply-filters-btn');
+      const resetFiltersMobileBtn = document.getElementById('reset-filters-btn-mobile');
 
       const CATEGORY_ALIASES = {
         accessory: 'gadget',
         accessories: 'gadget'
+      };
+
+      const activeCategoryNameEl = document.getElementById('active-category-name');
+      const updateActiveCategoryLabel = () => {
+        if (!activeCategoryNameEl) return;
+        const activeBtn = document.querySelector('#filter-sidebar .category-filter-btn.active .category-label');
+        const fallback = 'تمام محصولات';
+        activeCategoryNameEl.textContent = activeBtn?.textContent?.trim() || fallback;
       };
 
       const FILTER_GROUPS = {
@@ -686,6 +729,7 @@
           btn.classList.toggle('active', btn.dataset.category === normalized);
         });
         currentFilters.category = normalized;
+        updateActiveCategoryLabel();
       };
 
       const renderDynamicFilters = () => {
@@ -857,6 +901,7 @@
         return normalize(searchParts.join(' '));
       };
 
+      const PRODUCTS_PER_PAGE = 20;
       const filterAndSortProducts = () => {
         collectFiltersFromUI();
 
@@ -894,7 +939,9 @@
         visibleProducts.forEach((card) => productsGrid.appendChild(card));
 
         if (resultsCountEl) {
-          resultsCountEl.textContent = `نمایش ${visibleProducts.length} از ${productCards.length} محصول`;
+          const totalPages = Math.max(1, Math.ceil(productCards.length / PRODUCTS_PER_PAGE));
+          const currentPage = 1;
+          resultsCountEl.textContent = `صفحه ${currentPage} از ${totalPages}`;
         }
         if (noResultsEl) {
           noResultsEl.classList.toggle('hidden', visibleProducts.length > 0);
@@ -946,6 +993,11 @@
           if (sortSelect) sortSelect.value = 'newest';
           updateCategoryInUrl('all');
           filterAndSortProducts();
+        });
+      }
+      if (resetFiltersMobileBtn && resetFiltersBtn) {
+        resetFiltersMobileBtn.addEventListener('click', () => {
+          resetFiltersBtn.click();
         });
       }
 
