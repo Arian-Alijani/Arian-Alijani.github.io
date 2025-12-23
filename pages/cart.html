@@ -65,9 +65,9 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      gap: 0.35rem;
+      gap: 0.65rem;
       flex-wrap: nowrap;
-      width: auto;
+      width: 100%;
       min-width: 0;
       direction: ltr;
     }
@@ -130,9 +130,11 @@
       margin: 0;
     }
     .cart-price-amount {
+      margin-left: auto;
       font-size: 1.15rem;
       letter-spacing: 0.01em;
       white-space: nowrap;
+      text-align: right;
     }
     .cart-toast {
       position: fixed;
@@ -371,9 +373,6 @@
               <div class="cart-item-controls">
                 <div class="cart-item-meta">
                   <div class="cart-actions-row">
-                    <button class="w-10 h-10 rounded-2xl border border-gray-200/70 bg-white text-[#6750A4] hover:bg-[#F7F2FA] transition flex items-center justify-center shadow-sm" type="button" aria-label="انتقال به علاقه‌مندی‌ها" data-action="move-to-favorites">
-                      <span class="material-icon text-base">favorite_border</span>
-                    </button>
                     <button class="text-sm font-semibold text-red-600 bg-white border border-red-100 hover:bg-red-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400 transition flex items-center gap-1 px-3 py-1.5 rounded-full shadow-sm shadow-red-50" type="button" aria-label="حذف از سبد خرید" data-action="remove-cart-item">
                       <span class="material-icon text-sm">delete</span>
                       حذف
@@ -409,9 +408,6 @@
               <div class="cart-item-controls">
                 <div class="cart-item-meta">
                   <div class="cart-actions-row">
-                    <button class="w-10 h-10 rounded-2xl border border-gray-200/70 bg-white text-[#6750A4] hover:bg-[#F7F2FA] transition flex items-center justify-center shadow-sm" type="button" aria-label="انتقال به علاقه‌مندی‌ها" data-action="move-to-favorites">
-                      <span class="material-icon text-base">favorite_border</span>
-                    </button>
                     <button class="text-sm font-semibold text-red-600 bg-white border border-red-100 hover:bg-red-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400 transition flex items-center gap-1 px-3 py-1.5 rounded-full shadow-sm shadow-red-50" type="button" aria-label="حذف از سبد خرید" data-action="remove-cart-item">
                       <span class="material-icon text-sm">delete</span>
                       حذف
@@ -826,32 +822,15 @@
         showToast(successMessage);
       };
 
-      const handleMoveToFavorites = async (article) => {
-        if (!article) return;
-        const pid = article.dataset.cartItem;
-        if (pid && typeof favoritesSet !== 'undefined') {
-          favoritesSet.add(pid);
-          if (typeof saveFavoritesToStorage === 'function') {
-            saveFavoritesToStorage();
-          }
-        }
-        await handleRemove(article, 'محصول به علاقه‌مندی‌ها منتقل شد');
-      };
-
       cartWrapper.addEventListener('click', (event) => {
         const plusBtn = event.target.closest('.qty-plus');
         const minusBtn = event.target.closest('.qty-minus');
-        const moveBtn = event.target.closest('[data-action="move-to-favorites"]');
         const removeBtn = event.target.closest('[data-action="remove-cart-item"]');
-        if (!plusBtn && !minusBtn && !moveBtn && !removeBtn) return;
+        if (!plusBtn && !minusBtn && !removeBtn) return;
         event.preventDefault();
-        const trigger = plusBtn || minusBtn || moveBtn || removeBtn;
+        const trigger = plusBtn || minusBtn || removeBtn;
         const article = trigger?.closest('[data-cart-item]');
         if (!article || article.classList.contains('is-updating')) return;
-        if (moveBtn) {
-          handleMoveToFavorites(article);
-          return;
-        }
         if (removeBtn) {
           openConfirmModal(article);
           return;

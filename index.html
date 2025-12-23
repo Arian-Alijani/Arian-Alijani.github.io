@@ -69,10 +69,38 @@
                    </a>
 
                   <!-- سبد خرید -->
-<a href="pages/cart.html" id="cart-btn" class="nav-icon-btn ripple w-10 h-10 rounded-lg flex items-center justify-center text-gray-600 relative" title="سبد خرید" aria-label="سبد خرید">
+                  <div id="cart-menu-wrapper" class="relative">
+                    <a href="pages/cart.html" id="cart-btn" class="nav-icon-btn ripple w-10 h-10 rounded-lg flex items-center justify-center text-gray-600" title="سبد خرید" aria-label="سبد خرید" aria-haspopup="dialog" aria-controls="cart-menu" aria-expanded="false">
                        <span class="material-icon" aria-hidden="true">shopping_cart</span>
                        <span id="cart-count-badge" class="absolute top-0 right-0 w-4 h-4 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center border border-white hidden z-10" aria-live="polite" aria-atomic="true">0</span>
-                   </a>
+                    </a>
+                    <div id="cart-menu" class="cart-menu" role="dialog" aria-label="سبد خرید" aria-hidden="true" data-cart-menu tabindex="-1">
+                      <div class="cart-menu-panel">
+                        <div class="cart-menu-header">
+                          <div class="flex items-center gap-2">
+                            <span class="material-icon text-xl text-[#6750A4]" aria-hidden="true">shopping_cart</span>
+                            <div>
+                              <h4>سبد خرید</h4>
+                              <p class="text-xs text-gray-500" data-cart-menu-status>نمایش خلاصه سفارش</p>
+                            </div>
+                          </div>
+                          <span class="text-xs font-semibold text-[#6750A4]" data-cart-menu-count>۰ کالا</span>
+                        </div>
+                        <div class="cart-menu-items" data-cart-menu-items>
+                          <p class="text-xs text-gray-500 text-center">هنوز کالایی به سبد اضافه نشده است.</p>
+                        </div>
+                        <div class="cart-menu-footer">
+                          <div class="cart-menu-total">
+                            <span>جمع</span>
+                            <strong data-cart-menu-total>۰ تومان</strong>
+                          </div>
+                          <div class="cart-menu-actions">
+                            <a href="pages/cart.html" class="primary" aria-label="رفتن به صفحه سبد خرید">مشاهده کامل سبد</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
                   <!-- جداکننده (نمایش در دسکتاپ) -->
                   <div class="hidden md:block w-px h-6 bg-gray-300 mx-1"></div>
