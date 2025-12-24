@@ -307,278 +307,52 @@
       <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/40 z-[99] hidden opacity-0 transition-opacity duration-300" aria-hidden="true"></div>
       <!-- محتوای منو -->
       <div id="mobile-menu" class="fixed right-0 top-0 h-full w-4/5 max-w-[300px] bg-[#FEF7FF] shadow-2xl transform translate-x-full z-[100] transition-transform duration-300" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="mobile-menu-title">
-          <div class="p-5 flex justify-between items-center bg-[#F3EDF7]">
+          <div class="p-3 flex justify-between items-center bg-white border-b border-gray-200">
               <div class="flex items-center gap-2">
-                  <span class="material-icon text-[#6750A4]" aria-hidden="true">shopping_bag</span>
-                  <h2 id="mobile-menu-title" class="font-bold text-lg text-[#1D1B20]">منوی اصلی</h2>
+                  <div class="w-8 h-8 bg-gradient-to-br from-purple-600 to-purple-700 rounded-lg flex items-center justify-center">
+                      <span class="material-icon text-white text-base" aria-hidden="true">shopping_bag</span>
+                  </div>
+                  <h2 id="mobile-menu-title" class="font-bold text-sm text-[#1D1B20]">ماهان شاپ</h2>
               </div>
-              <button id="close-menu-btn" type="button" class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-gray-600 hover:text-red-500 shadow-sm transition-colors" aria-label="بستن منو">
-                  <span class="material-icon text-lg" aria-hidden="true">close</span>
+              <button id="close-menu-btn" type="button" class="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:text-red-500 transition-colors" aria-label="بستن منو">
+                  <span class="material-icon text-base" aria-hidden="true">close</span>
               </button>
           </div>
           <div class="p-4 overflow-y-auto h-[calc(100%-64px)]">
-              <!-- نمایش فقط برای کاربر مهمان -->
-              <div class="guest-only mb-6 p-4 bg-white rounded-2xl border border-gray-100 text-center">
-                  <p class="text-sm text-gray-500 mb-3">هنوز وارد نشده‌اید؟</p>
-                  <a href="pages/login.html" class="block w-full bg-[#6750A4] text-white py-2.5 rounded-xl font-bold text-sm shadow-md ripple">ورود یا ثبت نام</a>
-              </div>
-
               <nav class="flex flex-col gap-1">
-                  <a href="index.html" class="flex items-center gap-3 p-3 rounded-xl text-[#1D1B20] bg-[#EADDFF] font-bold" aria-current="page">
-                      <span class="material-icon text-[#21005D]" aria-hidden="true">home</span>
+                  <a href="index.html" class="flex items-center gap-2.5 p-2.5 mt-2 rounded-none text-[#1D1B20] bg-[#EADDFF] font-medium text-sm" aria-current="page">
+                      <span class="material-icon text-[#21005D] text-base" aria-hidden="true">home</span>
                       <span>خانه</span>
                   </a>
-                  <a href="pages/products.html" class="flex items-center gap-3 p-3 rounded-xl text-gray-700 font-medium hover:bg-[#F3EDF7] transition-colors">
-                      <span class="material-icon text-gray-500" aria-hidden="true">category</span>
+                  <a href="pages/products.html" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-700 font-medium text-sm hover:bg-[#F3EDF7] transition-colors">
+                      <span class="material-icon text-gray-500 text-base" aria-hidden="true">category</span>
                       <span>همه محصولات</span>
                   </a>
                   <div class="border-t border-gray-200 my-2 mx-2"></div>
-                  <span class="text-xs font-bold text-gray-400 px-3 mb-1">دسته‌بندی‌ها</span>
-                  <!-- قاب گوشی با زیر منو -->
-                  <div class="mobile-dropdown">
-                      <div class="mobile-dropdown-header flex items-center justify-between p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors cursor-pointer">
-                          <div class="flex items-center gap-3">
-                              <span class="material-icon text-lg" aria-hidden="true">smartphone</span>
-                              <span>قاب گوشی</span>
-                          </div>
-                          <span class="material-icon mobile-dropdown-arrow" aria-hidden="true">expand_more</span>
-                      </div>
-                      <div class="mobile-dropdown-content hidden">
-                          <a href="pages/products.html?cat=case&material=silicone" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>سیلیکونی</span>
-                          </a>
-                          <a href="pages/products.html?cat=case&material=leather" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>چرمی</span>
-                          </a>
-                          <a href="pages/products.html?cat=case&material=soft" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>ژله‌ای</span>
-                          </a>
-                          <a href="pages/products.html?cat=case&material=hard" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>سخت</span>
-                          </a>
-                          <a href="pages/products.html?cat=case&material=clear" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>شفاف</span>
-                          </a>
-                          <a href="pages/products.html?cat=case&material=shockproof" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>ضدضربه</span>
-                          </a>
-                          <a href="pages/products.html?cat=case&material=magsafe" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>مگ‌سیف</span>
-                          </a>
-                      </div>
-                  </div>
-                  <!-- کاور ایرپاد با زیر منو -->
-                  <div class="mobile-dropdown">
-                      <div class="mobile-dropdown-header flex items-center justify-between p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors cursor-pointer">
-                          <div class="flex items-center gap-3">
-                              <span class="material-icon text-lg" aria-hidden="true">headphones</span>
-                              <span>کاور ایرپاد</span>
-                          </div>
-                          <span class="material-icon mobile-dropdown-arrow" aria-hidden="true">expand_more</span>
-                      </div>
-                      <div class="mobile-dropdown-content hidden">
-                          <div class="mobile-dropdown-section">
-                              <div class="mobile-dropdown-title px-8 py-2 text-xs font-bold text-gray-400">سازگار با</div>
-                              <a href="pages/products.html?cat=airpod&model=airpods-1-2" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>ایرپاد ۱ و ۲</span>
-                              </a>
-                              <a href="pages/products.html?cat=airpod&model=airpods-3" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>ایرپاد نسل سوم</span>
-                              </a>
-                              <a href="pages/products.html?cat=airpod&model=airpods-pro" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>ایرپاد پرو</span>
-                              </a>
-                              <a href="pages/products.html?cat=airpod&model=airpods-max" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>ایرپاد مکس</span>
-                              </a>
-                          </div>
-                          <div class="mobile-dropdown-section">
-                              <div class="mobile-dropdown-title px-8 py-2 text-xs font-bold text-gray-400">سبک کاور</div>
-                              <a href="pages/products.html?cat=airpod&material=silicone" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>سیلیکونی</span>
-                              </a>
-                              <a href="pages/products.html?cat=airpod&material=leather" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>چرمی</span>
-                              </a>
-                              <a href="pages/products.html?cat=airpod&style=clear" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>شفاف</span>
-                              </a>
-                              <a href="pages/products.html?cat=airpod&feature=shockproof" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>ضدضربه</span>
-                              </a>
-                          </div>
-                      </div>
-                  </div>
-                  <!-- شارژ با زیر منو -->
-                  <div class="mobile-dropdown">
-                      <div class="mobile-dropdown-header flex items-center justify-between p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors cursor-pointer">
-                          <div class="flex items-center gap-3">
-                              <span class="material-icon text-lg" aria-hidden="true">bolt</span>
-                              <span>شارژ</span>
-                          </div>
-                          <span class="material-icon mobile-dropdown-arrow" aria-hidden="true">expand_more</span>
-                      </div>
-                      <div class="mobile-dropdown-content hidden">
-                          <div class="mobile-dropdown-section">
-                              <div class="mobile-dropdown-title px-8 py-2 text-xs font-bold text-gray-400">شارژ</div>
-                              <a href="pages/products.html?cat=charger&type=adapter" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>دیواری</span>
-                              </a>
-                              <a href="pages/products.html?cat=charger&type=car" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>فندکی</span>
-                              </a>
-                              <a href="pages/products.html?cat=charger&type=wireless" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>بی‌سیم</span>
-                              </a>
-                              <a href="pages/products.html?cat=charger&type=cable&type2=type-c" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>کابل Type-C</span>
-                              </a>
-                              <a href="pages/products.html?cat=charger&type=cable&type2=lightning" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>کابل لایتنینگ</span>
-                              </a>
-                              <a href="pages/products.html?cat=charger&type=cable&type2=micro" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>کابل Micro-USB</span>
-                              </a>
-                          </div>
-                      </div>
-                  </div>
-                  <!-- گلس و محافظ با زیر منو -->
-                  <div class="mobile-dropdown">
-                      <div class="mobile-dropdown-header flex items-center justify-between p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors cursor-pointer">
-                          <div class="flex items-center gap-3">
-                              <span class="material-icon text-lg" aria-hidden="true">screen_search_desktop</span>
-                              <span>گلس و محافظ</span>
-                          </div>
-                          <span class="material-icon mobile-dropdown-arrow" aria-hidden="true">expand_more</span>
-                      </div>
-                      <div class="mobile-dropdown-content hidden">
-                          <div class="mobile-dropdown-section">
-                              <div class="mobile-dropdown-title px-8 py-2 text-xs font-bold text-gray-400">نوع گلس</div>
-                              <a href="pages/products.html?cat=glass&type=privacy" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>پرایوسی</span>
-                              </a>
-                              <a href="pages/products.html?cat=glass&type=ceramic" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>سرامیکی</span>
-                              </a>
-                              <a href="pages/products.html?cat=glass&type=full" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>تمام صفحه</span>
-                              </a>
-                              <a href="pages/products.html?cat=glass&type=matte" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>مات</span>
-                              </a>
-                          </div>
-                          <div class="mobile-dropdown-section">
-                              <div class="mobile-dropdown-title px-8 py-2 text-xs font-bold text-gray-400">قابلیت‌ها</div>
-                              <a href="pages/products.html?cat=glass&feature=anti-blue" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>ضد تابش</span>
-                              </a>
-                              <a href="pages/products.html?cat=glass&feature=anti-scratch" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>ضد خش</span>
-                              </a>
-                              <a href="pages/products.html?cat=glass&feature=anti-shock" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>ضد ضربه</span>
-                              </a>
-                              <a href="pages/products.html?cat=glass&feature=easy-install" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>نصب آسان</span>
-                              </a>
-                          </div>
-                      </div>
-                  </div>
-                  <!-- گجت با زیر منو -->
-                  <div class="mobile-dropdown">
-                      <div class="mobile-dropdown-header flex items-center justify-between p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors cursor-pointer">
-                          <div class="flex items-center gap-3">
-                              <span class="material-icon text-lg" aria-hidden="true">devices</span>
-                              <span>گجت</span>
-                          </div>
-                          <span class="material-icon mobile-dropdown-arrow" aria-hidden="true">expand_more</span>
-                      </div>
-                      <div class="mobile-dropdown-content hidden">
-                          <div class="mobile-dropdown-section">
-                              <div class="mobile-dropdown-title px-8 py-2 text-xs font-bold text-gray-400">گجت‌های محبوب</div>
-                              <a href="pages/products.html?cat=gadget&type=powerbank" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>پاوربانک</span>
-                              </a>
-                              <a href="pages/products.html?cat=gadget&type=holder" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>هولدر و پایه</span>
-                              </a>
-                              <a href="pages/products.html?cat=gadget&type=audio" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>ایرفون و اسپیکر</span>
-                              </a>
-                              <a href="pages/products.html?cat=gadget&type=smart" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>گجت هوشمند</span>
-                              </a>
-                          </div>
-                          <div class="mobile-dropdown-section">
-                              <div class="mobile-dropdown-title px-8 py-2 text-xs font-bold text-gray-400">کاربری</div>
-                              <a href="pages/products.html?cat=gadget&type=health" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>سلامت و فیتنس</span>
-                              </a>
-                              <a href="pages/products.html?cat=gadget&type=office" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>دفتر و میزکار</span>
-                              </a>
-                              <a href="pages/products.html?cat=gadget&type=travel" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>سفر و لوازم همراه</span>
-                              </a>
-                              <a href="pages/products.html?cat=gadget&type=home" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>خانه هوشمند</span>
-                              </a>
-                          </div>
-                      </div>
-                  </div>
-                  <!-- گوشی هوشمند -->
-                  <a href="pages/products.html?cat=phone" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors">
-                      <span class="material-icon text-lg" aria-hidden="true">phone_iphone</span> گوشی هوشمند
+                  <span class="text-xs font-bold text-gray-400 px-3 mb-1">دسته‌بندی</span>
+                  <a href="pages/products.html?cat=case" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-700 font-medium text-sm hover:bg-[#F3EDF7] transition-colors">
+                      <span class="material-icon text-gray-500 text-base" aria-hidden="true">smartphone</span>
+                      <span>قاب گوشی</span>
                   </a>
-                  <div class="border-t border-gray-200 my-2 mx-2"></div>
-                  <a href="pages/profile.html" class="flex items-center gap-3 p-3 rounded-xl text-gray-700 font-medium hover:bg-[#F3EDF7] transition-colors">
-                      <span class="material-icon" aria-hidden="true">person</span>
-                      <span>حساب کاربری</span>
+                  <a href="pages/products.html?cat=phone" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-700 font-medium text-sm hover:bg-[#F3EDF7] transition-colors">
+                      <span class="material-icon text-gray-500 text-base" aria-hidden="true">phone_iphone</span>
+                      <span>گوشی هوشمند</span>
                   </a>
-                  <a href="pages/about-us.html" class="flex items-center gap-3 p-3 rounded-xl text-gray-700 font-medium hover:bg-[#F3EDF7] transition-colors">
-                      <span class="material-icon" aria-hidden="true">info</span>
-                      <span>درباره ما</span>
+                  <a href="pages/products.html?cat=charger" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-700 font-medium text-sm hover:bg-[#F3EDF7] transition-colors">
+                      <span class="material-icon text-gray-500 text-base" aria-hidden="true">bolt</span>
+                      <span>شارژ</span>
                   </a>
-                  <a href="pages/about-us.html#contact" class="flex items-center gap-3 p-3 rounded-xl text-gray-700 font-medium hover:bg-[#F3EDF7] transition-colors">
-                      <span class="material-icon" aria-hidden="true">contact_support</span>
-                      <span>ارتباط با ما</span>
+                  <a href="pages/products.html?cat=airpod" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-700 font-medium text-sm hover:bg-[#F3EDF7] transition-colors">
+                      <span class="material-icon text-gray-500 text-base" aria-hidden="true">headphones</span>
+                      <span>کاور ایرپاد</span>
+                  </a>
+                  <a href="pages/products.html?cat=glass" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-700 font-medium text-sm hover:bg-[#F3EDF7] transition-colors">
+                      <span class="material-icon text-gray-500 text-base" aria-hidden="true">screen_search_desktop</span>
+                      <span>گلس و محافظ</span>
+                  </a>
+                  <a href="pages/products.html?cat=gadget" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-700 font-medium text-sm hover:bg-[#F3EDF7] transition-colors">
+                      <span class="material-icon text-gray-500 text-base" aria-hidden="true">devices</span>
+                      <span>گجت</span>
                   </a>
               </nav>
           </div>

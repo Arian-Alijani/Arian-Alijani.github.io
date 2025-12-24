@@ -89,6 +89,16 @@ function modifyMobileMenu(mobileMenu) {
             }
         }
 
+        // Remove any remaining individual category links that are NOT inside dropdowns
+        // This avoids removing links that are inside our mobile dropdowns
+        const individualCategoryLinks = mobileMenu.querySelectorAll('a[href^="pages/products.html?cat="]');
+        individualCategoryLinks.forEach(link => {
+            // Only remove links that are NOT inside a mobile dropdown
+            if (!link.closest('.mobile-dropdown')) {
+                link.remove();
+            }
+        });
+
         // Add separator and contact option at the end of the mobile menu
         const finalNavContainer = mobileMenu.querySelector('.p-4.overflow-y-auto nav');
         if (finalNavContainer) {
@@ -117,91 +127,10 @@ function modifyMobileMenu(mobileMenu) {
     }
 }
 
-initMobileMenuModifications();
-
-// --- Mobile Menu Dropdowns ---
-function initMobileMenuDropdowns() {
-    // Wait for the mobile menu to be available in the DOM
-    const observer = new MutationObserver(() => {
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenu) {
-            setupMobileDropdowns(mobileMenu);
-            observer.disconnect(); // Stop observing once we've set up the dropdowns
-        }
-    });
-
-    // Start observing
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    // Also try immediately in case the element already exists
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenu) {
-        setupMobileDropdowns(mobileMenu);
-        observer.disconnect();
-    }
-}
-
-function setupMobileDropdowns(mobileMenu) {
-    // Find all mobile dropdowns in the mobile menu
-    const dropdowns = mobileMenu.querySelectorAll('.mobile-dropdown');
-
-    dropdowns.forEach(dropdown => {
-        const header = dropdown.querySelector('.mobile-dropdown-header');
-        const content = dropdown.querySelector('.mobile-dropdown-content');
-        const arrow = dropdown.querySelector('.mobile-dropdown-arrow');
-
-        if (header && content && arrow) {
-            // Add click event to toggle dropdown
-            header.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-
-                // Toggle the hidden class on content
-                content.classList.toggle('hidden');
-
-                // Rotate the arrow icon
-                if (content.classList.contains('hidden')) {
-                    arrow.textContent = 'expand_more';
-                } else {
-                    arrow.textContent = 'expand_less';
-                }
-
-                // Close other open dropdowns
-                dropdowns.forEach(otherDropdown => {
-                    if (otherDropdown !== dropdown) {
-                        const otherContent = otherDropdown.querySelector('.mobile-dropdown-content');
-                        const otherArrow = otherDropdown.querySelector('.mobile-dropdown-arrow');
-                        if (otherContent && otherArrow && !otherContent.classList.contains('hidden')) {
-                            otherContent.classList.add('hidden');
-                            otherArrow.textContent = 'expand_more';
-                        }
-                    }
-                });
-            });
-        }
-    });
-}
-
-// Initialize mobile menu dropdowns after DOM is loaded and after mobile menu modifications
+// Initialize mobile menu modifications after DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Wait for the mobile menu modifications to complete
-    setTimeout(() => {
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenu) {
-            // Reinitialize the dropdowns after any modifications
-            setupMobileDropdowns(mobileMenu);
-        } else {
-            // If mobile menu isn't ready, wait for it
-            const observer = new MutationObserver(() => {
-                const menu = document.getElementById('mobile-menu');
-                if (menu) {
-                    setupMobileDropdowns(menu);
-                    observer.disconnect();
-                }
-            });
-            observer.observe(document.body, { childList: true, subtree: true });
-        }
-    }, 300); // Wait longer to ensure all modifications are complete
+    // Run mobile menu modifications
+    initMobileMenuModifications();
 });
 
 
@@ -1173,6 +1102,44 @@ function toggleMenu() {
     if (isHidden) openMenu(); else closeMenu();
 }
 
+// Enhanced keyboard navigation for mobile menu
+function initMobileMenuKeyboardNav() {
+    if (!mobileMenu) return;
+
+    // Focus management when menu opens
+    mobileMenu.addEventListener('transitionend', function(e) {
+        if (e.propertyName === 'transform' && !mobileMenu.classList.contains('translate-x-full')) {
+            // Menu is now open, focus on the first focusable element
+            const firstFocusable = mobileMenu.querySelector('a, button, input, [tabindex]:not([tabindex="-1"])');
+            if (firstFocusable) {
+                firstFocusable.focus();
+            }
+        }
+    });
+
+    // Trap focus inside the menu when it's open
+    mobileMenu.addEventListener('keydown', function(e) {
+        if (e.key === 'Tab') {
+            const focusableElements = mobileMenu.querySelectorAll(
+                'a[href]:not([disabled]), button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+            );
+
+            if (focusableElements.length === 0) return;
+
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+
+            if (e.shiftKey && document.activeElement === firstElement) {
+                lastElement.focus();
+                e.preventDefault();
+            } else if (!e.shiftKey && document.activeElement === lastElement) {
+                firstElement.focus();
+                e.preventDefault();
+            }
+        }
+    });
+}
+
 if (mobileMenuToggle) mobileMenuToggle.addEventListener('click', toggleMenu);
 if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
 if (mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', closeMenu);
@@ -1180,6 +1147,9 @@ if (mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', closeMenu);
 window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeMenu();
 });
+
+// Initialize keyboard navigation
+initMobileMenuKeyboardNav();
 
 const bannerWrapper = document.getElementById('banner-wrapper');
 const bannerContainer = bannerWrapper?.closest('.banner-container') || null;

@@ -3014,9 +3014,10 @@ z-index: 20;
 
 /* NEW MOBILE MENU STYLES */
 #mobile-menu {
-  transition: transform 0.3s ease-out;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
   border-radius: 2rem 2rem 0 0; /* Rounded top corners, sharp bottom corners */
   z-index: 200; /* Ensure it's above all other elements */
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.1);
 }
 #mobile-menu-overlay {
   transition: opacity 0.3s ease-in-out;
@@ -3032,6 +3033,77 @@ z-index: 20;
 }
 body.menu-open {
   overflow: hidden;
+}
+
+/* Mobile menu header enhancements */
+#mobile-menu .p-5.flex {
+  background: linear-gradient(135deg, #6750A4, #4C1D95);
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Mobile menu link enhancements */
+.mobile-dropdown-header,
+.mobile-dropdown-content a {
+  transition: all 0.25s ease;
+}
+
+.mobile-dropdown-header:hover,
+.mobile-dropdown-content a:hover {
+  background: #F3EDF7 !important;
+  color: #6750A4 !important;
+  transform: translateX(4px);
+}
+
+/* Enhanced dropdown arrows */
+.mobile-dropdown-arrow {
+  transition: transform 0.3s ease, color 0.25s ease;
+}
+
+.mobile-dropdown-header:hover .mobile-dropdown-arrow {
+  color: #6750A4;
+}
+
+/* Mobile menu search functionality */
+.mobile-search-container {
+  padding: 0.75rem 1rem;
+  background: #F3EDF7;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.mobile-search-container input {
+  width: 100%;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(103, 80, 164, 0.2);
+  background: white;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.mobile-search-container input:focus {
+  outline: none;
+  border-color: #6750A4;
+  box-shadow: 0 0 0 3px rgba(103, 80, 164, 0.2);
+}
+
+/* Improved mobile menu scroll experience */
+#mobile-menu .overflow-y-auto {
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  scrollbar-width: thin;
+}
+
+#mobile-menu .overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+#mobile-menu .overflow-y-auto::-webkit-scrollbar-thumb {
+  background: rgba(103, 80, 164, 0.3);
+  border-radius: 3px;
+}
+
+#mobile-menu .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: rgba(103, 80, 164, 0.5);
 }
 
 /* Product rows */
