@@ -1,4 +1,7 @@
-document.addEventListener('DOMContentLoaded', () => {
+(function () {
+  "use strict";
+
+  function __mahanInit() {
 
 // --- Auth State Management ---
 function initAuthButtons() {
@@ -33,99 +36,8 @@ initAuthButtons();
 
 
 // --- Mobile Menu Modifications ---
-function initMobileMenuModifications() {
-    // Try immediately first (fast path)
-    const existingMenu = document.getElementById('mobile-menu');
-    if (existingMenu) {
-        modifyMobileMenu(existingMenu);
-        return;
-    }
 
-    // If the menu is injected later, observe until it appears
-    const observer = new MutationObserver(() => {
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (!mobileMenu) return;
-        modifyMobileMenu(mobileMenu);
-        observer.disconnect();
-    });
 
-    observer.observe(document.body, { childList: true, subtree: true });
-}
-
-function modifyMobileMenu(mobileMenu) {
-    try {
-        // Remove login/register option for guests
-        const guestSection = mobileMenu.querySelector('.guest-only.mb-6');
-        if (guestSection) {
-            guestSection.remove();
-        }
-
-        // Remove profile link
-        const profileLink = mobileMenu.querySelector('a[href="pages/profile.html"]');
-        if (profileLink) {
-            profileLink.remove();
-        }
-
-        // Remove about us link
-        const aboutUsLink = mobileMenu.querySelector('a[href="pages/about-us.html"]');
-        if (aboutUsLink) {
-            aboutUsLink.remove();
-        }
-
-        // Remove contact link (we'll add it back later)
-        const contactLink = mobileMenu.querySelector('a[href="pages/about-us.html#contact"]');
-        if (contactLink) {
-            contactLink.remove();
-        }
-
-        // Remove duplicate "همه محصولات" entries, keeping only one
-        const allProductsLinks = mobileMenu.querySelectorAll('a[href="pages/products.html"]');
-        if (allProductsLinks.length > 1) {
-            // Keep the first one, remove the rest
-            for (let i = 1; i < allProductsLinks.length; i++) {
-                allProductsLinks[i].remove();
-            }
-        }
-
-        // Remove any remaining individual category links that are NOT inside dropdowns
-        // This avoids removing links that are inside our mobile dropdowns
-        const individualCategoryLinks = mobileMenu.querySelectorAll('a[href^="pages/products.html?cat="]');
-        individualCategoryLinks.forEach(link => {
-            // Only remove links that are NOT inside a mobile dropdown
-            if (!link.closest('.mobile-dropdown')) {
-                link.remove();
-            }
-        });
-
-        // Add separator and contact option at the end of the mobile menu
-        const finalNavContainer = mobileMenu.querySelector('.p-4.overflow-y-auto nav');
-        if (finalNavContainer) {
-            // Check if separator and contact option already exist to avoid duplicates
-            if (!finalNavContainer.querySelector('.contact-us-section')) {
-                // Add separator line
-                const separator = document.createElement('div');
-                separator.className = 'border-t border-gray-200 my-2 mx-2 contact-us-separator';
-
-                // Add contact us option
-                const contactOption = document.createElement('a');
-                contactOption.href = 'pages/about-us.html#contact';
-                contactOption.className = 'flex items-center gap-3 p-3 rounded-xl text-gray-700 font-medium hover:bg-[#F3EDF7] transition-colors contact-us-section';
-                contactOption.innerHTML = `
-                    <span class="material-icon" aria-hidden="true">contact_support</span>
-                    <span>ارتباط با ما</span>
-                `;
-
-                // Add them at the end of the nav container
-                finalNavContainer.appendChild(separator);
-                finalNavContainer.appendChild(contactOption);
-            }
-        }
-    } catch (error) {
-        console.error('Error modifying mobile menu:', error);
-    }
-}
-
-// --- Mobile Menu Dropdowns ---
 function initMobileMenuDropdowns() {
     // Try immediately first (fast path)
     const existingMenu = document.getElementById('mobile-menu');
@@ -183,6 +95,9 @@ function handleMobileDropdownClick(e) {
         arrow.textContent = 'expand_less';
     }
 
+    // Visual open state (CSS)
+    dropdown.classList.toggle('is-open', !content.classList.contains('hidden'));
+
     // Close other open dropdowns
     const allDropdowns = dropdown.parentElement.querySelectorAll('.mobile-dropdown');
     allDropdowns.forEach(otherDropdown => {
@@ -192,6 +107,7 @@ function handleMobileDropdownClick(e) {
             if (otherContent && otherArrow && !otherContent.classList.contains('hidden')) {
                 otherContent.classList.add('hidden');
                 otherArrow.textContent = 'expand_more';
+                otherDropdown.classList.remove('is-open');
             }
         }
     });
@@ -201,110 +117,11 @@ function handleMobileDropdownClick(e) {
 // NOTE: This file is already wrapped in a DOMContentLoaded handler.
 // Adding another DOMContentLoaded listener here prevents these initializers
 // from running (because the event has already fired).
-initMobileMenuModifications();
 initMobileMenuDropdowns();
 
 
-// --- Footer Modifications ---
-function initFooterModifications() {
-    // Wait for the footer to be available in the DOM
-    const footerObserver = new MutationObserver(() => {
-        const footer = document.getElementById('footer');
-        if (footer) {
-            modifyFooter(footer);
-            footerObserver.disconnect(); // Stop observing once we've modified the footer
-        }
-    });
-
-    // Start observing
-    footerObserver.observe(document.body, { childList: true, subtree: true });
-
-    // Also try immediately in case the element already exists
-    const footer = document.getElementById('footer');
-    if (footer) {
-        modifyFooter(footer);
-        footerObserver.disconnect();
-    }
-}
-
-function modifyFooter(footer) {
-    try {
-        // Remove the existing footer content and replace with organized structure
-        const footerContent = footer.querySelector('.footer-grid');
-        if (footerContent) {
-            // Clear existing content
-            footerContent.innerHTML = '';
-
-            // Create new structure
-            footerContent.className = 'footer-grid grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 mb-12';
-
-            // Create Pages section
-            const pagesSection = document.createElement('div');
-            pagesSection.className = 'col-span-1 lg:col-span-1';
-            pagesSection.innerHTML = `
-                <h4 class="text-base lg:text-lg font-semibold text-gray-900 mb-3 lg:mb-6">صفحات</h4>
-                <ul class="space-y-4">
-                    <li><a href="index.html" class="text-gray-600 hover:text-purple-600 transition-colors">خانه</a></li>
-                    <li><a href="pages/products.html" class="text-gray-600 hover:text-purple-600 transition-colors">محصولات</a></li>
-                    <li><a href="pages/about-us.html" class="text-gray-600 hover:text-purple-600 transition-colors">درباره ما</a></li>
-                    <li><a href="pages/profile.html" class="text-gray-600 hover:text-purple-600 transition-colors">پروفایل</a></li>
-                    <li><a href="pages/cart.html" class="text-gray-600 hover:text-purple-600 transition-colors">سبد خرید</a></li>
-                    <li><a href="pages/favorites.html" class="text-gray-600 hover:text-purple-600 transition-colors">علاقه‌مندی‌ها</a></li>
-                </ul>
-            `;
-
-            // Create Categories section
-            const categoriesSection = document.createElement('div');
-            categoriesSection.className = 'col-span-1 lg:col-span-1';
-            categoriesSection.innerHTML = `
-                <h4 class="text-base lg:text-lg font-semibold text-gray-900 mb-3 lg:mb-6">دسته‌بندی‌ها</h4>
-                <ul class="space-y-4">
-                    <li><a href="pages/products.html?cat=case" class="text-gray-600 hover:text-purple-600 transition-colors">قاب گوشی</a></li>
-                    <li><a href="pages/products.html?cat=phone" class="text-gray-600 hover:text-purple-600 transition-colors">گوشی هوشمند</a></li>
-                    <li><a href="pages/products.html?cat=charger" class="text-gray-600 hover:text-purple-600 transition-colors">شارژ</a></li>
-                    <li><a href="pages/products.html?cat=airpod" class="text-gray-600 hover:text-purple-600 transition-colors">کاور ایرپاد</a></li>
-                    <li><a href="pages/products.html?cat=glass" class="text-gray-600 hover:text-purple-600 transition-colors">گلس و محافظ</a></li>
-                    <li><a href="pages/products.html?cat=gadget" class="text-gray-600 hover:text-purple-600 transition-colors">گجت</a></li>
-                </ul>
-            `;
 
 
-            // Create Contact section
-            const contactSection = document.createElement('div');
-            contactSection.className = 'col-span-2 lg:col-span-1'; // Span 2 columns on mobile, 1 on large screens
-            contactSection.innerHTML = `
-                <h4 class="text-base lg:text-lg font-semibold text-gray-900 mb-3 lg:mb-6">اطلاعات تماس</h4>
-                <div class="space-y-3 lg:space-y-4">
-                  <div class="flex items-center gap-2 lg:gap-3 text-gray-600">
-                    <span class="material-icon text-purple-600 text-sm lg:text-base">call</span>
-                    <a href="tel:09121234567" class="text-sm lg:text-base hover:text-purple-600">۰۹۱۲۱۲۳۴۵۶۷</a>
-                  </div>
-                  <div class="flex items-center gap-2 lg:gap-3 text-gray-600">
-                    <span class="material-icon text-purple-600 text-sm lg:text-base">schedule</span>
-                    <span class="text-sm lg:text-base">هر روز ۱۰:۰۰ - ۲۲:۰۰</span>
-                  </div>
-                  <div class="flex items-center gap-2 lg:gap-3 text-gray-600">
-                    <span class="material-icon text-purple-600 text-sm lg:text-base">email</span>
-                    <a href="mailto:info@mahanshop.com" class="text-sm lg:text-base hover:text-purple-600">info@mahanshop.com</a>
-                  </div>
-                  <div class="hidden lg:flex items-center gap-3 text-gray-600">
-                    <span class="material-icon text-purple-600">location_on</span>
-                    <span class="text-sm">تهران، خیابان ولیعصر</span>
-                  </div>
-                </div>
-            `;
-
-            // Add all sections to the footer
-            footerContent.appendChild(pagesSection);
-            footerContent.appendChild(categoriesSection);
-            footerContent.appendChild(contactSection);
-        }
-    } catch (error) {
-        console.error('Error modifying footer:', error);
-    }
-}
-
-initFooterModifications();
 
 
 // --- Footer Mobile Accordion ---
@@ -336,7 +153,7 @@ function initFooterAccordion() {
         });
         
         header.addEventListener('mouseenter', () => {
-            if (!header.classList.contains('active')) header.style.background = 'rgba(103, 80, 164, 0.05)';
+            if (!header.classList.contains('active')) header.style.background = 'rgba(37, 99, 235, 0.05)';
         });
         
         header.addEventListener('mouseleave', () => {
@@ -383,33 +200,52 @@ if ('ResizeObserver' in window && navbar) {
 function initNavbarBottomScroll() {
     const navbar = document.getElementById('navbar');
     const navbarBottom = document.getElementById('navbar-bottom');
-    if (!navbarBottom) return;
+    if (!navbar || !navbarBottom) return;
 
-    let lastScrollY = window.pageYOffset || 0;
+    const desktopMQ = window.matchMedia('(min-width: 768px)');
+    let lastScrollY = 0;
     let ticking = false;
 
-    function updateNavbarBottom() {
-        const currentScrollY = window.pageYOffset || 0;
-        const scrollDiff = currentScrollY - lastScrollY;
-        const absDiff = Math.abs(scrollDiff);
+    const getClampedScrollY = () => {
+        const raw = window.scrollY || window.pageYOffset || 0;
+        const doc = document.documentElement;
+        const scrollHeight = (doc && doc.scrollHeight) ? doc.scrollHeight : document.body.scrollHeight;
+        const maxScroll = Math.max(0, scrollHeight - window.innerHeight);
+        return Math.min(maxScroll, Math.max(0, raw));
+    };
 
-        if (navbar) {
-            if (currentScrollY > 10) {
-                navbar.classList.add('shadow-sm');
-                if (navbar.classList.contains('bg-[#FEF7FF]/90')) {
-                    navbar.classList.replace('bg-[#FEF7FF]/90', 'bg-[#FEF7FF]/95');
-                }
-            } else {
-                navbar.classList.remove('shadow-sm');
-                if (navbar.classList.contains('bg-[#FEF7FF]/95')) {
-                    navbar.classList.replace('bg-[#FEF7FF]/95', 'bg-[#FEF7FF]/90');
-                }
-            }
+    const ensureMobileState = () => {
+        // On mobile, do not toggle the bottom-row state. The :has() styling
+        // can otherwise change header padding/height and cause jitter.
+        if (!desktopMQ.matches) {
+            navbarBottom.classList.remove('navbar-hidden');
+        }
+    };
+
+    const updateNavbarBottom = () => {
+        ticking = false;
+
+        const currentScrollY = getClampedScrollY();
+        const scrollDiff = currentScrollY - lastScrollY;
+
+        // Header surface changes (stable even under overscroll bounce)
+        if (currentScrollY > 10) {
+            navbar.classList.add('shadow-md');
+        } else {
+            navbar.classList.remove('shadow-md');
         }
 
-        if (absDiff < 4) {
+        // Mobile: keep stable height, skip bottom row toggling
+        if (!desktopMQ.matches) {
+            ensureMobileState();
             lastScrollY = currentScrollY;
-            ticking = false;
+            return;
+        }
+
+        // Desktop: avoid flicker on micro scrolls / trackpads
+        const threshold = 12;
+        if (Math.abs(scrollDiff) < threshold) {
+            lastScrollY = currentScrollY;
             return;
         }
 
@@ -420,18 +256,32 @@ function initNavbarBottomScroll() {
         }
 
         lastScrollY = currentScrollY;
-        ticking = false;
-    }
+    };
 
-    window.addEventListener('scroll', () => {
+    const onScroll = () => {
         if (!ticking) {
             window.requestAnimationFrame(updateNavbarBottom);
             ticking = true;
         }
-    }, { passive: true });
+    };
+
+    lastScrollY = getClampedScrollY();
+    ensureMobileState();
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    const onResize = () => {
+        ensureMobileState();
+        lastScrollY = getClampedScrollY();
+        updateNavbarBottom();
+    };
+
+    window.addEventListener('resize', onResize, { passive: true });
+    if (desktopMQ.addEventListener) desktopMQ.addEventListener('change', onResize);
 
     updateNavbarBottom();
 }
+
 initNavbarBottomScroll();
 
 // --- Header category dropdowns ---
@@ -761,7 +611,7 @@ function renderCartMenu() {
             thumb.appendChild(img);
         } else {
             const icon = document.createElement('span');
-            icon.className = 'material-icon text-[#6750A4] text-xl';
+            icon.className = 'material-icon text-[#2563EB] text-xl';
             icon.textContent = 'shopping_bag';
             thumb.appendChild(icon);
         }
@@ -1039,7 +889,7 @@ document.querySelectorAll('.product-card').forEach((card) => {
     if (!hasLike) {
         const likeBtn = document.createElement('button');
         likeBtn.type = 'button';
-        likeBtn.className = 'nav-icon-btn ripple product-like-btn w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition';
+        likeBtn.className = 'nav-icon-btn ripple product-like-btn w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition';
         likeBtn.setAttribute('aria-label', 'افزودن به علاقه‌مندی');
         likeBtn.innerHTML = '<span class="material-icon text-[20px]">favorite_border</span>';
         if (addBtn && addBtn.parentNode) {
@@ -1088,7 +938,7 @@ document.addEventListener('click', function (e) {
     circle.style.top = `${e.clientY - rect.top - radius}px`;
     const duration = isIconBtn ? 260 : 600;
     circle.style.animationDuration = `${duration}ms`;
-    if (isIconBtn) circle.style.backgroundColor = 'rgba(103, 80, 164, 0.14)';
+    if (isIconBtn) circle.style.backgroundColor = 'rgba(37, 99, 235, 0.14)';
     circle.classList.add('ripple-effect');
     target.appendChild(circle);
     setTimeout(() => { circle.remove(); }, duration);
@@ -1611,5 +1461,20 @@ document.querySelectorAll('.qty-selector').forEach(selector => {
     });
   }
 });
+  }
 
-});
+  function __boot() {
+    const layoutReady = window.__layoutReady;
+    if (layoutReady && typeof layoutReady.then === "function") {
+      layoutReady.then(__mahanInit).catch(__mahanInit);
+    } else {
+      __mahanInit();
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", __boot);
+  } else {
+    __boot();
+  }
+})();

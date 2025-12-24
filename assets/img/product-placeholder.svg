@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900" role="img" aria-label="تصویر نمونه محصول">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#EFF6FF"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="900" fill="url(#bg)"/>
+
+  <rect x="120" y="120" width="660" height="660" rx="48" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="6"/>
+
+  <g fill="none" stroke="#2563EB" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M280 360h80l28-42h224l28 42h80v240H280z"/>
+    <path d="M450 420a90 90 0 1 0 0 180a90 90 0 1 0 0-180z"/>
+  </g>
+
+  <text x="450" y="720" text-anchor="middle" font-family="Vazirmatn, Arial, sans-serif" font-size="36" font-weight="700" fill="#0F172A">تصویر نمونه محصول</text>
+  <text x="450" y="768" text-anchor="middle" font-family="Vazirmatn, Arial, sans-serif" font-size="24" font-weight="600" fill="#64748B">Mahan Shop</text>
+</svg>

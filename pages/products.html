@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>محصولات | ماهان شاپ</title>
+    <meta name="theme-color" content="#F8FAFC" />
+<title>محصولات | ماهان شاپ</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
   
@@ -14,378 +15,23 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
   
   <link rel="stylesheet" href="../assets/css/style.css" />
-<script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
-  }
-}
-</script>
-
 </head>
-<body class="bg-[#FEF7FF] text-gray-900 overflow-x-hidden font-[Vazirmatn] min-h-screen products-page-bg">
+<body class="bg-[#F8FAFC] text-gray-900 overflow-x-hidden font-[Vazirmatn] min-h-screen products-page-bg">
+  <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+  <div id="top" aria-hidden="true"></div>
   
   <!-- هدر اصلی: ناوبری، جستجو و وضعیت ورود کاربر -->
-  <header id="navbar" class="fixed top-0 z-50 bg-[#FEF7FF]/90 backdrop-blur-md border-b border-gray-200/50 transition-all duration-300">
+  <div data-include="header"></div>
 
-      <!-- ردیف بالا: لوگو، جستجو و اکشن‌های کاربر -->
-      <div id="navbar-top" class="max-w-7xl mx-auto px-4 pt-3 pb-3 md:pb-0">
-          <div class="flex flex-wrap md:flex-nowrap items-center justify-between gap-4">
 
-               <!-- بخش چپ: منوی موبایل و لوگو -->
-               <div class="flex items-center gap-3 shrink-0">
-                   <!-- دکمه باز کردن منو -->
-                   <button id="mobile-menu-toggle" type="button" class="md:hidden nav-icon-btn ripple p-2 rounded-full text-gray-700" aria-label="باز کردن منو" aria-controls="mobile-menu" aria-expanded="false">
-                       <span class="material-icon" aria-hidden="true">menu</span>
-                   </button>
-
-                   <!-- لوگو -->
-                   <a href="../index.html" class="flex items-center gap-2 group logo-container">
-                       <div class="w-10 h-10 bg-gradient-to-br from-purple-600 to-purple-700 rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/20 group-hover:scale-105 transition-transform duration-300">
-                           <span class="material-icon text-white text-xl">shopping_bag</span>
-                       </div>
-                       <span class="text-xl md:text-2xl font-black text-gray-800 tracking-tight">ماهان شاپ</span>
-                   </a>
-               </div>
-
-              <!-- جستجو: مسیر و پارامترها توسط بک‌اند تنظیم شوند -->
-                  <div class="order-last md:order-none w-full md:max-w-xl mx-auto md:mx-6 transition-all duration-300">
-                      <form class="relative group search-container" role="search" action="products.html" method="get">
-                          <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
-                          <span class="material-icon text-gray-500 group-focus-within:text-[#6750A4] transition-colors" aria-hidden="true">search</span>
-                          </div>
-                          <input type="search"
-                             name="q"
-                             enterkeyhint="search"
-                             aria-label="جستجوی محصولات"
-                             class="w-full h-12 pr-12 pl-4 rounded-full bg-[#F3EDF7] border border-transparent hover:bg-[#EADDFF]/50 focus:bg-white focus:border-[#6750A4] focus:shadow-[0_4px_12px_rgba(103,80,164,0.15)] outline-none transition-all duration-300 placeholder-gray-500 text-sm md:text-base"
-                             placeholder="جستجو در بین هزاران محصول...">
-                      </form>
-                  </div>
-
-              <!-- اکشن‌های کاربر: علاقه‌مندی، سبد خرید، حساب -->
-              <nav class="flex items-center gap-2 md:gap-3 shrink-0" aria-label="ابزارهای کاربری">
-
-                  <!-- علاقه‌مندی‌ها -->
-<a href="favorites.html" class="nav-icon-btn ripple w-10 h-10 rounded-lg flex items-center justify-center text-gray-600" title="علاقه‌مندی‌ها" aria-label="علاقه‌مندی‌ها">
-                       <span class="material-icon" aria-hidden="true">favorite_border</span>
-                   </a>
-
-                  <!-- سبد خرید -->
-                  <div id="cart-menu-wrapper" class="relative">
-                    <a href="cart.html" id="cart-btn" class="nav-icon-btn ripple w-10 h-10 rounded-lg flex items-center justify-center text-gray-600" title="سبد خرید" aria-label="سبد خرید" aria-haspopup="dialog" aria-controls="cart-menu" aria-expanded="false">
-                       <span class="material-icon" aria-hidden="true">shopping_cart</span>
-                       <span id="cart-count-badge" class="absolute top-0 right-0 w-4 h-4 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center border border-white hidden z-10" aria-live="polite" aria-atomic="true">0</span>
-                    </a>
-                    <div id="cart-menu" class="cart-menu" role="dialog" aria-label="سبد خرید" aria-hidden="true" data-cart-menu tabindex="-1">
-                      <div class="cart-menu-panel">
-                        <div class="cart-menu-header">
-                          <div class="flex items-center gap-2">
-                            <span class="material-icon text-xl text-[#6750A4]" aria-hidden="true">shopping_cart</span>
-                            <div>
-                              <h4>سبد خرید</h4>
-                              <p class="text-xs text-gray-500" data-cart-menu-status>نمایش خلاصه سفارش</p>
-                            </div>
-                          </div>
-                          <span class="text-xs font-semibold text-[#6750A4]" data-cart-menu-count>۰ کالا</span>
-                        </div>
-                        <div class="cart-menu-items" data-cart-menu-items>
-                          <p class="text-xs text-gray-500 text-center">هنوز کالایی به سبد اضافه نشده است.</p>
-                        </div>
-                        <div class="cart-menu-footer">
-                          <div class="cart-menu-total">
-                            <span>جمع</span>
-                            <strong data-cart-menu-total>۰ تومان</strong>
-                          </div>
-                          <div class="cart-menu-actions">
-                            <a href="cart.html" class="primary" aria-label="رفتن به صفحه سبد خرید">مشاهده کامل سبد</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- جداکننده (نمایش در دسکتاپ) -->
-                  <div class="hidden md:block w-px h-6 bg-gray-300 mx-1"></div>
-
-                  <!-- وضعیت ورود: بک‌اند مقدار data-auth را روی body تنظیم کند -->
-                  <!--
-                  <a href="profile.html" class="auth-only hidden md:flex items-center gap-2 pl-1 pr-1 py-1 rounded-full hover:bg-[#F3EDF7] transition-all group profile-section" aria-label="حساب کاربری">
-                      <div class="w-8 h-8 bg-[#EADDFF] rounded-full flex items-center justify-center text-[#21005D]">
-                          <span class="material-icon text-lg" aria-hidden="true">person</span>
-                      </div>
-                      <span class="text-sm font-bold text-gray-700 group-hover:text-[#6750A4]">حساب کاربری</span>
-                  </a>
-
-                  <a href="profile.html" class="auth-only md:hidden nav-icon-btn ripple w-10 h-10 rounded-full hover:bg-[#F3EDF7] flex items-center justify-center text-gray-600 hover:text-[#6750A4] transition-colors" aria-label="حساب کاربری">
-                      <span class="material-icon" aria-hidden="true">person</span>
-                  </a>
-                  -->
-
-                  <div class="guest-only hidden md:flex header-cta-group">
-                      <a href="login.html" class="header-cta header-cta--ghost" aria-label="ورود">
-                          <span class="material-icon text-lg" aria-hidden="true">login</span>
-                          <span>ورود</span>
-                      </a>
-                      <a href="register.html" class="header-cta header-cta--primary" aria-label="ثبت نام">
-                          <span class="material-icon text-lg" aria-hidden="true">person_add</span>
-                          <span>ثبت نام</span>
-                      </a>
-                  </div>
-
-                  <div class="guest-only md:hidden header-cta-mobile-group">
-                      <a href="login.html" class="header-cta-mobile header-cta-mobile--ghost ripple" aria-label="ورود">
-                          <span class="material-icon text-lg" aria-hidden="true">login</span>
-                          <span class="sr-only">ورود</span>
-                      </a>
-                      <a href="register.html" class="header-cta-mobile header-cta-mobile--primary ripple" aria-label="ثبت نام">
-                          <span class="material-icon text-lg" aria-hidden="true">person_add</span>
-                          <span class="sr-only">ثبت نام</span>
-                      </a>
-                  </div>
-              </nav>
-          </div>
-          <!-- ردیف پایین: دسته‌بندی‌ها -->
-          <div id="navbar-bottom" class="border-t border-gray-100/80 md:border-none hidden md:block transition-all duration-300">
-              <nav class="secondary-nav flex items-center gap-1 md:gap-6 overflow-x-auto no-scrollbar py-2 md:py-3 mask-image-fade" aria-label="دسته‌بندی‌ها">
-                  <a href="../index.html" class="secondary-nav-link active" aria-current="page">
-                      <span class="material-icon text-lg" aria-hidden="true">home</span>
-                      خانه
-                  </a>
-                  <a href="products.html" class="secondary-nav-link">
-                      <span class="material-icon text-lg" aria-hidden="true">apps</span>
-                      تمام محصولات
-                  </a>
-                  <div class="w-px h-4 bg-gray-300 mx-1 shrink-0 hidden md:block"></div>
-                  <div class="nav-dropdown" data-nav-dropdown>
-                      <button type="button" class="secondary-nav-link nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-case" aria-haspopup="true">
-                          قاب گوشی
-                          <span class="material-icon nav-caret" aria-hidden="true">expand_more</span>
-                      </button>
-                      <div id="dropdown-case" class="nav-dropdown-panel" aria-hidden="true">
-                          <div class="nav-dropdown-section">
-                              <div class="nav-dropdown-title">جنس قاب</div>
-                              <div class="nav-dropdown-links">
-                                  <a href="products.html?cat=case&material=silicone" class="nav-dropdown-link">سیلیکونی</a>
-                                  <a href="products.html?cat=case&material=leather" class="nav-dropdown-link">چرمی</a>
-                                  <a href="products.html?cat=case&material=soft" class="nav-dropdown-link">ژله‌ای</a>
-                                  <a href="products.html?cat=case&material=hard" class="nav-dropdown-link">سخت</a>
-                                  <a href="products.html?cat=case&material=clear" class="nav-dropdown-link">شفاف</a>
-                                  <a href="products.html?cat=case&material=shockproof" class="nav-dropdown-link">ضدضربه</a>
-                                  <a href="products.html?cat=case&material=magsafe" class="nav-dropdown-link">مگ‌سیف</a>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="nav-dropdown" data-nav-dropdown>
-                      <button type="button" class="secondary-nav-link nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-phone" aria-haspopup="true">
-                          گوشی هوشمند
-                          <span class="material-icon nav-caret" aria-hidden="true">expand_more</span>
-                      </button>
-                      <div id="dropdown-phone" class="nav-dropdown-panel" aria-hidden="true">
-                          <div class="nav-dropdown-section">
-                              <div class="nav-dropdown-title">برندها</div>
-                              <div class="nav-dropdown-links">
-                                  <a href="products.html?cat=phone&brand=apple" class="nav-dropdown-link">اپل</a>
-                                  <a href="products.html?cat=phone&brand=samsung" class="nav-dropdown-link">سامسونگ</a>
-                                  <a href="products.html?cat=phone&brand=xiaomi" class="nav-dropdown-link">شیائومی</a>
-                                  <a href="products.html?cat=phone&brand=honor" class="nav-dropdown-link">آنر</a>
-                                  <a href="products.html?cat=phone&brand=huawei" class="nav-dropdown-link">هواوی</a>
-                                  <a href="products.html?cat=phone&brand=nokia" class="nav-dropdown-link">نوکیا</a>
-                                  <a href="products.html?cat=phone&brand=oneplus" class="nav-dropdown-link">وان پلاس</a>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="nav-dropdown" data-nav-dropdown>
-                      <button type="button" class="secondary-nav-link nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-charger" aria-haspopup="true">
-                          شارژ
-                          <span class="material-icon nav-caret" aria-hidden="true">expand_more</span>
-                      </button>
-                      <div id="dropdown-charger" class="nav-dropdown-panel" aria-hidden="true">
-                          <div class="nav-dropdown-section">
-                              <div class="nav-dropdown-title">شارژ</div>
-                              <div class="nav-dropdown-links">
-                                  <a href="products.html?cat=charger&type=adapter" class="nav-dropdown-link">دیواری</a>
-                                  <a href="products.html?cat=charger&type=car" class="nav-dropdown-link">فندکی</a>
-                                  <a href="products.html?cat=charger&type=wireless" class="nav-dropdown-link">بی‌سیم</a>
-                                  <a href="products.html?cat=charger&type=cable&type2=type-c" class="nav-dropdown-link">کابل Type-C</a>
-                                  <a href="products.html?cat=charger&type=cable&type2=lightning" class="nav-dropdown-link">کابل لایتنینگ</a>
-                                  <a href="products.html?cat=charger&type=cable&type2=micro" class="nav-dropdown-link">کابل Micro-USB</a>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="nav-dropdown" data-nav-dropdown>
-                      <button type="button" class="secondary-nav-link nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-airpod" aria-haspopup="true">
-                          کاور ایرپاد
-                          <span class="material-icon nav-caret" aria-hidden="true">expand_more</span>
-                      </button>
-                      <div id="dropdown-airpod" class="nav-dropdown-panel nav-dropdown-panel-wide nav-dropdown-columns" aria-hidden="true">
-                          <div class="nav-dropdown-column">
-                              <div class="nav-dropdown-title">سازگار با</div>
-                              <div class="nav-dropdown-links">
-                                  <a href="products.html?cat=airpod&model=airpods-1-2" class="nav-dropdown-link">ایرپاد ۱ و ۲</a>
-                                  <a href="products.html?cat=airpod&model=airpods-3" class="nav-dropdown-link">ایرپاد نسل سوم</a>
-                                  <a href="products.html?cat=airpod&model=airpods-pro" class="nav-dropdown-link">ایرپاد پرو</a>
-                                  <a href="products.html?cat=airpod&model=airpods-max" class="nav-dropdown-link">ایرپاد مکس</a>
-                              </div>
-                          </div>
-                          <div class="nav-dropdown-column">
-                              <div class="nav-dropdown-title">سبک کاور</div>
-                              <div class="nav-dropdown-links">
-                                  <a href="products.html?cat=airpod&material=silicone" class="nav-dropdown-link">سیلیکونی</a>
-                                  <a href="products.html?cat=airpod&material=leather" class="nav-dropdown-link">چرمی</a>
-                                  <a href="products.html?cat=airpod&style=clear" class="nav-dropdown-link">شفاف</a>
-                                  <a href="products.html?cat=airpod&feature=shockproof" class="nav-dropdown-link">ضدضربه</a>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="nav-dropdown" data-nav-dropdown>
-                      <button type="button" class="secondary-nav-link nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-glass" aria-haspopup="true">
-                          گلس و محافظ
-                          <span class="material-icon nav-caret" aria-hidden="true">expand_more</span>
-                      </button>
-                      <div id="dropdown-glass" class="nav-dropdown-panel nav-dropdown-panel-wide nav-dropdown-columns" aria-hidden="true">
-                          <div class="nav-dropdown-column">
-                              <div class="nav-dropdown-title">نوع گلس</div>
-                              <div class="nav-dropdown-links">
-                                  <a href="products.html?cat=glass&type=privacy" class="nav-dropdown-link">پرایوسی</a>
-                                  <a href="products.html?cat=glass&type=ceramic" class="nav-dropdown-link">سرامیکی</a>
-                                  <a href="products.html?cat=glass&type=full" class="nav-dropdown-link">تمام صفحه</a>
-                                  <a href="products.html?cat=glass&type=matte" class="nav-dropdown-link">مات</a>
-                              </div>
-                          </div>
-                          <div class="nav-dropdown-column">
-                              <div class="nav-dropdown-title">قابلیت‌ها</div>
-                              <div class="nav-dropdown-links">
-                                  <a href="products.html?cat=glass&feature=anti-blue" class="nav-dropdown-link">ضد تابش</a>
-                                  <a href="products.html?cat=glass&feature=anti-scratch" class="nav-dropdown-link">ضد خش</a>
-                                  <a href="products.html?cat=glass&feature=anti-shock" class="nav-dropdown-link">ضد ضربه</a>
-                                  <a href="products.html?cat=glass&feature=easy-install" class="nav-dropdown-link">نصب آسان</a>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="nav-dropdown" data-nav-dropdown>
-                      <button type="button" class="secondary-nav-link nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-gadget" aria-haspopup="true">
-                          گجت
-                          <span class="material-icon nav-caret" aria-hidden="true">expand_more</span>
-                      </button>
-                      <div id="dropdown-gadget" class="nav-dropdown-panel nav-dropdown-panel-wide nav-dropdown-columns" aria-hidden="true">
-                          <div class="nav-dropdown-column">
-                              <div class="nav-dropdown-title">گجت‌های محبوب</div>
-                              <div class="nav-dropdown-links">
-                                  <a href="products.html?cat=gadget&type=powerbank" class="nav-dropdown-link">پاوربانک</a>
-                                  <a href="products.html?cat=gadget&type=holder" class="nav-dropdown-link">هولدر و پایه</a>
-                                  <a href="products.html?cat=gadget&type=audio" class="nav-dropdown-link">ایرفون و اسپیکر</a>
-                                  <a href="products.html?cat=gadget&type=smart" class="nav-dropdown-link">گجت هوشمند</a>
-                              </div>
-                          </div>
-                          <div class="nav-dropdown-column">
-                              <div class="nav-dropdown-title">کاربری</div>
-                              <div class="nav-dropdown-links">
-                                  <a href="products.html?cat=gadget&type=health" class="nav-dropdown-link">سلامت و فیتنس</a>
-                                  <a href="products.html?cat=gadget&type=office" class="nav-dropdown-link">دفتر و میزکار</a>
-                                  <a href="products.html?cat=gadget&type=travel" class="nav-dropdown-link">سفر و لوازم همراه</a>
-                                  <a href="products.html?cat=gadget&type=home" class="nav-dropdown-link">خانه هوشمند</a>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="w-px h-4 bg-gray-300 mx-1 shrink-0 hidden md:block"></div>
-                  <a href="about-us.html#contact" class="secondary-nav-link">
-                      <span class="material-icon text-lg" aria-hidden="true">contact_support</span>
-                      ارتباط با ما
-                  </a>
-              </nav>
-          </div>
-      </div>
-  </header>
-  
-  <!-- Mobile Menu Drawer -->
-  <div class="md:hidden">
-      <!-- Overlay -->
-      <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/40 z-[99] hidden opacity-0 transition-opacity duration-300"></div>
-      <!-- Menu -->
-      <div id="mobile-menu" class="fixed right-0 top-0 h-full w-4/5 max-w-[300px] bg-[#FEF7FF] shadow-2xl transform translate-x-full z-[100] transition-transform duration-300">
-          <div class="p-5 flex justify-between items-center bg-[#F3EDF7]">
-              <div class="flex items-center gap-2">
-                  <span class="material-icon text-[#6750A4]">shopping_bag</span>
-                  <span class="font-bold text-lg text-[#1D1B20]">منوی اصلی</span>
-              </div>
-              <button id="close-menu-btn" class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-gray-600 hover:text-red-500 shadow-sm transition-colors">
-                  <span class="material-icon text-lg">close</span>
-              </button>
-          </div>
-          <div class="p-4 overflow-y-auto h-[calc(100%-64px)]">
-              <!-- Commented Login for Drawer -->
-              <!-- 
-              <div class="mb-6 p-4 bg-white rounded-2xl border border-gray-100 text-center">
-                  <p class="text-sm text-gray-500 mb-3">هنوز وارد نشده‌اید؟</p>
-                  <a href="login.html" class="block w-full bg-[#6750A4] text-white py-2.5 rounded-xl font-bold text-sm shadow-md ripple">ورود یا ثبت نام</a>
-              </div>
-              -->
-
-              <nav class="flex flex-col gap-1">
-                  <a href="../index.html" class="flex items-center gap-3 p-3 rounded-xl text-gray-700 font-medium hover:bg-[#F3EDF7] transition-colors">
-                      <span class="material-icon text-gray-500">home</span>
-                      <span>خانه</span>
-                  </a>
-                  <a href="products.html" class="flex items-center gap-3 p-3 rounded-xl text-[#1D1B20] bg-[#EADDFF] font-bold">
-                      <span class="material-icon text-[#21005D]">category</span>
-                      <span>همه محصولات</span>
-                  </a>
-                  <div class="border-t border-gray-200 my-2 mx-2"></div>
-                  <span class="text-xs font-bold text-gray-400 px-3 mb-1">دسته‌بندی‌ها</span>
-                  <a href="products.html?cat=case" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors">
-                      <span class="material-icon text-lg">smartphone</span> قاب گوشی
-                  </a>
-                  <a href="products.html?cat=phone" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors">
-                      <span class="material-icon text-lg">smartphone</span> گوشی هوشمند
-                  </a>
-                  <a href="products.html?cat=charger" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors">
-                      <span class="material-icon text-lg">bolt</span> شارژ
-                  </a>
-                  <a href="products.html?cat=airpod" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors">
-                      <span class="material-icon text-lg">headphones</span> کاور ایرپاد
-                  </a>
-                  <a href="products.html?cat=glass" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors">
-                      <span class="material-icon text-lg">shield</span> گلس و محافظ
-                  </a>
-                  <a href="products.html?cat=gadget" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors">
-                      <span class="material-icon text-lg">diamond</span> گجت
-                  </a>
-                  <div class="border-t border-gray-200 my-2 mx-2"></div>
-                  <a href="profile.html" class="flex items-center gap-3 p-3 rounded-xl text-gray-700 font-medium hover:bg-[#F3EDF7] transition-colors">
-                      <span class="material-icon">person</span>
-                      <span>حساب کاربری</span>
-                  </a>
-                  <a href="about-us.html" class="flex items-center gap-3 p-3 rounded-xl text-gray-700 font-medium hover:bg-[#F3EDF7] transition-colors">
-                      <span class="material-icon">info</span>
-                      <span>درباره ما</span>
-                  </a>
-                  <a href="about-us.html#contact" class="flex items-center gap-3 p-3 rounded-xl text-gray-700 font-medium hover:bg-[#F3EDF7] transition-colors">
-                      <span class="material-icon">contact_support</span>
-                      <span>ارتباط با ما</span>
-                  </a>
-              </nav>
-          </div>
-      </div>
-  </div>
-
-  <!-- Main Content -->
-  <main class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-6 md:pb-8">
+  <main id="main-content" class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-6 md:pb-8">
     <div class="lg:grid lg:grid-cols-12 lg:gap-8">
 
       <!-- Filter Sidebar -->
-      <aside id="filter-sidebar" class="filter-sidebar fixed lg:static top-0 -right-full lg:right-auto w-[90%] sm:w-[80%] md:w-72 lg:max-w-none lg:w-full h-full lg:h-auto bg-white lg:bg-transparent z-[80] lg:z-auto lg:col-span-3 lg:block p-4 lg:p-0" role="navigation" aria-label="فیلترهای محصولات">
-        <div class="bg-white rounded-xl border border-gray-200/80 shadow-sm lg:shadow-lg lg:p-4 flex flex-col">
+      <aside id="filter-sidebar" class="filter-sidebar fixed lg:static top-0 -right-full lg:right-auto w-[90%] sm:w-[80%] md:w-72 lg:max-w-none lg:w-full h-full lg:h-auto bg-white lg:bg-transparent z-[160] lg:z-auto lg:col-span-3 lg:block p-4 lg:p-0" role="navigation" aria-label="فیلترهای محصولات">
+        <div class="filter-panel bg-white rounded-xl border border-gray-200/80 shadow-sm lg:shadow-lg lg:p-4 flex flex-col">
 
-            <div class="flex items-center justify-between lg:hidden pb-3 border-b border-gray-200">
+            <div class="filter-panel-header flex items-center justify-between lg:hidden pb-3 border-b border-gray-200">
                 <h2 class="font-bold text-lg text-[#1D1B20]">فیلترها</h2>
                 <button id="close-filters-btn" class="p-2 rounded-full hover:bg-gray-100" aria-label="بستن فیلترها" type="button">
                     <span class="material-icon">close</span>
@@ -461,7 +107,7 @@
               </div>
               <div class="lg:hidden pt-3">
                 <div class="flex gap-2">
-                  <button id="apply-filters-btn" class="flex-1 py-3 px-4 rounded-xl bg-[#6750A4] text-white font-bold hover:bg-[#4b2f86] transition" type="button">اعمال فیلترها</button>
+                  <button id="apply-filters-btn" class="flex-1 py-3 px-4 rounded-xl bg-[#2563EB] text-white font-bold hover:bg-[#1D4ED8] transition" type="button">اعمال فیلترها</button>
                 </div>
               </div>
             </div>
@@ -471,19 +117,19 @@
       <!-- Products Grid -->
       <div class="lg:col-span-9 mt-6 lg:mt-0">
         <!-- Header: Sort + Results count -->
-        <div class="products-header flex flex-col gap-4 p-4 mb-6 bg-gradient-to-r from-[#EADDFF]/50 to-[#FEF7FF] rounded-3xl border border-[#D8D4EA] shadow-[0_20px_60px_rgba(103,80,164,0.12)]" role="heading" aria-level="2">
+        <div class="products-header flex flex-col gap-4 p-4 mb-6 bg-gradient-to-r from-[#DBEAFE]/40 to-[#F8FAFC] rounded-3xl border border-gray-200 shadow-[0_20px_60px_rgba(37,99,235,0.12)]" role="heading" aria-level="2">
             <div class="products-header-main flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div class="products-header-sort flex items-center gap-3 flex-1 min-w-[220px]">
-                  <span class="material-icon text-[#6750A4] text-2xl">sort</span>
-                  <label for="sort-by" class="font-semibold text-sm text-[#322653]">مرتب‌سازی</label>
+                  <span class="material-icon text-[#2563EB] text-2xl">sort</span>
+                  <label for="sort-by" class="font-semibold text-sm text-gray-700">مرتب‌سازی</label>
                   <div class="relative flex-1 sm:flex-none sm:w-56">
-                    <select id="sort-by" class="sort-select bg-white border border-[#C6BEE0] text-gray-900 text-sm rounded-2xl focus:ring-2 focus:ring-[#8A5EEE] focus:border-[#8A5EEE] block w-full pr-3 pl-10 py-2.5 appearance-none shadow-sm hover:shadow-md transition">
+                    <select id="sort-by" class="sort-select bg-white border border-gray-200 text-gray-900 text-sm rounded-2xl focus:ring-2 focus:ring-[#2563EB] focus:border-[#2563EB] block w-full pr-3 pl-10 py-2.5 appearance-none shadow-sm hover:shadow-md transition">
                         <option value="newest">جدیدترین</option>
                         <option value="oldest">قدیمی‌ترین</option>
                         <option value="price-asc">قیمت: از کم به زیاد</option>
                         <option value="price-desc">قیمت: از زیاد به کم</option>
                     </select>
-                    <span class="material-icon absolute left-3 top-1/2 -translate-y-1/2 text-[#6750A4] pointer-events-none text-lg">unfold_more</span>
+                    <span class="material-icon absolute left-3 top-1/2 -translate-y-1/2 text-[#2563EB] pointer-events-none text-lg">unfold_more</span>
                   </div>
               </div>
             </div>
@@ -498,8 +144,8 @@
                 </button>
               </div>
               <div class="active-category-row flex lg:hidden">
-                <div class="active-category-pill rounded-full border border-[#D8D4EA] bg-white/80 px-3 py-1 text-xs sm:text-sm flex items-center gap-2 shadow-sm">
-                  <span class="material-icon text-[#6750A4] text-base">category</span>
+                <div class="active-category-pill rounded-full border border-gray-200 bg-white/80 px-3 py-1 text-xs sm:text-sm flex items-center gap-2 shadow-sm">
+                  <span class="material-icon text-[#2563EB] text-base">category</span>
                   <span>دسته انتخاب‌شده:</span>
                   <span id="active-category-name" class="font-bold text-[#1A1441]">تمام محصولات</span>
                 </div>
@@ -539,16 +185,16 @@
             <div class="mt-3 flex items-center justify-between gap-3">
               <div class="min-w-0">
                 <div class="text-[10px] md:text-xs text-gray-400 line-through">۸۵۰,۰۰۰</div>
-                <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+                <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
                   ۶۹۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
                 </div>
               </div>
 
               <div class="flex items-center gap-2">
-                <button class="nav-icon-btn ripple product-like-btn w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+                <button class="nav-icon-btn ripple product-like-btn w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
                   <span class="material-icon text-[22px]">favorite_border</span>
                 </button>
-                <button class="nav-icon-btn ripple product-add-btn w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+                <button class="nav-icon-btn ripple product-add-btn w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
                   <span class="material-icon text-[22px]">add</span>
                 </button>
               </div>
@@ -583,16 +229,16 @@
 
             <div class="mt-3 flex items-center justify-between gap-3">
               <div class="min-w-0">
-                <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+                <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
                   ۳۹۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
                 </div>
               </div>
 
               <div class="flex items-center gap-2">
-                <button class="nav-icon-btn ripple product-like-btn w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+                <button class="nav-icon-btn ripple product-like-btn w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
                   <span class="material-icon text-[22px]">favorite_border</span>
                 </button>
-                <button class="nav-icon-btn ripple product-add-btn w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+                <button class="nav-icon-btn ripple product-add-btn w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
                   <span class="material-icon text-[22px]">add</span>
                 </button>
               </div>
@@ -628,16 +274,16 @@
 
             <div class="mt-3 flex items-center justify-between gap-3">
               <div class="min-w-0">
-                <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+                <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
                   ۹۸۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
                 </div>
               </div>
 
               <div class="flex items-center gap-2">
-                <button class="nav-icon-btn ripple product-like-btn w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+                <button class="nav-icon-btn ripple product-like-btn w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
                   <span class="material-icon text-[22px]">favorite_border</span>
                 </button>
-                <button class="nav-icon-btn ripple product-add-btn w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+                <button class="nav-icon-btn ripple product-add-btn w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
                   <span class="material-icon text-[22px]">add</span>
                 </button>
               </div>
@@ -672,33 +318,31 @@
 
             <div class="mt-3 flex items-center justify-between gap-3">
               <div class="min-w-0">
-                <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+                <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
                   ۴۱۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
                 </div>
               </div>
 
               <div class="flex items-center gap-2">
-                <button class="nav-icon-btn ripple product-like-btn w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+                <button class="nav-icon-btn ripple product-like-btn w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
                   <span class="material-icon text-[22px]">favorite_border</span>
                 </button>
-                <button class="nav-icon-btn ripple product-add-btn w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+                <button class="nav-icon-btn ripple product-add-btn w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
                   <span class="material-icon text-[22px]">add</span>
                 </button>
               </div>
             </div>
           </article>
             </div>
-        <div class="results-summary mt-6 flex justify-end text-sm text-[#5B4D79]">
-            <div id="results-count" class="font-semibold"></div>
         </div>
         <div id="no-results" class="no-results hidden" role="status" aria-live="polite">
-            <div class="no-results-card rounded-3xl border border-dashed border-[#C4B5FD]/70 bg-white/90 shadow-lg shadow-purple-50 p-6 text-center">
-              <span class="material-icon text-6xl text-[#A855F7] mb-4 inline-block">search_off</span>
-              <h3 class="text-xl font-bold text-[#1f1145] mb-2">محصولی یافت نشد</h3>
-              <p class="text-sm text-[#5B4D79] mb-4">فیلترهای خود را بازبینی کنید یا انتخاب دیگری امتحان کنید.</p>
+            <div class="no-results-card rounded-3xl border border-dashed border-[#BFDBFE]/70 bg-white/90 shadow-lg shadow-blue-50 p-6 text-center">
+              <span class="material-icon text-6xl text-[#2563EB] mb-4 inline-block">search_off</span>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">محصولی یافت نشد</h3>
+              <p class="text-sm text-gray-600 mb-4">فیلترهای خود را بازبینی کنید یا انتخاب دیگری امتحان کنید.</p>
               <div class="flex flex-wrap justify-center gap-3">
-                <button id="reset-filters-btn-mobile" class="px-4 py-2 rounded-2xl bg-[#6750A4] text-white text-sm font-bold shadow-md hover:bg-[#5930a0] transition">حذف فیلترها</button>
-                <a href="../index.html" class="px-4 py-2 rounded-2xl border border-[#D8D4EA] text-sm font-semibold text-[#322653] hover:bg-[#F3EDF7] transition">بازگشت به صفحه اصلی</a>
+                <button id="reset-filters-btn-mobile" class="px-4 py-2 rounded-2xl bg-[#2563EB] text-white text-sm font-bold shadow-md hover:bg-[#1D4ED8] transition">حذف فیلترها</button>
+                <a href="../index.html" class="px-4 py-2 rounded-2xl border border-gray-200 text-sm font-semibold text-gray-700 hover:bg-[#EFF6FF] transition">بازگشت به صفحه اصلی</a>
               </div>
             </div>
         </div>
@@ -718,9 +362,7 @@
       const productsGrid = document.getElementById('products-grid');
       if (!productsGrid) return;
 
-      const productCards = Array.from(productsGrid.querySelectorAll('.product-card'));
-      const resultsCountEl = document.getElementById('results-count');
-      const noResultsEl = document.getElementById('no-results');
+      const productCards = Array.from(productsGrid.querySelectorAll('.product-card'));      const noResultsEl = document.getElementById('no-results');
 
       const filterSearch = document.getElementById('filter-search');
       const categoryButtons = document.querySelectorAll('.category-filter-btn');
@@ -906,7 +548,12 @@
 
           const summary = document.createElement('summary');
           summary.className = 'filter-subgroup-summary';
-          summary.innerHTML = `<span>${group.label}</span><span class="material-icon">expand_more</span>`;
+          const summaryText = document.createElement('span');
+          summaryText.textContent = group.label;
+          const summaryIcon = document.createElement('span');
+          summaryIcon.className = 'material-icon';
+          summaryIcon.textContent = 'expand_more';
+          summary.append(summaryText, summaryIcon);
           details.appendChild(summary);
 
           const optionsWrap = document.createElement('div');
@@ -924,10 +571,18 @@
               const label = getLabel(group.key, rawValue);
               const labelEl = document.createElement('label');
               labelEl.className = 'filter-option';
-              labelEl.innerHTML = `
-                <input type="checkbox" class="filter-input" data-filter-key="${group.key}" data-normalized="${normalized}" value="${rawValue}">
-                <span>${label}</span>
-              `;
+
+              const input = document.createElement('input');
+              input.type = 'checkbox';
+              input.className = 'filter-input';
+              input.value = rawValue;
+              input.dataset.filterKey = group.key;
+              input.dataset.normalized = normalized;
+
+              const span = document.createElement('span');
+              span.textContent = label;
+
+              labelEl.append(input, span);
               optionsWrap.appendChild(labelEl);
             });
           }
@@ -1061,7 +716,6 @@
         return normalize(searchParts.join(' '));
       };
 
-      const PRODUCTS_PER_PAGE = 20;
       const filterAndSortProducts = () => {
         collectFiltersFromUI();
 
@@ -1096,14 +750,7 @@
           }
         });
 
-        visibleProducts.forEach((card) => productsGrid.appendChild(card));
-
-        if (resultsCountEl) {
-          const totalPages = Math.max(1, Math.ceil(productCards.length / PRODUCTS_PER_PAGE));
-          const currentPage = 1;
-          resultsCountEl.textContent = `صفحه ${currentPage} از ${totalPages}`;
-        }
-        if (noResultsEl) {
+        visibleProducts.forEach((card) => productsGrid.appendChild(card));        if (noResultsEl) {
           noResultsEl.classList.toggle('hidden', visibleProducts.length > 0);
         }
 
@@ -1213,140 +860,9 @@
     });
     </script>
 
-<footer id="footer" class="bg-white border-t border-gray-100 pt-16 pb-8 relative overflow-hidden">
-      <!-- Background decorations -->
-      <div class="absolute inset-0 opacity-40 pointer-events-none">
-        <div class="absolute top-0 right-0 w-96 h-96 bg-purple-100 rounded-full filter blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-100 rounded-full filter blur-3xl"></div>
-      </div>
-  
-      <div class="relative max-w-7xl mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 mb-12">
-          
-          <!-- Brand Section - Mobile & Desktop -->
-          <div class="lg:col-span-1">
-            <div class="flex items-center gap-3 mb-4 lg:mb-6">
-              <div class="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-purple-600 to-purple-700 rounded-xl lg:rounded-2xl flex items-center justify-center shadow-lg">
-                <span class="material-icon text-white text-lg lg:text-2xl">shopping_bag</span>
-              </div>
-              <h3 class="text-xl lg:text-2xl font-bold text-gray-900">ماهان شاپ</h3>
-            </div>
-            
-            <p class="text-gray-600 text-sm lg:text-base leading-relaxed mb-4 lg:mb-6">
-              مرجع تخصصی لوازم جانبی موبایل با بهترین کیفیت و قیمت مناسب.
-            </p>
-            <div class="flex gap-2 lg:gap-3">
-              <a href="#" class="w-8 h-8 lg:w-10 lg:h-10 bg-gray-100 rounded-lg lg:rounded-xl flex items-center justify-center text-gray-600 hover:bg-gradient-to-br hover:from-purple-500 hover:to-purple-600 hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 ripple">
-                <span class="material-icon text-sm lg:text-lg">send</span>
-              </a>
-              <a href="#" class="w-8 h-8 lg:w-10 lg:h-10 bg-gray-100 rounded-lg lg:rounded-xl flex items-center justify-center text-gray-600 hover:bg-gradient-to-br hover:from-pink-500 hover:to-rose-500 hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300 ripple">
-                <span class="material-icon text-sm lg:text-lg">photo_camera</span>
-              </a>
-              <a href="#" class="w-8 h-8 lg:w-10 lg:h-10 bg-gray-100 rounded-lg lg:rounded-xl flex items-center justify-center text-gray-600 hover:bg-gradient-to-br hover:from-blue-500 hover:to-cyan-500 hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 ripple">
-                <span class="material-icon text-sm lg:text-lg">public</span>
-              </a>
-            </div>
-          </div>
+<div data-include="footer"></div>
+  <script defer src="../assets/js/layout.js"></script>
 
-          <!-- Quick Links - Mobile & Desktop -->
-          <div class="lg:col-span-1">
-            <h4 class="text-base lg:text-lg font-semibold text-gray-900 mb-3 lg:mb-6">دسترسی سریع</h4>
-            
-            <!-- Mobile Layout: Horizontal -->
-            <div class="lg:hidden">
-              <div class="flex flex-wrap gap-x-3 gap-y-2 text-sm">
-                <a href="products.html?cat=case" class="text-gray-600 hover:text-purple-600 transition-colors">قاب گوشی</a>
-                <a href="products.html?cat=phone" class="text-gray-600 hover:text-purple-600 transition-colors">گوشی</a>
-                <a href="products.html?cat=charger" class="text-gray-600 hover:text-purple-600 transition-colors">شارژر</a>
-                <a href="products.html?cat=airpod" class="text-gray-600 hover:text-purple-600 transition-colors">ایرپاد</a>
-                <a href="products.html?cat=glass" class="text-gray-600 hover:text-purple-600 transition-colors">گلس</a>
-                <a href="products.html?cat=gadget" class="text-gray-600 hover:text-purple-600 transition-colors">گجت</a>
-              </div>
-            </div>
-            
-            <!-- Desktop Layout: Vertical -->
-            <div class="hidden lg:block">
-              <ul class="space-y-4">
-                <li><a href="products.html?cat=case" class="text-gray-600 hover:text-purple-600 transition-colors">قاب گوشی</a></li>
-                <li><a href="products.html?cat=phone" class="text-gray-600 hover:text-purple-600 transition-colors">گوشی هوشمند</a></li>
-                <li><a href="products.html?cat=charger" class="text-gray-600 hover:text-purple-600 transition-colors">شارژ</a></li>
-                <li><a href="products.html?cat=airpod" class="text-gray-600 hover:text-purple-600 transition-colors">کاور ایرپاد</a></li>
-                <li><a href="products.html?cat=glass" class="text-gray-600 hover:text-purple-600 transition-colors">گلس و محافظ</a></li>
-                <li><a href="products.html?cat=gadget" class="text-gray-600 hover:text-purple-600 transition-colors">گجت</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Customer Service - Mobile & Desktop -->
-          <div class="lg:col-span-1">
-            <h4 class="text-base lg:text-lg font-semibold text-gray-900 mb-3 lg:mb-6">خدمات مشتریان</h4>
-            
-            <!-- Mobile Layout: Horizontal -->
-            <div class="lg:hidden">
-              <div class="flex flex-wrap gap-x-3 gap-y-2 text-sm">
-                <a href="about-us.html#faq" class="text-gray-600 hover:text-purple-600 transition-colors">سوالات متداول</a>
-                <a href="about-us.html#returns" class="text-gray-600 hover:text-purple-600 transition-colors">بازگشت کالا</a>
-                <a href="about-us.html#shipping" class="text-gray-600 hover:text-purple-600 transition-colors">ارسال</a>
-                <a href="about-us.html#payment" class="text-gray-600 hover:text-purple-600 transition-colors">پرداخت</a>
-                <a href="profile.html" class="text-gray-600 hover:text-purple-600 transition-colors">پروفایل</a>
-                <a href="about-us.html" class="text-gray-600 hover:text-purple-600 transition-colors">درباره ما</a>
-                <a href="about-us.html#contact" class="text-gray-600 hover:text-purple-600 transition-colors">تماس</a>
-              </div>
-            </div>
-            
-            <!-- Desktop Layout: Vertical -->
-            <div class="hidden lg:block">
-              <ul class="space-y-4">
-                <li><a href="about-us.html#faq" class="text-gray-600 hover:text-purple-600 transition-colors">سوالات متداول</a></li>
-                <li><a href="about-us.html#returns" class="text-gray-600 hover:text-purple-600 transition-colors">بازگشت کالا</a></li>
-                <li><a href="about-us.html#shipping" class="text-gray-600 hover:text-purple-600 transition-colors">روش‌های ارسال</a></li>
-                <li><a href="about-us.html#payment" class="text-gray-600 hover:text-purple-600 transition-colors">روش‌های پرداخت</a></li>
-                <li><a href="profile.html" class="text-gray-600 hover:text-purple-600 transition-colors">پروفایل کاربری</a></li>
-                <li><a href="about-us.html" class="text-gray-600 hover:text-purple-600 transition-colors">درباره ما</a></li>
-                <li><a href="about-us.html#contact" class="text-gray-600 hover:text-purple-600 transition-colors">تماس با پشتیبانی</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Contact Section - Mobile & Desktop -->
-          <div class="lg:col-span-1">
-            <h4 class="text-base lg:text-lg font-semibold text-gray-900 mb-3 lg:mb-6">اطلاعات تماس</h4>
-            
-            <div class="space-y-3 lg:space-y-4">
-              <div class="flex items-center gap-2 lg:gap-3 text-gray-600">
-                <span class="material-icon text-purple-600 text-sm lg:text-base">call</span>
-                <a href="tel:09121234567" class="text-sm lg:text-base hover:text-purple-600">۰۹۱۲۱۲۳۴۵۶۷</a>
-              </div>
-              <div class="flex items-center gap-2 lg:gap-3 text-gray-600">
-                <span class="material-icon text-purple-600 text-sm lg:text-base">schedule</span>
-                <span class="text-sm lg:text-base">هر روز ۱۰:۰۰ - ۲۲:۰۰</span>
-              </div>
-              <div class="flex items-center gap-2 lg:gap-3 text-gray-600">
-                <span class="material-icon text-purple-600 text-sm lg:text-base">email</span>
-                <a href="mailto:info@mahanshop.com" class="text-sm lg:text-base hover:text-purple-600">info@mahanshop.com</a>
-              </div>
-              <div class="hidden lg:flex items-center gap-3 text-gray-600">
-                <span class="material-icon text-purple-600">location_on</span>
-                <span class="text-sm">تهران، خیابان ولیعصر</span>
-              </div>
-            </div>
-          </div>
-        </div>
-  
-        <!-- Bottom Footer -->
-        <div class="border-t border-gray-200 pt-8">
-          <div class="flex flex-col-reverse sm:flex-row items-center justify-between gap-4 text-center">
-            <p class="text-gray-500 text-sm">© ۱۴۰۳ ماهان شاپ. تمامی حقوق محفوظ است.</p>
-            <div class="flex flex-wrap justify-center gap-4 sm:gap-6">
-              <a href="#top" class="text-gray-500 hover:text-purple-600 text-sm transition-colors flex items-center gap-1">
-                <span>بازگشت به بالا</span>
-                <span class="material-icon text-base">arrow_upward</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
 
   <script defer src="../assets/js/script.js"></script>
 </body>

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ماهان شاپ | خرید آنلاین محصولات دیجیتال</title>
   <meta name="description" content="ماهان شاپ؛ فروشگاه آنلاین لوازم جانبی موبایل با تنوع بالا، ارسال سریع و ضمانت اصالت." />
-  <meta name="theme-color" content="#FEF7FF" />
+  <meta name="theme-color" content="#F8FAFC" />
 
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -18,582 +18,14 @@
 
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-<body class="bg-[#FEF7FF] text-gray-900 overflow-x-hidden" data-auth="guest">
+<body class="bg-[#F8FAFC] text-gray-900 overflow-x-hidden" data-auth="guest">
   <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
   <div id="top" aria-hidden="true"></div>
 
   <!-- هدر اصلی: ناوبری، جستجو و وضعیت ورود کاربر -->
-  <header id="navbar" class="fixed top-0 z-50 bg-[#FEF7FF]/90 backdrop-blur-md border-b border-gray-200/50 transition-all duration-300">
-      
-      <!-- ردیف بالا: لوگو، جستجو و اکشن‌های کاربر -->
-      <div id="navbar-top" class="max-w-7xl mx-auto px-4 pt-3 pb-3 md:pb-0">
-          <div class="flex flex-wrap md:flex-nowrap items-center justify-between gap-4">
+  <div data-include="header"></div>
 
-               <!-- بخش چپ: منوی موبایل و لوگو -->
-               <div class="flex items-center gap-3 shrink-0">
-                   <!-- دکمه باز کردن منو -->
-                   <button id="mobile-menu-toggle" type="button" class="md:hidden nav-icon-btn ripple p-2 rounded-full text-gray-700" aria-label="باز کردن منو" aria-controls="mobile-menu" aria-expanded="false">
-                       <span class="material-icon" aria-hidden="true">menu</span>
-                   </button>
 
-                   <!-- لوگو -->
-                   <a href="index.html" class="flex items-center gap-2 group logo-container">
-                       <div class="w-10 h-10 bg-gradient-to-br from-purple-600 to-purple-700 rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/20 group-hover:scale-105 transition-transform duration-300">
-                           <span class="material-icon text-white text-xl">shopping_bag</span>
-                       </div>
-                       <span class="text-xl md:text-2xl font-black text-gray-800 tracking-tight">ماهان شاپ</span>
-                   </a>
-               </div>
-  
-              <!-- جستجو: مسیر و پارامترها توسط بک‌اند تنظیم شوند -->
-                  <div class="order-last md:order-none w-full md:max-w-xl mx-auto md:mx-6 transition-all duration-300">
-                      <form class="relative group search-container" role="search" action="pages/products.html" method="get">
-                          <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
-                          <span class="material-icon text-gray-500 group-focus-within:text-[#6750A4] transition-colors" aria-hidden="true">search</span>
-                          </div>
-                          <input type="search"
-                             name="q"
-                             enterkeyhint="search"
-                             aria-label="جستجوی محصولات"
-                             class="w-full h-12 pr-12 pl-4 rounded-full bg-[#F3EDF7] border border-transparent hover:bg-[#EADDFF]/50 focus:bg-white focus:border-[#6750A4] focus:shadow-[0_4px_12px_rgba(103,80,164,0.15)] outline-none transition-all duration-300 placeholder-gray-500 text-sm md:text-base"
-                             placeholder="جستجو در بین هزاران محصول...">
-                      </form>
-                  </div>
-  
-              <!-- اکشن‌های کاربر: علاقه‌مندی، سبد خرید، حساب -->
-              <nav class="flex items-center gap-2 md:gap-3 shrink-0" aria-label="ابزارهای کاربری">
-                  
-                  <!-- علاقه‌مندی‌ها -->
-<a href="pages/favorites.html" class="nav-icon-btn ripple w-10 h-10 rounded-lg flex items-center justify-center text-gray-600" title="علاقه‌مندی‌ها" aria-label="علاقه‌مندی‌ها">
-                       <span class="material-icon" aria-hidden="true">favorite_border</span>
-                   </a>
-
-                  <!-- سبد خرید -->
-                  <div id="cart-menu-wrapper" class="relative">
-                    <a href="pages/cart.html" id="cart-btn" class="nav-icon-btn ripple w-10 h-10 rounded-lg flex items-center justify-center text-gray-600" title="سبد خرید" aria-label="سبد خرید" aria-haspopup="dialog" aria-controls="cart-menu" aria-expanded="false">
-                       <span class="material-icon" aria-hidden="true">shopping_cart</span>
-                       <span id="cart-count-badge" class="absolute top-0 right-0 w-4 h-4 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center border border-white hidden z-10" aria-live="polite" aria-atomic="true">0</span>
-                    </a>
-                    <div id="cart-menu" class="cart-menu" role="dialog" aria-label="سبد خرید" aria-hidden="true" data-cart-menu tabindex="-1">
-                      <div class="cart-menu-panel">
-                        <div class="cart-menu-header">
-                          <div class="flex items-center gap-2">
-                            <span class="material-icon text-xl text-[#6750A4]" aria-hidden="true">shopping_cart</span>
-                            <div>
-                              <h4>سبد خرید</h4>
-                              <p class="text-xs text-gray-500" data-cart-menu-status>نمایش خلاصه سفارش</p>
-                            </div>
-                          </div>
-                          <span class="text-xs font-semibold text-[#6750A4]" data-cart-menu-count>۰ کالا</span>
-                        </div>
-                        <div class="cart-menu-items" data-cart-menu-items>
-                          <p class="text-xs text-gray-500 text-center">هنوز کالایی به سبد اضافه نشده است.</p>
-                        </div>
-                        <div class="cart-menu-footer">
-                          <div class="cart-menu-total">
-                            <span>جمع</span>
-                            <strong data-cart-menu-total>۰ تومان</strong>
-                          </div>
-                          <div class="cart-menu-actions">
-                            <a href="pages/cart.html" class="primary" aria-label="رفتن به صفحه سبد خرید">مشاهده کامل سبد</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- جداکننده (نمایش در دسکتاپ) -->
-                  <div class="hidden md:block w-px h-6 bg-gray-300 mx-1"></div>
-
-                  <!-- وضعیت ورود: بک‌اند مقدار data-auth را روی body تنظیم کند -->
-                  <!--
-                  <a href="pages/profile.html" class="auth-only hidden md:flex items-center gap-2 pl-1 pr-1 py-1 rounded-full hover:bg-[#F3EDF7] transition-all group profile-section" aria-label="حساب کاربری">
-                      <div class="w-8 h-8 bg-[#EADDFF] rounded-full flex items-center justify-center text-[#21005D]">
-                          <span class="material-icon text-lg" aria-hidden="true">person</span>
-                      </div>
-                      <span class="text-sm font-bold text-gray-700 group-hover:text-[#6750A4]">حساب کاربری</span>
-                  </a>
-
-                  <a href="pages/profile.html" class="auth-only md:hidden nav-icon-btn ripple w-10 h-10 rounded-full hover:bg-[#F3EDF7] flex items-center justify-center text-gray-600 hover:text-[#6750A4] transition-colors" aria-label="حساب کاربری">
-                      <span class="material-icon" aria-hidden="true">person</span>
-                  </a>
-                  -->
-
-                  <div class="guest-only hidden md:flex header-cta-group">
-                      <a href="pages/login.html" class="header-cta header-cta--ghost" aria-label="ورود">
-                          <span class="material-icon text-lg" aria-hidden="true">login</span>
-                          <span>ورود</span>
-                      </a>
-                      <a href="pages/register.html" class="header-cta header-cta--primary" aria-label="ثبت نام">
-                          <span class="material-icon text-lg" aria-hidden="true">person_add</span>
-                          <span>ثبت نام</span>
-                      </a>
-                  </div>
-
-                  <div class="guest-only md:hidden header-cta-mobile-group">
-                      <a href="pages/login.html" class="header-cta-mobile header-cta-mobile--ghost ripple" aria-label="ورود">
-                          <span class="material-icon text-lg" aria-hidden="true">login</span>
-                          <span class="sr-only">ورود</span>
-                      </a>
-                      <a href="pages/register.html" class="header-cta-mobile header-cta-mobile--primary ripple" aria-label="ثبت نام">
-                          <span class="material-icon text-lg" aria-hidden="true">person_add</span>
-                          <span class="sr-only">ثبت نام</span>
-                      </a>
-                  </div>
-              </nav>
-          </div>
-          <!-- ردیف پایین: دسته‌بندی‌ها -->
-          <div id="navbar-bottom" class="border-t border-gray-100/80 md:border-none hidden md:block transition-all duration-300">
-              <nav class="secondary-nav flex items-center gap-1 md:gap-6 overflow-x-auto no-scrollbar py-2 md:py-3 mask-image-fade" aria-label="دسته‌بندی‌ها">
-                  <a href="index.html" class="secondary-nav-link active" aria-current="page">
-                      <span class="material-icon text-lg" aria-hidden="true">home</span>
-                      خانه
-                  </a>
-                  <a href="pages/products.html" class="secondary-nav-link">
-                      <span class="material-icon text-lg" aria-hidden="true">apps</span>
-                      تمام محصولات
-                  </a>
-                  <div class="w-px h-4 bg-gray-300 mx-1 shrink-0 hidden md:block"></div>
-                  <div class="nav-dropdown" data-nav-dropdown>
-                      <button type="button" class="secondary-nav-link nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-case" aria-haspopup="true">
-                          قاب گوشی
-                          <span class="material-icon nav-caret" aria-hidden="true">expand_more</span>
-                      </button>
-                      <div id="dropdown-case" class="nav-dropdown-panel" aria-hidden="true">
-                          <div class="nav-dropdown-section">
-                              <div class="nav-dropdown-title">جنس قاب</div>
-                              <div class="nav-dropdown-links">
-                                  <a href="pages/products.html?cat=case&material=silicone" class="nav-dropdown-link">سیلیکونی</a>
-                                  <a href="pages/products.html?cat=case&material=leather" class="nav-dropdown-link">چرمی</a>
-                                  <a href="pages/products.html?cat=case&material=soft" class="nav-dropdown-link">ژله‌ای</a>
-                                  <a href="pages/products.html?cat=case&material=hard" class="nav-dropdown-link">سخت</a>
-                                  <a href="pages/products.html?cat=case&material=clear" class="nav-dropdown-link">شفاف</a>
-                                  <a href="pages/products.html?cat=case&material=shockproof" class="nav-dropdown-link">ضدضربه</a>
-                                  <a href="pages/products.html?cat=case&material=magsafe" class="nav-dropdown-link">مگ‌سیف</a>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="nav-dropdown" data-nav-dropdown>
-                      <button type="button" class="secondary-nav-link nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-phone" aria-haspopup="true">
-                          گوشی هوشمند
-                          <span class="material-icon nav-caret" aria-hidden="true">expand_more</span>
-                      </button>
-                      <div id="dropdown-phone" class="nav-dropdown-panel" aria-hidden="true">
-                          <div class="nav-dropdown-section">
-                              <div class="nav-dropdown-title">برندها</div>
-                              <div class="nav-dropdown-links">
-                                  <a href="pages/products.html?cat=phone&brand=apple" class="nav-dropdown-link">اپل</a>
-                                  <a href="pages/products.html?cat=phone&brand=samsung" class="nav-dropdown-link">سامسونگ</a>
-                                  <a href="pages/products.html?cat=phone&brand=xiaomi" class="nav-dropdown-link">شیائومی</a>
-                                  <a href="pages/products.html?cat=phone&brand=honor" class="nav-dropdown-link">آنر</a>
-                                  <a href="pages/products.html?cat=phone&brand=huawei" class="nav-dropdown-link">هواوی</a>
-                                  <a href="pages/products.html?cat=phone&brand=nokia" class="nav-dropdown-link">نوکیا</a>
-                                  <a href="pages/products.html?cat=phone&brand=oneplus" class="nav-dropdown-link">وان پلاس</a>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="nav-dropdown" data-nav-dropdown>
-                      <button type="button" class="secondary-nav-link nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-charger" aria-haspopup="true">
-                          شارژ
-                          <span class="material-icon nav-caret" aria-hidden="true">expand_more</span>
-                      </button>
-                      <div id="dropdown-charger" class="nav-dropdown-panel" aria-hidden="true">
-                          <div class="nav-dropdown-section">
-                              <div class="nav-dropdown-title">شارژ</div>
-                              <div class="nav-dropdown-links">
-                                  <a href="pages/products.html?cat=charger&type=adapter" class="nav-dropdown-link">دیواری</a>
-                                  <a href="pages/products.html?cat=charger&type=car" class="nav-dropdown-link">فندکی</a>
-                                  <a href="pages/products.html?cat=charger&type=wireless" class="nav-dropdown-link">بی‌سیم</a>
-                                  <a href="pages/products.html?cat=charger&type=cable&type2=type-c" class="nav-dropdown-link">کابل Type-C</a>
-                                  <a href="pages/products.html?cat=charger&type=cable&type2=lightning" class="nav-dropdown-link">کابل لایتنینگ</a>
-                                  <a href="pages/products.html?cat=charger&type=cable&type2=micro" class="nav-dropdown-link">کابل Micro-USB</a>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="nav-dropdown" data-nav-dropdown>
-                      <button type="button" class="secondary-nav-link nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-airpod" aria-haspopup="true">
-                          کاور ایرپاد
-                          <span class="material-icon nav-caret" aria-hidden="true">expand_more</span>
-                      </button>
-                      <div id="dropdown-airpod" class="nav-dropdown-panel nav-dropdown-panel-wide nav-dropdown-columns" aria-hidden="true">
-                          <div class="nav-dropdown-column">
-                              <div class="nav-dropdown-title">سازگار با</div>
-                              <div class="nav-dropdown-links">
-                                  <a href="pages/products.html?cat=airpod&model=airpods-1-2" class="nav-dropdown-link">ایرپاد ۱ و ۲</a>
-                                  <a href="pages/products.html?cat=airpod&model=airpods-3" class="nav-dropdown-link">ایرپاد نسل سوم</a>
-                                  <a href="pages/products.html?cat=airpod&model=airpods-pro" class="nav-dropdown-link">ایرپاد پرو</a>
-                                  <a href="pages/products.html?cat=airpod&model=airpods-max" class="nav-dropdown-link">ایرپاد مکس</a>
-                              </div>
-                          </div>
-                          <div class="nav-dropdown-column">
-                              <div class="nav-dropdown-title">سبک کاور</div>
-                              <div class="nav-dropdown-links">
-                                  <a href="pages/products.html?cat=airpod&material=silicone" class="nav-dropdown-link">سیلیکونی</a>
-                                  <a href="pages/products.html?cat=airpod&material=leather" class="nav-dropdown-link">چرمی</a>
-                                  <a href="pages/products.html?cat=airpod&style=clear" class="nav-dropdown-link">شفاف</a>
-                                  <a href="pages/products.html?cat=airpod&feature=shockproof" class="nav-dropdown-link">ضدضربه</a>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="nav-dropdown" data-nav-dropdown>
-                      <button type="button" class="secondary-nav-link nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-glass" aria-haspopup="true">
-                          گلس و محافظ
-                          <span class="material-icon nav-caret" aria-hidden="true">expand_more</span>
-                      </button>
-                      <div id="dropdown-glass" class="nav-dropdown-panel nav-dropdown-panel-wide nav-dropdown-columns" aria-hidden="true">
-                          <div class="nav-dropdown-column">
-                              <div class="nav-dropdown-title">نوع گلس</div>
-                              <div class="nav-dropdown-links">
-                                  <a href="pages/products.html?cat=glass&type=privacy" class="nav-dropdown-link">پرایوسی</a>
-                                  <a href="pages/products.html?cat=glass&type=ceramic" class="nav-dropdown-link">سرامیکی</a>
-                                  <a href="pages/products.html?cat=glass&type=full" class="nav-dropdown-link">تمام صفحه</a>
-                                  <a href="pages/products.html?cat=glass&type=matte" class="nav-dropdown-link">مات</a>
-                              </div>
-                          </div>
-                          <div class="nav-dropdown-column">
-                              <div class="nav-dropdown-title">قابلیت‌ها</div>
-                              <div class="nav-dropdown-links">
-                                  <a href="pages/products.html?cat=glass&feature=anti-blue" class="nav-dropdown-link">ضد تابش</a>
-                                  <a href="pages/products.html?cat=glass&feature=anti-scratch" class="nav-dropdown-link">ضد خش</a>
-                                  <a href="pages/products.html?cat=glass&feature=anti-shock" class="nav-dropdown-link">ضد ضربه</a>
-                                  <a href="pages/products.html?cat=glass&feature=easy-install" class="nav-dropdown-link">نصب آسان</a>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="nav-dropdown" data-nav-dropdown>
-                      <button type="button" class="secondary-nav-link nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-gadget" aria-haspopup="true">
-                          گجت
-                          <span class="material-icon nav-caret" aria-hidden="true">expand_more</span>
-                      </button>
-                      <div id="dropdown-gadget" class="nav-dropdown-panel nav-dropdown-panel-wide nav-dropdown-columns" aria-hidden="true">
-                          <div class="nav-dropdown-column">
-                              <div class="nav-dropdown-title">گجت‌های محبوب</div>
-                              <div class="nav-dropdown-links">
-                                  <a href="pages/products.html?cat=gadget&type=powerbank" class="nav-dropdown-link">پاوربانک</a>
-                                  <a href="pages/products.html?cat=gadget&type=holder" class="nav-dropdown-link">هولدر و پایه</a>
-                                  <a href="pages/products.html?cat=gadget&type=audio" class="nav-dropdown-link">ایرفون و اسپیکر</a>
-                                  <a href="pages/products.html?cat=gadget&type=smart" class="nav-dropdown-link">گجت هوشمند</a>
-                              </div>
-                          </div>
-                          <div class="nav-dropdown-column">
-                              <div class="nav-dropdown-title">کاربری</div>
-                              <div class="nav-dropdown-links">
-                                  <a href="pages/products.html?cat=gadget&type=health" class="nav-dropdown-link">سلامت و فیتنس</a>
-                                  <a href="pages/products.html?cat=gadget&type=office" class="nav-dropdown-link">دفتر و میزکار</a>
-                                  <a href="pages/products.html?cat=gadget&type=travel" class="nav-dropdown-link">سفر و لوازم همراه</a>
-                                  <a href="pages/products.html?cat=gadget&type=home" class="nav-dropdown-link">خانه هوشمند</a>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="w-px h-4 bg-gray-300 mx-1 shrink-0 hidden md:block"></div>
-                  <a href="pages/about-us.html#contact" class="secondary-nav-link">
-                      <span class="material-icon text-lg" aria-hidden="true">contact_support</span>
-                      ارتباط با ما
-                  </a>
-              </nav>
-          </div>
-      </div>
-  </header>
-  
-  <!-- منوی موبایل (دراور) -->
-  <div class="md:hidden">
-      <!-- لایه تار (Overlay) -->
-      <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/40 z-[99] hidden opacity-0 transition-opacity duration-300" aria-hidden="true"></div>
-      <!-- محتوای منو -->
-      <div id="mobile-menu" class="fixed right-0 top-0 h-full w-4/5 max-w-[300px] bg-[#FEF7FF] shadow-2xl transform translate-x-full z-[100] transition-transform duration-300" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="mobile-menu-title">
-          <div class="p-3 flex justify-between items-center bg-white border-b border-gray-200">
-              <div class="flex items-center gap-2">
-                  <div class="w-8 h-8 bg-gradient-to-br from-purple-600 to-purple-700 rounded-lg flex items-center justify-center">
-                      <span class="material-icon text-white text-base" aria-hidden="true">shopping_bag</span>
-                  </div>
-                  <h2 id="mobile-menu-title" class="font-bold text-sm text-[#1D1B20]">ماهان شاپ</h2>
-              </div>
-              <button id="close-menu-btn" type="button" class="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:text-red-500 transition-colors" aria-label="بستن منو">
-                  <span class="material-icon text-base" aria-hidden="true">close</span>
-              </button>
-          </div>
-          <div class="p-4 overflow-y-auto h-[calc(100%-64px)]">
-              <nav class="flex flex-col gap-1">
-                  <a href="index.html" class="flex items-center gap-2.5 p-2.5 mt-2 rounded-none text-[#1D1B20] bg-[#EADDFF] font-medium text-sm" aria-current="page">
-                      <span class="material-icon text-[#21005D] text-base" aria-hidden="true">home</span>
-                      <span>خانه</span>
-                  </a>
-                  <a href="pages/products.html" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-700 font-medium text-sm hover:bg-[#F3EDF7] transition-colors">
-                      <span class="material-icon text-gray-500 text-base" aria-hidden="true">category</span>
-                      <span>همه محصولات</span>
-                  </a>
-                  <div class="border-t border-gray-200 my-2 mx-2"></div>
-                  <span class="text-xs font-bold text-gray-400 px-3 mb-1">دسته‌بندی</span>
-                  <div class="mobile-dropdown">
-                      <div class="mobile-dropdown-header flex items-center justify-between p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] transition-colors cursor-pointer">
-                          <div class="flex items-center gap-2.5">
-                              <span class="material-icon text-gray-500 text-base" aria-hidden="true">smartphone</span>
-                              <span>قاب گوشی</span>
-                          </div>
-                          <span class="material-icon mobile-dropdown-arrow" aria-hidden="true">expand_more</span>
-                      </div>
-                      <div class="mobile-dropdown-content hidden">
-                          <a href="pages/products.html?cat=case&material=silicone" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>سیلیکونی</span>
-                          </a>
-                          <a href="pages/products.html?cat=case&material=leather" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>چرمی</span>
-                          </a>
-                          <a href="pages/products.html?cat=case&material=soft" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>ژله‌ای</span>
-                          </a>
-                          <a href="pages/products.html?cat=case&material=hard" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>سخت</span>
-                          </a>
-                          <a href="pages/products.html?cat=case&material=clear" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>شفاف</span>
-                          </a>
-                          <a href="pages/products.html?cat=case&material=shockproof" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>ضدضربه</span>
-                          </a>
-                          <a href="pages/products.html?cat=case&material=magsafe" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>مگ‌سیف</span>
-                          </a>
-                      </div>
-                  </div>
-                  <div class="mobile-dropdown">
-                      <div class="mobile-dropdown-header flex items-center justify-between p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] transition-colors cursor-pointer">
-                          <div class="flex items-center gap-2.5">
-                              <span class="material-icon text-gray-500 text-base" aria-hidden="true">phone_iphone</span>
-                              <span>گوشی هوشمند</span>
-                          </div>
-                          <span class="material-icon mobile-dropdown-arrow" aria-hidden="true">expand_more</span>
-                      </div>
-                      <div class="mobile-dropdown-content hidden">
-                          <a href="pages/products.html?cat=phone&brand=apple" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>اپل</span>
-                          </a>
-                          <a href="pages/products.html?cat=phone&brand=samsung" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>سامسونگ</span>
-                          </a>
-                          <a href="pages/products.html?cat=phone&brand=xiaomi" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>شیائومی</span>
-                          </a>
-                          <a href="pages/products.html?cat=phone&brand=honor" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>آنر</span>
-                          </a>
-                          <a href="pages/products.html?cat=phone&brand=huawei" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>هواوی</span>
-                          </a>
-                          <a href="pages/products.html?cat=phone&brand=nokia" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>نوکیا</span>
-                          </a>
-                          <a href="pages/products.html?cat=phone&brand=oneplus" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>وان پلاس</span>
-                          </a>
-                      </div>
-                  </div>
-                  <div class="mobile-dropdown">
-                      <div class="mobile-dropdown-header flex items-center justify-between p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] transition-colors cursor-pointer">
-                          <div class="flex items-center gap-2.5">
-                              <span class="material-icon text-gray-500 text-base" aria-hidden="true">bolt</span>
-                              <span>شارژ</span>
-                          </div>
-                          <span class="material-icon mobile-dropdown-arrow" aria-hidden="true">expand_more</span>
-                      </div>
-                      <div class="mobile-dropdown-content hidden">
-                          <a href="pages/products.html?cat=charger&type=adapter" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>دیواری</span>
-                          </a>
-                          <a href="pages/products.html?cat=charger&type=car" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>فندکی</span>
-                          </a>
-                          <a href="pages/products.html?cat=charger&type=wireless" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>بی‌سیم</span>
-                          </a>
-                          <a href="pages/products.html?cat=charger&type=cable&type2=type-c" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>کابل Type-C</span>
-                          </a>
-                          <a href="pages/products.html?cat=charger&type=cable&type2=lightning" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>کابل لایتنینگ</span>
-                          </a>
-                          <a href="pages/products.html?cat=charger&type=cable&type2=micro" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                              <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                              <span>کابل Micro-USB</span>
-                          </a>
-                      </div>
-                  </div>
-                  <div class="mobile-dropdown">
-                      <div class="mobile-dropdown-header flex items-center justify-between p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] transition-colors cursor-pointer">
-                          <div class="flex items-center gap-2.5">
-                              <span class="material-icon text-gray-500 text-base" aria-hidden="true">headphones</span>
-                              <span>کاور ایرپاد</span>
-                          </div>
-                          <span class="material-icon mobile-dropdown-arrow" aria-hidden="true">expand_more</span>
-                      </div>
-                      <div class="mobile-dropdown-content hidden">
-                          <div class="mobile-dropdown-section">
-                              <div class="mobile-dropdown-title px-8 py-2 text-xs font-bold text-gray-400">سازگار با</div>
-                              <a href="pages/products.html?cat=airpod&model=airpods-1-2" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>ایرپاد ۱ و ۲</span>
-                              </a>
-                              <a href="pages/products.html?cat=airpod&model=airpods-3" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>ایرپاد نسل سوم</span>
-                              </a>
-                              <a href="pages/products.html?cat=airpod&model=airpods-pro" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>ایرپاد پرو</span>
-                              </a>
-                              <a href="pages/products.html?cat=airpod&model=airpods-max" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>ایرپاد مکس</span>
-                              </a>
-                          </div>
-                          <div class="mobile-dropdown-section">
-                              <div class="mobile-dropdown-title px-8 py-2 text-xs font-bold text-gray-400">سبک کاور</div>
-                              <a href="pages/products.html?cat=airpod&material=silicone" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>سیلیکونی</span>
-                              </a>
-                              <a href="pages/products.html?cat=airpod&material=leather" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>چرمی</span>
-                              </a>
-                              <a href="pages/products.html?cat=airpod&style=clear" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>شفاف</span>
-                              </a>
-                              <a href="pages/products.html?cat=airpod&feature=shockproof" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>ضدضربه</span>
-                              </a>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="mobile-dropdown">
-                      <div class="mobile-dropdown-header flex items-center justify-between p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] transition-colors cursor-pointer">
-                          <div class="flex items-center gap-2.5">
-                              <span class="material-icon text-gray-500 text-base" aria-hidden="true">screen_search_desktop</span>
-                              <span>گلس و محافظ</span>
-                          </div>
-                          <span class="material-icon mobile-dropdown-arrow" aria-hidden="true">expand_more</span>
-                      </div>
-                      <div class="mobile-dropdown-content hidden">
-                          <div class="mobile-dropdown-section">
-                              <div class="mobile-dropdown-title px-8 py-2 text-xs font-bold text-gray-400">نوع گلس</div>
-                              <a href="pages/products.html?cat=glass&type=privacy" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>پرایوسی</span>
-                              </a>
-                              <a href="pages/products.html?cat=glass&type=ceramic" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>سرامیکی</span>
-                              </a>
-                              <a href="pages/products.html?cat=glass&type=full" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>تمام صفحه</span>
-                              </a>
-                              <a href="pages/products.html?cat=glass&type=matte" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>مات</span>
-                              </a>
-                          </div>
-                          <div class="mobile-dropdown-section">
-                              <div class="mobile-dropdown-title px-8 py-2 text-xs font-bold text-gray-400">قابلیت‌ها</div>
-                              <a href="pages/products.html?cat=glass&feature=anti-blue" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>ضد تابش</span>
-                              </a>
-                              <a href="pages/products.html?cat=glass&feature=anti-scratch" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>ضد خش</span>
-                              </a>
-                              <a href="pages/products.html?cat=glass&feature=anti-shock" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>ضد ضربه</span>
-                              </a>
-                              <a href="pages/products.html?cat=glass&feature=easy-install" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>نصب آسان</span>
-                              </a>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="mobile-dropdown">
-                      <div class="mobile-dropdown-header flex items-center justify-between p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] transition-colors cursor-pointer">
-                          <div class="flex items-center gap-2.5">
-                              <span class="material-icon text-gray-500 text-base" aria-hidden="true">devices</span>
-                              <span>گجت</span>
-                          </div>
-                          <span class="material-icon mobile-dropdown-arrow" aria-hidden="true">expand_more</span>
-                      </div>
-                      <div class="mobile-dropdown-content hidden">
-                          <div class="mobile-dropdown-section">
-                              <div class="mobile-dropdown-title px-8 py-2 text-xs font-bold text-gray-400">گجت‌های محبوب</div>
-                              <a href="pages/products.html?cat=gadget&type=powerbank" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>پاوربانک</span>
-                              </a>
-                              <a href="pages/products.html?cat=gadget&type=holder" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>هولدر و پایه</span>
-                              </a>
-                              <a href="pages/products.html?cat=gadget&type=audio" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>ایرفون و اسپیکر</span>
-                              </a>
-                              <a href="pages/products.html?cat=gadget&type=smart" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>گجت هوشمند</span>
-                              </a>
-                          </div>
-                          <div class="mobile-dropdown-section">
-                              <div class="mobile-dropdown-title px-8 py-2 text-xs font-bold text-gray-400">کاربری</div>
-                              <a href="pages/products.html?cat=gadget&type=health" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>سلامت و فیتنس</span>
-                              </a>
-                              <a href="pages/products.html?cat=gadget&type=office" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>دفتر و میزکار</span>
-                              </a>
-                              <a href="pages/products.html?cat=gadget&type=travel" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>سفر و لوازم همراه</span>
-                              </a>
-                              <a href="pages/products.html?cat=gadget&type=home" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors pr-8 text-sm">
-                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
-                                  <span>خانه هوشمند</span>
-                              </a>
-                          </div>
-                      </div>
-                  </div>
-              </nav>
-          </div>
-      </div>
-  </div>
 
   <main id="main-content">
     <h1 class="sr-only">ماهان شاپ | فروشگاه آنلاین لوازم جانبی موبایل</h1>
@@ -605,7 +37,7 @@
       <div class="banner-wrapper h-full" id="banner-wrapper">
         <div class="banner-slide h-full active">
           <!-- ابعاد پیشنهادی تصویر: 1200x500 -->
-          <img src="https://placehold.co/1200x500/F3E5F5/6750A4?text=Banner+1" alt="Banner 1" width="1200" height="500" loading="eager" fetchpriority="high" decoding="async">
+          <img src="https://placehold.co/1200x500/DBEAFE/2563EB?text=Banner+1" alt="Banner 1" width="1200" height="500" loading="eager" fetchpriority="high" decoding="async">
         </div>
         <div class="banner-slide h-full">
           <img src="https://placehold.co/1200x500/E3F2FD/2196F3?text=Banner+2" alt="Banner 2" width="1200" height="500" loading="lazy" decoding="async">
@@ -650,7 +82,7 @@
             <h3 class="text-3xl font-black text-white drop-shadow-sm">قاب گوشی</h3>
             <p class="text-sm text-white/85 font-medium mt-2">سیلیکونی، شفاف، برند</p>
           </div>
-          <span class="bg-white/90 text-[#21005D] w-fit px-5 py-2.5 rounded-xl text-sm font-bold shadow-sm">مشاهده</span>
+          <span class="bg-white/90 text-[#1E3A8A] w-fit px-5 py-2.5 rounded-xl text-sm font-bold shadow-sm">مشاهده</span>
           <span class="material-icon absolute -bottom-6 -left-6 text-[11rem] text-white/15">smartphone</span>
         </div>
       </a>
@@ -670,7 +102,7 @@
         <div class="absolute inset-0 flex flex-col justify-center px-6 md:px-8 z-[3]">
           <h3 class="text-xl md:text-2xl font-black text-white drop-shadow-sm mb-1 md:mb-2">گوشی هوشمند</h3>
           <p class="text-sm md:text-base text-white/85 font-medium mb-3 md:mb-4">آیفون، سامسونگ، شیائومی</p>
-          <span class="bg-white/90 text-[#21005D] w-fit px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-bold shadow-sm">مشاهده</span>
+          <span class="bg-white/90 text-[#1E3A8A] w-fit px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-bold shadow-sm">مشاهده</span>
         </div>
         <span class="material-icon absolute -bottom-4 -left-4 text-8xl md:text-[10rem] text-white/15 z-[3]">smartphone</span>
       </a>
@@ -756,7 +188,7 @@
   <section class="page-section max-w-7xl mx-auto px-4">
     <div class="flex justify-between items-center mb-6 md:mb-8">
       <h2 class="text-xl md:text-2xl font-bold text-[#1D1B20]">محصولات پیشنهادی</h2>
-      <a href="pages/products.html" class="text-sm md:text-base text-[#6750A4] font-medium hover:underline">مشاهده همه</a>
+      <a href="pages/products.html" class="text-sm md:text-base text-[#2563EB] font-medium hover:underline">مشاهده همه</a>
     </div>
 
     <!-- کارت‌ها توسط بک‌اند رندر شوند؛ data-* (pid, sku, price, compare-price, category, image) برای سبد/علاقه‌مندی استفاده می‌شود -->
@@ -797,16 +229,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۶۵۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۴۵۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -844,16 +276,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۳۹۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۲۸۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -890,16 +322,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۶۹۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۵۲۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -937,16 +369,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۲۵۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۱۸۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -984,16 +416,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۳۲۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۲۴۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -1030,16 +462,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۴۸۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۳۶۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -1051,7 +483,7 @@
   <section class="page-section max-w-7xl mx-auto px-4">
     <div class="flex justify-between items-center mb-6 md:mb-8">
       <h2 class="text-xl md:text-2xl font-bold text-[#1D1B20]">پرفروش‌ترین‌ها</h2>
-      <a href="pages/products.html?sort=best" class="text-sm md:text-base text-[#6750A4] font-medium hover:underline">مشاهده همه</a>
+      <a href="pages/products.html?sort=best" class="text-sm md:text-base text-[#2563EB] font-medium hover:underline">مشاهده همه</a>
     </div>
 
     <!-- کارت‌ها توسط بک‌اند رندر شوند؛ data-* برای سبد/علاقه‌مندی استفاده می‌شود -->
@@ -1090,16 +522,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۶۵۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۴۵۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -1136,16 +568,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۱,۰۹۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۸۹۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -1183,16 +615,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۷۲۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۵۶۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -1229,16 +661,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۴۲۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۳۲۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -1275,16 +707,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۹۵۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۷۹۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -1322,16 +754,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۱,۵۹۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۱,۳۵۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -1368,16 +800,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۳۰۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۲۱۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -1388,7 +820,7 @@
 
   <!-- بنر میانی: تصویر پس‌زمینه و متن‌ها قابل مدیریت از بک‌اند -->
   <section class="page-section max-w-7xl mx-auto px-4">
-    <div class="case-promo-min case-promo-min--banner rounded-2xl md:rounded-3xl p-5 md:p-7" style="--case-promo-img: url('https://placehold.co/1200x520/efe9ff/6750A4?text=Banner');">
+    <div class="case-promo-min case-promo-min--banner rounded-2xl md:rounded-3xl p-5 md:p-7" style="--case-promo-img: url('https://placehold.co/1200x520/efe9ff/2563EB?text=Banner');">
       <div class="case-promo-grid">
         <div class="case-promo-copy case-promo-copy--glass">
           <span class="case-promo-pill">قاب و محافظ</span>
@@ -1414,7 +846,7 @@
   <section class="page-section max-w-7xl mx-auto px-4">
     <div class="flex justify-between items-center mb-6 md:mb-8">
       <h2 class="text-xl md:text-2xl font-bold text-[#1D1B20]">قاب و محافظ‌های جدید</h2>
-      <a href="pages/products.html?cat=case" class="text-sm md:text-base text-[#6750A4] font-medium hover:underline">مشاهده همه</a>
+      <a href="pages/products.html?cat=case" class="text-sm md:text-base text-[#2563EB] font-medium hover:underline">مشاهده همه</a>
     </div>
 
     <!-- کارت‌ها توسط بک‌اند رندر شوند؛ data-* برای سبد/علاقه‌مندی استفاده می‌شود -->
@@ -1451,16 +883,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۸۵۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۶۹۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -1497,16 +929,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۶۸۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۵۲۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -1544,16 +976,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۵۲۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۳۹۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -1591,16 +1023,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۳۴۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۲۶۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -1638,16 +1070,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۹۲۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۷۴۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -1684,16 +1116,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۴۲۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۳۱۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -1705,27 +1137,27 @@
   <!-- کارت‌های تبلیغاتی: لینک‌ها/متن‌ها توسط بک‌اند تنظیم شوند -->
   <section class="page-section page-section--compact max-w-7xl mx-auto px-4">
     <div class="grid md:grid-cols-2 gap-4 md:gap-6">
-      <div class="bg-[#21005D] rounded-2xl md:rounded-3xl p-6 md:p-8 relative overflow-hidden flex items-center text-white min-h-[200px] md:min-h-[240px] group cursor-pointer card-hover">
+      <div class="bg-[#1E3A8A] rounded-2xl md:rounded-3xl p-6 md:p-8 relative overflow-hidden flex items-center text-white min-h-[200px] md:min-h-[240px] group cursor-pointer card-hover">
         <div class="absolute top-0 right-0 w-48 h-48 md:w-64 md:h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition duration-700"></div>
         <div class="relative z-10 w-3/4 md:w-2/3">
-          <span class="text-[#EADDFF] text-xs md:text-sm font-medium mb-1 md:mb-2 block">استایل خود را بسازید</span>
+          <span class="text-[#DBEAFE] text-xs md:text-sm font-medium mb-1 md:mb-2 block">استایل خود را بسازید</span>
           <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">بند و آویز موبایل</h3>
-          <a href="pages/products.html?cat=gadget" class="text-white border-b border-white pb-1 text-xs md:text-sm hover:text-[#EADDFF] transition">مشاهده محصولات</a>
+          <a href="pages/products.html?cat=gadget" class="text-white border-b border-white pb-1 text-xs md:text-sm hover:text-[#DBEAFE] transition">مشاهده محصولات</a>
         </div>
         <div class="absolute left-2 md:left-4 bottom-2 md:bottom-4 w-24 h-24 md:w-32 md:h-32 flex items-center justify-center opacity-80">
           <span class="material-icon text-6xl md:text-8xl text-white/20 transform -rotate-12">style</span>
         </div>
       </div>
 
-      <div class="bg-[#EADDFF] rounded-2xl md:rounded-3xl p-6 md:p-8 relative overflow-hidden flex items-center text-[#21005D] min-h-[200px] md:min-h-[240px] group cursor-pointer card-hover">
-        <div class="absolute bottom-0 left-0 w-48 h-48 md:w-64 md:h-64 bg-[#6750A4]/10 rounded-full translate-y-1/2 -translate-x-1/2 group-hover:scale-110 transition duration-700"></div>
+      <div class="bg-[#DBEAFE] rounded-2xl md:rounded-3xl p-6 md:p-8 relative overflow-hidden flex items-center text-[#1E3A8A] min-h-[200px] md:min-h-[240px] group cursor-pointer card-hover">
+        <div class="absolute bottom-0 left-0 w-48 h-48 md:w-64 md:h-64 bg-[#2563EB]/10 rounded-full translate-y-1/2 -translate-x-1/2 group-hover:scale-110 transition duration-700"></div>
         <div class="relative z-10 w-3/4 md:w-2/3">
-          <span class="text-[#6750A4] text-xs md:text-sm font-medium mb-1 md:mb-2 block">محافظت حرفه‌ای</span>
+          <span class="text-[#2563EB] text-xs md:text-sm font-medium mb-1 md:mb-2 block">محافظت حرفه‌ای</span>
           <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">محافظ لنز دوربین</h3>
-          <a href="pages/products.html?cat=glass" class="text-[#21005D] border-b border-[#21005D] pb-1 text-xs md:text-sm hover:text-[#6750A4] transition">مشاهده محصولات</a>
+          <a href="pages/products.html?cat=glass" class="text-[#1E3A8A] border-b border-[#1E3A8A] pb-1 text-xs md:text-sm hover:text-[#2563EB] transition">مشاهده محصولات</a>
         </div>
         <div class="absolute left-2 md:left-4 bottom-2 md:bottom-4 w-24 h-24 md:w-32 md:h-32 flex items-center justify-center opacity-80">
-          <span class="material-icon text-6xl md:text-8xl text-[#6750A4]/20 transform rotate-12">camera_enhance</span>
+          <span class="material-icon text-6xl md:text-8xl text-[#2563EB]/20 transform rotate-12">camera_enhance</span>
         </div>
       </div>
     </div>
@@ -1735,7 +1167,7 @@
   <section class="page-section max-w-7xl mx-auto px-4">
     <div class="flex justify-between items-center mb-6 md:mb-8">
       <h2 class="text-xl md:text-2xl font-bold text-[#1D1B20]">جدیدترین محصولات</h2>
-      <a href="pages/products.html?sort=new" class="text-sm md:text-base text-[#6750A4] font-medium hover:underline">مشاهده همه</a>
+      <a href="pages/products.html?sort=new" class="text-sm md:text-base text-[#2563EB] font-medium hover:underline">مشاهده همه</a>
     </div>
 
     <!-- کارت‌ها توسط بک‌اند رندر شوند؛ data-* برای سبد/علاقه‌مندی استفاده می‌شود -->
@@ -1774,16 +1206,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۶۵۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۴۵۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -1821,16 +1253,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۱,۲۰۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۹۸۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -1869,16 +1301,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۲۲۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۱۶۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -1915,16 +1347,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۲۶۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۱۹۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -1961,16 +1393,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۱,۴۵۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۱,۲۵۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -2008,16 +1440,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۳۱۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۲۴۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -2054,16 +1486,16 @@
         <div class="mt-3 flex items-end justify-between gap-3">
           <div class="min-w-0">
             <div class="text-[10px] md:text-xs text-gray-400 line-through">۵۲۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#6750A4] leading-tight">
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۴۳۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#F7F2FA] transition" type="button" aria-label="افزودن به علاقه‌مندی">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
               <span class="material-icon text-[22px]">favorite_border</span>
             </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#6750A4] text-white flex items-center justify-center hover:bg-[#21005D] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
+            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
               <span class="material-icon text-[22px]">add</span>
             </button>
           </div>
@@ -2076,152 +1508,9 @@
   <div id="favorites" aria-hidden="true"></div>
   </main>
 
-  <footer id="footer" class="bg-white border-t border-gray-100 pt-16 pb-8 relative overflow-hidden">
-      <!-- بک‌اند: اطلاعات تماس، شبکه‌های اجتماعی و لینک‌ها را از دیتابیس مدیریت کند -->
-      <!-- تزئینات پس‌زمینه -->
-      <div class="absolute inset-0 opacity-40 pointer-events-none">
-        <div class="absolute top-0 right-0 w-96 h-96 bg-purple-100 rounded-full filter blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-100 rounded-full filter blur-3xl"></div>
-      </div>
-  
-      <div class="relative max-w-7xl mx-auto px-4">
-        <div class="footer-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 mb-12">
-          
-          <!-- برند و توضیحات فروشگاه -->
-          <div class="lg:col-span-1">
-            <div class="flex items-center gap-3 mb-4 lg:mb-6">
-              <div class="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-purple-600 to-purple-700 rounded-xl lg:rounded-2xl flex items-center justify-center shadow-lg">
-                <span class="material-icon text-white text-lg lg:text-2xl">shopping_bag</span>
-              </div>
-              <h3 class="text-xl lg:text-2xl font-bold text-gray-900">ماهان شاپ</h3>
-            </div>
-            
-            <p class="text-gray-600 text-sm lg:text-base leading-relaxed mb-4 lg:mb-6">
-              مرجع تخصصی لوازم جانبی موبایل با بهترین کیفیت و قیمت مناسب.
-            </p>
-            <div class="flex gap-2 lg:gap-3">
-              <a href="#" class="w-8 h-8 lg:w-10 lg:h-10 bg-gray-100 rounded-lg lg:rounded-xl flex items-center justify-center text-gray-600 hover:bg-gradient-to-br hover:from-purple-500 hover:to-purple-600 hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 ripple">
-                <span class="material-icon text-sm lg:text-lg">send</span>
-              </a>
-              <a href="#" class="w-8 h-8 lg:w-10 lg:h-10 bg-gray-100 rounded-lg lg:rounded-xl flex items-center justify-center text-gray-600 hover:bg-gradient-to-br hover:from-pink-500 hover:to-rose-500 hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300 ripple">
-                <span class="material-icon text-sm lg:text-lg">photo_camera</span>
-              </a>
-              <a href="#" class="w-8 h-8 lg:w-10 lg:h-10 bg-gray-100 rounded-lg lg:rounded-xl flex items-center justify-center text-gray-600 hover:bg-gradient-to-br hover:from-blue-500 hover:to-cyan-500 hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 ripple">
-                <span class="material-icon text-sm lg:text-lg">public</span>
-              </a>
-            </div>
+  <div data-include="footer"></div>
+  <script defer src="assets/js/layout.js"></script>
 
-            <div class="footer-auth">
-              <a href="pages/profile.html" class="footer-auth-btn footer-auth-btn--profile ripple auth-only" aria-label="حساب کاربری">
-                <span class="material-icon text-lg" aria-hidden="true">person</span>
-                حساب کاربری
-              </a>
-              <a href="pages/login.html" class="footer-auth-btn footer-auth-btn--login ripple guest-only" aria-label="ورود یا ثبت نام">
-                <span class="material-icon text-lg" aria-hidden="true">login</span>
-                ورود | ثبت نام
-              </a>
-            </div>
-          </div>
-
-          <!-- دسترسی سریع -->
-          <div class="lg:col-span-1">
-            <h4 class="text-base lg:text-lg font-semibold text-gray-900 mb-3 lg:mb-6">دسترسی سریع</h4>
-            
-            <!-- موبایل: چینش افقی -->
-            <div class="lg:hidden">
-              <div class="footer-links flex flex-wrap gap-x-3 gap-y-2 text-sm">
-                <a href="pages/products.html?cat=case" class="text-gray-600 hover:text-purple-600 transition-colors">قاب گوشی</a>
-                <a href="pages/products.html?cat=phone" class="text-gray-600 hover:text-purple-600 transition-colors">گوشی</a>
-                <a href="pages/products.html?cat=charger" class="text-gray-600 hover:text-purple-600 transition-colors">شارژر</a>
-                <a href="pages/products.html?cat=airpod" class="text-gray-600 hover:text-purple-600 transition-colors">ایرپاد</a>
-                <a href="pages/products.html?cat=glass" class="text-gray-600 hover:text-purple-600 transition-colors">گلس</a>
-                <a href="pages/products.html?cat=gadget" class="text-gray-600 hover:text-purple-600 transition-colors">گجت</a>
-              </div>
-            </div>
-            
-            <!-- دسکتاپ: چینش عمودی -->
-            <div class="hidden lg:block">
-              <ul class="space-y-4">
-                <li><a href="pages/products.html?cat=case" class="text-gray-600 hover:text-purple-600 transition-colors">قاب گوشی</a></li>
-                <li><a href="pages/products.html?cat=phone" class="text-gray-600 hover:text-purple-600 transition-colors">گوشی هوشمند</a></li>
-                <li><a href="pages/products.html?cat=charger" class="text-gray-600 hover:text-purple-600 transition-colors">شارژ</a></li>
-                <li><a href="pages/products.html?cat=airpod" class="text-gray-600 hover:text-purple-600 transition-colors">کاور ایرپاد</a></li>
-                <li><a href="pages/products.html?cat=glass" class="text-gray-600 hover:text-purple-600 transition-colors">گلس و محافظ</a></li>
-                <li><a href="pages/products.html?cat=gadget" class="text-gray-600 hover:text-purple-600 transition-colors">گجت</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- خدمات مشتریان -->
-          <div class="lg:col-span-1">
-            <h4 class="text-base lg:text-lg font-semibold text-gray-900 mb-3 lg:mb-6">خدمات مشتریان</h4>
-            
-            <!-- موبایل: چینش افقی -->
-            <div class="lg:hidden">
-              <div class="footer-links flex flex-wrap gap-x-3 gap-y-2 text-sm">
-                <a href="pages/about-us.html#faq" class="text-gray-600 hover:text-purple-600 transition-colors">سوالات متداول</a>
-                <a href="pages/about-us.html#returns" class="text-gray-600 hover:text-purple-600 transition-colors">بازگشت کالا</a>
-                <a href="pages/about-us.html#shipping" class="text-gray-600 hover:text-purple-600 transition-colors">ارسال</a>
-                <a href="pages/about-us.html#payment" class="text-gray-600 hover:text-purple-600 transition-colors">پرداخت</a>
-                <a href="pages/profile.html" class="text-gray-600 hover:text-purple-600 transition-colors">پروفایل</a>
-                <a href="pages/about-us.html" class="text-gray-600 hover:text-purple-600 transition-colors">درباره ما</a>
-                <a href="pages/about-us.html#contact" class="text-gray-600 hover:text-purple-600 transition-colors">تماس</a>
-              </div>
-            </div>
-            
-            <!-- دسکتاپ: چینش عمودی -->
-            <div class="hidden lg:block">
-              <ul class="space-y-4">
-                <li><a href="pages/about-us.html#faq" class="text-gray-600 hover:text-purple-600 transition-colors">سوالات متداول</a></li>
-                <li><a href="pages/about-us.html#returns" class="text-gray-600 hover:text-purple-600 transition-colors">بازگشت کالا</a></li>
-                <li><a href="pages/about-us.html#shipping" class="text-gray-600 hover:text-purple-600 transition-colors">روش‌های ارسال</a></li>
-                <li><a href="pages/about-us.html#payment" class="text-gray-600 hover:text-purple-600 transition-colors">روش‌های پرداخت</a></li>
-                <li><a href="pages/profile.html" class="text-gray-600 hover:text-purple-600 transition-colors">پروفایل کاربری</a></li>
-                <li><a href="pages/about-us.html" class="text-gray-600 hover:text-purple-600 transition-colors">درباره ما</a></li>
-                <li><a href="pages/about-us.html#contact" class="text-gray-600 hover:text-purple-600 transition-colors">تماس با پشتیبانی</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- اطلاعات تماس -->
-          <div class="lg:col-span-1">
-            <h4 class="text-base lg:text-lg font-semibold text-gray-900 mb-3 lg:mb-6">اطلاعات تماس</h4>
-            
-            <div class="space-y-3 lg:space-y-4">
-              <div class="flex items-center gap-2 lg:gap-3 text-gray-600">
-                <span class="material-icon text-purple-600 text-sm lg:text-base">call</span>
-                <a href="tel:09121234567" class="text-sm lg:text-base hover:text-purple-600">۰۹۱۲۱۲۳۴۵۶۷</a>
-              </div>
-              <div class="flex items-center gap-2 lg:gap-3 text-gray-600">
-                <span class="material-icon text-purple-600 text-sm lg:text-base">schedule</span>
-                <span class="text-sm lg:text-base">هر روز ۱۰:۰۰ - ۲۲:۰۰</span>
-              </div>
-              <div class="flex items-center gap-2 lg:gap-3 text-gray-600">
-                <span class="material-icon text-purple-600 text-sm lg:text-base">email</span>
-                <a href="mailto:info@mahanshop.com" class="text-sm lg:text-base hover:text-purple-600">info@mahanshop.com</a>
-              </div>
-              <div class="hidden lg:flex items-center gap-3 text-gray-600">
-                <span class="material-icon text-purple-600">location_on</span>
-                <span class="text-sm">تهران، خیابان ولیعصر</span>
-              </div>
-            </div>
-          </div>
-        </div>
-  
-        <!-- نوار پایانی -->
-        <div class="border-t border-gray-200 pt-8">
-          <div class="flex flex-col-reverse sm:flex-row items-center justify-between gap-4 text-center">
-            <p class="text-gray-500 text-sm">© ۱۴۰۳ ماهان شاپ. تمامی حقوق محفوظ است.</p>
-            <div class="flex flex-wrap justify-center gap-4 sm:gap-6">
-              <a href="#top" class="text-gray-500 hover:text-purple-600 text-sm transition-colors flex items-center gap-1">
-                <span>بازگشت به بالا</span>
-                <span class="material-icon text-base">arrow_upward</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
 
 
 
