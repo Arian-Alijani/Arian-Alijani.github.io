@@ -34,24 +34,22 @@ initAuthButtons();
 
 // --- Mobile Menu Modifications ---
 function initMobileMenuModifications() {
-    // Wait for the mobile menu to be available in the DOM
+    // Try immediately first (fast path)
+    const existingMenu = document.getElementById('mobile-menu');
+    if (existingMenu) {
+        modifyMobileMenu(existingMenu);
+        return;
+    }
+
+    // If the menu is injected later, observe until it appears
     const observer = new MutationObserver(() => {
         const mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenu) {
-            modifyMobileMenu(mobileMenu);
-            observer.disconnect(); // Stop observing once we've modified the menu
-        }
-    });
-
-    // Start observing
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    // Also try immediately in case the element already exists
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenu) {
+        if (!mobileMenu) return;
         modifyMobileMenu(mobileMenu);
         observer.disconnect();
-    }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
 }
 
 function modifyMobileMenu(mobileMenu) {
@@ -129,24 +127,22 @@ function modifyMobileMenu(mobileMenu) {
 
 // --- Mobile Menu Dropdowns ---
 function initMobileMenuDropdowns() {
-    // Wait for the mobile menu to be available in the DOM
+    // Try immediately first (fast path)
+    const existingMenu = document.getElementById('mobile-menu');
+    if (existingMenu) {
+        setupMobileDropdowns(existingMenu);
+        return;
+    }
+
+    // If the menu is injected later, observe until it appears
     const observer = new MutationObserver(() => {
         const mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenu) {
-            setupMobileDropdowns(mobileMenu);
-            observer.disconnect(); // Stop observing once we've set up the dropdowns
-        }
-    });
-
-    // Start observing
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    // Also try immediately in case the element already exists
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenu) {
+        if (!mobileMenu) return;
         setupMobileDropdowns(mobileMenu);
         observer.disconnect();
-    }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
 }
 
 function setupMobileDropdowns(mobileMenu) {
@@ -201,16 +197,12 @@ function handleMobileDropdownClick(e) {
     });
 }
 
-// Initialize mobile menu modifications after DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Run mobile menu modifications
-    initMobileMenuModifications();
-
-    // Initialize mobile menu dropdowns
-    setTimeout(() => {
-        initMobileMenuDropdowns();
-    }, 100); // Small delay to ensure DOM is fully ready
-});
+// Initialize mobile menu modifications and dropdowns.
+// NOTE: This file is already wrapped in a DOMContentLoaded handler.
+// Adding another DOMContentLoaded listener here prevents these initializers
+// from running (because the event has already fired).
+initMobileMenuModifications();
+initMobileMenuDropdowns();
 
 
 // --- Footer Modifications ---
@@ -1222,6 +1214,21 @@ function initMobileMenuKeyboardNav() {
 if (mobileMenuToggle) mobileMenuToggle.addEventListener('click', toggleMenu);
 if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
 if (mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', closeMenu);
+
+// When a user taps a link inside the drawer, close the drawer.
+// This fixes cases where the overlay/state remains open and improves UX on mobile.
+if (mobileMenu) {
+    mobileMenu.addEventListener('click', (e) => {
+        const link = e.target.closest('a[href]');
+        if (!link) return;
+
+        // Don't interfere with dropdown toggles (they are not anchors today,
+        // but keep this guard to avoid future regressions).
+        if (e.target.closest('.mobile-dropdown-header')) return;
+
+        closeMenu();
+    });
+}
 
 window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeMenu();
