@@ -2,31 +2,33 @@
       
       <!-- ردیف بالا: لوگو، جستجو و اکشن‌های کاربر -->
       <div id="navbar-top" class="max-w-7xl mx-auto px-4 pt-3 pb-3 md:pb-0">
-          <div class="flex flex-wrap md:flex-nowrap items-center justify-between gap-4">
+          <div id="navbar-row" class="flex flex-wrap md:flex-nowrap items-center justify-between gap-4">
 
-               <!-- بخش چپ: منوی موبایل و لوگو -->
-               <div class="flex items-center gap-3 shrink-0">
+               <!-- منوی موبایل (چپ)، لوگو (وسط) -->
+               <div id="navbar-menu" class="flex items-center shrink-0">
                    <!-- دکمه باز کردن منو -->
-                   <button id="mobile-menu-toggle" type="button" class="md:hidden nav-icon-btn ripple p-2 rounded-full text-gray-700" aria-label="باز کردن منو" aria-controls="mobile-menu" aria-expanded="false">
+                   <button id="mobile-menu-toggle" type="button" class="md:hidden nav-icon-btn ripple p-2 rounded-lg text-gray-700" aria-label="باز کردن منو" aria-controls="mobile-menu" aria-expanded="false">
                        <span class="material-icon" aria-hidden="true">menu</span>
                    </button>
-
-                   <!-- لوگو -->
-                   <a href="{{base}}/index.html" class="flex items-center gap-2 group logo-container">
-                       <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform duration-300">
-                           <span class="material-icon text-white text-xl">shopping_bag</span>
-                       </div>
-                       <span class="text-xl md:text-2xl font-black text-gray-800 tracking-tight">ماهان شاپ</span>
-                   </a>
                </div>
 
-              <!-- اکشن‌های کاربر: علاقه‌مندی، سبد خرید، حساب -->
-              <nav class="flex items-center gap-2 md:gap-3 shrink-0" aria-label="ابزارهای کاربری">
+               <!-- لوگو -->
+               <a id="navbar-logo" href="{{base}}/index.html" class="flex items-center gap-2 group logo-container select-none whitespace-nowrap" aria-label="رفتن به صفحه اصلی">
+                   <span class="material-icon navbar-brand-icon text-[#2563EB] text-lg sm:text-xl md:text-2xl leading-none" aria-hidden="true">storefront</span>
+                   <span class="navbar-brand-text font-black text-gray-800 text-base sm:text-lg md:text-2xl leading-none">ماهان شاپ</span>
+               </a>
+<!-- اکشن‌های کاربر: علاقه‌مندی، سبد خرید، حساب -->
+              <nav id="navbar-actions" class="flex items-center gap-2 md:gap-3 shrink-0" aria-label="ابزارهای کاربری">
                   
                   <!-- علاقه‌مندی‌ها -->
-<a href="{{base}}/pages/favorites.html" class="nav-icon-btn ripple w-10 h-10 rounded-lg flex items-center justify-center text-gray-600" title="علاقه‌مندی‌ها" aria-label="علاقه‌مندی‌ها">
+<a href="{{base}}/pages/favorites.html" class="hidden md:flex nav-icon-btn ripple w-10 h-10 rounded-lg items-center justify-center text-gray-600" title="علاقه‌مندی‌ها" aria-label="علاقه‌مندی‌ها">
                        <span class="material-icon" aria-hidden="true">favorite_border</span>
                    </a>
+
+                  <!-- ورود (موبایل) -->
+                  <a href="{{base}}/pages/login.html" class="md:hidden nav-icon-btn ripple w-10 h-10 rounded-lg flex items-center justify-center text-gray-600" title="ورود" aria-label="ورود">
+                      <span class="material-icon" aria-hidden="true">login</span>
+                  </a>
 
                   <!-- سبد خرید -->
                   <div id="cart-menu-wrapper" class="relative">
@@ -89,18 +91,7 @@
                           <span>ثبت نام</span>
                       </a>
                   </div>
-
-                  <div class="guest-only md:hidden header-cta-mobile-group">
-                      <a href="{{base}}/pages/login.html" class="header-cta-mobile header-cta-mobile--ghost ripple" aria-label="ورود">
-                          <span class="material-icon text-lg" aria-hidden="true">login</span>
-                          <span class="sr-only">ورود</span>
-                      </a>
-                      <a href="{{base}}/pages/register.html" class="header-cta-mobile header-cta-mobile--primary ripple" aria-label="ثبت نام">
-                          <span class="material-icon text-lg" aria-hidden="true">person_add</span>
-                          <span class="sr-only">ثبت نام</span>
-                      </a>
-                  </div>
-              </nav>
+</nav>
           </div>
           <!-- ردیف پایین: دسته‌بندی‌ها -->
           <div id="navbar-bottom" class="border-t border-gray-100/80 md:border-none hidden md:block transition-all duration-300">
@@ -269,10 +260,8 @@
       <div id="mobile-menu" class="fixed right-0 top-0 h-full w-4/5 max-w-[300px] bg-[#F8FAFC] shadow-2xl transform translate-x-full z-[100] transition-transform duration-300" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="mobile-menu-title">
           <div class="p-3 flex justify-between items-center bg-white border-b border-gray-200">
               <div class="flex items-center gap-2">
-                  <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
-                      <span class="material-icon text-white text-base" aria-hidden="true">shopping_bag</span>
-                  </div>
-                  <h2 id="mobile-menu-title" class="font-bold text-sm text-[#1D1B20]">ماهان شاپ</h2>
+                  <span class="material-icon text-[#2563EB] text-xl" aria-hidden="true">storefront</span>
+                  <h2 id="mobile-menu-title" class="font-black text-sm text-[#1D1B20]">ماهان شاپ</h2>
               </div>
               <button id="close-menu-btn" type="button" class="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:text-red-500 transition-colors" aria-label="بستن منو">
                   <span class="material-icon text-base" aria-hidden="true">close</span>
@@ -550,6 +539,11 @@
                           </div>
                       </div>
                   </div>
+                  <div class="border-t border-gray-200 my-2 mx-2"></div>
+                  <a href="{{base}}/pages/favorites.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2 rounded-none text-[#1D1B20] font-medium text-sm hover:bg-[#EFF6FF] transition-colors" data-nav-id="favorites">
+                      <span class="material-icon text-gray-500 text-base" aria-hidden="true">favorite_border</span>
+                      <span>محبوب‌ها</span>
+                  </a>
               </nav>
           </div>
       </div>

@@ -56,6 +56,9 @@
                     <button data-category="all" class="category-filter-btn" type="button">
                       <span class="category-label">تمام محصولات</span>
                     </button>
+                    <button data-category="accessory" class="category-filter-btn" type="button">
+                      <span class="category-label">اکسسوری</span>
+                    </button>
                     <button data-category="case" class="category-filter-btn" type="button">
                       <span class="category-label">قاب گوشی</span>
                     </button>
@@ -381,8 +384,7 @@
       const resetFiltersMobileBtn = document.getElementById('reset-filters-btn-mobile');
 
       const CATEGORY_ALIASES = {
-        accessory: 'gadget',
-        accessories: 'gadget'
+        accessories: 'accessory'
       };
 
       const activeCategoryNameEl = document.getElementById('active-category-name');
@@ -395,6 +397,9 @@
 
       const FILTER_GROUPS = {
         all: [
+          { key: 'brand', label: 'برند' }
+        ],
+        accessory: [
           { key: 'brand', label: 'برند' }
         ],
         case: [
@@ -480,6 +485,15 @@
 
       const normalize = (value) => String(value || '').trim().toLowerCase();
 
+      const getCardsForCategory = (category) => {
+        if (category === 'all') return productCards;
+        if (category === 'accessory') {
+          // "اکسسوری" یعنی همه‌ی محصولات به‌جز گوشی هوشمند
+          return productCards.filter((card) => (card.dataset.category || '') !== 'phone');
+        }
+        return productCards.filter((card) => card.dataset.category === category);
+      };
+
       const getLabel = (key, value) => {
         const map = FILTER_LABELS[key];
         return map && map[value] ? map[value] : value;
@@ -493,9 +507,7 @@
 
       const getGroupValues = (category, group) => {
         const valuesMap = new Map();
-        const cards = category === 'all'
-          ? productCards
-          : productCards.filter((card) => card.dataset.category === category);
+        const cards = getCardsForCategory(category);
 
         cards.forEach((card) => {
           const raw = card.dataset[group.key];
@@ -721,7 +733,10 @@
 
         const visibleProducts = [];
         productCards.forEach((card) => {
-          const categoryMatch = currentFilters.category === 'all' || card.dataset.category === currentFilters.category;
+          const categoryMatch = currentFilters.category === 'all'
+            || (currentFilters.category === 'accessory'
+              ? (card.dataset.category || '') !== 'phone'
+              : card.dataset.category === currentFilters.category);
           const attributesMatch = Object.entries(currentFilters.attributes).every(([key, values]) => {
             if (!values || values.length === 0) return true;
             const cardValues = getCardValues(card, key);

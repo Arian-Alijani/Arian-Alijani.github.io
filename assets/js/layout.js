@@ -18,7 +18,9 @@
 
   const fetchPartial = async (base, partName) => {
     const url = `${base}/partials/${partName}.html`;
-    const res = await fetch(url, { cache: 'no-cache' });
+    // Enable browser caching to reduce header/footer load latency on mobile.
+    // These partials are static assets, so default caching is desirable.
+    const res = await fetch(url, { cache: 'default' });
     if (!res.ok) {
       const err = new Error(`Failed to load ${url} (${res.status})`);
       err.status = res.status;
@@ -67,11 +69,33 @@
     await Promise.all(tasks);
 
     // Fixed header offset helper (used by filter drawer, overlays, etc.)
+    // IMPORTANT: Keep the offset stable during scroll-induced header animations.
+    // Otherwise `body { padding-top: var(--navbar-offset) }` changes at scroll end and
+    // can cause the page to "jump" (especially visible at the bottom of the page).
+    let stableNavbarHeight = 0;
+    let lastViewportW = window.innerWidth;
+    let lastViewportH = window.innerHeight;
+
     const updateNavbarHeight = () => {
       const navbar = document.getElementById('navbar');
       if (!navbar) return;
-      const height = Math.max(0, Math.round(navbar.getBoundingClientRect().height));
-      if (height) document.documentElement.style.setProperty('--navbar-height', `${height}px`);
+
+      // Reset only on viewport change (resize/orientation). Scroll-only changes must not
+      // shrink the offset.
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      if (vw !== lastViewportW || vh !== lastViewportH) {
+        lastViewportW = vw;
+        lastViewportH = vh;
+        stableNavbarHeight = 0;
+      }
+
+      const measured = Math.max(0, Math.round(navbar.getBoundingClientRect().height));
+      if (!measured) return;
+      if (measured > stableNavbarHeight) stableNavbarHeight = measured;
+
+      document.documentElement.style.setProperty('--navbar-height', `${stableNavbarHeight}px`);
+      document.documentElement.style.setProperty('--navbar-offset', `${stableNavbarHeight}px`);
     };
 
     // Active navigation (desktop + mobile)
@@ -100,6 +124,13 @@
     try {
       updateNavbarHeight();
       setActiveNav();
+    } catch {
+      // ignore
+    }
+
+    // Mark layout as ready so CSS skeleton spacing can be removed.
+    try {
+      document.documentElement.classList.add('layout-ready');
     } catch {
       // ignore
     }

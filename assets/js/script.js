@@ -181,21 +181,6 @@ if (mobileFooter) {
     document.body.classList.add('has-mobile-footer');
 }
 
-// --- Dynamic Banner Offset ---
-const navbar = document.getElementById('navbar');
-function applyNavbarOffset() {
-    if (!navbar) return;
-    const h = navbar.offsetHeight || 0;
-    document.documentElement.style.setProperty('--navbar-offset', `${h}px`);
-}
-applyNavbarOffset();
-window.addEventListener('resize', applyNavbarOffset);
-
-if ('ResizeObserver' in window && navbar) {
-    const ro = new ResizeObserver(() => applyNavbarOffset());
-    ro.observe(navbar);
-}
-
 // --- Navbar Bottom Hide/Show Logic (scroll down = hide bottom row) ---
 function initNavbarBottomScroll() {
     const navbar = document.getElementById('navbar');
@@ -309,21 +294,20 @@ function initHeaderCategoryDropdowns() {
     dropdowns.forEach((dropdown) => {
         const trigger = dropdown.querySelector('.nav-dropdown-trigger');
         if (!trigger) return;
+
+        // Default to closed.
         setState(dropdown, false);
-        trigger.addEventListener('click', (event) => {
-            event.preventDefault();
-            const isOpen = dropdown.classList.contains('is-open');
-            closeAll(dropdown);
-            setState(dropdown, !isOpen);
-        });
+
+        // Desktop UX requirement:
+        // - Hover/focus opens the submenu.
+        // - Click navigates to the category (no toggle-on-click).
+        let hoverCloseTimer = null;
+        const scheduleClose = () => {
+            clearTimeout(hoverCloseTimer);
+            hoverCloseTimer = setTimeout(() => setState(dropdown, false), 160);
+        };
 
         if (hoverMediaQuery.matches) {
-            let hoverCloseTimer = null;
-            const scheduleClose = () => {
-                clearTimeout(hoverCloseTimer);
-                hoverCloseTimer = setTimeout(() => setState(dropdown, false), 180);
-            };
-
             dropdown.addEventListener('mouseenter', () => {
                 clearTimeout(hoverCloseTimer);
                 closeAll(dropdown);
@@ -332,15 +316,26 @@ function initHeaderCategoryDropdowns() {
             dropdown.addEventListener('mouseleave', () => {
                 scheduleClose();
             });
-            const panel = dropdown.querySelector('.nav-dropdown-panel');
-            if (panel) {
-                panel.addEventListener('mouseenter', () => {
-                    clearTimeout(hoverCloseTimer);
-                });
-                panel.addEventListener('mouseleave', () => {
-                    scheduleClose();
-                });
-            }
+        }
+
+        // Keyboard support (and non-hover devices): open on focus.
+        dropdown.addEventListener('focusin', () => {
+            clearTimeout(hoverCloseTimer);
+            closeAll(dropdown);
+            setState(dropdown, true);
+        });
+        dropdown.addEventListener('focusout', () => {
+            scheduleClose();
+        });
+
+        const panel = dropdown.querySelector('.nav-dropdown-panel');
+        if (panel) {
+            panel.addEventListener('mouseenter', () => {
+                clearTimeout(hoverCloseTimer);
+            });
+            panel.addEventListener('mouseleave', () => {
+                scheduleClose();
+            });
         }
     });
 
@@ -1476,5 +1471,61 @@ document.querySelectorAll('.qty-selector').forEach(selector => {
     document.addEventListener("DOMContentLoaded", __boot);
   } else {
     __boot();
+  }
+})();
+
+/**
+ * About/Contact map: resilient loading
+ * Some users may face intermittent failures (network/CDN blocking). We keep retrying
+ * until the iframe successfully fires a load event.
+ */
+(function () {
+  function initMapRetry() {
+    const iframe = document.getElementById("contact-map");
+    if (!iframe) return;
+
+    const baseSrc = iframe.getAttribute("data-src") || iframe.getAttribute("src");
+    if (!baseSrc) return;
+
+    let loaded = false;
+    let attempt = 0;
+
+    const LOAD_TIMEOUT_MS = 8000; // time to consider a load attempt failed
+    const RETRY_DELAY_MS = 2500;  // delay between attempts
+    const MAX_BACKOFF_MS = 12000; // cap retry delay growth
+
+    const markLoaded = () => {
+      loaded = true;
+    };
+
+    iframe.addEventListener("load", markLoaded, { once: true });
+
+    const buildSrc = () => {
+      const sep = baseSrc.includes("?") ? "&" : "?";
+      return `${baseSrc}${sep}retry=${Date.now()}_${attempt}`;
+    };
+
+    const tryLoad = () => {
+      if (loaded) return;
+
+      attempt += 1;
+      iframe.setAttribute("src", buildSrc());
+
+      // If we do not get a load event within LOAD_TIMEOUT_MS, retry.
+      window.setTimeout(() => {
+        if (loaded) return;
+        const backoff = Math.min(RETRY_DELAY_MS + attempt * 250, MAX_BACKOFF_MS);
+        window.setTimeout(tryLoad, backoff);
+      }, LOAD_TIMEOUT_MS);
+    };
+
+    // Kick off: if initial load is blocked, this will re-trigger until it succeeds.
+    tryLoad();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initMapRetry);
+  } else {
+    initMapRetry();
   }
 })();

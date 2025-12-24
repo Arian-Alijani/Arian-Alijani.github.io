@@ -2,26 +2,24 @@
       
       <!-- ردیف بالا: لوگو، جستجو و اکشن‌های کاربر -->
       <div id="navbar-top" class="max-w-7xl mx-auto px-4 pt-3 pb-3 md:pb-0">
-          <div class="flex flex-wrap md:flex-nowrap items-center justify-between gap-4">
+          <div id="navbar-row" class="flex flex-wrap md:flex-nowrap items-center justify-between gap-4">
 
-               <!-- بخش چپ: منوی موبایل و لوگو -->
-               <div class="flex items-center gap-3 shrink-0">
+               <!-- منوی موبایل (چپ)، لوگو (وسط) -->
+               <div id="navbar-menu" class="flex items-center shrink-0">
                    <!-- دکمه باز کردن منو -->
-                   <button id="mobile-menu-toggle" type="button" class="md:hidden nav-icon-btn ripple p-2 rounded-full text-gray-700" aria-label="باز کردن منو" aria-controls="mobile-menu" aria-expanded="false">
+                   <button id="mobile-menu-toggle" type="button" class="md:hidden nav-icon-btn ripple p-2 rounded-lg text-gray-700" aria-label="باز کردن منو" aria-controls="mobile-menu" aria-expanded="false">
                        <span class="material-icon" aria-hidden="true">menu</span>
                    </button>
-
-                   <!-- لوگو -->
-                   <a href="{{base}}/index.html" class="flex items-center gap-2 group logo-container">
-                       <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform duration-300">
-                           <span class="material-icon text-white text-xl">shopping_bag</span>
-                       </div>
-                       <span class="text-xl md:text-2xl font-black text-gray-800 tracking-tight">ماهان شاپ</span>
-                   </a>
                </div>
+
+               <!-- لوگو -->
+               <a id="navbar-logo" href="{{base}}/index.html" class="flex items-center gap-2 group logo-container select-none whitespace-nowrap" aria-label="رفتن به صفحه اصلی">
+                   <span class="material-icon navbar-brand-icon text-[#2563EB] text-lg sm:text-xl md:text-2xl leading-none" aria-hidden="true">storefront</span>
+                   <span class="navbar-brand-text font-black text-gray-800 text-base sm:text-lg md:text-2xl leading-none">ماهان شاپ</span>
+               </a>
   
               <!-- جستجو: مسیر و پارامترها توسط بک‌اند تنظیم شوند -->
-                  <div class="order-last md:order-none w-full md:max-w-xl mx-auto md:mx-6 transition-all duration-300">
+                  <div id="navbar-search" class="order-last md:order-none w-full md:max-w-xl mx-auto md:mx-6 transition-all duration-300">
                       <form class="relative group search-container" role="search" action="{{base}}/pages/products.html" method="get">
                           <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
                           <span class="material-icon text-gray-500 group-focus-within:text-[#2563EB] transition-colors" aria-hidden="true">search</span>
@@ -36,12 +34,17 @@
                   </div>
   
               <!-- اکشن‌های کاربر: علاقه‌مندی، سبد خرید، حساب -->
-              <nav class="flex items-center gap-2 md:gap-3 shrink-0" aria-label="ابزارهای کاربری">
+              <nav id="navbar-actions" class="flex items-center gap-2 md:gap-3 shrink-0" aria-label="ابزارهای کاربری">
                   
                   <!-- علاقه‌مندی‌ها -->
-<a href="{{base}}/pages/favorites.html" class="nav-icon-btn ripple w-10 h-10 rounded-lg flex items-center justify-center text-gray-600" title="علاقه‌مندی‌ها" aria-label="علاقه‌مندی‌ها">
+<a href="{{base}}/pages/favorites.html" class="hidden md:flex nav-icon-btn ripple w-10 h-10 rounded-lg items-center justify-center text-gray-600" title="علاقه‌مندی‌ها" aria-label="علاقه‌مندی‌ها">
                        <span class="material-icon" aria-hidden="true">favorite_border</span>
                    </a>
+
+                  <!-- ورود (موبایل) -->
+                  <a href="{{base}}/pages/login.html" class="md:hidden nav-icon-btn ripple w-10 h-10 rounded-lg flex items-center justify-center text-gray-600" title="ورود" aria-label="ورود">
+                      <span class="material-icon" aria-hidden="true">login</span>
+                  </a>
 
                   <!-- سبد خرید -->
                   <div id="cart-menu-wrapper" class="relative">
@@ -104,22 +107,11 @@
                           <span>ثبت نام</span>
                       </a>
                   </div>
-
-                  <div class="guest-only md:hidden header-cta-mobile-group">
-                      <a href="{{base}}/pages/login.html" class="header-cta-mobile header-cta-mobile--ghost ripple" aria-label="ورود">
-                          <span class="material-icon text-lg" aria-hidden="true">login</span>
-                          <span class="sr-only">ورود</span>
-                      </a>
-                      <a href="{{base}}/pages/register.html" class="header-cta-mobile header-cta-mobile--primary ripple" aria-label="ثبت نام">
-                          <span class="material-icon text-lg" aria-hidden="true">person_add</span>
-                          <span class="sr-only">ثبت نام</span>
-                      </a>
-                  </div>
               </nav>
           </div>
           <!-- ردیف پایین: دسته‌بندی‌ها -->
           <div id="navbar-bottom" class="border-t border-gray-100/80 md:border-none hidden md:block transition-all duration-300">
-              <nav class="secondary-nav flex items-center gap-1 md:gap-6 overflow-x-auto no-scrollbar py-2 md:py-3 mask-image-fade" aria-label="دسته‌بندی‌ها">
+              <nav class="secondary-nav flex items-center gap-1 md:gap-5 overflow-x-auto no-scrollbar py-2 md:py-2 mask-image-fade" aria-label="دسته‌بندی‌ها">
                   <a href="{{base}}/index.html" class="secondary-nav-link" data-nav-id="home" >
                       <span class="material-icon text-lg" aria-hidden="true">home</span>
                       خانه
@@ -130,10 +122,10 @@
                   </a>
                   <div class="w-px h-4 bg-gray-300 mx-1 shrink-0 hidden md:block"></div>
                   <div class="nav-dropdown" data-nav-dropdown>
-                      <button type="button" class="secondary-nav-link nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-case" aria-haspopup="true">
+                      <a href="{{base}}/pages/products.html?cat=case" class="secondary-nav-link secondary-nav-link--underline nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-case" aria-haspopup="true">
                           قاب گوشی
                           <span class="material-icon nav-caret" aria-hidden="true">expand_more</span>
-                      </button>
+                      </a>
                       <div id="dropdown-case" class="nav-dropdown-panel" aria-hidden="true">
                           <div class="nav-dropdown-section">
                               <div class="nav-dropdown-title">جنس قاب</div>
@@ -150,10 +142,10 @@
                       </div>
                   </div>
                   <div class="nav-dropdown" data-nav-dropdown>
-                      <button type="button" class="secondary-nav-link nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-phone" aria-haspopup="true">
+                      <a href="{{base}}/pages/products.html?cat=phone" class="secondary-nav-link secondary-nav-link--underline nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-phone" aria-haspopup="true">
                           گوشی هوشمند
                           <span class="material-icon nav-caret" aria-hidden="true">expand_more</span>
-                      </button>
+                      </a>
                       <div id="dropdown-phone" class="nav-dropdown-panel" aria-hidden="true">
                           <div class="nav-dropdown-section">
                               <div class="nav-dropdown-title">برندها</div>
@@ -170,10 +162,10 @@
                       </div>
                   </div>
                   <div class="nav-dropdown" data-nav-dropdown>
-                      <button type="button" class="secondary-nav-link nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-charger" aria-haspopup="true">
+                      <a href="{{base}}/pages/products.html?cat=charger" class="secondary-nav-link secondary-nav-link--underline nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-charger" aria-haspopup="true">
                           شارژ
                           <span class="material-icon nav-caret" aria-hidden="true">expand_more</span>
-                      </button>
+                      </a>
                       <div id="dropdown-charger" class="nav-dropdown-panel" aria-hidden="true">
                           <div class="nav-dropdown-section">
                               <div class="nav-dropdown-title">شارژ</div>
@@ -189,10 +181,10 @@
                       </div>
                   </div>
                   <div class="nav-dropdown" data-nav-dropdown>
-                      <button type="button" class="secondary-nav-link nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-airpod" aria-haspopup="true">
+                      <a href="{{base}}/pages/products.html?cat=airpod" class="secondary-nav-link secondary-nav-link--underline nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-airpod" aria-haspopup="true">
                           کاور ایرپاد
                           <span class="material-icon nav-caret" aria-hidden="true">expand_more</span>
-                      </button>
+                      </a>
                       <div id="dropdown-airpod" class="nav-dropdown-panel nav-dropdown-panel-wide nav-dropdown-columns" aria-hidden="true">
                           <div class="nav-dropdown-column">
                               <div class="nav-dropdown-title">سازگار با</div>
@@ -215,10 +207,10 @@
                       </div>
                   </div>
                   <div class="nav-dropdown" data-nav-dropdown>
-                      <button type="button" class="secondary-nav-link nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-glass" aria-haspopup="true">
+                      <a href="{{base}}/pages/products.html?cat=glass" class="secondary-nav-link secondary-nav-link--underline nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-glass" aria-haspopup="true">
                           گلس و محافظ
                           <span class="material-icon nav-caret" aria-hidden="true">expand_more</span>
-                      </button>
+                      </a>
                       <div id="dropdown-glass" class="nav-dropdown-panel nav-dropdown-panel-wide nav-dropdown-columns" aria-hidden="true">
                           <div class="nav-dropdown-column">
                               <div class="nav-dropdown-title">نوع گلس</div>
@@ -241,10 +233,10 @@
                       </div>
                   </div>
                   <div class="nav-dropdown" data-nav-dropdown>
-                      <button type="button" class="secondary-nav-link nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-gadget" aria-haspopup="true">
+                      <a href="{{base}}/pages/products.html?cat=gadget" class="secondary-nav-link secondary-nav-link--underline nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-gadget" aria-haspopup="true">
                           گجت
                           <span class="material-icon nav-caret" aria-hidden="true">expand_more</span>
-                      </button>
+                      </a>
                       <div id="dropdown-gadget" class="nav-dropdown-panel nav-dropdown-panel-wide nav-dropdown-columns" aria-hidden="true">
                           <div class="nav-dropdown-column">
                               <div class="nav-dropdown-title">گجت‌های محبوب</div>
@@ -262,6 +254,32 @@
                                   <a href="{{base}}/pages/products.html?cat=gadget&type=office" class="nav-dropdown-link">دفتر و میزکار</a>
                                   <a href="{{base}}/pages/products.html?cat=gadget&type=travel" class="nav-dropdown-link">سفر و لوازم همراه</a>
                                   <a href="{{base}}/pages/products.html?cat=gadget&type=home" class="nav-dropdown-link">خانه هوشمند</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="nav-dropdown" data-nav-dropdown>
+                      <a href="{{base}}/pages/products.html?cat=accessory" class="secondary-nav-link secondary-nav-link--underline nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-accessory" aria-haspopup="true" aria-label="اکسسوری">
+                          اکسسوری
+                          <span class="material-icon nav-caret" aria-hidden="true">expand_more</span>
+                      </a>
+                      <div id="dropdown-accessory" class="nav-dropdown-panel nav-dropdown-panel-wide nav-dropdown-columns" aria-hidden="true">
+                          <div class="nav-dropdown-column">
+                              <div class="nav-dropdown-title">اکسسوری‌های محبوب</div>
+                              <div class="nav-dropdown-links">
+                                  <a href="{{base}}/pages/products.html?cat=accessory&type=headphones" class="nav-dropdown-link">هدفون و هندزفری</a>
+                                  <a href="{{base}}/pages/products.html?cat=accessory&type=powerbank" class="nav-dropdown-link">پاوربانک</a>
+                                  <a href="{{base}}/pages/products.html?cat=accessory&type=watch" class="nav-dropdown-link">ساعت هوشمند</a>
+                                  <a href="{{base}}/pages/products.html?cat=accessory&type=storage" class="nav-dropdown-link">فلش و حافظه</a>
+                              </div>
+                          </div>
+                          <div class="nav-dropdown-column">
+                              <div class="nav-dropdown-title">کاربری</div>
+                              <div class="nav-dropdown-links">
+                                  <a href="{{base}}/pages/products.html?cat=accessory&type=cable" class="nav-dropdown-link">کابل و تبدیل</a>
+                                  <a href="{{base}}/pages/products.html?cat=accessory&type=holder" class="nav-dropdown-link">پایه و هولدر</a>
+                                  <a href="{{base}}/pages/products.html?cat=accessory&type=car" class="nav-dropdown-link">لوازم خودرو</a>
+                                  <a href="{{base}}/pages/products.html?cat=accessory&type=gaming" class="nav-dropdown-link">گیمینگ</a>
                               </div>
                           </div>
                       </div>
@@ -284,10 +302,8 @@
       <div id="mobile-menu" class="fixed right-0 top-0 h-full w-4/5 max-w-[300px] bg-[#F8FAFC] shadow-2xl transform translate-x-full z-[100] transition-transform duration-300" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="mobile-menu-title">
           <div class="p-3 flex justify-between items-center bg-white border-b border-gray-200">
               <div class="flex items-center gap-2">
-                  <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
-                      <span class="material-icon text-white text-base" aria-hidden="true">shopping_bag</span>
-                  </div>
-                  <h2 id="mobile-menu-title" class="font-bold text-sm text-[#1D1B20]">ماهان شاپ</h2>
+                  <span class="material-icon text-[#2563EB] text-xl" aria-hidden="true">storefront</span>
+                  <h2 id="mobile-menu-title" class="font-black text-sm text-[#1D1B20]">ماهان شاپ</h2>
               </div>
               <button id="close-menu-btn" type="button" class="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:text-red-500 transition-colors" aria-label="بستن منو">
                   <span class="material-icon text-base" aria-hidden="true">close</span>
@@ -565,11 +581,67 @@
                           </div>
                       </div>
                   </div>
+
+                  <div class="mobile-dropdown">
+                      <div class="mobile-dropdown-header mobile-nav-link flex items-center justify-between p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#EFF6FF] transition-colors cursor-pointer">
+                          <div class="flex items-center gap-2.5">
+                              <span class="material-icon text-gray-500 text-base" aria-hidden="true">headphones</span>
+                              <span>اکسسوری</span>
+                          </div>
+                          <span class="material-icon mobile-dropdown-arrow" aria-hidden="true">expand_more</span>
+                      </div>
+                      <div class="mobile-dropdown-content mobile-submenu hidden">
+                          <div class="mobile-dropdown-section">
+                              <div class="mobile-dropdown-title px-8 py-2 text-xs font-bold text-gray-400">اکسسوری‌های محبوب</div>
+                              <a href="{{base}}/pages/products.html?cat=accessory&type=headphones" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#EFF6FF] hover:text-[#2563EB] transition-colors pr-8 text-sm">
+                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
+                                  <span>هدفون و هندزفری</span>
+                              </a>
+                              <a href="{{base}}/pages/products.html?cat=accessory&type=powerbank" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#EFF6FF] hover:text-[#2563EB] transition-colors pr-8 text-sm">
+                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
+                                  <span>پاوربانک</span>
+                              </a>
+                              <a href="{{base}}/pages/products.html?cat=accessory&type=watch" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#EFF6FF] hover:text-[#2563EB] transition-colors pr-8 text-sm">
+                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
+                                  <span>ساعت هوشمند</span>
+                              </a>
+                              <a href="{{base}}/pages/products.html?cat=accessory&type=storage" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#EFF6FF] hover:text-[#2563EB] transition-colors pr-8 text-sm">
+                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
+                                  <span>فلش و حافظه</span>
+                              </a>
+                          </div>
+                          <div class="mobile-dropdown-section">
+                              <div class="mobile-dropdown-title px-8 py-2 text-xs font-bold text-gray-400">کاربری</div>
+                              <a href="{{base}}/pages/products.html?cat=accessory&type=cable" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#EFF6FF] hover:text-[#2563EB] transition-colors pr-8 text-sm">
+                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
+                                  <span>کابل و تبدیل</span>
+                              </a>
+                              <a href="{{base}}/pages/products.html?cat=accessory&type=holder" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#EFF6FF] hover:text-[#2563EB] transition-colors pr-8 text-sm">
+                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
+                                  <span>پایه و هولدر</span>
+                              </a>
+                              <a href="{{base}}/pages/products.html?cat=accessory&type=car" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#EFF6FF] hover:text-[#2563EB] transition-colors pr-8 text-sm">
+                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
+                                  <span>لوازم خودرو</span>
+                              </a>
+                              <a href="{{base}}/pages/products.html?cat=accessory&type=gaming" class="flex items-center gap-2.5 p-2.5 rounded-lg text-gray-600 font-medium hover:bg-[#EFF6FF] hover:text-[#2563EB] transition-colors pr-8 text-sm">
+                                  <span class="material-icon text-sm" aria-hidden="true">circle</span>
+                                  <span>گیمینگ</span>
+                              </a>
+                          </div>
+                      </div>
+                  </div>
               
                   <div class="border-t border-gray-200 my-2 mx-2"></div>
                   <a href="{{base}}/pages/about-us.html#contact" class="mobile-nav-link flex items-center gap-3 px-3 py-2 rounded-none text-[#1D1B20] font-medium text-sm hover:bg-[#EFF6FF] transition-colors" data-nav-id="contact">
                       <span class="material-icon text-gray-500 text-base" aria-hidden="true">contact_support</span>
                       <span>ارتباط با ما</span>
+                  </a>
+
+                  <div class="border-t border-gray-200 my-2 mx-2"></div>
+                  <a href="{{base}}/pages/favorites.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2 rounded-none text-[#1D1B20] font-medium text-sm hover:bg-[#EFF6FF] transition-colors" data-nav-id="favorites">
+                      <span class="material-icon text-gray-500 text-base" aria-hidden="true">favorite_border</span>
+                      <span>محبوب‌ها</span>
                   </a></nav>
           </div>
       </div>
