@@ -127,10 +127,89 @@ function modifyMobileMenu(mobileMenu) {
     }
 }
 
+// --- Mobile Menu Dropdowns ---
+function initMobileMenuDropdowns() {
+    // Wait for the mobile menu to be available in the DOM
+    const observer = new MutationObserver(() => {
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenu) {
+            setupMobileDropdowns(mobileMenu);
+            observer.disconnect(); // Stop observing once we've set up the dropdowns
+        }
+    });
+
+    // Start observing
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Also try immediately in case the element already exists
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) {
+        setupMobileDropdowns(mobileMenu);
+        observer.disconnect();
+    }
+}
+
+function setupMobileDropdowns(mobileMenu) {
+    // Use event delegation to handle clicks on mobile dropdown headers
+    // This ensures functionality works even if the DOM is modified later
+
+    // Remove any existing event listeners to prevent duplicates
+    mobileMenu.removeEventListener('click', handleMobileDropdownClick);
+
+    // Add event listener with event delegation
+    mobileMenu.addEventListener('click', handleMobileDropdownClick);
+}
+
+function handleMobileDropdownClick(e) {
+    // Check if the clicked element is a mobile dropdown header or inside one
+    const header = e.target.closest('.mobile-dropdown-header');
+    if (!header) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    // Get the parent dropdown container
+    const dropdown = header.closest('.mobile-dropdown');
+    if (!dropdown) return;
+
+    const content = dropdown.querySelector('.mobile-dropdown-content');
+    const arrow = dropdown.querySelector('.mobile-dropdown-arrow');
+
+    if (!content || !arrow) return;
+
+    // Toggle the hidden class on content
+    content.classList.toggle('hidden');
+
+    // Rotate the arrow icon
+    if (content.classList.contains('hidden')) {
+        arrow.textContent = 'expand_more';
+    } else {
+        arrow.textContent = 'expand_less';
+    }
+
+    // Close other open dropdowns
+    const allDropdowns = dropdown.parentElement.querySelectorAll('.mobile-dropdown');
+    allDropdowns.forEach(otherDropdown => {
+        if (otherDropdown !== dropdown) {
+            const otherContent = otherDropdown.querySelector('.mobile-dropdown-content');
+            const otherArrow = otherDropdown.querySelector('.mobile-dropdown-arrow');
+            if (otherContent && otherArrow && !otherContent.classList.contains('hidden')) {
+                otherContent.classList.add('hidden');
+                otherArrow.textContent = 'expand_more';
+            }
+        }
+    });
+}
+
 // Initialize mobile menu modifications after DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Run mobile menu modifications
     initMobileMenuModifications();
+
+    // Initialize mobile menu dropdowns
+    setTimeout(() => {
+        initMobileMenuDropdowns();
+    }, 100); // Small delay to ensure DOM is fully ready
 });
 
 
