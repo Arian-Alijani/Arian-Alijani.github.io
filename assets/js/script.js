@@ -89,62 +89,6 @@ function modifyMobileMenu(mobileMenu) {
             }
         }
 
-        // Add more desktop categories to the mobile menu
-        const navContainer = mobileMenu.querySelector('.p-4.overflow-y-auto nav');
-        if (navContainer) {
-            // Create categories section if it doesn't exist
-            let categoriesSection = mobileMenu.querySelector('.mobile-categories-section');
-            if (!categoriesSection) {
-                categoriesSection = document.createElement('div');
-                categoriesSection.className = 'mobile-categories-section mt-4';
-
-                // Add heading for categories (combine with existing categories)
-                const heading = document.createElement('span');
-                heading.className = 'text-xs font-bold text-gray-400 px-3 mb-1 block';
-                heading.textContent = 'دسته‌بندی‌ها'; // Changed to just "Categories"
-                categoriesSection.appendChild(heading);
-
-                // Add additional category links
-                const additionalCategories = [
-                    { name: 'گوشی هوشمند', icon: 'phone_iphone', url: 'pages/products.html?cat=phone' },
-                    { name: 'گلس و محافظ', icon: 'screen_search_desktop', url: 'pages/products.html?cat=glass' },
-                    { name: 'گجت', icon: 'devices', url: 'pages/products.html?cat=gadget' }
-                ];
-
-                additionalCategories.forEach(cat => {
-                    const link = document.createElement('a');
-                    link.href = cat.url;
-                    link.className = 'flex items-center gap-3 p-3 rounded-xl text-gray-600 font-medium hover:bg-[#F3EDF7] hover:text-[#6750A4] transition-colors';
-                    link.innerHTML = `
-                        <span class="material-icon text-lg" aria-hidden="true">${cat.icon}</span>
-                        <span>${cat.name}</span>
-                    `;
-                    categoriesSection.appendChild(link);
-                });
-
-                // Add the section before the end of the nav container
-                navContainer.appendChild(categoriesSection);
-            }
-
-            // Remove the original "دسته‌بندی‌ها" heading if it exists to avoid duplication
-            const originalCategoryHeading = mobileMenu.querySelector('.text-xs.font-bold.text-gray-400:not(.mobile-categories-section .text-xs.font-bold.text-gray-400)');
-            if (originalCategoryHeading && !originalCategoryHeading.closest('.mobile-categories-section')) {
-                originalCategoryHeading.remove();
-            }
-
-            // Move existing category links (like case, airpod, charger) into our new combined section
-            const existingCategoryLinks = mobileMenu.querySelectorAll('a[href^="pages/products.html?cat="]');
-            const ourCategorySection = mobileMenu.querySelector('.mobile-categories-section');
-            if (ourCategorySection) {
-                existingCategoryLinks.forEach(link => {
-                    // Only move links that aren't already in our section
-                    if (!link.closest('.mobile-categories-section')) {
-                        ourCategorySection.appendChild(link);
-                    }
-                });
-            }
-        }
-
         // Add separator and contact option at the end of the mobile menu
         const finalNavContainer = mobileMenu.querySelector('.p-4.overflow-y-auto nav');
         if (finalNavContainer) {
@@ -174,6 +118,91 @@ function modifyMobileMenu(mobileMenu) {
 }
 
 initMobileMenuModifications();
+
+// --- Mobile Menu Dropdowns ---
+function initMobileMenuDropdowns() {
+    // Wait for the mobile menu to be available in the DOM
+    const observer = new MutationObserver(() => {
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenu) {
+            setupMobileDropdowns(mobileMenu);
+            observer.disconnect(); // Stop observing once we've set up the dropdowns
+        }
+    });
+
+    // Start observing
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Also try immediately in case the element already exists
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) {
+        setupMobileDropdowns(mobileMenu);
+        observer.disconnect();
+    }
+}
+
+function setupMobileDropdowns(mobileMenu) {
+    // Find all mobile dropdowns in the mobile menu
+    const dropdowns = mobileMenu.querySelectorAll('.mobile-dropdown');
+
+    dropdowns.forEach(dropdown => {
+        const header = dropdown.querySelector('.mobile-dropdown-header');
+        const content = dropdown.querySelector('.mobile-dropdown-content');
+        const arrow = dropdown.querySelector('.mobile-dropdown-arrow');
+
+        if (header && content && arrow) {
+            // Add click event to toggle dropdown
+            header.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                // Toggle the hidden class on content
+                content.classList.toggle('hidden');
+
+                // Rotate the arrow icon
+                if (content.classList.contains('hidden')) {
+                    arrow.textContent = 'expand_more';
+                } else {
+                    arrow.textContent = 'expand_less';
+                }
+
+                // Close other open dropdowns
+                dropdowns.forEach(otherDropdown => {
+                    if (otherDropdown !== dropdown) {
+                        const otherContent = otherDropdown.querySelector('.mobile-dropdown-content');
+                        const otherArrow = otherDropdown.querySelector('.mobile-dropdown-arrow');
+                        if (otherContent && otherArrow && !otherContent.classList.contains('hidden')) {
+                            otherContent.classList.add('hidden');
+                            otherArrow.textContent = 'expand_more';
+                        }
+                    }
+                });
+            });
+        }
+    });
+}
+
+// Initialize mobile menu dropdowns after DOM is loaded and after mobile menu modifications
+document.addEventListener('DOMContentLoaded', function() {
+    // Wait for the mobile menu modifications to complete
+    setTimeout(() => {
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenu) {
+            // Reinitialize the dropdowns after any modifications
+            setupMobileDropdowns(mobileMenu);
+        } else {
+            // If mobile menu isn't ready, wait for it
+            const observer = new MutationObserver(() => {
+                const menu = document.getElementById('mobile-menu');
+                if (menu) {
+                    setupMobileDropdowns(menu);
+                    observer.disconnect();
+                }
+            });
+            observer.observe(document.body, { childList: true, subtree: true });
+        }
+    }, 300); // Wait longer to ensure all modifications are complete
+});
 
 
 // --- Footer Modifications ---
