@@ -173,7 +173,6 @@
   </style>
 </head>
 <body class="bg-[#F8FAFC] text-gray-900 overflow-x-hidden">
-  <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
   <div id="top" aria-hidden="true"></div>
 
   <!-- هدر اصلی: ناوبری، جستجو و وضعیت ورود کاربر -->
@@ -479,8 +478,23 @@
         setTimeout(resolve, delay);
       });
 
-      const showToast = (message) => {
-        if (!toastEl || !message) return;
+      const showToast = (message, options = {}) => {
+        if (!message) return;
+
+        // Prefer global toast system (script.js)
+        if (window.mahanToast && typeof window.mahanToast.show === 'function') {
+          window.mahanToast.show({
+            type: options.type || 'success',
+            title: message,
+            icon: options.icon,
+            duration: options.duration || (options.type === 'danger' ? 6000 : 2500),
+            action: options.action
+          });
+          return;
+        }
+
+        // Fallback (legacy toast)
+        if (!toastEl) return;
         toastEl.textContent = message;
         toastEl.classList.add('is-visible');
         if (toastTimeoutId) clearTimeout(toastTimeoutId);
@@ -517,6 +531,9 @@
 
       const handleRemove = async (article, successMessage = 'کالا از سبد حذف شد') => {
         if (!article) return;
+        const snapshotHtml = article.outerHTML;
+        const siblings = getItems();
+        const index = siblings.indexOf(article);
         toggleItemLoading(article, true);
         try {
           await simulateAjax();
@@ -526,7 +543,27 @@
         }
         recalcSummary();
         updateVisibility();
-        showToast(successMessage);
+
+        showToast('از سبد خرید حذف شد', {
+          type: 'danger',
+          icon: 'cancel',
+          duration: 7000,
+          action: {
+            label: 'بازگردانی',
+            onClick: () => {
+              try {
+                const temp = document.createElement('div');
+                temp.innerHTML = snapshotHtml;
+                const restored = temp.firstElementChild;
+                if (!restored) return;
+                const beforeEl = cartWrapper.children[index] || null;
+                cartWrapper.insertBefore(restored, beforeEl);
+                updateVisibility();
+                recalcSummary();
+              } catch { /* ignore */ }
+            }
+          }
+        });
       };
 
       cartWrapper.addEventListener('click', (event) => {

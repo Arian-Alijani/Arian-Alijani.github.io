@@ -5,7 +5,7 @@
           <div id="navbar-row" class="flex flex-wrap md:flex-nowrap items-center justify-between gap-4">
 
                <!-- منوی موبایل (چپ)، لوگو (وسط) -->
-               <div id="navbar-menu" class="flex items-center shrink-0">
+               <div id="navbar-menu" class="flex items-center shrink-0 md:hidden">
                    <!-- دکمه باز کردن منو -->
                    <button id="mobile-menu-toggle" type="button" class="md:hidden nav-icon-btn ripple p-2 rounded-lg text-gray-700" aria-label="باز کردن منو" aria-controls="mobile-menu" aria-expanded="false">
                        <span class="material-icon" aria-hidden="true">menu</span>
@@ -111,7 +111,7 @@
           </div>
           <!-- ردیف پایین: دسته‌بندی‌ها -->
           <div id="navbar-bottom" class="border-t border-gray-100/80 md:border-none hidden md:block transition-all duration-300">
-              <nav class="secondary-nav flex items-center gap-1 md:gap-5 overflow-x-auto no-scrollbar py-2 md:py-2 mask-image-fade" aria-label="دسته‌بندی‌ها">
+              <nav class="secondary-nav flex items-center justify-center w-full gap-1 md:gap-5 overflow-x-auto no-scrollbar py-2 md:py-2 mask-image-fade" aria-label="دسته‌بندی‌ها">
                   <a href="{{base}}/index.html" class="secondary-nav-link" data-nav-id="home" >
                       <span class="material-icon text-lg" aria-hidden="true">home</span>
                       خانه
@@ -646,3 +646,4 @@
           </div>
       </div>
   </div>
+</header>

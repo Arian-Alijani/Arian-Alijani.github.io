@@ -23,7 +23,215 @@ body {
 font-family: var(--font-family-base);
 background-color: var(--md-sys-color-surface);
 color: #1C1B1F;
-padding-top: var(--navbar-offset, 120px);
+padding-top: var(--navbar-offset, 88px);
+}
+
+body.no-navbar {
+  padding-top: 0 !important;
+}
+
+/* Footer (mobile) accordion: reduces height without losing content */
+.footer-accordion {
+  border: 1px solid rgba(229, 231, 235, 0.75);
+  border-radius: 16px;
+  background: rgba(255,255,255,0.75);
+  /* tighter on mobile to reduce footer height */
+  padding: 0.15rem 0.6rem;
+}
+
+.footer-accordion + .footer-accordion {
+  margin-top: 0.45rem;
+}
+
+.footer-accordion__summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.42rem 0;
+  font-weight: 800;
+  color: #111827;
+  /* equalize closed accordion box height in the 2-column row */
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-accordion__summary::-webkit-details-marker {
+  display: none;
+}
+
+.footer-accordion__content {
+  padding: 0 0 0.42rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.55rem;
+  font-size: 0.86rem;
+}
+
+/* Mobile footer: reduce gap between top row (2 columns) and the full-width contact row */
+.footer-mobile-toprow {
+  margin-top: 0.25rem !important;
+}
+
+.footer-mobile-contact {
+  margin-top: 0.25rem !important;
+}
+
+.footer-accordion__content a {
+  color: #4B5563;
+  transition: color 0.2s ease;
+}
+
+.footer-accordion__content a:hover {
+  color: #2563EB;
+}
+
+/* Footer mobile spacing tweaks */
+.footer-mobile-toprow { margin-top: 0.25rem !important; }
+.footer-mobile-contact { margin-top: 0.25rem !important; }
+
+
+/* Footer mobile contact block: column layout */
+.footer-contact-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding-top: 0.15rem;
+}
+
+.footer-contact-mobile .contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #4B5563;
+}
+
+.footer-contact-mobile .contact-item a {
+  color: inherit;
+}
+
+.footer-contact-mobile .footer-social {
+  display: flex;
+  gap: 0.45rem;
+  padding-top: 0.15rem;
+}
+
+/* Slightly tighter footer accordions on mobile to reduce overall height */
+@media (max-width: 1023px) {
+  .footer-accordion { border-radius: 12px; padding: 0.1rem 0.5rem; }
+  .footer-accordion__summary { padding: 0.45rem 0; }
+  .footer-accordion__content { padding-bottom: 0.45rem; }
+  .footer-accordion + .footer-accordion { margin-top: 0.4rem; }
+}
+
+@media (max-width: 480px) {
+  .footer-accordion__summary { font-size: 0.92rem; }
+  .footer-accordion__content { font-size: 0.82rem; }
+  .footer-contact-mobile .contact-item { gap: 0.45rem; }
+}
+
+/* Toast notifications (bottom-left) */
+.toast-stack {
+  position: fixed;
+  left: 14px;
+  bottom: 14px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: min(360px, calc(100vw - 28px));
+  max-width: min(420px, calc(100vw - 28px));
+  border-radius: 16px;
+  padding: 12px 12px;
+  background: rgba(255,255,255,0.96);
+  border: 1px solid rgba(229,231,235,0.8);
+  box-shadow: 0 12px 30px rgba(17,24,39,0.12);
+  transform: translateY(8px);
+  opacity: 0;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.toast.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.toast__body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.toast__title {
+  font-size: 0.92rem;
+  font-weight: 900;
+  color: #111827;
+  line-height: 1.35;
+}
+
+.toast__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.toast__btn {
+  border: 1px solid rgba(37,99,235,0.28);
+  background: rgba(239,246,255,0.85);
+  color: #1D4ED8;
+  font-weight: 800;
+  font-size: 0.8rem;
+  border-radius: 999px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.toast__btn--ghost {
+  border: 1px solid rgba(229,231,235,0.9);
+  background: #fff;
+  color: #374151;
+}
+
+.toast--success .toast__icon {
+  background: rgba(16,185,129,0.12);
+  color: #059669;
+}
+
+.toast--danger .toast__icon {
+  background: rgba(239,68,68,0.12);
+  color: #DC2626;
+}
+
+.toast--favorite .toast__icon {
+  background: rgba(244,63,94,0.12);
+  color: #E11D48;
+}
+
+
+@media (min-width: 768px) {
+  body {
+    padding-top: var(--navbar-offset, 120px);
+  }
 }
 
 /* Simple fade-in helper for standalone pages */
@@ -91,23 +299,6 @@ body[data-auth="authenticated"] .guest-only {
 }
 
 /* Accessibility helpers */
-.skip-link {
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translateY(-120%);
-  background: #1E3A8A;
-  color: #fff;
-  padding: 0.6rem 1rem;
-  border-radius: 0 0 0.75rem 0.75rem;
-  z-index: 1000;
-  transition: transform 0.2s ease;
-}
-
-.skip-link:focus {
-  transform: translateY(0);
-}
-
 .sr-only {
   position: absolute !important;
   width: 1px !important;
@@ -1304,8 +1495,8 @@ html.layout-ready div[data-include="header"] {
 @media (max-width: 767px) {
   /* Better footer container spacing */
   #footer {
-    padding-top: 3rem !important;
-    padding-bottom: 2rem !important;
+    padding-top: 1.6rem !important;
+    padding-bottom: 1.25rem !important;
   }
 
   .footer-links {
@@ -1323,17 +1514,17 @@ html.layout-ready div[data-include="header"] {
   
   /* Improved footer grid spacing */
   .footer-grid {
-    margin-bottom: 2rem !important;
+    margin-bottom: 1.2rem !important;
   }
   
   /* Better bottom footer mobile layout */
   #footer .border-t {
     border-color: rgba(37, 99, 235, 0.15) !important;
-    padding-top: 1.5rem !important;
+    padding-top: 0.9rem !important;
   }
   
   #footer .flex.flex-col-reverse {
-    gap: 1rem !important;
+    gap: 0.6rem !important;
   }
   
   #footer .text-gray-500 {
@@ -2545,9 +2736,20 @@ box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
 @media (max-width: 767px) {
+    .case-promo-min--banner {
+        /* On mobile the overlay was too opaque; let the banner image read clearly. */
+        background-image:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.12)),
+            var(--case-promo-img, none);
+        background-position: center;
+    }
+
     .case-promo-copy--glass {
         max-width: none;
         padding: 12px;
+        background: rgba(255, 255, 255, 0.78);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
     }
 }
 
@@ -3841,9 +4043,10 @@ body.has-mobile-footer main {
 
 .mobile-submenu {
   margin-top: 4px;
-  margin-right: 10px;
-  padding-right: 10px;
-  border-right: 2px solid rgba(37, 99, 235, 0.14);
+  /* Remove the boxed look on mobile submenu items */
+  margin-right: 0;
+  padding-right: 0;
+  border-right: 0;
   background: transparent;
 }
 
@@ -3898,6 +4101,7 @@ body.has-mobile-footer main {
     background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+    padding: 12px 14px;
   }
 }
 

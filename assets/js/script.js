@@ -34,6 +34,94 @@ function initAuthButtons() {
 
 initAuthButtons();
 
+// --- Toast Notifications (bottom-left) ---
+// Usage: window.mahanToast.show({ type: 'success|danger|favorite', title: '...', duration: 2500,
+//                                 action: { label: 'بازگردانی', onClick: fn } })
+const mahanToast = (() => {
+    let stack;
+
+    function ensureStack() {
+        if (stack) return stack;
+        stack = document.createElement('div');
+        stack.className = 'toast-stack';
+        stack.setAttribute('aria-live', 'polite');
+        stack.setAttribute('aria-relevant', 'additions');
+        document.body.appendChild(stack);
+        return stack;
+    }
+
+    function show({ type = 'success', title = '', icon = '', duration = 2500, action } = {}) {
+        const root = ensureStack();
+        const t = document.createElement('div');
+        t.className = `toast toast--${type}`;
+
+        const iconName = icon || (type === 'danger' ? 'cancel' : (type === 'favorite' ? 'favorite' : 'check_circle'));
+        t.innerHTML = `
+          <div class="toast__icon" aria-hidden="true"><span class="material-icon">${iconName}</span></div>
+          <div class="toast__body">
+            <div class="toast__title">${title}</div>
+            <div class="toast__actions"></div>
+          </div>
+        `.trim();
+
+        const actions = t.querySelector('.toast__actions');
+        let closed = false;
+        const close = () => {
+            if (closed) return;
+            closed = true;
+            t.classList.remove('is-visible');
+            setTimeout(() => t.remove(), 180);
+        };
+
+        if (action && typeof action.onClick === 'function') {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'toast__btn';
+            btn.textContent = action.label || 'بازگردانی';
+            btn.addEventListener('click', () => {
+                try { action.onClick(); } finally { close(); }
+            });
+            actions.appendChild(btn);
+        }
+
+        const dismiss = document.createElement('button');
+        dismiss.type = 'button';
+        dismiss.className = 'toast__btn toast__btn--ghost';
+        dismiss.textContent = 'بستن';
+        dismiss.addEventListener('click', close);
+        actions.appendChild(dismiss);
+
+        root.appendChild(t);
+        requestAnimationFrame(() => t.classList.add('is-visible'));
+
+        const ttl = Math.max(1200, Number(duration) || 2500);
+        const timer = setTimeout(close, ttl);
+        t.addEventListener('mouseenter', () => clearTimeout(timer), { once: true });
+        return { close };
+    }
+
+    function queue(payload) {
+        try {
+            sessionStorage.setItem('mahan_toast_queue', JSON.stringify(payload));
+        } catch { /* ignore */ }
+    }
+
+    function drainQueue() {
+        try {
+            const raw = sessionStorage.getItem('mahan_toast_queue');
+            if (!raw) return;
+            sessionStorage.removeItem('mahan_toast_queue');
+            const payload = JSON.parse(raw);
+            if (payload && typeof payload === 'object') show(payload);
+        } catch { /* ignore */ }
+    }
+
+    return { show, queue, drainQueue };
+})();
+
+window.mahanToast = mahanToast;
+mahanToast.drainQueue();
+
 
 // --- Mobile Menu Modifications ---
 
@@ -548,6 +636,32 @@ document.querySelectorAll('.product-card').forEach((card) => {
     }
 });
 
+
+// --- Product Card Navigation: click anywhere on a product card to open its product detail page ---
+function initProductCardNavigation() {
+    document.addEventListener('click', (e) => {
+        const card = e.target.closest('.product-card');
+        if (!card) return;
+
+        // Ignore clicks on interactive elements inside the card (buttons, links, form controls, etc.)
+        if (e.target.closest('button, a, input, textarea, select, label, summary, details')) return;
+
+        // Ignore click events right after drag-scroll gesture
+        const row = card.closest('.products-row');
+        if (row && row.dataset && row.dataset.justDragged === '1') return;
+
+        const pid = (card.dataset.pid || '').trim();
+        if (!pid) return;
+
+        const base = (window.__mahanBase || '.').replace(/\/$/, '');
+        const url = `${base}/pages/product-detail.html?pid=${encodeURIComponent(pid)}`;
+
+        window.location.href = url;
+    }, { passive: true });
+}
+
+initProductCardNavigation();
+
 let pageFullyLoaded = false;
 window.addEventListener('load', () => { pageFullyLoaded = true; });
 
@@ -810,12 +924,39 @@ document.addEventListener('click', (e) => {
             if (iconEl) iconEl.textContent = 'remove_shopping_cart';
             renderCartBadge();
             saveCartToStorage();
+
+            // Toast: added to cart
+            window.mahanToast?.show({
+                type: 'success',
+                title: 'به سبد خرید اضافه شد',
+                icon: 'check_circle',
+                duration: 2500
+            });
         } else {
+            // Toast: removed from cart with undo
+            const snapshot = cartItems.get(pid);
             cartItems.delete(pid);
             btn.classList.remove('in-cart');
             if (iconEl) iconEl.textContent = 'add';
             renderCartBadge();
             saveCartToStorage();
+
+            window.mahanToast?.show({
+                type: 'danger',
+                title: 'از سبد خرید حذف شد',
+                icon: 'cancel',
+                duration: 6000,
+                action: {
+                    label: 'بازگردانی',
+                    onClick: () => {
+                        cartItems.set(pid, snapshot || { quantity: 1 });
+                        btn.classList.add('in-cart');
+                        if (iconEl) iconEl.textContent = 'remove_shopping_cart';
+                        renderCartBadge();
+                        saveCartToStorage();
+                    }
+                }
+            });
         }
         return;
     }
@@ -832,6 +973,24 @@ document.addEventListener('click', (e) => {
             saveFavoritesToStorage();
         }
         setFavoriteButtonState(btn, nextFav);
+
+        // Toast: favorites
+        window.mahanToast?.show({
+            type: nextFav ? 'favorite' : 'danger',
+            title: nextFav ? 'به محبوب‌ها اضافه شد' : 'از محبوب‌ها حذف شد',
+            icon: 'favorite',
+            duration: nextFav ? 2500 : 6000,
+            action: !nextFav ? {
+                label: 'بازگردانی',
+                onClick: () => {
+                    if (pid) {
+                        favoritesSet.add(pid);
+                        saveFavoritesToStorage();
+                    }
+                    setFavoriteButtonState(btn, true);
+                }
+            } : undefined
+        });
         return;
     }
 });

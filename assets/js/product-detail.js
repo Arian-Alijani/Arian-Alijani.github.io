@@ -112,6 +112,23 @@
       const next = !current;
       writeFav(next);
       applyState(next);
+
+      // Toast
+      if (window.mahanToast && typeof window.mahanToast.show === 'function') {
+        window.mahanToast.show({
+          type: next ? 'favorite' : 'danger',
+          title: next ? 'به محبوب‌ها اضافه شد' : 'از محبوب‌ها حذف شد',
+          icon: 'favorite',
+          duration: next ? 2500 : 6000,
+          action: !next ? {
+            label: 'بازگردانی',
+            onClick: () => {
+              writeFav(true);
+              applyState(true);
+            }
+          } : undefined
+        });
+      }
     });
   }
 
@@ -212,6 +229,15 @@
       const qty = clampQty(qtyInput.value);
       addToCart(pid, qty);
       setBtnState();
+
+      if (window.mahanToast && typeof window.mahanToast.show === 'function') {
+        window.mahanToast.show({
+          type: 'success',
+          title: 'به سبد خرید اضافه شد',
+          icon: 'check_circle',
+          duration: 2500
+        });
+      }
     });
   }
 
