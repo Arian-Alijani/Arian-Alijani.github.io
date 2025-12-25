@@ -37,22 +37,8 @@ initAuthButtons();
 // --- Toast Notifications (bottom-left) ---
 // Usage: window.mahanToast.show({ type: 'success|danger|favorite', title: '...', duration: 2500,
 //                                 action: { label: 'بازگردانی', onClick: fn } })
-//
-// Security hardening:
-// - We do NOT use `innerHTML` with dynamic strings (prevents XSS if any message ever becomes user-controlled).
-// UX hardening:
-// - Pause on hover/focus, resume on leave/blur.
 const mahanToast = (() => {
     let stack;
-
-    const DEFAULT_TTL = 2500;
-    const MIN_TTL = 1200;
-
-    const iconForType = (type) => {
-        if (type === 'danger') return 'cancel';
-        if (type === 'favorite') return 'favorite';
-        return 'check_circle';
-    };
 
     function ensureStack() {
         if (stack) return stack;
@@ -64,91 +50,59 @@ const mahanToast = (() => {
         return stack;
     }
 
-    function makeIcon(name) {
-        const wrap = document.createElement('div');
-        wrap.className = 'toast__icon';
-        wrap.setAttribute('aria-hidden', 'true');
-
-        const span = document.createElement('span');
-        span.className = 'material-icon';
-        span.textContent = name;
-
-        wrap.appendChild(span);
-        return wrap;
-    }
-
-    function makeButton({ label, onClick, ghost = false } = {}) {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = ghost ? 'toast__btn toast__btn--ghost' : 'toast__btn';
-        btn.textContent = label || 'بازگردانی';
-        if (typeof onClick === 'function') {
-            btn.addEventListener('click', onClick);
-        }
-        return btn;
-    }
-
-    function show({ type = 'success', title = '', icon = '', duration = DEFAULT_TTL, action } = {}) {
+    function show({ type = 'success', title = '', icon = '', duration = 2500, action, showCloseButton = true } = {}) {
         const root = ensureStack();
-
         const t = document.createElement('div');
         t.className = `toast toast--${type}`;
+        if (action && typeof action.onClick === 'function') {
+            t.classList.add('toast--has-action');
+        }
 
-        const iconName = icon || iconForType(type);
-        t.appendChild(makeIcon(iconName));
+        const iconName = icon || (type === 'danger' ? 'cancel' : (type === 'favorite' ? 'favorite' : 'check_circle'));
+        t.innerHTML = `
+          <div class="toast__icon" aria-hidden="true"><span class="material-icon">${iconName}</span></div>
+          <div class="toast__body">
+            <div class="toast__title">${title}</div>
+            <div class="toast__actions"></div>
+          </div>
+        `.trim();
 
-        const body = document.createElement('div');
-        body.className = 'toast__body toast__body--singleline';
+        const actions = t.querySelector('.toast__actions');
+        let closed = false;
+        const close = () => {
+            if (closed) return;
+            closed = true;
+            t.classList.remove('is-visible');
+            setTimeout(() => t.remove(), 180);
+        };
 
-        const titleEl = document.createElement('div');
-        titleEl.className = 'toast__title';
-        titleEl.textContent = String(title ?? '');
-        body.appendChild(titleEl);
+        if (action && typeof action.onClick === 'function') {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'toast__btn toast__btn--revert';
+            btn.textContent = action.label || 'بازگردانی';
+            btn.addEventListener('click', () => {
+                try { action.onClick(); } finally { close(); }
+            });
+            actions.appendChild(btn);
+        }
 
-// Inline action (optional) – no dismiss/close button per new spec
-let closed = false;
-const close = () => {
-    if (closed) return;
-    closed = true;
-    t.classList.remove('is-visible');
-    window.setTimeout(() => t.remove(), 180);
-};
-
-if (action && typeof action.onClick === 'function') {
-    const actionBtn = makeButton({
-        label: action.label || 'بازگردانی',
-        onClick: () => {
-            try { action.onClick(); } finally { close(); }
-        },
-        ghost: false,
-    });
-    actionBtn.classList.add('toast__btn--inline');
-    body.appendChild(actionBtn);
-}
-t.appendChild(body);
+        // Only add the dismiss/close button if showCloseButton is true
+        if (showCloseButton) {
+            const dismiss = document.createElement('button');
+            dismiss.type = 'button';
+            dismiss.className = 'toast__btn toast__btn--ghost';
+            dismiss.textContent = 'بستن';
+            dismiss.addEventListener('click', close);
+            actions.appendChild(dismiss);
+        }
 
         root.appendChild(t);
         requestAnimationFrame(() => t.classList.add('is-visible'));
 
-        const ttl = Math.max(MIN_TTL, Number(duration) || DEFAULT_TTL);
-
-        let timer = window.setTimeout(close, ttl);
-        const pause = () => {
-            if (!timer) return;
-            window.clearTimeout(timer);
-            timer = null;
-        };
-        const resume = () => {
-            if (timer || closed) return;
-            timer = window.setTimeout(close, ttl);
-        };
-
-        // Pause on hover/focus to avoid dismissing while user is interacting.
-        t.addEventListener('pointerenter', pause);
-        t.addEventListener('pointerleave', resume);
-        t.addEventListener('focusin', pause);
-        t.addEventListener('focusout', resume);
-
+        const ttl = Math.max(1200, Number(duration) || 2500);
+        const timer = setTimeout(close, ttl);
+        t.addEventListener('mouseenter', () => clearTimeout(timer), { once: true });
         return { close };
     }
 
@@ -982,7 +936,8 @@ document.addEventListener('click', (e) => {
                 type: 'success',
                 title: 'به سبد خرید اضافه شد',
                 icon: 'check_circle',
-                duration: 2500
+                duration: 2500,
+                showCloseButton: false
             });
         } else {
             // Toast: removed from cart with undo
@@ -1007,7 +962,8 @@ document.addEventListener('click', (e) => {
                         renderCartBadge();
                         saveCartToStorage();
                     }
-                }
+                },
+                showCloseButton: false
             });
         }
         return;
@@ -1041,7 +997,8 @@ document.addEventListener('click', (e) => {
                     }
                     setFavoriteButtonState(btn, true);
                 }
-            } : undefined
+            } : undefined,
+            showCloseButton: false
         });
         return;
     }
@@ -1297,11 +1254,8 @@ const bannerWrapper = document.getElementById('banner-wrapper');
 const bannerContainer = bannerWrapper?.closest('.banner-container') || null;
 const bannerSlides = document.querySelectorAll('.banner-slide');
 const bannerDots = document.querySelectorAll('.banner-dot');
-
 let bannerIndex = 0;
-let bannerInterval = null;
-let bannerIsVisible = true;
-let bannerIsHoverPaused = false;
+let bannerInterval;
 
 function updateBanner(index, { animate = true } = {}) {
     if (!bannerWrapper) return;
@@ -1318,41 +1272,24 @@ function updateBanner(index, { animate = true } = {}) {
         dot.setAttribute('aria-current', i === bannerIndex ? 'true' : 'false');
     });
 
-    if (!animate) requestAnimationFrame(() => bannerWrapper.classList.remove('no-anim'));
-}
-
-function canRunBannerTimer() {
-    if (!bannerWrapper || bannerSlides.length <= 1) return false;
-    if (!bannerIsVisible) return false;
-    if (bannerIsHoverPaused) return false;
-    if (document.hidden) return false;
-    return true;
+    if (!animate) {
+        requestAnimationFrame(() => bannerWrapper.classList.remove('no-anim'));
+    }
 }
 
 function startBannerTimer() {
-    stopBannerTimer();
-    if (!canRunBannerTimer()) return;
-    bannerInterval = window.setInterval(() => updateBanner(bannerIndex + 1), 10000);
+    if (bannerInterval) clearInterval(bannerInterval);
+    bannerInterval = setInterval(() => updateBanner(bannerIndex + 1), 10000);
 }
 
 function stopBannerTimer() {
-    if (bannerInterval) window.clearInterval(bannerInterval);
-    bannerInterval = null;
-}
-
-function pauseBanner() {
-    bannerIsHoverPaused = true;
-    stopBannerTimer();
-}
-function resumeBanner() {
-    bannerIsHoverPaused = false;
-    startBannerTimer();
+    if (bannerInterval) clearInterval(bannerInterval);
 }
 
 if (bannerWrapper && bannerSlides.length > 0) {
     updateBanner(0, { animate: false });
+    requestAnimationFrame(() => startBannerTimer());
 
-    // Dot navigation
     bannerDots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             stopBannerTimer();
@@ -1361,7 +1298,6 @@ if (bannerWrapper && bannerSlides.length > 0) {
         });
     });
 
-    // Touch swipe
     if (bannerContainer) {
         let startX = 0;
         let startY = 0;
@@ -1372,51 +1308,26 @@ if (bannerWrapper && bannerSlides.length > 0) {
             isTouching = true;
             startX = e.touches[0].clientX;
             startY = e.touches[0].clientY;
-            pauseBanner();
+            stopBannerTimer();
         }, { passive: true });
 
         bannerContainer.addEventListener('touchend', (e) => {
             if (!isTouching) return;
             isTouching = false;
-
             const endTouch = e.changedTouches && e.changedTouches[0];
-            if (!endTouch) { resumeBanner(); return; }
-
+            if (!endTouch) { startBannerTimer(); return; }
             const dx = endTouch.clientX - startX;
             const dy = endTouch.clientY - startY;
-            if (Math.abs(dy) > Math.abs(dx)) { resumeBanner(); return; }
-
+            if (Math.abs(dy) > Math.abs(dx)) { startBannerTimer(); return; }
             const threshold = 45;
             if (dx <= -threshold) updateBanner(bannerIndex + 1);
             else if (dx >= threshold) updateBanner(bannerIndex - 1);
-
-            resumeBanner();
+            startBannerTimer();
         }, { passive: true });
 
-        // Desktop hover pause
-        bannerContainer.addEventListener('mouseenter', pauseBanner);
-        bannerContainer.addEventListener('mouseleave', resumeBanner);
-
-        // Pause when off-screen (mobile + desktop) to save CPU/battery.
-        if ('IntersectionObserver' in window) {
-            const io = new IntersectionObserver((entries) => {
-                const entry = entries && entries[0];
-                bannerIsVisible = !!(entry && entry.isIntersecting && entry.intersectionRatio >= 0.15);
-                if (bannerIsVisible) startBannerTimer();
-                else stopBannerTimer();
-            }, { threshold: [0, 0.15, 0.25, 0.5, 1] });
-
-            io.observe(bannerContainer);
-        }
+        bannerContainer.addEventListener('mouseenter', stopBannerTimer);
+        bannerContainer.addEventListener('mouseleave', startBannerTimer);
     }
-
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden) stopBannerTimer();
-        else startBannerTimer();
-    });
-
-    // Initial start (after first paint)
-    requestAnimationFrame(() => startBannerTimer());
 }
 
 document.querySelectorAll('.search-shell').forEach((shell) => {
@@ -1571,63 +1482,37 @@ function stepSize(row) {
 
 function setupAutoScroller(row, { mode = 'step', intervalMs = 5000, driftPxPerFrame = 0.55, pauseOnDrag = true, manualPauseMs = 20000 } = {}) {
     if (!row) return;
-
     let timer = null;
     let raf = null;
     let dir = 1;
     let pauseUntil = 0;
-    let isVisible = true;
-
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-    function pauseFor(ms = manualPauseMs) {
-        pauseUntil = Math.max(pauseUntil, Date.now() + ms);
-    }
-
-    function maxScroll() {
-        return Math.max(0, row.scrollWidth - row.clientWidth);
-    }
-
+    function pauseFor(ms = manualPauseMs) { pauseUntil = Math.max(pauseUntil, Date.now() + ms); }
+    function maxScroll() { return Math.max(0, row.scrollWidth - row.clientWidth); }
     function isPausedByInteraction() {
         if (Date.now() < pauseUntil) return true;
         if (pauseOnDrag && (row.classList.contains('is-dragging') || row.classList.contains('is-momentum'))) return true;
         return false;
     }
-
     function nudgeIfStuck(prevPos) {
         const cur = getScrollPos(row);
         if (Math.abs(cur - prevPos) < 0.5) { dir *= -1; return false; }
         return true;
     }
-
-    function canRun() {
-        if (row.dataset.userPaused === '1') return false;
-        if (reducedMotion.matches) return false;
-        if (document.hidden) return false;
-        if (!isVisible) return false;
-        return true;
-    }
-
     function tickStep() {
-        if (!canRun() || isPausedByInteraction()) return;
+        if (isPausedByInteraction()) return;
         const max = maxScroll();
         if (max <= 0) return;
-
         const prev = getScrollPos(row);
         const step = stepSize(row);
-
         if (prev >= max - 1 && dir > 0) dir = -1;
         if (prev <= 1 && dir < 0) dir = 1;
-
         let next = prev + dir * step;
         if (next > max || next < 0) { dir *= -1; next = prev + dir * step; }
         next = Math.max(0, Math.min(max, next));
-
         scrollToPos(row, next, 'smooth');
-
-        // If scroll snap prevents movement, flip direction once.
-        window.setTimeout(() => {
-            if (!canRun() || isPausedByInteraction()) return;
+        setTimeout(() => {
+            if (isPausedByInteraction()) return;
             const cur = getScrollPos(row);
             if (Math.abs(cur - prev) < 0.5) {
                 dir *= -1;
@@ -1636,114 +1521,62 @@ function setupAutoScroller(row, { mode = 'step', intervalMs = 5000, driftPxPerFr
             }
         }, 420);
     }
-
     function loopDrift() {
         if (!raf) return;
-
-        if (!canRun() || isPausedByInteraction()) {
-            raf = requestAnimationFrame(loopDrift);
-            return;
-        }
-
+        if (isPausedByInteraction()) { raf = requestAnimationFrame(loopDrift); return; }
         const max = maxScroll();
-        if (max <= 0) {
-            raf = requestAnimationFrame(loopDrift);
-            return;
-        }
-
+        if (max <= 0) { raf = requestAnimationFrame(loopDrift); return; }
         const prev = getScrollPos(row);
-
         if (prev >= max - 1 && dir > 0) dir = -1;
         if (prev <= 1 && dir < 0) dir = 1;
-
         let next = prev + dir * driftPxPerFrame;
-        if (next >= max - 1) { dir = -1; next = max; }
-        else if (next <= 1) { dir = 1; next = 0; }
-
+        if (next >= max - 1) { dir = -1; next = max; } else if (next <= 1) { dir = 1; next = 0; }
         setScrollPos(row, next);
-
-        if (!nudgeIfStuck(prev)) {
-            setScrollPos(row, Math.max(0, Math.min(max, prev + dir * 10)));
-        }
-
+        if (!nudgeIfStuck(prev)) setScrollPos(row, Math.max(0, Math.min(max, prev + dir * 10)));
         raf = requestAnimationFrame(loopDrift);
     }
-
     function start() {
         stop();
+        if (row.dataset.userPaused === '1') return;
         row.style.scrollSnapType = 'x proximity';
-        if (!canRun()) return;
-
-        if (mode === 'step') timer = window.setInterval(tickStep, intervalMs);
+        if (reducedMotion.matches) return;
+        if (mode === 'step') timer = setInterval(tickStep, intervalMs);
         else raf = requestAnimationFrame(loopDrift);
     }
-
     function stop() {
-        if (timer) window.clearInterval(timer);
-        timer = null;
-
-        if (raf) cancelAnimationFrame(raf);
-        raf = null;
+        if (timer) clearInterval(timer); timer = null;
+        if (raf) cancelAnimationFrame(raf); raf = null;
     }
-
     function scheduleResume() {
-        window.setTimeout(() => {
+        setTimeout(() => {
             if (Date.now() >= pauseUntil) {
                 delete row.dataset.userPaused;
                 start();
             }
         }, manualPauseMs);
     }
-
     const interact = () => {
         row.style.scrollSnapType = 'none';
         row.dataset.userPaused = '1';
         stop();
-        pauseFor();
     };
-
-    // User interactions that pause autoplay
     row.addEventListener('pointerdown', interact);
     row.addEventListener('pointerup', scheduleResume);
     row.addEventListener('pointercancel', scheduleResume);
-    row.addEventListener('touchstart', interact, { passive: true });
-    row.addEventListener('touchend', scheduleResume, { passive: true });
-    row.addEventListener('wheel', interact, { passive: true });
+    row.addEventListener('touchstart', interact);
+    row.addEventListener('touchend', scheduleResume);
+    row.addEventListener('wheel', interact);
     row.addEventListener('mouseenter', interact);
     row.addEventListener('focusin', interact);
     row.addEventListener('mouseleave', scheduleResume);
     row.addEventListener('focusout', scheduleResume);
-
-    // Pause when tab is hidden (saves CPU)
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden) stop();
-        else start();
-    });
-
-    // Pause when off-screen (saves CPU/battery on long product lists)
-    if ('IntersectionObserver' in window) {
-        const io = new IntersectionObserver((entries) => {
-            const entry = entries && entries[0];
-            isVisible = !!(entry && entry.isIntersecting && entry.intersectionRatio >= 0.1);
-            if (isVisible) start();
-            else stop();
-        }, { threshold: [0, 0.1, 0.25] });
-
-        io.observe(row);
-    }
-
-    // Keep RTL scroll offsets stable on resize/orientation
-    window.addEventListener('resize', () => {
-        setScrollPos(row, getScrollPos(row));
-        start();
-    }, { passive: true });
-
+    document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); else start(); });
+    window.addEventListener('resize', () => { setScrollPos(row, getScrollPos(row)); }, { passive: true });
     if (typeof reducedMotion.addEventListener === 'function') {
         reducedMotion.addEventListener('change', () => { if (reducedMotion.matches) stop(); else start(); });
     } else if (typeof reducedMotion.addListener === 'function') {
         reducedMotion.addListener(() => { if (reducedMotion.matches) stop(); else start(); });
     }
-
     start();
 }
 

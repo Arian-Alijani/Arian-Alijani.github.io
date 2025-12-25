@@ -126,7 +126,8 @@
               writeFav(true);
               applyState(true);
             }
-          } : undefined
+          } : undefined,
+          showCloseButton: false
         });
       }
     });
@@ -235,7 +236,8 @@
           type: 'success',
           title: 'به سبد خرید اضافه شد',
           icon: 'check_circle',
-          duration: 2500
+          duration: 2500,
+          showCloseButton: false
         });
       }
     });

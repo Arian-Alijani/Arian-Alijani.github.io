@@ -4,17 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#F8FAFC" />
-
-
-<!-- Security & performance: lightweight meta/policies (works on static hosting) -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' https://cdn.tailwindcss.com 'unsafe-eval'; connect-src 'self'; frame-src https:; upgrade-insecure-requests">
-<meta name="referrer" content="strict-origin-when-cross-origin" />
-<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=()" />
-
-<link rel="dns-prefetch" href="//cdn.tailwindcss.com">
-<link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
-<link rel="dns-prefetch" href="//placehold.co">
-
 <title>پروفایل کاربری | ماهان شاپ</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
@@ -489,7 +478,7 @@
       // Generate products HTML
       const productsHtml = order.products.map(product => 
         `<div class="flex flex-col items-center gap-1 min-w-fit">
-          <img width="64" height="64" src="${product.image}" class="w-16 h-16 rounded-lg border border-gray-100 object-cover hover:scale-105 transition-transform" loading="lazy" decoding="async" alt="${product.name}">
+          <img src="${product.image}" class="w-16 h-16 rounded-lg border border-gray-100 object-cover hover:scale-105 transition-transform" alt="${product.name}">
           <span class="text-xs text-gray-600 text-center max-w-[80px] truncate">${product.name}</span>
         </div>`
       ).join('');
