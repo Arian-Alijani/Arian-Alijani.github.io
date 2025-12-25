@@ -7,7 +7,18 @@
   <meta name="description" content="جزئیات محصول در ماهان شاپ." />
   <meta name="theme-color" content="#F8FAFC" />
 
-  <script src="https://cdn.tailwindcss.com"></script>
+  
+
+<!-- Security & performance: lightweight meta/policies (works on static hosting) -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' https://cdn.tailwindcss.com 'unsafe-eval'; connect-src 'self'; frame-src https:; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=()" />
+
+<link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+<link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+<link rel="dns-prefetch" href="//placehold.co">
+
+<script src="https://cdn.tailwindcss.com"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,6 +59,9 @@
           <div class="pd-media">
             <img
               id="main-product-image"
+              width="800"
+              height="800"
+              decoding="async"
               src="../assets/img/product-placeholder.svg"
               alt="تصویر محصول"
               class="pd-main-image"
@@ -75,16 +89,16 @@
 
           <div class="pd-thumbs" aria-label="تصاویر محصول">
             <button class="pd-thumb is-active" type="button" data-full-src="../assets/img/product-placeholder.svg" aria-label="تصویر ۱">
-              <img src="../assets/img/product-placeholder.svg" alt="thumbnail 1" loading="lazy" />
+              <img width="72" height="72" decoding="async" src="../assets/img/product-placeholder.svg" alt="thumbnail 1" loading="lazy" />
             </button>
             <button class="pd-thumb" type="button" data-full-src="../assets/img/product-placeholder.svg" aria-label="تصویر ۲">
-              <img src="../assets/img/product-placeholder.svg" alt="thumbnail 2" loading="lazy" />
+              <img width="72" height="72" decoding="async" src="../assets/img/product-placeholder.svg" alt="thumbnail 2" loading="lazy" />
             </button>
             <button class="pd-thumb" type="button" data-full-src="../assets/img/product-placeholder.svg" aria-label="تصویر ۳">
-              <img src="../assets/img/product-placeholder.svg" alt="thumbnail 3" loading="lazy" />
+              <img width="72" height="72" decoding="async" src="../assets/img/product-placeholder.svg" alt="thumbnail 3" loading="lazy" />
             </button>
             <button class="pd-thumb" type="button" data-full-src="../assets/img/product-placeholder.svg" aria-label="تصویر ۴">
-              <img src="../assets/img/product-placeholder.svg" alt="thumbnail 4" loading="lazy" />
+              <img width="72" height="72" decoding="async" src="../assets/img/product-placeholder.svg" alt="thumbnail 4" loading="lazy" />
             </button>
           </div>
         </div>

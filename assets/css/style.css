@@ -146,15 +146,16 @@ body.no-navbar {
 .toast {
   pointer-events: auto;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
+  direction: rtl;
   min-width: min(360px, calc(100vw - 28px));
   max-width: min(420px, calc(100vw - 28px));
   border-radius: 16px;
   padding: 12px 12px;
-  background: rgba(255,255,255,0.96);
-  border: 1px solid rgba(229,231,235,0.8);
-  box-shadow: 0 12px 30px rgba(17,24,39,0.12);
+  background: rgba(31,41,55,0.96);
+  border: 1px solid rgba(55,65,81,0.9);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.28);
   transform: translateY(8px);
   opacity: 0;
   transition: opacity 0.18s ease, transform 0.18s ease;
@@ -165,44 +166,54 @@ body.no-navbar {
   transform: translateY(0);
 }
 
-.toast__icon {
-  width: 36px;
+.toast__icon {  width: 36px;
   height: 36px;
   border-radius: 12px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
+  background: rgba(255,255,255,0.08);
+  color: #E5E7EB;
 }
+
 
 .toast__body {
   flex: 1 1 auto;
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+  min-width: 0;
 }
 
 .toast__title {
   font-size: 0.92rem;
   font-weight: 900;
-  color: #111827;
-  line-height: 1.35;
+  color: #F9FAFB;
+  line-height: 1.25;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  flex: 1 1 auto;
 }
 
 .toast__actions {
-  display: flex;
-  gap: 8px;
-  margin-top: 6px;
+  display: none;
 }
 
+
 .toast__btn {
-  border: 1px solid rgba(37,99,235,0.28);
-  background: rgba(239,246,255,0.85);
-  color: #1D4ED8;
+  border: 1px solid rgba(147,197,253,0.28);
+  background: rgba(255,255,255,0.08);
+  color: #E5E7EB;
   font-weight: 800;
   font-size: 0.8rem;
   border-radius: 999px;
-  padding: 6px 10px;
+  padding: 5px 10px;
   cursor: pointer;
 }
 
@@ -211,20 +222,25 @@ body.no-navbar {
   background: #fff;
   color: #374151;
 }
+.toast__btn--inline {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
 
 .toast--success .toast__icon {
-  background: rgba(16,185,129,0.12);
-  color: #059669;
+  background: rgba(16,185,129,0.14);
+  color: #34D399;
 }
 
 .toast--danger .toast__icon {
-  background: rgba(239,68,68,0.12);
-  color: #DC2626;
+  background: rgba(239,68,68,0.14);
+  color: #F87171;
 }
 
 .toast--favorite .toast__icon {
-  background: rgba(244,63,94,0.12);
-  color: #E11D48;
+  background: rgba(244,63,94,0.14);
+  color: #FB7185;
 }
 
 
@@ -4106,3 +4122,50 @@ body.has-mobile-footer main {
 }
 
 
+
+
+/* =========================
+   Auth Pages (Login/Register/OTP)
+   Minimal, centered, high-clarity styling — without changing layout
+========================= */
+body.auth-page{
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(37,99,235,.10), transparent 60%),
+    radial-gradient(900px 500px at 10% 110%, rgba(30,58,138,.08), transparent 60%),
+    linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
+}
+
+body.auth-page .auth-main{
+  position: relative;
+}
+
+body.auth-page .auth-main::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(15,23,42,.05) 1px, transparent 1px);
+  background-size: 18px 18px;
+  opacity: .20;
+}
+
+body.auth-page .auth-card{
+  border: 1px solid rgba(148,163,184,.35);
+  box-shadow: 0 22px 70px rgba(15,23,42,.12);
+}
+
+body.auth-page .auth-card > div{
+  position: relative; /* ensure content above pattern */
+  z-index: 1;
+}
+
+/* Calm focus for inputs (keeps Tailwind rings, adds subtle depth) */
+body.auth-page input{
+  background-color: rgba(248,250,252,.95);
+}
+
+/* Reduce motion-friendly */
+@media (prefers-reduced-motion: reduce){
+  body.auth-page .auth-card{ transition: none !important; }
+  body.auth-page .auth-main::before{ opacity: .14; }
+}

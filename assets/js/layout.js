@@ -16,6 +16,13 @@
 
   const normalizeTemplate = (html, base) => (html || '').replaceAll('{{base}}', base);
 
+  const injectHtml = (el, html) => {
+    const tpl = document.createElement('template');
+    tpl.innerHTML = html;
+    el.replaceChildren(tpl.content.cloneNode(true));
+  };
+
+
   const fetchPartial = async (base, partName) => {
     const url = `${base}/partials/${partName}.html`;
     // Enable browser caching to reduce header/footer load latency on mobile.
@@ -30,6 +37,7 @@
   };
 
   const resolveBase = async () => {
+    if (typeof window.__mahanBase === 'string' && window.__mahanBase) return window.__mahanBase;
     // Probe using the first required partial to avoid brittle path heuristics.
     const firstPart = includeEls[0].getAttribute('data-include') || 'header';
 
@@ -58,9 +66,9 @@
 
       try {
         const html = await fetchPartial(base, partName);
-        el.innerHTML = html;
+        injectHtml(el, html);
       } catch (err) {
-        el.innerHTML = '';
+        el.replaceChildren();
         // eslint-disable-next-line no-console
         console.error(`[layout] Failed to inject ${partName}:`, err);
       }

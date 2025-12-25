@@ -1,66 +1,71 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+
+<html dir="rtl" lang="fa">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#F8FAFC" />
-  <title>ورود | ماهان شاپ</title>
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
-  <link rel="stylesheet" href="../assets/css/style.css" />
-</head>
-<body class="bg-[#F8FAFC] text-gray-900 overflow-x-hidden font-[Vazirmatn] no-navbar" data-auth="guest">
-  <div id="top" aria-hidden="true"></div>
-
-
-  <main id="main-content" class="py-10">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="w-full max-w-md mx-auto bg-white rounded-3xl shadow-xl overflow-hidden">
-        <div class="p-8">
-          <div class="text-center mb-8">
-            <a href="../index.html" class="inline-flex items-center gap-2 mb-4" aria-label="بازگشت به صفحه اصلی">
-              <span class="material-icon text-3xl text-[#2563EB]" aria-hidden="true">shopping_bag</span>
-              <span class="font-black text-xl text-gray-900">ماهان شاپ</span>
-            </a>
-            <h1 class="text-2xl font-bold text-gray-900">خوش آمدید</h1>
-            <p class="text-sm text-gray-500 mt-2">لطفاً برای ورود شماره موبایل خود را وارد کنید</p>
-          </div>
-
-          <form id="login-form" class="space-y-6" novalidate>
-            <div>
-              <label for="phone-login" class="block text-sm font-medium text-gray-700 mb-2">شماره موبایل:</label>
-              <div class="relative">
-                <span class="material-icon absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" aria-hidden="true">smartphone</span>
-                <input type="tel" id="phone-login" placeholder="09123456789" dir="ltr" inputmode="numeric" autocomplete="tel" maxlength="11" aria-describedby="login-help login-error" class="auth-input w-full pl-4 pr-10 py-3 rounded-xl border border-gray-300 text-left focus:outline-none focus:ring-2 focus:ring-[#2563EB]" required pattern="09[0-9]{9}">
-              </div>
-              <p id="login-help" class="mt-2 text-xs text-gray-500">شماره باید با 09 شروع شود و 11 رقم باشد.</p>
-              <p id="login-error" class="mt-2 text-xs text-red-600 hidden" role="alert"></p>
-            </div>
-
-            <button type="submit" id="send-otp-btn" class="w-full bg-[#2563EB] text-white font-bold py-3.5 rounded-xl hover:bg-[#1D4ED8] transition-colors shadow-lg shadow-[#2563EB]/20 flex items-center justify-center gap-2 ripple">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#F8FAFC" name="theme-color">
+<!-- Security & performance: lightweight meta/policies (works on static hosting) -->
+<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' https://cdn.tailwindcss.com 'unsafe-eval'; connect-src 'self'; frame-src https:; upgrade-insecure-requests" http-equiv="Content-Security-Policy"/>
+<meta content="strict-origin-when-cross-origin" name="referrer">
+<meta content="camera=(), microphone=(), geolocation=(), payment=(), usb=()" http-equiv="Permissions-Policy">
+<link href="//cdn.tailwindcss.com" rel="dns-prefetch"/>
+<link crossorigin="" href="https://cdn.tailwindcss.com" rel="preconnect"/>
+<link href="//placehold.co" rel="dns-prefetch"/>
+<title>ورود | ماهان شاپ</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<link href="../assets/css/style.css" rel="stylesheet">
+</link></link></meta></meta></meta></head>
+<body class="bg-[#F8FAFC] text-gray-900 overflow-x-hidden font-[Vazirmatn] no-navbar auth-page" data-auth="guest">
+<div aria-hidden="true" id="top"></div>
+<main class="min-h-screen flex items-center justify-center py-10 auth-main" id="main-content">
+<div class="max-w-7xl mx-auto px-4">
+<div class="w-full max-w-md mx-auto bg-white rounded-3xl shadow-xl overflow-hidden auth-card">
+<div class="p-8 min-h-[560px] flex flex-col">
+<div class="flex items-center mb-6">
+<a aria-label="بازگشت به فروشگاه" class="flex items-center gap-2 text-sm text-[#2563EB] hover:text-[#1D4ED8] transition-colors" href="../index.html">
+<span aria-hidden="true" class="material-icon">arrow_forward</span>
+<span class="font-bold">بازگشت</span>
+</a>
+</div>
+<div class="text-center mb-8">
+<a aria-label="بازگشت به صفحه اصلی" class="inline-flex items-center gap-2 mb-4" href="../index.html">
+<span aria-hidden="true" class="material-icon text-3xl text-[#2563EB]">shopping_bag</span>
+<span class="font-black text-xl text-gray-900">ماهان شاپ</span>
+</a>
+<h1 class="text-2xl font-bold text-gray-900">ورود</h1>
+<p class="text-sm text-gray-500 mt-2">برای ادامه، شماره موبایل خود را وارد کنید</p>
+</div>
+<form class="space-y-6" id="login-form" novalidate="">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2" for="phone-login">شماره موبایل:</label>
+<div class="relative">
+<span aria-hidden="true" class="material-icon absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">smartphone</span>
+<input aria-describedby="login-help login-error" autocomplete="tel" class="auth-input w-full pl-4 pr-10 py-3 rounded-xl border border-gray-300 text-left focus:outline-none focus:ring-2 focus:ring-[#2563EB]" dir="ltr" id="phone-login" inputmode="numeric" maxlength="11" pattern="09[0-9]{9}" placeholder="09123456789" required="" type="tel"/>
+</div>
+<p class="mt-2 text-xs text-gray-500" id="login-help">شماره باید با 09 شروع شود و 11 رقم باشد.</p>
+<p class="mt-2 text-xs text-red-600 hidden" id="login-error" role="alert"></p>
+</div>
+<button class="w-full bg-[#2563EB] text-white font-bold py-3.5 rounded-xl hover:bg-[#1D4ED8] transition-colors shadow-lg shadow-[#2563EB]/20 flex items-center justify-center gap-2 ripple" id="send-otp-btn" type="submit">
               دریافت کد تایید
-              <span class="material-icon text-sm" aria-hidden="true">send</span>
-            </button>
-          </form>
-
-          <div class="mt-6 text-center">
-            <p class="text-sm text-gray-600">
+              <span aria-hidden="true" class="material-icon text-sm">send</span>
+</button>
+</form>
+<div class="mt-auto pt-6 text-center">
+<p class="text-sm text-gray-600">
               حساب کاربری ندارید؟
-              <a href="register.html" class="text-[#2563EB] font-bold hover:underline">ثبت نام کنید</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-
-
-
-  <script defer src="../assets/js/layout.js"></script>
-  <script defer src="../assets/js/script.js"></script>
-  <script>
+              <a class="text-[#2563EB] font-bold hover:underline" href="register.html">ثبت نام کنید</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script defer="" src="../assets/js/layout.js"></script>
+<script defer="" src="../assets/js/script.js"></script>
+<script>
 document.addEventListener('DOMContentLoaded', () => {
       const loginForm = document.getElementById('login-form');
       const phoneInput = document.getElementById('phone-login');

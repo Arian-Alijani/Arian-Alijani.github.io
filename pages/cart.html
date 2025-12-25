@@ -4,6 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#F8FAFC" />
+
+
+<!-- Security & performance: lightweight meta/policies (works on static hosting) -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' https://cdn.tailwindcss.com 'unsafe-eval'; connect-src 'self'; frame-src https:; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=()" />
+
+<link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+<link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+<link rel="dns-prefetch" href="//placehold.co">
+
 <title>سبد خرید | ماهان شاپ</title>
 
    <script src="https://cdn.tailwindcss.com"></script>
@@ -201,7 +212,7 @@
           <article class="cart-item" data-cart-item="case-iphone-15-silicone" data-unit-price="450000">
             <div class="cart-item-main">
               <div class="cart-item-details">
-                <img src="https://placehold.co/100x100" alt="قاب سیلیکونی آیفون ۱۵" class="w-20 h-20 rounded-2xl object-cover">
+                <img width="80" height="80" src="https://placehold.co/100x100" alt="قاب سیلیکونی آیفون ۱۵" class="w-20 h-20 rounded-2xl object-cover" loading="lazy" decoding="async">
                 <div class="flex flex-col gap-2">
                   <h2 class="text-lg font-extrabold text-gray-900">قاب سیلیکونی آیفون ۱۵</h2>
                   <p class="text-sm text-gray-500">برند: Apple</p>
@@ -236,7 +247,7 @@
           <article class="cart-item" data-cart-item="anker-charge-usb-cable" data-unit-price="350000">
             <div class="cart-item-main">
               <div class="cart-item-details">
-                <img src="https://placehold.co/100x100" alt="کابل شارژ انکر" class="w-20 h-20 rounded-2xl object-cover">
+                <img width="80" height="80" src="https://placehold.co/100x100" alt="کابل شارژ انکر" class="w-20 h-20 rounded-2xl object-cover" loading="lazy" decoding="async">
                 <div class="flex flex-col gap-2">
                   <h2 class="text-lg font-extrabold text-gray-900">کابل شارژ انکر</h2>
                   <p class="text-sm text-gray-500">برند: Anker</p>
