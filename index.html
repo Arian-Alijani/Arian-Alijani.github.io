@@ -16,6 +16,7 @@
 <link href="assets/css/style.css" rel="stylesheet">
 </link></link></head>
 <body class="bg-[#F8FAFC] text-gray-900 overflow-x-hidden" data-auth="guest">
+<<<<<<< HEAD
 <div aria-hidden="true" id="top"></div>
 <!-- هدر اصلی: ناوبری، جستجو و وضعیت ورود کاربر -->
 <div data-include="header"></div>
@@ -128,6 +129,237 @@
 <div class="min-w-0">
 <div class="text-[10px] md:text-xs text-gray-400 line-through">۶۵۰,۰۰۰</div>
 <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+=======
+  <div id="top" aria-hidden="true"></div>
+
+  <!-- هدر اصلی: ناوبری، جستجو و وضعیت ورود کاربر -->
+  <div data-include="header"></div>
+
+
+
+  <main id="main-content">
+    <h1 class="sr-only">ماهان شاپ | فروشگاه آنلاین لوازم جانبی موبایل</h1>
+
+  <!-- بنر اصلی: تصاویر و لینک‌ها توسط بک‌اند مدیریت شوند -->
+  <section id="banner-section" class="banner-section pt-4 pb-2 px-0 sm:px-4 max-w-none sm:max-w-7xl sm:mx-auto">
+    <!-- ساختار اسلایدر (banner-wrapper/banners) برای اسکریپت ضروری است -->
+    <div class="banner-container h-64 sm:h-64 md:h-80 lg:h-96 rounded-none sm:rounded-3xl shadow-md relative overflow-hidden group">
+      <div class="banner-wrapper h-full" id="banner-wrapper">
+        <div class="banner-slide h-full active">
+          <!-- ابعاد پیشنهادی تصویر: 1200x500 -->
+          <img src="/assets/img/Banner 1b.png" alt="Banner 1" width="1200" height="500" loading="eager" fetchpriority="high" decoding="async">
+        </div>
+        <div class="banner-slide h-full">
+          <img src="https://placehold.co/1200x500/E3F2FD/2196F3?text=Banner+2" alt="Banner 2" width="1200" height="500" loading="lazy" decoding="async">
+        </div>
+        <div class="banner-slide h-full">
+          <img src="https://placehold.co/1200x500/E0F2F1/009688?text=Banner+3" alt="Banner 3" width="1200" height="500" loading="lazy" decoding="async">
+        </div>
+        <div class="banner-slide h-full">
+          <img src="https://placehold.co/1200x500/FFEBEE/D32F2F?text=Banner+4" alt="Banner 4" width="1200" height="500" loading="lazy" decoding="async">
+        </div>
+      </div>
+
+      <div class="banner-indicators" id="banner-indicators" aria-label="اسلایدر بنر">
+        <button type="button" class="banner-dot active" aria-label="بنر 1" data-index="0"></button>
+        <button type="button" class="banner-dot" aria-label="بنر 2" data-index="1"></button>
+        <button type="button" class="banner-dot" aria-label="بنر 3" data-index="2"></button>
+        <button type="button" class="banner-dot" aria-label="بنر 4" data-index="3"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- دسته‌بندی‌های محبوب: عنوان/تصویر/لینک توسط بک‌اند تنظیم شود -->
+  <section id="categories" class="page-section max-w-7xl mx-auto px-4">
+    <h2 class="text-xl md:text-2xl font-bold text-[#1D1B20] mb-4 md:mb-6">دسته بندی‌های محبوب</h2>
+
+    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 md:gap-6">
+
+      <!-- کارت بلند (قاب و محافظ) - در دسکتاپ دو ردیف را پوشش می‌دهد -->
+      <a href="pages/products.html?cat=case" class="category-card phone-case col-span-2 lg:row-span-2 lg:col-span-1 rounded-2xl category-case" data-icon="smartphone" aria-label="دسته‌بندی قاب گوشی">
+        <!-- ابعاد پیشنهادی تصویر: 1200x1600 (نسبت 3:4) -->
+        <img
+          src="https://placehold.co/1200x1600/3B82F6/FFFFFF"
+          alt="تصویر دسته‌بندی قاب گوشی"
+          class="category-img absolute inset-0 w-full h-full object-cover"
+          width="1200"
+          height="1600"
+          loading="lazy"
+        >
+
+        <div class="relative z-[3] p-8 h-full flex flex-col justify-center gap-4">
+          <div>
+            <h3 class="text-3xl font-black text-white drop-shadow-sm">قاب گوشی</h3>
+            <p class="text-sm text-white/85 font-medium mt-2">سیلیکونی، شفاف، برند</p>
+          </div>
+          <span class="bg-white/90 text-[#1E3A8A] w-fit px-5 py-2.5 rounded-xl text-sm font-bold shadow-sm">مشاهده</span>
+          <span class="material-icon absolute -bottom-6 -left-6 text-[11rem] text-white/15">smartphone</span>
+        </div>
+      </a>
+
+      <!-- دو کارت کنار هم: گوشی هوشمند + اکسسوری -->
+      <a href="pages/products.html?cat=phone" class="category-card rounded-lg md:rounded-2xl h-44 md:h-48 category-phone" data-icon="smartphone" aria-label="دسته‌بندی گوشی هوشمند">
+        <!-- ابعاد پیشنهادی تصویر: 1200x900 (نسبت 4:3) -->
+        <img
+          src="https://placehold.co/1200x900/10B981/FFFFFF"
+          alt="تصویر دسته‌بندی گوشی هوشمند"
+          class="category-img absolute inset-0 w-full h-full object-cover"
+          width="1200"
+          height="900"
+          loading="lazy"
+        >
+
+        <div class="absolute inset-0 flex flex-col justify-center px-6 md:px-8 z-[3]">
+          <h3 class="text-xl md:text-2xl font-black text-white drop-shadow-sm mb-1 md:mb-2">گوشی هوشمند</h3>
+          <p class="text-sm md:text-base text-white/85 font-medium mb-3 md:mb-4">آیفون، سامسونگ، شیائومی</p>
+          <span class="bg-white/90 text-[#1E3A8A] w-fit px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-bold shadow-sm">مشاهده</span>
+        </div>
+        <span class="material-icon absolute -bottom-4 -left-4 text-8xl md:text-[10rem] text-white/15 z-[3]">smartphone</span>
+      </a>
+
+      <a href="pages/products.html?cat=accessory" class="category-card rounded-lg md:rounded-2xl h-44 md:h-48 category-accessory" data-icon="headphones" aria-label="دسته‌بندی اکسسوری">
+        <!-- ابعاد پیشنهادی تصویر: 1200x900 (نسبت 4:3) -->
+        <img
+          src="https://placehold.co/1200x900/2563EB/FFFFFF"
+          alt="تصویر دسته‌بندی اکسسوری"
+          class="category-img absolute inset-0 w-full h-full object-cover"
+          width="1200"
+          height="900"
+          loading="lazy"
+        >
+
+        <div class="absolute inset-0 flex flex-col justify-center px-6 md:px-8 z-[3]">
+          <h3 class="text-xl md:text-2xl font-black text-white drop-shadow-sm mb-1 md:mb-2">اکسسوری</h3>
+          <p class="text-sm md:text-base text-white/85 font-medium mb-3 md:mb-4">قاب، شارژ، گلس و گجت</p>
+          <span class="bg-white/90 text-[#1E3A8A] w-fit px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-bold shadow-sm">مشاهده</span>
+        </div>
+        <span class="material-icon absolute -bottom-4 -left-4 text-8xl md:text-[10rem] text-white/15 z-[3]">headphones</span>
+      </a>
+
+      <!-- کارت‌های استاندارد زیر کارت افقی -->
+      <a href="pages/products.html?cat=accessory" class="category-card rounded-lg md:rounded-2xl h-44 md:h-48 category-glass" data-icon="shield" aria-label="دسته‌بندی گلس و محافظ">
+        <!-- ابعاد پیشنهادی تصویر: 1200x900 (نسبت 4:3) -->
+        <img
+          src="https://placehold.co/1200x900/F59E0B/FFFFFF"
+          alt="تصویر دسته‌بندی گلس و محافظ"
+          class="category-img absolute inset-0 w-full h-full object-cover"
+          width="1200"
+          height="900"
+          loading="lazy"
+        >
+        <div class="absolute inset-0 flex flex-col justify-center px-6 md:px-8 z-[3]">
+          <h3 class="text-xl md:text-2xl font-black text-white drop-shadow-sm mb-1 md:mb-2">گلس و محافظ</h3>
+          <p class="text-sm md:text-base text-white/85 font-medium mb-3 md:mb-4">نشکن، سرامیکی، پرایوسی</p>
+          <span class="bg-white/90 text-[#0B3C6E] w-fit px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-bold shadow-sm">مشاهده</span>
+        </div>
+        <span class="material-icon absolute -bottom-4 -left-4 text-8xl md:text-[10rem] text-white/15 z-[3]">shield</span>
+      </a>
+
+      <a href="pages/products.html?cat=charger" class="category-card rounded-lg md:rounded-2xl h-44 md:h-48 category-charger" data-icon="bolt" aria-label="دسته‌بندی شارژ">
+        <!-- ابعاد پیشنهادی تصویر: 1200x900 (نسبت 4:3) -->
+        <img
+          src="https://placehold.co/1200x900/EF4444/FFFFFF"
+          alt="تصویر دسته‌بندی شارژ"
+          class="category-img absolute inset-0 w-full h-full object-cover"
+          width="1200"
+          height="900"
+          loading="lazy"
+        >
+        <div class="absolute inset-0 flex flex-col justify-center px-6 md:px-8 z-[3]">
+          <h3 class="text-xl md:text-2xl font-black text-white drop-shadow-sm mb-1 md:mb-2">شارژ</h3>
+          <p class="text-sm md:text-base text-white/85 font-medium mb-3 md:mb-4">فست شارژ، اورجینال</p>
+          <span class="bg-white/90 text-[#9A3412] w-fit px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-bold shadow-sm">مشاهده</span>
+        </div>
+        <span class="material-icon absolute -bottom-4 -left-4 text-8xl md:text-[10rem] text-white/15 z-[3]">bolt</span>
+      </a>
+
+      <!-- دو کارت کنار هم: کاور ایرپاد و گجت -->
+      <a href="pages/products.html?cat=airpod" class="category-card lg:col-span-1 rounded-2xl h-44 md:h-48 category-ipad" data-icon="headphones" aria-label="دسته‌بندی کاور ایرپاد">
+        <!-- ابعاد پیشنهادی تصویر: 1200x900 (نسبت 4:3) -->
+        <img
+          src="https://placehold.co/1200x900/EC4899/FFFFFF"
+          alt="تصویر دسته‌بندی کاور ایرپاد"
+          class="category-img absolute inset-0 w-full h-full object-cover"
+          width="1200"
+          height="900"
+          loading="lazy"
+        >
+        <div class="absolute inset-0 flex flex-col justify-center px-8 z-[3]">
+          <h3 class="text-2xl font-black text-white drop-shadow-sm mb-2">کاور ایرپاد</h3>
+          <p class="text-white/85 font-medium mb-4">فانتزی، سیلیکونی، برند</p>
+          <span class="bg-white/90 text-[#7F1D1D] w-fit px-4 py-2 rounded-lg text-sm font-bold shadow-sm">مشاهده</span>
+        </div>
+        <span class="material-icon absolute -bottom-4 -left-4 text-[10rem] text-white/15 z-[3]">headphones</span>
+      </a>
+
+      <a href="pages/products.html?cat=charger" class="category-card lg:col-span-1 rounded-lg md:rounded-2xl h-44 md:h-48 category-gadget" data-icon="diamond" aria-label="دسته‌بندی گجت">
+        <!-- ابعاد پیشنهادی تصویر: 1200x900 (نسبت 4:3) -->
+        <img
+          src="https://placehold.co/1200x900/8B5CF6/FFFFFF"
+          alt="تصویر دسته‌بندی گجت"
+          class="category-img absolute inset-0 w-full h-full object-cover"
+          width="1200"
+          height="900"
+          loading="lazy"
+        >
+        <div class="absolute inset-0 flex flex-col justify-center px-6 md:px-8 z-[3]">
+          <h3 class="text-xl md:text-2xl font-black text-white drop-shadow-sm mb-1 md:mb-2">گجت</h3>
+          <p class="text-sm md:text-base text-white/85 font-medium mb-3 md:mb-4">هولدر، پاپ سوکت، آویز</p>
+          <span class="bg-white/90 text-[#111827] w-fit px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-bold shadow-sm">مشاهده</span>
+        </div>
+        <span class="material-icon absolute -bottom-4 -left-4 text-8xl md:text-[10rem] text-white/15 z-[3]">diamond</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- محصولات پیشنهادی: لیست از API پیشنهادها -->
+  <section class="page-section max-w-7xl mx-auto px-4">
+    <div class="flex justify-between items-center mb-6 md:mb-8">
+      <h2 class="text-xl md:text-2xl font-bold text-[#1D1B20]">محصولات پیشنهادی</h2>
+      <a href="pages/products.html" class="text-sm md:text-base text-[#2563EB] font-medium hover:underline">مشاهده همه</a>
+    </div>
+
+    <!-- کارت‌ها توسط بک‌اند رندر شوند؛ data-* (pid, sku, price, compare-price, category, image) برای سبد/علاقه‌مندی استفاده می‌شود -->
+    <div class="products-row drag-scroll flex gap-3 md:gap-6 overflow-x-auto no-scrollbar pb-8 px-2 snap-x snap-mandatory" data-autoplay="suggested" role="region" aria-roledescription="carousel" aria-label="محصولات پیشنهادی" aria-live="off" tabindex="0">
+
+      <article
+        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
+        data-pid="suggested-iphone-15-case"
+        data-sku="CASE-IP15-SILICONE"
+        data-name="قاب سیلیکونی آیفون ۱۵"
+        data-brand="Apple"
+        data-price="450000"
+        data-compare-price="650000"
+        data-currency="IRR"
+        data-category="case"
+        data-image="/assets/img/i24l.png"
+      >
+        <div class="relative">
+          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
+            <img src="/assets/img/111254.webp" alt="قاب سیلیکونی آیفون ۱۵" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
+          </div>
+          <!-- برای فیت شدن کامل کارت از تصویر ۹۰۰×۹۰۰ استفاده کنید -->
+          <span class="sr-only">بهترین اندازه تصویر: ۹۰۰×۹۰۰ پیکسل.</span>
+
+          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
+            <span class="color-swatch bg-red-400" data-color-hex="#f87171" title="قرمز" aria-label="قرمز"></span>
+            <span class="color-swatch bg-blue-400" data-color-hex="#60a5fa" title="آبی" aria-label="آبی"></span>
+            <span class="color-swatch bg-black" data-color-hex="#000000" title="مشکی" aria-label="مشکی"></span>
+            <span class="color-swatch bg-green-400" data-color-hex="#4ade80" title="سبز" aria-label="سبز"></span>
+          </div>
+        </div>
+
+        <div class="mt-3">
+          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">قاب سیلیکونی آیفون ۱۵</h3>
+          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Apple</p>
+        </div>
+
+        <div class="mt-3 flex items-end justify-between gap-3">
+          <div class="min-w-0">
+            <div class="text-[10px] md:text-xs text-gray-400 line-through">۶۵۰,۰۰۰</div>
+            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+>>>>>>> origin/main
               ۴۵۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
 </div>
 </div>
