@@ -212,22 +212,6 @@ body.no-navbar {
   align-self: center;
 }
 
-/* Modern, minimal authentication panels */
-.auth-panel {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05), 0 5px 15px rgba(0, 0, 0, 0.03);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  overflow: hidden;
-}
-
-/* For better contrast on light backgrounds */
-body[data-auth] .auth-panel {
-  background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-}
-
 .toast__btn {
   border: 1px solid rgba(37,99,235,0.28);
   background: rgba(239,246,255,0.85);
@@ -368,13 +352,28 @@ body[data-auth="authenticated"] .guest-only {
     }
 }
 
-/* Unify horizontal paddings across the page */
+/* Unify horizontal paddings across the page (banner is handled separately to allow edge-to-edge on mobile) */
 #navbar > div,
 #footer > div,
-section.max-w-7xl,
-.banner-section {
+section.max-w-7xl {
     padding-left: var(--site-gutter) !important;
     padding-right: var(--site-gutter) !important;
+}
+
+/*
+  Banner container should be full-bleed on mobile (flush to viewport edges),
+  and follow the site gutter from `sm` and up.
+*/
+.banner-section {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+@media (min-width: 640px) {
+    .banner-section {
+        padding-left: var(--site-gutter) !important;
+        padding-right: var(--site-gutter) !important;
+    }
 }
 
 /* Scroll Effects */
@@ -2535,6 +2534,7 @@ box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     position: relative;
     width: 100%;
     direction: ltr;
+    /* Radius is controlled contextually for responsive requirements (see media rules below). */
     border-radius: 24px;
     box-shadow: 0 14px 40px -18px rgba(33, 0, 93, 0.35);
     background: #fff;
@@ -2551,11 +2551,18 @@ box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     z-index: 5;
 }
 
-/* Mobile: exo-like (not full edge-to-edge, but slightly rounded) */
+/* Mobile: sharp corners + flush edges per design requirement */
 @media (max-width: 639px) {
-    .banner-container {
-        border-radius: 18px !important;
+    #banner-section .banner-container {
+        border-radius: 0 !important;
         box-shadow: 0 12px 26px -18px rgba(33, 0, 93, 0.28);
+    }
+}
+
+/* Desktop/tablet: keep the intended rounded hero look */
+@media (min-width: 640px) {
+    #banner-section .banner-container {
+        border-radius: 24px !important;
     }
 }
 
@@ -4149,4 +4156,75 @@ body.has-mobile-footer main {
   }
 }
 
+/* --- Category image responsiveness (generated) --- */
+#categories .category-card {
+  --cat-focal-x: 50%;
+  --cat-focal-y: 50%;
+  --cat-focal-y-mobile: var(--cat-focal-y);
+}
 
+#categories .category-card picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#categories .category-card picture > img {
+  width: 100%;
+  height: 100%;
+}
+
+#categories .category-img {
+  display: block;
+  z-index: 0;
+  object-fit: cover;
+  object-position: var(--cat-focal-x) var(--cat-focal-y);
+  transform: translateZ(0);
+}
+
+@media (max-width: 640px) {
+  #categories .category-img {
+    object-position: var(--cat-focal-x) var(--cat-focal-y-mobile);
+  }
+
+  /* Make all tiles stable in mobile (avoid Tailwind fixed heights causing awkward crops) */
+  #categories .category-card {
+    height: auto !important;
+  }
+
+  #categories .category-card:not(.phone-case) {
+    aspect-ratio: 1 / 1;
+  }
+
+  #categories .phone-case {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  /* Tablet: favor predictable crops */
+  #categories .category-card {
+    height: auto !important;
+  }
+
+  #categories .category-card:not(.phone-case) {
+    aspect-ratio: 4 / 3;
+  }
+
+  #categories .phone-case {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+#categories .category-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.50) 0%,
+    rgba(0, 0, 0, 0.24) 55%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}

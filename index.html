@@ -1,1539 +1,1001 @@
 
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+
+<html dir="rtl" lang="fa">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ماهان شاپ | خرید آنلاین محصولات دیجیتال</title>
-  <meta name="description" content="ماهان شاپ؛ فروشگاه آنلاین لوازم جانبی موبایل با تنوع بالا، ارسال سریع و ضمانت اصالت." />
-  <meta name="theme-color" content="#F8FAFC" />
-
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
-
-  <link rel="stylesheet" href="assets/css/style.css" />
-</head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ماهان شاپ | خرید آنلاین محصولات دیجیتال</title>
+<meta content="ماهان شاپ؛ فروشگاه آنلاین لوازم جانبی موبایل با تنوع بالا، ارسال سریع و ضمانت اصالت." name="description"/>
+<meta content="#F8FAFC" name="theme-color"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">
+</link></link></head>
 <body class="bg-[#F8FAFC] text-gray-900 overflow-x-hidden" data-auth="guest">
-  <div id="top" aria-hidden="true"></div>
-
-  <!-- هدر اصلی: ناوبری، جستجو و وضعیت ورود کاربر -->
-  <div data-include="header"></div>
-
-
-
-  <main id="main-content">
-    <h1 class="sr-only">ماهان شاپ | فروشگاه آنلاین لوازم جانبی موبایل</h1>
-
-  <!-- بنر اصلی: تصاویر و لینک‌ها توسط بک‌اند مدیریت شوند -->
-  <section id="banner-section" class="banner-section pt-4 pb-2 px-0 sm:px-4 max-w-none sm:max-w-7xl sm:mx-auto">
-    <!-- ساختار اسلایدر (banner-wrapper/banners) برای اسکریپت ضروری است -->
-    <div class="banner-container h-64 sm:h-64 md:h-80 lg:h-96 rounded-none sm:rounded-3xl shadow-md relative overflow-hidden group">
-      <div class="banner-wrapper h-full" id="banner-wrapper">
-        <div class="banner-slide h-full active">
-          <!-- ابعاد پیشنهادی تصویر: 1200x500 -->
-          <img src="https://placehold.co/1200x500/DBEAFE/2563EB?text=Banner+1" alt="Banner 1" width="1200" height="500" loading="eager" fetchpriority="high" decoding="async">
-        </div>
-        <div class="banner-slide h-full">
-          <img src="https://placehold.co/1200x500/E3F2FD/2196F3?text=Banner+2" alt="Banner 2" width="1200" height="500" loading="lazy" decoding="async">
-        </div>
-        <div class="banner-slide h-full">
-          <img src="https://placehold.co/1200x500/E0F2F1/009688?text=Banner+3" alt="Banner 3" width="1200" height="500" loading="lazy" decoding="async">
-        </div>
-        <div class="banner-slide h-full">
-          <img src="https://placehold.co/1200x500/FFEBEE/D32F2F?text=Banner+4" alt="Banner 4" width="1200" height="500" loading="lazy" decoding="async">
-        </div>
-      </div>
-
-      <div class="banner-indicators" id="banner-indicators" aria-label="اسلایدر بنر">
-        <button type="button" class="banner-dot active" aria-label="بنر 1" data-index="0"></button>
-        <button type="button" class="banner-dot" aria-label="بنر 2" data-index="1"></button>
-        <button type="button" class="banner-dot" aria-label="بنر 3" data-index="2"></button>
-        <button type="button" class="banner-dot" aria-label="بنر 4" data-index="3"></button>
-      </div>
-    </div>
-  </section>
-
-  <!-- دسته‌بندی‌های محبوب: عنوان/تصویر/لینک توسط بک‌اند تنظیم شود -->
-  <section id="categories" class="page-section max-w-7xl mx-auto px-4">
-    <h2 class="text-xl md:text-2xl font-bold text-[#1D1B20] mb-4 md:mb-6">دسته بندی‌های محبوب</h2>
-
-    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 md:gap-6">
-
-      <!-- کارت بلند (قاب و محافظ) - در دسکتاپ دو ردیف را پوشش می‌دهد -->
-      <a href="pages/products.html?cat=case" class="category-card phone-case col-span-2 lg:row-span-2 lg:col-span-1 rounded-2xl category-case" data-icon="smartphone" aria-label="دسته‌بندی قاب گوشی">
-        <!-- ابعاد پیشنهادی تصویر: 1200x1600 (نسبت 3:4) -->
-        <img
-          src="https://placehold.co/1200x1600/3B82F6/FFFFFF"
-          alt="تصویر دسته‌بندی قاب گوشی"
-          class="category-img absolute inset-0 w-full h-full object-cover"
-          width="1200"
-          height="1600"
-          loading="lazy"
-        >
-
-        <div class="relative z-[3] p-8 h-full flex flex-col justify-center gap-4">
-          <div>
-            <h3 class="text-3xl font-black text-white drop-shadow-sm">قاب گوشی</h3>
-            <p class="text-sm text-white/85 font-medium mt-2">سیلیکونی، شفاف، برند</p>
-          </div>
-          <span class="bg-white/90 text-[#1E3A8A] w-fit px-5 py-2.5 rounded-xl text-sm font-bold shadow-sm">مشاهده</span>
-          <span class="material-icon absolute -bottom-6 -left-6 text-[11rem] text-white/15">smartphone</span>
-        </div>
-      </a>
-
-      <!-- دو کارت کنار هم: گوشی هوشمند + اکسسوری -->
-      <a href="pages/products.html?cat=phone" class="category-card rounded-lg md:rounded-2xl h-44 md:h-48 category-phone" data-icon="smartphone" aria-label="دسته‌بندی گوشی هوشمند">
-        <!-- ابعاد پیشنهادی تصویر: 1200x900 (نسبت 4:3) -->
-        <img
-          src="https://placehold.co/1200x900/10B981/FFFFFF"
-          alt="تصویر دسته‌بندی گوشی هوشمند"
-          class="category-img absolute inset-0 w-full h-full object-cover"
-          width="1200"
-          height="900"
-          loading="lazy"
-        >
-
-        <div class="absolute inset-0 flex flex-col justify-center px-6 md:px-8 z-[3]">
-          <h3 class="text-xl md:text-2xl font-black text-white drop-shadow-sm mb-1 md:mb-2">گوشی هوشمند</h3>
-          <p class="text-sm md:text-base text-white/85 font-medium mb-3 md:mb-4">آیفون، سامسونگ، شیائومی</p>
-          <span class="bg-white/90 text-[#1E3A8A] w-fit px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-bold shadow-sm">مشاهده</span>
-        </div>
-        <span class="material-icon absolute -bottom-4 -left-4 text-8xl md:text-[10rem] text-white/15 z-[3]">smartphone</span>
-      </a>
-
-      <a href="pages/products.html?cat=accessory" class="category-card rounded-lg md:rounded-2xl h-44 md:h-48 category-accessory" data-icon="headphones" aria-label="دسته‌بندی اکسسوری">
-        <!-- ابعاد پیشنهادی تصویر: 1200x900 (نسبت 4:3) -->
-        <img
-          src="https://placehold.co/1200x900/2563EB/FFFFFF"
-          alt="تصویر دسته‌بندی اکسسوری"
-          class="category-img absolute inset-0 w-full h-full object-cover"
-          width="1200"
-          height="900"
-          loading="lazy"
-        >
-
-        <div class="absolute inset-0 flex flex-col justify-center px-6 md:px-8 z-[3]">
-          <h3 class="text-xl md:text-2xl font-black text-white drop-shadow-sm mb-1 md:mb-2">اکسسوری</h3>
-          <p class="text-sm md:text-base text-white/85 font-medium mb-3 md:mb-4">قاب، شارژ، گلس و گجت</p>
-          <span class="bg-white/90 text-[#1E3A8A] w-fit px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-bold shadow-sm">مشاهده</span>
-        </div>
-        <span class="material-icon absolute -bottom-4 -left-4 text-8xl md:text-[10rem] text-white/15 z-[3]">headphones</span>
-      </a>
-
-      <!-- کارت‌های استاندارد زیر کارت افقی -->
-      <a href="pages/products.html?cat=accessory" class="category-card rounded-lg md:rounded-2xl h-44 md:h-48 category-glass" data-icon="shield" aria-label="دسته‌بندی گلس و محافظ">
-        <!-- ابعاد پیشنهادی تصویر: 1200x900 (نسبت 4:3) -->
-        <img
-          src="https://placehold.co/1200x900/F59E0B/FFFFFF"
-          alt="تصویر دسته‌بندی گلس و محافظ"
-          class="category-img absolute inset-0 w-full h-full object-cover"
-          width="1200"
-          height="900"
-          loading="lazy"
-        >
-        <div class="absolute inset-0 flex flex-col justify-center px-6 md:px-8 z-[3]">
-          <h3 class="text-xl md:text-2xl font-black text-white drop-shadow-sm mb-1 md:mb-2">گلس و محافظ</h3>
-          <p class="text-sm md:text-base text-white/85 font-medium mb-3 md:mb-4">نشکن، سرامیکی، پرایوسی</p>
-          <span class="bg-white/90 text-[#0B3C6E] w-fit px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-bold shadow-sm">مشاهده</span>
-        </div>
-        <span class="material-icon absolute -bottom-4 -left-4 text-8xl md:text-[10rem] text-white/15 z-[3]">shield</span>
-      </a>
-
-      <a href="pages/products.html?cat=charger" class="category-card rounded-lg md:rounded-2xl h-44 md:h-48 category-charger" data-icon="bolt" aria-label="دسته‌بندی شارژ">
-        <!-- ابعاد پیشنهادی تصویر: 1200x900 (نسبت 4:3) -->
-        <img
-          src="https://placehold.co/1200x900/EF4444/FFFFFF"
-          alt="تصویر دسته‌بندی شارژ"
-          class="category-img absolute inset-0 w-full h-full object-cover"
-          width="1200"
-          height="900"
-          loading="lazy"
-        >
-        <div class="absolute inset-0 flex flex-col justify-center px-6 md:px-8 z-[3]">
-          <h3 class="text-xl md:text-2xl font-black text-white drop-shadow-sm mb-1 md:mb-2">شارژ</h3>
-          <p class="text-sm md:text-base text-white/85 font-medium mb-3 md:mb-4">فست شارژ، اورجینال</p>
-          <span class="bg-white/90 text-[#9A3412] w-fit px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-bold shadow-sm">مشاهده</span>
-        </div>
-        <span class="material-icon absolute -bottom-4 -left-4 text-8xl md:text-[10rem] text-white/15 z-[3]">bolt</span>
-      </a>
-
-      <!-- دو کارت کنار هم: کاور ایرپاد و گجت -->
-      <a href="pages/products.html?cat=airpod" class="category-card lg:col-span-1 rounded-2xl h-44 md:h-48 category-ipad" data-icon="headphones" aria-label="دسته‌بندی کاور ایرپاد">
-        <!-- ابعاد پیشنهادی تصویر: 1200x900 (نسبت 4:3) -->
-        <img
-          src="https://placehold.co/1200x900/EC4899/FFFFFF"
-          alt="تصویر دسته‌بندی کاور ایرپاد"
-          class="category-img absolute inset-0 w-full h-full object-cover"
-          width="1200"
-          height="900"
-          loading="lazy"
-        >
-        <div class="absolute inset-0 flex flex-col justify-center px-8 z-[3]">
-          <h3 class="text-2xl font-black text-white drop-shadow-sm mb-2">کاور ایرپاد</h3>
-          <p class="text-white/85 font-medium mb-4">فانتزی، سیلیکونی، برند</p>
-          <span class="bg-white/90 text-[#7F1D1D] w-fit px-4 py-2 rounded-lg text-sm font-bold shadow-sm">مشاهده</span>
-        </div>
-        <span class="material-icon absolute -bottom-4 -left-4 text-[10rem] text-white/15 z-[3]">headphones</span>
-      </a>
-
-      <a href="pages/products.html?cat=charger" class="category-card lg:col-span-1 rounded-lg md:rounded-2xl h-44 md:h-48 category-gadget" data-icon="diamond" aria-label="دسته‌بندی گجت">
-        <!-- ابعاد پیشنهادی تصویر: 1200x900 (نسبت 4:3) -->
-        <img
-          src="https://placehold.co/1200x900/8B5CF6/FFFFFF"
-          alt="تصویر دسته‌بندی گجت"
-          class="category-img absolute inset-0 w-full h-full object-cover"
-          width="1200"
-          height="900"
-          loading="lazy"
-        >
-        <div class="absolute inset-0 flex flex-col justify-center px-6 md:px-8 z-[3]">
-          <h3 class="text-xl md:text-2xl font-black text-white drop-shadow-sm mb-1 md:mb-2">گجت</h3>
-          <p class="text-sm md:text-base text-white/85 font-medium mb-3 md:mb-4">هولدر، پاپ سوکت، آویز</p>
-          <span class="bg-white/90 text-[#111827] w-fit px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-bold shadow-sm">مشاهده</span>
-        </div>
-        <span class="material-icon absolute -bottom-4 -left-4 text-8xl md:text-[10rem] text-white/15 z-[3]">diamond</span>
-      </a>
-
-    </div>
-  </section>
-
-  <!-- محصولات پیشنهادی: لیست از API پیشنهادها -->
-  <section class="page-section max-w-7xl mx-auto px-4">
-    <div class="flex justify-between items-center mb-6 md:mb-8">
-      <h2 class="text-xl md:text-2xl font-bold text-[#1D1B20]">محصولات پیشنهادی</h2>
-      <a href="pages/products.html" class="text-sm md:text-base text-[#2563EB] font-medium hover:underline">مشاهده همه</a>
-    </div>
-
-    <!-- کارت‌ها توسط بک‌اند رندر شوند؛ data-* (pid, sku, price, compare-price, category, image) برای سبد/علاقه‌مندی استفاده می‌شود -->
-    <div class="products-row drag-scroll flex gap-3 md:gap-6 overflow-x-auto no-scrollbar pb-8 px-2 snap-x snap-mandatory" data-autoplay="suggested" role="region" aria-roledescription="carousel" aria-label="محصولات پیشنهادی" aria-live="off" tabindex="0">
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="suggested-iphone-15-case"
-        data-sku="CASE-IP15-SILICONE"
-        data-name="قاب سیلیکونی آیفون ۱۵"
-        data-brand="Apple"
-        data-price="450000"
-        data-compare-price="650000"
-        data-currency="IRR"
-        data-category="case"
-        data-image="/assets/img/i24l.png"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="/assets/img/111254.webp" alt="قاب سیلیکونی آیفون ۱۵" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-          <!-- برای فیت شدن کامل کارت از تصویر ۹۰۰×۹۰۰ استفاده کنید -->
-          <span class="sr-only">بهترین اندازه تصویر: ۹۰۰×۹۰۰ پیکسل.</span>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-red-400" data-color-hex="#f87171" title="قرمز" aria-label="قرمز"></span>
-            <span class="color-swatch bg-blue-400" data-color-hex="#60a5fa" title="آبی" aria-label="آبی"></span>
-            <span class="color-swatch bg-black" data-color-hex="#000000" title="مشکی" aria-label="مشکی"></span>
-            <span class="color-swatch bg-green-400" data-color-hex="#4ade80" title="سبز" aria-label="سبز"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">قاب سیلیکونی آیفون ۱۵</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Apple</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۶۵۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+<div aria-hidden="true" id="top"></div>
+<!-- هدر اصلی: ناوبری، جستجو و وضعیت ورود کاربر -->
+<div data-include="header"></div>
+<main id="main-content">
+<h1 class="sr-only">ماهان شاپ | فروشگاه آنلاین لوازم جانبی موبایل</h1>
+<!-- بنر اصلی: تصاویر و لینک‌ها توسط بک‌اند مدیریت شوند -->
+<section class="banner-section pt-4 pb-2 px-0 sm:px-4 max-w-none sm:max-w-7xl sm:mx-auto" id="banner-section">
+<!-- ساختار اسلایدر (banner-wrapper/banners) برای اسکریپت ضروری است -->
+<!-- استانداردسازی ارتفاع/ریسپانسیو: موبایل کمی بلندتر، از sm به بالا مطابق هیروهای رایج -->
+<div class="banner-container h-[300px] sm:h-64 md:h-80 lg:h-96 rounded-none sm:rounded-3xl shadow-md relative overflow-hidden group">
+<div class="banner-wrapper h-full" id="banner-wrapper">
+<div class="banner-slide h-full active">
+<!-- ابعاد پیشنهادی تصویر: 1600x600 (نسبت ~8:3) -->
+<img alt="Banner 1" decoding="async" fetchpriority="high" height="600" loading="eager" src="/assets/img/ban.webp" width="1600"/>
+</div>
+<div class="banner-slide h-full">
+<img alt="Banner 2" decoding="async" height="600" loading="lazy" src="https://placehold.co/1600x600/E3F2FD/2196F3?text=Banner+2" width="1600"/>
+</div>
+<div class="banner-slide h-full">
+<img alt="Banner 3" decoding="async" height="600" loading="lazy" src="https://placehold.co/1600x600/E0F2F1/009688?text=Banner+3" width="1600"/>
+</div>
+<div class="banner-slide h-full">
+<img alt="Banner 4" decoding="async" height="600" loading="lazy" src="https://placehold.co/1600x600/FFEBEE/D32F2F?text=Banner+4" width="1600"/>
+</div>
+</div>
+<div aria-label="اسلایدر بنر" class="banner-indicators" id="banner-indicators">
+<button aria-label="بنر 1" class="banner-dot active" data-index="0" type="button"></button>
+<button aria-label="بنر 2" class="banner-dot" data-index="1" type="button"></button>
+<button aria-label="بنر 3" class="banner-dot" data-index="2" type="button"></button>
+<button aria-label="بنر 4" class="banner-dot" data-index="3" type="button"></button>
+</div>
+</div>
+</section>
+<!-- دسته‌بندی‌های محبوب: عنوان/تصویر/لینک توسط بک‌اند تنظیم شود -->
+<section class="page-section max-w-7xl mx-auto px-4" id="categories">
+<h2 class="text-xl md:text-2xl font-bold text-[#1D1B20] mb-4 md:mb-6">دسته بندی‌های محبوب</h2>
+<div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 md:gap-6">
+<!-- کارت بلند (قاب و محافظ) - در دسکتاپ دو ردیف را پوشش می‌دهد -->
+<a aria-label="دسته‌بندی قاب گوشی" class="category-card phone-case col-span-2 lg:row-span-2 lg:col-span-1 rounded-2xl category-case" data-icon="smartphone" href="pages/products.html?cat=case" style="--cat-focal-y: 45%; --cat-focal-y-mobile: 30%;">
+<!-- ابعاد پیشنهادی تصویر: 1200x1600 (نسبت 3:4) -->
+<picture><source media="(max-width: 640px)" srcset="/assets/img/categories/case-mobile.webp"/><img alt="تصویر دسته‌بندی قاب گوشی" class="category-img absolute inset-0 w-full h-full object-cover" height="1600" loading="lazy" src="/assets/img/categories/case-desktop.webp" width="1200"/></picture><span aria-hidden="true" class="category-overlay"></span>
+<div class="relative z-[3] p-8 h-full flex flex-col justify-center gap-4"> </div>
+</a>
+<!-- دو کارت کنار هم: گوشی هوشمند + اکسسوری -->
+<a aria-label="دسته‌بندی گوشی هوشمند" class="category-card rounded-lg md:rounded-2xl h-44 md:h-48 category-phone" data-icon="smartphone" href="pages/products.html?cat=phone">
+<!-- ابعاد پیشنهادی تصویر: 1200x900 (نسبت 4:3) -->
+<img alt="تصویر دسته‌بندی گوشی هوشمند" class="category-img absolute inset-0 w-full h-full object-cover" height="900" loading="lazy" src="/assets/img/categories/phone.webp" width="1200"/><span aria-hidden="true" class="category-overlay"></span>
+</a>
+<a aria-label="دسته‌بندی اکسسوری" class="category-card rounded-lg md:rounded-2xl h-44 md:h-48 category-accessory" data-icon="headphones" href="pages/products.html?cat=accessory">
+<!-- ابعاد پیشنهادی تصویر: 1200x900 (نسبت 4:3) -->
+<img alt="تصویر دسته‌بندی اکسسوری" class="category-img absolute inset-0 w-full h-full object-cover" height="900" loading="lazy" src="/assets/img/categories/accessory.webp" width="1200"/><span aria-hidden="true" class="category-overlay"></span>
+<div class="absolute inset-0 flex flex-col justify-center px-6 md:px-8 z-[3]">
+</div>
+</a>
+<!-- کارت‌های استاندارد زیر کارت افقی -->
+<a aria-label="دسته‌بندی گلس و محافظ" class="category-card rounded-lg md:rounded-2xl h-44 md:h-48 category-glass" data-icon="shield" href="pages/products.html?cat=accessory">
+<!-- ابعاد پیشنهادی تصویر: 1200x900 (نسبت 4:3) -->
+<img alt="تصویر دسته‌بندی گلس و محافظ" class="category-img absolute inset-0 w-full h-full object-cover" height="900" loading="lazy" src="/assets/img/categories/glass.webp" width="1200"/><span aria-hidden="true" class="category-overlay"></span>
+<div class="absolute inset-0 flex flex-col justify-center px-6 md:px-8 z-[3]">
+</div>
+</a>
+<a aria-label="دسته‌بندی شارژ" class="category-card rounded-lg md:rounded-2xl h-44 md:h-48 category-charger" data-icon="bolt" href="pages/products.html?cat=charger">
+<!-- ابعاد پیشنهادی تصویر: 1200x900 (نسبت 4:3) -->
+<img alt="تصویر دسته‌بندی شارژ" class="category-img absolute inset-0 w-full h-full object-cover" height="900" loading="lazy" src="/assets/img/categories/charger.webp" width="1200"/><span aria-hidden="true" class="category-overlay"></span>
+<div class="absolute inset-0 flex flex-col justify-center px-6 md:px-8 z-[3]">
+</div>
+</a>
+<!-- دو کارت کنار هم: کاور ایرپاد و گجت -->
+<a aria-label="دسته‌بندی کاور ایرپاد" class="category-card lg:col-span-1 rounded-2xl h-44 md:h-48 category-ipad" data-icon="headphones" href="pages/products.html?cat=airpod">
+<!-- ابعاد پیشنهادی تصویر: 1200x900 (نسبت 4:3) -->
+<img alt="تصویر دسته‌بندی کاور ایرپاد" class="category-img absolute inset-0 w-full h-full object-cover" height="900" loading="lazy" src="/assets/img/categories/airpod.webp" width="1200"/><span aria-hidden="true" class="category-overlay"></span>
+<div class="absolute inset-0 flex flex-col justify-center px-8 z-[3]">
+</div>
+</a>
+<a aria-label="دسته‌بندی گجت" class="category-card lg:col-span-1 rounded-lg md:rounded-2xl h-44 md:h-48 category-gadget" data-icon="diamond" href="pages/products.html?cat=charger">
+<!-- ابعاد پیشنهادی تصویر: 1200x900 (نسبت 4:3) -->
+<img alt="تصویر دسته‌بندی گجت" class="category-img absolute inset-0 w-full h-full object-cover" height="900" loading="lazy" src="/assets/img/categories/gadget.webp" width="1200"/><span aria-hidden="true" class="category-overlay"></span>
+<div class="absolute inset-0 flex flex-col justify-center px-6 md:px-8 z-[3]">
+</div>
+</a>
+</div>
+</section>
+<!-- محصولات پیشنهادی: لیست از API پیشنهادها -->
+<section class="page-section max-w-7xl mx-auto px-4">
+<div class="flex justify-between items-center mb-6 md:mb-8">
+<h2 class="text-xl md:text-2xl font-bold text-[#1D1B20]">محصولات پیشنهادی</h2>
+<a class="text-sm md:text-base text-[#2563EB] font-medium hover:underline" href="pages/products.html">مشاهده همه</a>
+</div>
+<!-- کارت‌ها توسط بک‌اند رندر شوند؛ data-* (pid, sku, price, compare-price, category, image) برای سبد/علاقه‌مندی استفاده می‌شود -->
+<div aria-label="محصولات پیشنهادی" aria-live="off" aria-roledescription="carousel" class="products-row drag-scroll flex gap-3 md:gap-6 overflow-x-auto no-scrollbar pb-8 px-2 snap-x snap-mandatory" data-autoplay="suggested" role="region" tabindex="0">
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="Apple" data-category="case" data-compare-price="650000" data-currency="IRR" data-image="/assets/img/i24l.png" data-name="قاب سیلیکونی آیفون ۱۵" data-pid="suggested-iphone-15-case" data-price="450000" data-sku="CASE-IP15-SILICONE">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="قاب سیلیکونی آیفون ۱۵" class="w-full h-full object-cover" height="900" loading="lazy" src="/assets/img/111254.webp" width="900"/>
+</div>
+<!-- برای فیت شدن کامل کارت از تصویر ۹۰۰×۹۰۰ استفاده کنید -->
+<span class="sr-only">بهترین اندازه تصویر: ۹۰۰×۹۰۰ پیکسل.</span>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="قرمز" class="color-swatch bg-red-400" data-color-hex="#f87171" title="قرمز"></span>
+<span aria-label="آبی" class="color-swatch bg-blue-400" data-color-hex="#60a5fa" title="آبی"></span>
+<span aria-label="مشکی" class="color-swatch bg-black" data-color-hex="#000000" title="مشکی"></span>
+<span aria-label="سبز" class="color-swatch bg-green-400" data-color-hex="#4ade80" title="سبز"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">قاب سیلیکونی آیفون ۱۵</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Apple</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۶۵۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۴۵۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="suggested-privacy-glass-iphone-14"
-        data-sku="GLASS-IP14-PRIV"
-        data-name="گلس پرایوسی آیفون ۱۴"
-        data-brand="Nillkin"
-        data-price="280000"
-        data-compare-price="390000"
-        data-currency="IRR"
-        data-category="accessory"
-        data-image="https://placehold.co/900x900/0ea5e9/FFFFFF?text=Privacy+Glass"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/0ea5e9/FFFFFF?text=Privacy+Glass" alt="گلس پرایوسی آیفون ۱۴" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-gray-400" data-color-hex="#9ca3af" title="دودی" aria-label="دودی"></span>
-            <span class="color-swatch bg-slate-600" data-color-hex="#475569" title="دودی تیره" aria-label="دودی تیره"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">گلس پرایوسی آیفون ۱۴</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Nillkin</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۳۹۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="Nillkin" data-category="accessory" data-compare-price="390000" data-currency="IRR" data-image="https://placehold.co/900x900/0ea5e9/FFFFFF?text=Privacy+Glass" data-name="گلس پرایوسی آیفون ۱۴" data-pid="suggested-privacy-glass-iphone-14" data-price="280000" data-sku="GLASS-IP14-PRIV">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="گلس پرایوسی آیفون ۱۴" class="w-full h-full object-cover" height="900" loading="lazy" src="https://placehold.co/900x900/0ea5e9/FFFFFF?text=Privacy+Glass" width="900"/>
+</div>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="دودی" class="color-swatch bg-gray-400" data-color-hex="#9ca3af" title="دودی"></span>
+<span aria-label="دودی تیره" class="color-swatch bg-slate-600" data-color-hex="#475569" title="دودی تیره"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">گلس پرایوسی آیفون ۱۴</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Nillkin</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۳۹۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۲۸۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="suggested-samsung-charger-25w"
-        data-sku="CHARGER-SAM-25W"
-        data-name="شارژر فست ۲۵ وات سامسونگ"
-        data-brand="Samsung"
-        data-price="520000"
-        data-compare-price="690000"
-        data-currency="IRR"
-        data-category="charger"
-        data-image="https://placehold.co/900x900/22c55e/FFFFFF?text=Fast+Charger+25W"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/22c55e/FFFFFF?text=Fast+Charger+25W" alt="شارژر فست ۲۵ وات سامسونگ" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-white" data-color-hex="#ffffff" title="سفید" aria-label="سفید"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">شارژر فست ۲۵ وات سامسونگ</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Samsung</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۶۹۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="Samsung" data-category="charger" data-compare-price="690000" data-currency="IRR" data-image="https://placehold.co/900x900/22c55e/FFFFFF?text=Fast+Charger+25W" data-name="شارژر فست ۲۵ وات سامسونگ" data-pid="suggested-samsung-charger-25w" data-price="520000" data-sku="CHARGER-SAM-25W">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="شارژر فست ۲۵ وات سامسونگ" class="w-full h-full object-cover" height="900" loading="lazy" src="https://placehold.co/900x900/22c55e/FFFFFF?text=Fast+Charger+25W" width="900"/>
+</div>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="سفید" class="color-swatch bg-white" data-color-hex="#ffffff" title="سفید"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">شارژر فست ۲۵ وات سامسونگ</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Samsung</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۶۹۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۵۲۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="suggested-typec-cable-12m"
-        data-sku="CABLE-TYPEC-12M"
-        data-name="کابل تایپ C نایلونی ۱.۲م"
-        data-brand="Baseus"
-        data-price="180000"
-        data-compare-price="250000"
-        data-currency="IRR"
-        data-category="charger"
-        data-image="https://placehold.co/900x900/f97316/FFFFFF?text=Type-C+Cable"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/f97316/FFFFFF?text=Type-C+Cable" alt="کابل تایپ C نایلونی ۱.۲م" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-black" data-color-hex="#000000" title="مشکی" aria-label="مشکی"></span>
-            <span class="color-swatch bg-blue-500" data-color-hex="#3b82f6" title="آبی" aria-label="آبی"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">کابل تایپ C نایلونی ۱.۲م</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Baseus</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۲۵۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="Baseus" data-category="charger" data-compare-price="250000" data-currency="IRR" data-image="https://placehold.co/900x900/f97316/FFFFFF?text=Type-C+Cable" data-name="کابل تایپ C نایلونی ۱.۲م" data-pid="suggested-typec-cable-12m" data-price="180000" data-sku="CABLE-TYPEC-12M">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="کابل تایپ C نایلونی ۱.۲م" class="w-full h-full object-cover" height="900" loading="lazy" src="https://placehold.co/900x900/f97316/FFFFFF?text=Type-C+Cable" width="900"/>
+</div>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="مشکی" class="color-swatch bg-black" data-color-hex="#000000" title="مشکی"></span>
+<span aria-label="آبی" class="color-swatch bg-blue-500" data-color-hex="#3b82f6" title="آبی"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">کابل تایپ C نایلونی ۱.۲م</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Baseus</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۲۵۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۱۸۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="suggested-airpods-pro-case"
-        data-sku="AIRPOD-PRO-CASE"
-        data-name="کاور ایرپاد پرو سیلیکونی"
-        data-brand="Apple"
-        data-price="240000"
-        data-compare-price="320000"
-        data-currency="IRR"
-        data-category="airpod"
-        data-image="https://placehold.co/900x900/ec4899/FFFFFF?text=AirPods+Case"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/ec4899/FFFFFF?text=AirPods+Case" alt="کاور ایرپاد پرو سیلیکونی" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-rose-400" data-color-hex="#fb7185" title="صورتی" aria-label="صورتی"></span>
-            <span class="color-swatch bg-green-400" data-color-hex="#4ade80" title="سبز" aria-label="سبز"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">کاور ایرپاد پرو سیلیکونی</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Apple</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۳۲۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="Apple" data-category="airpod" data-compare-price="320000" data-currency="IRR" data-image="https://placehold.co/900x900/ec4899/FFFFFF?text=AirPods+Case" data-name="کاور ایرپاد پرو سیلیکونی" data-pid="suggested-airpods-pro-case" data-price="240000" data-sku="AIRPOD-PRO-CASE">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="کاور ایرپاد پرو سیلیکونی" class="w-full h-full object-cover" height="900" loading="lazy" src="https://placehold.co/900x900/ec4899/FFFFFF?text=AirPods+Case" width="900"/>
+</div>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="صورتی" class="color-swatch bg-rose-400" data-color-hex="#fb7185" title="صورتی"></span>
+<span aria-label="سبز" class="color-swatch bg-green-400" data-color-hex="#4ade80" title="سبز"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">کاور ایرپاد پرو سیلیکونی</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Apple</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۳۲۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۲۴۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="suggested-magnetic-car-holder"
-        data-sku="HOLDER-MAG-CAR"
-        data-name="هولدر مغناطیسی خودرو"
-        data-brand="UGREEN"
-        data-price="360000"
-        data-compare-price="480000"
-        data-currency="IRR"
-        data-category="charger"
-        data-image="https://placehold.co/900x900/6366f1/FFFFFF?text=Magnetic+Holder"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/6366f1/FFFFFF?text=Magnetic+Holder" alt="هولدر مغناطیسی خودرو" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-slate-800" data-color-hex="#1f2937" title="مشکی" aria-label="مشکی"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">هولدر مغناطیسی خودرو</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: UGREEN</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۴۸۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="UGREEN" data-category="charger" data-compare-price="480000" data-currency="IRR" data-image="https://placehold.co/900x900/6366f1/FFFFFF?text=Magnetic+Holder" data-name="هولدر مغناطیسی خودرو" data-pid="suggested-magnetic-car-holder" data-price="360000" data-sku="HOLDER-MAG-CAR">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="هولدر مغناطیسی خودرو" class="w-full h-full object-cover" height="900" loading="lazy" src="https://placehold.co/900x900/6366f1/FFFFFF?text=Magnetic+Holder" width="900"/>
+</div>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="مشکی" class="color-swatch bg-slate-800" data-color-hex="#1f2937" title="مشکی"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">هولدر مغناطیسی خودرو</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: UGREEN</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۴۸۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۳۶۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section class="page-section max-w-7xl mx-auto px-4">
-    <div class="flex justify-between items-center mb-6 md:mb-8">
-      <h2 class="text-xl md:text-2xl font-bold text-[#1D1B20]">پرفروش‌ترین‌ها</h2>
-      <a href="pages/products.html?sort=best" class="text-sm md:text-base text-[#2563EB] font-medium hover:underline">مشاهده همه</a>
-    </div>
-
-    <!-- کارت‌ها توسط بک‌اند رندر شوند؛ data-* برای سبد/علاقه‌مندی استفاده می‌شود -->
-    <div class="products-row best-sellers-row drag-scroll flex gap-3 md:gap-6 overflow-x-auto no-scrollbar pb-8 px-2 snap-x snap-mandatory" data-autoplay="best" role="region" aria-roledescription="carousel" aria-label="پرفروش‌ترین‌ها" aria-live="off" tabindex="0">
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="best-001"
-        data-sku="BEST-001"
-        data-name="قاب سیلیکونی آیفون ۱۵"
-        data-brand="Apple"
-        data-price="450000"
-        data-compare-price="650000"
-        data-currency="IRR"
-        data-category="case"
-        data-image="/assets/img/i24l.png"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/FF0000/FFFFFF?text=Test" alt="قاب سیلیکونی آیفون ۱۵" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-red-400" data-color-hex="#f87171" title="قرمز" aria-label="قرمز"></span>
-            <span class="color-swatch bg-blue-400" data-color-hex="#60a5fa" title="آبی" aria-label="آبی"></span>
-            <span class="color-swatch bg-black" data-color-hex="#000000" title="مشکی" aria-label="مشکی"></span>
-            <span class="color-swatch bg-green-400" data-color-hex="#4ade80" title="سبز" aria-label="سبز"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">قاب سیلیکونی آیفون ۱۵</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Apple</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۶۵۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+</section>
+<section class="page-section max-w-7xl mx-auto px-4">
+<div class="flex justify-between items-center mb-6 md:mb-8">
+<h2 class="text-xl md:text-2xl font-bold text-[#1D1B20]">پرفروش‌ترین‌ها</h2>
+<a class="text-sm md:text-base text-[#2563EB] font-medium hover:underline" href="pages/products.html?sort=best">مشاهده همه</a>
+</div>
+<!-- کارت‌ها توسط بک‌اند رندر شوند؛ data-* برای سبد/علاقه‌مندی استفاده می‌شود -->
+<div aria-label="پرفروش‌ترین‌ها" aria-live="off" aria-roledescription="carousel" class="products-row best-sellers-row drag-scroll flex gap-3 md:gap-6 overflow-x-auto no-scrollbar pb-8 px-2 snap-x snap-mandatory" data-autoplay="best" role="region" tabindex="0">
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="Apple" data-category="case" data-compare-price="650000" data-currency="IRR" data-image="/assets/img/i24l.png" data-name="قاب سیلیکونی آیفون ۱۵" data-pid="best-001" data-price="450000" data-sku="BEST-001">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="قاب سیلیکونی آیفون ۱۵" class="w-full h-full object-cover" height="900" loading="lazy" src="https://placehold.co/900x900/FF0000/FFFFFF?text=Test" width="900"/>
+</div>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="قرمز" class="color-swatch bg-red-400" data-color-hex="#f87171" title="قرمز"></span>
+<span aria-label="آبی" class="color-swatch bg-blue-400" data-color-hex="#60a5fa" title="آبی"></span>
+<span aria-label="مشکی" class="color-swatch bg-black" data-color-hex="#000000" title="مشکی"></span>
+<span aria-label="سبز" class="color-swatch bg-green-400" data-color-hex="#4ade80" title="سبز"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">قاب سیلیکونی آیفون ۱۵</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Apple</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۶۵۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۴۵۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="best-wireless-charger-15w"
-        data-sku="WIRELESS-15W"
-        data-name="شارژر وایرلس ۱۵ وات"
-        data-brand="Anker"
-        data-price="890000"
-        data-compare-price="1090000"
-        data-currency="IRR"
-        data-category="charger"
-        data-image="https://placehold.co/900x900/14b8a6/FFFFFF?text=Wireless+Charger"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/14b8a6/FFFFFF?text=Wireless+Charger" alt="شارژر وایرلس ۱۵ وات" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-gray-900" data-color-hex="#111827" title="مشکی" aria-label="مشکی"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">شارژر وایرلس ۱۵ وات</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Anker</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۱,۰۹۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="Anker" data-category="charger" data-compare-price="1090000" data-currency="IRR" data-image="https://placehold.co/900x900/14b8a6/FFFFFF?text=Wireless+Charger" data-name="شارژر وایرلس ۱۵ وات" data-pid="best-wireless-charger-15w" data-price="890000" data-sku="WIRELESS-15W">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="شارژر وایرلس ۱۵ وات" class="w-full h-full object-cover" height="900" loading="lazy" src="https://placehold.co/900x900/14b8a6/FFFFFF?text=Wireless+Charger" width="900"/>
+</div>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="مشکی" class="color-swatch bg-gray-900" data-color-hex="#111827" title="مشکی"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">شارژر وایرلس ۱۵ وات</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Anker</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۱,۰۹۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۸۹۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="best-clear-magsafe-case"
-        data-sku="CASE-CLEAR-MAG"
-        data-name="قاب شفاف مگ‌سیف آیفون ۱۵"
-        data-brand="Apple"
-        data-price="560000"
-        data-compare-price="720000"
-        data-currency="IRR"
-        data-category="case"
-        data-image="https://placehold.co/900x900/93c5fd/1e3a8a?text=Clear+MagSafe+Case"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/93c5fd/1e3a8a?text=Clear+MagSafe+Case" alt="قاب شفاف مگ‌سیف آیفون ۱۵" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-slate-200" data-color-hex="#e2e8f0" title="شفاف" aria-label="شفاف"></span>
-            <span class="color-swatch bg-slate-400" data-color-hex="#94a3b8" title="دودی" aria-label="دودی"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">قاب شفاف مگ‌سیف آیفون ۱۵</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Apple</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۷۲۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="Apple" data-category="case" data-compare-price="720000" data-currency="IRR" data-image="https://placehold.co/900x900/93c5fd/1e3a8a?text=Clear+MagSafe+Case" data-name="قاب شفاف مگ‌سیف آیفون ۱۵" data-pid="best-clear-magsafe-case" data-price="560000" data-sku="CASE-CLEAR-MAG">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="قاب شفاف مگ‌سیف آیفون ۱۵" class="w-full h-full object-cover" height="900" loading="lazy" src="https://placehold.co/900x900/93c5fd/1e3a8a?text=Clear+MagSafe+Case" width="900"/>
+</div>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="شفاف" class="color-swatch bg-slate-200" data-color-hex="#e2e8f0" title="شفاف"></span>
+<span aria-label="دودی" class="color-swatch bg-slate-400" data-color-hex="#94a3b8" title="دودی"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">قاب شفاف مگ‌سیف آیفون ۱۵</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Apple</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۷۲۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۵۶۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="best-ceramic-glass-s23"
-        data-sku="GLASS-S23-CER"
-        data-name="گلس سرامیکی سامسونگ S23"
-        data-brand="Spigen"
-        data-price="320000"
-        data-compare-price="420000"
-        data-currency="IRR"
-        data-category="glass"
-        data-image="https://placehold.co/900x900/f59e0b/FFFFFF?text=Ceramic+Glass"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/f59e0b/FFFFFF?text=Ceramic+Glass" alt="گلس سرامیکی سامسونگ S23" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-gray-400" data-color-hex="#9ca3af" title="دودی" aria-label="دودی"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">گلس سرامیکی سامسونگ S23</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Spigen</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۴۲۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="Spigen" data-category="glass" data-compare-price="420000" data-currency="IRR" data-image="https://placehold.co/900x900/f59e0b/FFFFFF?text=Ceramic+Glass" data-name="گلس سرامیکی سامسونگ S23" data-pid="best-ceramic-glass-s23" data-price="320000" data-sku="GLASS-S23-CER">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="گلس سرامیکی سامسونگ S23" class="w-full h-full object-cover" height="900" loading="lazy" src="https://placehold.co/900x900/f59e0b/FFFFFF?text=Ceramic+Glass" width="900"/>
+</div>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="دودی" class="color-swatch bg-gray-400" data-color-hex="#9ca3af" title="دودی"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">گلس سرامیکی سامسونگ S23</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Spigen</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۴۲۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۳۲۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="best-powerbank-10000"
-        data-sku="POWERBANK-10000"
-        data-name="پاوربانک ۱۰,۰۰۰ میلی‌آمپر"
-        data-brand="Xiaomi"
-        data-price="790000"
-        data-compare-price="950000"
-        data-currency="IRR"
-        data-category="gadget"
-        data-image="https://placehold.co/900x900/64748b/FFFFFF?text=Powerbank+10000"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/64748b/FFFFFF?text=Powerbank+10000" alt="پاوربانک ۱۰,۰۰۰ میلی‌آمپر" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-slate-500" data-color-hex="#64748b" title="خاکستری" aria-label="خاکستری"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">پاوربانک ۱۰,۰۰۰ میلی‌آمپر</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Xiaomi</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۹۵۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="Xiaomi" data-category="gadget" data-compare-price="950000" data-currency="IRR" data-image="https://placehold.co/900x900/64748b/FFFFFF?text=Powerbank+10000" data-name="پاوربانک ۱۰,۰۰۰ میلی‌آمپر" data-pid="best-powerbank-10000" data-price="790000" data-sku="POWERBANK-10000">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="پاوربانک ۱۰,۰۰۰ میلی‌آمپر" class="w-full h-full object-cover" height="900" loading="lazy" src="https://placehold.co/900x900/64748b/FFFFFF?text=Powerbank+10000" width="900"/>
+</div>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="خاکستری" class="color-swatch bg-slate-500" data-color-hex="#64748b" title="خاکستری"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">پاوربانک ۱۰,۰۰۰ میلی‌آمپر</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Xiaomi</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۹۵۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۷۹۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="best-tws-earbuds"
-        data-sku="TWS-EARBUDS"
-        data-name="هندزفری بلوتوثی TWS"
-        data-brand="JBL"
-        data-price="1350000"
-        data-compare-price="1590000"
-        data-currency="IRR"
-        data-category="airpod"
-        data-image="https://placehold.co/900x900/ef4444/FFFFFF?text=TWS+Earbuds"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/ef4444/FFFFFF?text=TWS+Earbuds" alt="هندزفری بلوتوثی TWS" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-black" data-color-hex="#000000" title="مشکی" aria-label="مشکی"></span>
-            <span class="color-swatch bg-gray-300" data-color-hex="#d1d5db" title="سفید" aria-label="سفید"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">هندزفری بلوتوثی TWS</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: JBL</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۱,۵۹۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="JBL" data-category="airpod" data-compare-price="1590000" data-currency="IRR" data-image="https://placehold.co/900x900/ef4444/FFFFFF?text=TWS+Earbuds" data-name="هندزفری بلوتوثی TWS" data-pid="best-tws-earbuds" data-price="1350000" data-sku="TWS-EARBUDS">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="هندزفری بلوتوثی TWS" class="w-full h-full object-cover" height="900" loading="lazy" src="https://placehold.co/900x900/ef4444/FFFFFF?text=TWS+Earbuds" width="900"/>
+</div>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="مشکی" class="color-swatch bg-black" data-color-hex="#000000" title="مشکی"></span>
+<span aria-label="سفید" class="color-swatch bg-gray-300" data-color-hex="#d1d5db" title="سفید"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">هندزفری بلوتوثی TWS</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: JBL</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۱,۵۹۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۱,۳۵۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="best-desk-stand"
-        data-sku="STAND-DESK"
-        data-name="پایه رومیزی موبایل"
-        data-brand="Baseus"
-        data-price="210000"
-        data-compare-price="300000"
-        data-currency="IRR"
-        data-category="gadget"
-        data-image="https://placehold.co/900x900/a3e635/FFFFFF?text=Desk+Stand"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/a3e635/FFFFFF?text=Desk+Stand" alt="پایه رومیزی موبایل" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-gray-700" data-color-hex="#374151" title="خاکستری تیره" aria-label="خاکستری تیره"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">پایه رومیزی موبایل</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Baseus</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۳۰۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="Baseus" data-category="gadget" data-compare-price="300000" data-currency="IRR" data-image="https://placehold.co/900x900/a3e635/FFFFFF?text=Desk+Stand" data-name="پایه رومیزی موبایل" data-pid="best-desk-stand" data-price="210000" data-sku="STAND-DESK">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="پایه رومیزی موبایل" class="w-full h-full object-cover" height="900" loading="lazy" src="https://placehold.co/900x900/a3e635/FFFFFF?text=Desk+Stand" width="900"/>
+</div>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="خاکستری تیره" class="color-swatch bg-gray-700" data-color-hex="#374151" title="خاکستری تیره"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">پایه رومیزی موبایل</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Baseus</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۳۰۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۲۱۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- بنر میانی: تصویر پس‌زمینه و متن‌ها قابل مدیریت از بک‌اند -->
-  <section class="page-section max-w-7xl mx-auto px-4">
-    <div class="case-promo-min case-promo-min--banner rounded-2xl md:rounded-3xl p-5 md:p-7" style="--case-promo-img: url('https://placehold.co/1200x520/efe9ff/2563EB?text=Banner');">
-      <div class="case-promo-grid">
-        <div class="case-promo-copy case-promo-copy--glass">
-          <span class="case-promo-pill">قاب و محافظ</span>
-          <h2 class="case-promo-title">زیبایی مینیمال، امنیت واقعی</h2>
-          <p class="case-promo-subtitle">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- بنر میانی: تصویر پس‌زمینه و متن‌ها قابل مدیریت از بک‌اند -->
+<section class="page-section max-w-7xl mx-auto px-4">
+<div class="case-promo-min case-promo-min--banner rounded-2xl md:rounded-3xl p-5 md:p-7" style="--case-promo-img: url('https://placehold.co/1200x520/efe9ff/2563EB?text=Banner');">
+<div class="case-promo-grid">
+<div class="case-promo-copy case-promo-copy--glass">
+<span class="case-promo-pill">قاب و محافظ</span>
+<h2 class="case-promo-title">زیبایی مینیمال، امنیت واقعی</h2>
+<p class="case-promo-subtitle">
             قاب‌های تمیز و گلس‌های دقیق برای محافظت روزمره بدون شلوغی.
           </p>
-          <div class="case-promo-meta">
-            <span><span class="material-icon" aria-hidden="true">shield</span> ضدضربه</span>
-            <span><span class="material-icon" aria-hidden="true">visibility_off</span> پرایوسی</span>
-            <span><span class="material-icon" aria-hidden="true">verified</span> اصالت کالا</span>
-          </div>
-          <div class="case-promo-actions">
-            <a href="pages/products.html?cat=case" class="case-promo-cta case-promo-cta--primary">خرید قاب گوشی</a>
-            <a href="pages/products.html?cat=glass" class="case-promo-cta case-promo-cta--ghost">خرید گلس و محافظ</a>
-          </div>
-          <p class="case-promo-dim">ابعاد پیشنهادی بنر: 1200×520</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="page-section max-w-7xl mx-auto px-4">
-    <div class="flex justify-between items-center mb-6 md:mb-8">
-      <h2 class="text-xl md:text-2xl font-bold text-[#1D1B20]">قاب و محافظ‌های جدید</h2>
-      <a href="pages/products.html?cat=case" class="text-sm md:text-base text-[#2563EB] font-medium hover:underline">مشاهده همه</a>
-    </div>
-
-    <!-- کارت‌ها توسط بک‌اند رندر شوند؛ data-* برای سبد/علاقه‌مندی استفاده می‌شود -->
-    <div class="products-row drag-scroll flex gap-3 md:gap-6 overflow-x-auto no-scrollbar pb-8 px-2 snap-x snap-mandatory" aria-label="اسلایدر قاب و محافظ‌های جدید" role="region" aria-roledescription="carousel" aria-live="off" tabindex="0">
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="case-latest-001"
-        data-sku="CASE-ARMOR-01"
-        data-name="قاب ضدضربه سری Armor"
-        data-brand="Spigen"
-        data-price="690000"
-        data-compare-price="850000"
-        data-currency="IRR"
-        data-category="case"
-        data-image="https://placehold.co/900x900/1f2937/FFFFFF?text=Armor+Case"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/1f2937/FFFFFF?text=Armor+Case" alt="قاب ضدضربه سری Armor" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-slate-900" data-color-hex="#0f172a" title="مشکی" aria-label="مشکی"></span>
-            <span class="color-swatch bg-zinc-400" data-color-hex="#a1a1aa" title="خاکستری" aria-label="خاکستری"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">قاب ضدضربه سری Armor</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Spigen</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۸۵۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+<div class="case-promo-meta">
+<span><span aria-hidden="true" class="material-icon">shield</span> ضدضربه</span>
+<span><span aria-hidden="true" class="material-icon">visibility_off</span> پرایوسی</span>
+<span><span aria-hidden="true" class="material-icon">verified</span> اصالت کالا</span>
+</div>
+<div class="case-promo-actions">
+<a class="case-promo-cta case-promo-cta--primary" href="pages/products.html?cat=case">خرید قاب گوشی</a>
+<a class="case-promo-cta case-promo-cta--ghost" href="pages/products.html?cat=glass">خرید گلس و محافظ</a>
+</div>
+<p class="case-promo-dim">ابعاد پیشنهادی بنر: 1200×520</p>
+</div>
+</div>
+</div>
+</section>
+<section class="page-section max-w-7xl mx-auto px-4">
+<div class="flex justify-between items-center mb-6 md:mb-8">
+<h2 class="text-xl md:text-2xl font-bold text-[#1D1B20]">قاب و محافظ‌های جدید</h2>
+<a class="text-sm md:text-base text-[#2563EB] font-medium hover:underline" href="pages/products.html?cat=case">مشاهده همه</a>
+</div>
+<!-- کارت‌ها توسط بک‌اند رندر شوند؛ data-* برای سبد/علاقه‌مندی استفاده می‌شود -->
+<div aria-label="اسلایدر قاب و محافظ‌های جدید" aria-live="off" aria-roledescription="carousel" class="products-row drag-scroll flex gap-3 md:gap-6 overflow-x-auto no-scrollbar pb-8 px-2 snap-x snap-mandatory" role="region" tabindex="0">
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="Spigen" data-category="case" data-compare-price="850000" data-currency="IRR" data-image="https://placehold.co/900x900/1f2937/FFFFFF?text=Armor+Case" data-name="قاب ضدضربه سری Armor" data-pid="case-latest-001" data-price="690000" data-sku="CASE-ARMOR-01">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="قاب ضدضربه سری Armor" class="w-full h-full object-cover" height="900" loading="lazy" src="https://placehold.co/900x900/1f2937/FFFFFF?text=Armor+Case" width="900"/>
+</div>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="مشکی" class="color-swatch bg-slate-900" data-color-hex="#0f172a" title="مشکی"></span>
+<span aria-label="خاکستری" class="color-swatch bg-zinc-400" data-color-hex="#a1a1aa" title="خاکستری"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">قاب ضدضربه سری Armor</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Spigen</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۸۵۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۶۹۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="glass-latest-001"
-        data-sku="GLASS-PRIV-01"
-        data-name="گلس پرایوسی سرامیکی"
-        data-brand="Nillkin"
-        data-price="520000"
-        data-compare-price="680000"
-        data-currency="IRR"
-        data-category="glass"
-        data-image="https://placehold.co/900x900/0f172a/FFFFFF?text=Privacy+Glass"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/0f172a/FFFFFF?text=Privacy+Glass" alt="گلس پرایوسی سرامیکی" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-slate-900" data-color-hex="#0f172a" title="مشکی" aria-label="مشکی"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">گلس پرایوسی سرامیکی</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Nillkin</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۶۸۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="Nillkin" data-category="glass" data-compare-price="680000" data-currency="IRR" data-image="https://placehold.co/900x900/0f172a/FFFFFF?text=Privacy+Glass" data-name="گلس پرایوسی سرامیکی" data-pid="glass-latest-001" data-price="520000" data-sku="GLASS-PRIV-01">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="گلس پرایوسی سرامیکی" class="w-full h-full object-cover" height="900" loading="lazy" src="https://placehold.co/900x900/0f172a/FFFFFF?text=Privacy+Glass" width="900"/>
+</div>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="مشکی" class="color-swatch bg-slate-900" data-color-hex="#0f172a" title="مشکی"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">گلس پرایوسی سرامیکی</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Nillkin</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۶۸۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۵۲۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="case-latest-002"
-        data-sku="CASE-SILICON-02"
-        data-name="قاب سیلیکونی مات"
-        data-brand="Baseus"
-        data-price="390000"
-        data-compare-price="520000"
-        data-currency="IRR"
-        data-category="case"
-        data-image="https://placehold.co/900x900/f97316/FFFFFF?text=Silicon+Case"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/f97316/FFFFFF?text=Silicon+Case" alt="قاب سیلیکونی مات" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-orange-500" data-color-hex="#f97316" title="نارنجی" aria-label="نارنجی"></span>
-            <span class="color-swatch bg-amber-300" data-color-hex="#fcd34d" title="زرد" aria-label="زرد"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">قاب سیلیکونی مات</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Baseus</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۵۲۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="Baseus" data-category="case" data-compare-price="520000" data-currency="IRR" data-image="https://placehold.co/900x900/f97316/FFFFFF?text=Silicon+Case" data-name="قاب سیلیکونی مات" data-pid="case-latest-002" data-price="390000" data-sku="CASE-SILICON-02">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="قاب سیلیکونی مات" class="w-full h-full object-cover" height="900" loading="lazy" src="https://placehold.co/900x900/f97316/FFFFFF?text=Silicon+Case" width="900"/>
+</div>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="نارنجی" class="color-swatch bg-orange-500" data-color-hex="#f97316" title="نارنجی"></span>
+<span aria-label="زرد" class="color-swatch bg-amber-300" data-color-hex="#fcd34d" title="زرد"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">قاب سیلیکونی مات</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Baseus</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۵۲۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۳۹۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="glass-latest-002"
-        data-sku="LENS-GUARD-02"
-        data-name="محافظ لنز دوربین Pro"
-        data-brand="ESR"
-        data-price="260000"
-        data-compare-price="340000"
-        data-currency="IRR"
-        data-category="glass"
-        data-image="https://placehold.co/900x900/4f46e5/FFFFFF?text=Lens+Guard"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/4f46e5/FFFFFF?text=Lens+Guard" alt="محافظ لنز دوربین Pro" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-indigo-600" data-color-hex="#4f46e5" title="آبی" aria-label="آبی"></span>
-            <span class="color-swatch bg-gray-300" data-color-hex="#d1d5db" title="نقره‌ای" aria-label="نقره‌ای"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">محافظ لنز دوربین Pro</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: ESR</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۳۴۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="ESR" data-category="glass" data-compare-price="340000" data-currency="IRR" data-image="https://placehold.co/900x900/4f46e5/FFFFFF?text=Lens+Guard" data-name="محافظ لنز دوربین Pro" data-pid="glass-latest-002" data-price="260000" data-sku="LENS-GUARD-02">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="محافظ لنز دوربین Pro" class="w-full h-full object-cover" height="900" loading="lazy" src="https://placehold.co/900x900/4f46e5/FFFFFF?text=Lens+Guard" width="900"/>
+</div>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="آبی" class="color-swatch bg-indigo-600" data-color-hex="#4f46e5" title="آبی"></span>
+<span aria-label="نقره‌ای" class="color-swatch bg-gray-300" data-color-hex="#d1d5db" title="نقره‌ای"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">محافظ لنز دوربین Pro</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: ESR</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۳۴۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۲۶۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="case-latest-003"
-        data-sku="CASE-LEATHER-03"
-        data-name="قاب چرمی کلاسیک"
-        data-brand="UAG"
-        data-price="740000"
-        data-compare-price="920000"
-        data-currency="IRR"
-        data-category="case"
-        data-image="https://placehold.co/900x900/713f12/FFFFFF?text=Leather+Case"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/713f12/FFFFFF?text=Leather+Case" alt="قاب چرمی کلاسیک" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-amber-700" data-color-hex="#b45309" title="قهوه‌ای" aria-label="قهوه‌ای"></span>
-            <span class="color-swatch bg-stone-300" data-color-hex="#d6d3d1" title="کرم" aria-label="کرم"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">قاب چرمی کلاسیک</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: UAG</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۹۲۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="UAG" data-category="case" data-compare-price="920000" data-currency="IRR" data-image="https://placehold.co/900x900/713f12/FFFFFF?text=Leather+Case" data-name="قاب چرمی کلاسیک" data-pid="case-latest-003" data-price="740000" data-sku="CASE-LEATHER-03">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="قاب چرمی کلاسیک" class="w-full h-full object-cover" height="900" loading="lazy" src="https://placehold.co/900x900/713f12/FFFFFF?text=Leather+Case" width="900"/>
+</div>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="قهوه‌ای" class="color-swatch bg-amber-700" data-color-hex="#b45309" title="قهوه‌ای"></span>
+<span aria-label="کرم" class="color-swatch bg-stone-300" data-color-hex="#d6d3d1" title="کرم"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">قاب چرمی کلاسیک</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: UAG</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۹۲۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۷۴۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="glass-latest-003"
-        data-sku="GLASS-FULL-03"
-        data-name="گلس فول چسب HD"
-        data-brand="ZAGG"
-        data-price="310000"
-        data-compare-price="420000"
-        data-currency="IRR"
-        data-category="glass"
-        data-image="https://placehold.co/900x900/38bdf8/0f172a?text=Full+Glue+Glass"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/38bdf8/0f172a?text=Full+Glue+Glass" alt="گلس فول چسب HD" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-sky-400" data-color-hex="#38bdf8" title="آبی روشن" aria-label="آبی روشن"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">گلس فول چسب HD</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: ZAGG</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۴۲۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="ZAGG" data-category="glass" data-compare-price="420000" data-currency="IRR" data-image="https://placehold.co/900x900/38bdf8/0f172a?text=Full+Glue+Glass" data-name="گلس فول چسب HD" data-pid="glass-latest-003" data-price="310000" data-sku="GLASS-FULL-03">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="گلس فول چسب HD" class="w-full h-full object-cover" height="900" loading="lazy" src="https://placehold.co/900x900/38bdf8/0f172a?text=Full+Glue+Glass" width="900"/>
+</div>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="آبی روشن" class="color-swatch bg-sky-400" data-color-hex="#38bdf8" title="آبی روشن"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">گلس فول چسب HD</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: ZAGG</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۴۲۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۳۱۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- کارت‌های تبلیغاتی: لینک‌ها/متن‌ها توسط بک‌اند تنظیم شوند -->
-  <section class="page-section page-section--compact max-w-7xl mx-auto px-4">
-    <div class="grid md:grid-cols-2 gap-4 md:gap-6">
-      <div class="bg-[#1E3A8A] rounded-2xl md:rounded-3xl p-6 md:p-8 relative overflow-hidden flex items-center text-white min-h-[200px] md:min-h-[240px] group cursor-pointer card-hover">
-        <div class="absolute top-0 right-0 w-48 h-48 md:w-64 md:h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition duration-700"></div>
-        <div class="relative z-10 w-3/4 md:w-2/3">
-          <span class="text-[#DBEAFE] text-xs md:text-sm font-medium mb-1 md:mb-2 block">شارژ همیشه همراه</span>
-          <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">شارژر</h3>
-          <a href="pages/products.html?cat=gadget" class="text-white border-b border-white pb-1 text-xs md:text-sm hover:text-[#DBEAFE] transition">مشاهده محصولات</a>
-        </div>
-        <div class="absolute left-2 md:left-4 bottom-2 md:bottom-4 w-24 h-24 md:w-32 md:h-32 flex items-center justify-center opacity-80">
-          <span class="material-icon text-6xl md:text-8xl text-white/20 transform -rotate-12">bolt</span>
-        </div>
-      </div>
-
-      <div class="bg-[#DBEAFE] rounded-2xl md:rounded-3xl p-6 md:p-8 relative overflow-hidden flex items-center text-[#1E3A8A] min-h-[200px] md:min-h-[240px] group cursor-pointer card-hover">
-        <div class="absolute bottom-0 left-0 w-48 h-48 md:w-64 md:h-64 bg-[#2563EB]/10 rounded-full translate-y-1/2 -translate-x-1/2 group-hover:scale-110 transition duration-700"></div>
-        <div class="relative z-10 w-3/4 md:w-2/3">
-          <span class="text-[#2563EB] text-xs md:text-sm font-medium mb-1 md:mb-2 block">اکسسوری‌های کاربردی</span>
-          <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">اکسسوری</h3>
-          <a href="pages/products.html?cat=glass" class="text-[#1E3A8A] border-b border-[#1E3A8A] pb-1 text-xs md:text-sm hover:text-[#2563EB] transition">مشاهده محصولات</a>
-        </div>
-        <div class="absolute left-2 md:left-4 bottom-2 md:bottom-4 w-24 h-24 md:w-32 md:h-32 flex items-center justify-center opacity-80">
-          <span class="material-icon text-6xl md:text-8xl text-[#2563EB]/20 transform rotate-12">extension</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- جدیدترین محصولات -->
-  <section class="page-section max-w-7xl mx-auto px-4">
-    <div class="flex justify-between items-center mb-6 md:mb-8">
-      <h2 class="text-xl md:text-2xl font-bold text-[#1D1B20]">جدیدترین محصولات</h2>
-      <a href="pages/products.html?sort=new" class="text-sm md:text-base text-[#2563EB] font-medium hover:underline">مشاهده همه</a>
-    </div>
-
-    <!-- کارت‌ها توسط بک‌اند رندر شوند؛ data-* برای سبد/علاقه‌مندی استفاده می‌شود -->
-    <div class="products-row drag-scroll flex gap-3 md:gap-6 overflow-x-auto no-scrollbar pb-8 px-2 snap-x snap-mandatory" aria-label="اسلایدر جدیدترین محصولات" role="region" aria-roledescription="carousel" aria-live="off" tabindex="0">
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="new-001"
-        data-sku="NEW-001"
-        data-name="قاب سیلیکونی آیفون ۱۵"
-        data-brand="Apple"
-        data-price="450000"
-        data-compare-price="650000"
-        data-currency="IRR"
-        data-category="case"
-        data-image="/assets/img/i24l.png"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/FF0000/FFFFFF?text=Test" alt="قاب سیلیکونی آیفون ۱۵" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-red-400" data-color-hex="#f87171" title="قرمز" aria-label="قرمز"></span>
-            <span class="color-swatch bg-blue-400" data-color-hex="#60a5fa" title="آبی" aria-label="آبی"></span>
-            <span class="color-swatch bg-black" data-color-hex="#000000" title="مشکی" aria-label="مشکی"></span>
-            <span class="color-swatch bg-green-400" data-color-hex="#4ade80" title="سبز" aria-label="سبز"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">قاب سیلیکونی آیفون ۱۵</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Apple</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۶۵۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- کارت‌های تبلیغاتی: لینک‌ها/متن‌ها توسط بک‌اند تنظیم شوند -->
+<section class="page-section page-section--compact max-w-7xl mx-auto px-4">
+<div class="grid md:grid-cols-2 gap-4 md:gap-6">
+<div class="bg-[#1E3A8A] rounded-2xl md:rounded-3xl p-6 md:p-8 relative overflow-hidden flex items-center text-white min-h-[200px] md:min-h-[240px] group cursor-pointer card-hover">
+<div class="absolute top-0 right-0 w-48 h-48 md:w-64 md:h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition duration-700"></div>
+<div class="relative z-10 w-3/4 md:w-2/3">
+<span class="text-[#DBEAFE] text-xs md:text-sm font-medium mb-1 md:mb-2 block">شارژ همیشه همراه</span>
+<h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">شارژر</h3>
+<a class="text-white border-b border-white pb-1 text-xs md:text-sm hover:text-[#DBEAFE] transition" href="pages/products.html?cat=gadget">مشاهده محصولات</a>
+</div>
+<div class="absolute left-2 md:left-4 bottom-2 md:bottom-4 w-24 h-24 md:w-32 md:h-32 flex items-center justify-center opacity-80">
+<span class="material-icon text-6xl md:text-8xl text-white/20 transform -rotate-12">bolt</span>
+</div>
+</div>
+<div class="bg-[#DBEAFE] rounded-2xl md:rounded-3xl p-6 md:p-8 relative overflow-hidden flex items-center text-[#1E3A8A] min-h-[200px] md:min-h-[240px] group cursor-pointer card-hover">
+<div class="absolute bottom-0 left-0 w-48 h-48 md:w-64 md:h-64 bg-[#2563EB]/10 rounded-full translate-y-1/2 -translate-x-1/2 group-hover:scale-110 transition duration-700"></div>
+<div class="relative z-10 w-3/4 md:w-2/3">
+<span class="text-[#2563EB] text-xs md:text-sm font-medium mb-1 md:mb-2 block">اکسسوری‌های کاربردی</span>
+<h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">اکسسوری</h3>
+<a class="text-[#1E3A8A] border-b border-[#1E3A8A] pb-1 text-xs md:text-sm hover:text-[#2563EB] transition" href="pages/products.html?cat=glass">مشاهده محصولات</a>
+</div>
+<div class="absolute left-2 md:left-4 bottom-2 md:bottom-4 w-24 h-24 md:w-32 md:h-32 flex items-center justify-center opacity-80">
+<span class="material-icon text-6xl md:text-8xl text-[#2563EB]/20 transform rotate-12">extension</span>
+</div>
+</div>
+</div>
+</section>
+<!-- جدیدترین محصولات -->
+<section class="page-section max-w-7xl mx-auto px-4">
+<div class="flex justify-between items-center mb-6 md:mb-8">
+<h2 class="text-xl md:text-2xl font-bold text-[#1D1B20]">جدیدترین محصولات</h2>
+<a class="text-sm md:text-base text-[#2563EB] font-medium hover:underline" href="pages/products.html?sort=new">مشاهده همه</a>
+</div>
+<!-- کارت‌ها توسط بک‌اند رندر شوند؛ data-* برای سبد/علاقه‌مندی استفاده می‌شود -->
+<div aria-label="اسلایدر جدیدترین محصولات" aria-live="off" aria-roledescription="carousel" class="products-row drag-scroll flex gap-3 md:gap-6 overflow-x-auto no-scrollbar pb-8 px-2 snap-x snap-mandatory" role="region" tabindex="0">
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="Apple" data-category="case" data-compare-price="650000" data-currency="IRR" data-image="/assets/img/i24l.png" data-name="قاب سیلیکونی آیفون ۱۵" data-pid="new-001" data-price="450000" data-sku="NEW-001">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="قاب سیلیکونی آیفون ۱۵" class="w-full h-full object-cover" height="900" loading="lazy" src="https://placehold.co/900x900/FF0000/FFFFFF?text=Test" width="900"/>
+</div>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="قرمز" class="color-swatch bg-red-400" data-color-hex="#f87171" title="قرمز"></span>
+<span aria-label="آبی" class="color-swatch bg-blue-400" data-color-hex="#60a5fa" title="آبی"></span>
+<span aria-label="مشکی" class="color-swatch bg-black" data-color-hex="#000000" title="مشکی"></span>
+<span aria-label="سبز" class="color-swatch bg-green-400" data-color-hex="#4ade80" title="سبز"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">قاب سیلیکونی آیفون ۱۵</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Apple</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۶۵۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۴۵۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="new-leather-case-iphone-15-pro"
-        data-sku="CASE-LEATHER-15PRO"
-        data-name="کاور چرمی آیفون ۱۵ پرو"
-        data-brand="Apple"
-        data-price="980000"
-        data-compare-price="1200000"
-        data-currency="IRR"
-        data-category="case"
-        data-image="https://placehold.co/900x900/78350f/FFFFFF?text=Leather+Case"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/78350f/FFFFFF?text=Leather+Case" alt="کاور چرمی آیفون ۱۵ پرو" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-amber-800" data-color-hex="#92400e" title="قهوه‌ای" aria-label="قهوه‌ای"></span>
-            <span class="color-swatch bg-neutral-900" data-color-hex="#111827" title="مشکی" aria-label="مشکی"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">کاور چرمی آیفون ۱۵ پرو</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Apple</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۱,۲۰۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="Apple" data-category="case" data-compare-price="1200000" data-currency="IRR" data-image="https://placehold.co/900x900/78350f/FFFFFF?text=Leather+Case" data-name="کاور چرمی آیفون ۱۵ پرو" data-pid="new-leather-case-iphone-15-pro" data-price="980000" data-sku="CASE-LEATHER-15PRO">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="کاور چرمی آیفون ۱۵ پرو" class="w-full h-full object-cover" height="900" loading="lazy" src="https://placehold.co/900x900/78350f/FFFFFF?text=Leather+Case" width="900"/>
+</div>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="قهوه‌ای" class="color-swatch bg-amber-800" data-color-hex="#92400e" title="قهوه‌ای"></span>
+<span aria-label="مشکی" class="color-swatch bg-neutral-900" data-color-hex="#111827" title="مشکی"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">کاور چرمی آیفون ۱۵ پرو</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Apple</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۱,۲۰۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۹۸۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="new-charger-20w"
-        data-sku="CHARGER-20W"
-        data-name="شارژر فست ۲۰ وات"
-        data-brand="Apple"
-        data-price="490000"
-        data-compare-price="650000"
-        data-currency="IRR"
-        data-category="gadget"
-        data-image="https://placehold.co/900x900/22c55e/FFFFFF?text=Fast+Charger+20W"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/22c55e/FFFFFF?text=Fast+Charger+20W" alt="شارژر فست ۲۰ وات" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-pink-400" data-color-hex="#f472b6" title="صورتی" aria-label="صورتی"></span>
-            <span class="color-swatch bg-violet-500" data-color-hex="#8b5cf6" title="بنفش" aria-label="بنفش"></span>
-            <span class="color-swatch bg-yellow-400" data-color-hex="#facc15" title="زرد" aria-label="زرد"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">شارژر</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Apple</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۶۵۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="Apple" data-category="gadget" data-compare-price="650000" data-currency="IRR" data-image="https://placehold.co/900x900/22c55e/FFFFFF?text=Fast+Charger+20W" data-name="شارژر فست ۲۰ وات" data-pid="new-charger-20w" data-price="490000" data-sku="CHARGER-20W">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="شارژر فست ۲۰ وات" class="w-full h-full object-cover" height="900" loading="lazy" src="https://placehold.co/900x900/22c55e/FFFFFF?text=Fast+Charger+20W" width="900"/>
+</div>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="صورتی" class="color-swatch bg-pink-400" data-color-hex="#f472b6" title="صورتی"></span>
+<span aria-label="بنفش" class="color-swatch bg-violet-500" data-color-hex="#8b5cf6" title="بنفش"></span>
+<span aria-label="زرد" class="color-swatch bg-yellow-400" data-color-hex="#facc15" title="زرد"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">شارژر</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Apple</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۶۵۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۱۶۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="new-accessory-001"
-        data-sku="ACC-001"
-        data-name="اکسسوری"
-        data-brand="Nillkin"
-        data-price="190000"
-        data-compare-price="260000"
-        data-currency="IRR"
-        data-category="glass"
-        data-image="https://placehold.co/900x900/0f172a/FFFFFF?text=Lens+Protector"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/0f172a/FFFFFF?text=Lens+Protector" alt="اکسسوری" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-slate-900" data-color-hex="#0f172a" title="مشکی" aria-label="مشکی"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">اکسسوری</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Nillkin</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۲۶۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="Nillkin" data-category="glass" data-compare-price="260000" data-currency="IRR" data-image="https://placehold.co/900x900/0f172a/FFFFFF?text=Lens+Protector" data-name="اکسسوری" data-pid="new-accessory-001" data-price="190000" data-sku="ACC-001">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="اکسسوری" class="w-full h-full object-cover" height="900" loading="lazy" src="https://placehold.co/900x900/0f172a/FFFFFF?text=Lens+Protector" width="900"/>
+</div>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="مشکی" class="color-swatch bg-slate-900" data-color-hex="#0f172a" title="مشکی"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">اکسسوری</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Nillkin</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۲۶۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۱۹۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="new-gan-45w-adapter"
-        data-sku="GAN-45W"
-        data-name="آداپتور GaN ۴۵ وات"
-        data-brand="Anker"
-        data-price="1250000"
-        data-compare-price="1450000"
-        data-currency="IRR"
-        data-category="charger"
-        data-image="https://placehold.co/900x900/6b7280/FFFFFF?text=GaN+45W"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/6b7280/FFFFFF?text=GaN+45W" alt="آداپتور GaN ۴۵ وات" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-gray-200" data-color-hex="#e5e7eb" title="سفید" aria-label="سفید"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">آداپتور GaN ۴۵ وات</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Anker</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۱,۴۵۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="Anker" data-category="charger" data-compare-price="1450000" data-currency="IRR" data-image="https://placehold.co/900x900/6b7280/FFFFFF?text=GaN+45W" data-name="آداپتور GaN ۴۵ وات" data-pid="new-gan-45w-adapter" data-price="1250000" data-sku="GAN-45W">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="آداپتور GaN ۴۵ وات" class="w-full h-full object-cover" height="900" loading="lazy" src="https://placehold.co/900x900/6b7280/FFFFFF?text=GaN+45W" width="900"/>
+</div>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="سفید" class="color-swatch bg-gray-200" data-color-hex="#e5e7eb" title="سفید"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">آداپتور GaN ۴۵ وات</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Anker</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۱,۴۵۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۱,۲۵۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="new-lightning-pd-cable"
-        data-sku="CABLE-LIGHTNING-PD"
-        data-name="کابل لایتنینگ PD"
-        data-brand="UGREEN"
-        data-price="240000"
-        data-compare-price="310000"
-        data-currency="IRR"
-        data-category="charger"
-        data-image="https://placehold.co/900x900/3b82f6/FFFFFF?text=Lightning+PD"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/3b82f6/FFFFFF?text=Lightning+PD" alt="کابل لایتنینگ PD" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-gray-100" data-color-hex="#f3f4f6" title="سفید" aria-label="سفید"></span>
-            <span class="color-swatch bg-gray-800" data-color-hex="#1f2937" title="مشکی" aria-label="مشکی"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">کابل لایتنینگ PD</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: UGREEN</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۳۱۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="UGREEN" data-category="charger" data-compare-price="310000" data-currency="IRR" data-image="https://placehold.co/900x900/3b82f6/FFFFFF?text=Lightning+PD" data-name="کابل لایتنینگ PD" data-pid="new-lightning-pd-cable" data-price="240000" data-sku="CABLE-LIGHTNING-PD">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="کابل لایتنینگ PD" class="w-full h-full object-cover" height="900" loading="lazy" src="https://placehold.co/900x900/3b82f6/FFFFFF?text=Lightning+PD" width="900"/>
+</div>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="سفید" class="color-swatch bg-gray-100" data-color-hex="#f3f4f6" title="سفید"></span>
+<span aria-label="مشکی" class="color-swatch bg-gray-800" data-color-hex="#1f2937" title="مشکی"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">کابل لایتنینگ PD</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: UGREEN</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۳۱۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۲۴۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article
-        class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]"
-        data-pid="new-ring-light"
-        data-sku="RING-LIGHT"
-        data-name="رینگ لایت موبایل"
-        data-brand="Joyroom"
-        data-price="430000"
-        data-compare-price="520000"
-        data-currency="IRR"
-        data-category="gadget"
-        data-image="https://placehold.co/900x900/f472b6/FFFFFF?text=Ring+Light"
-      >
-        <div class="relative">
-          <div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-width="900" data-media-height="900">
-            <img src="https://placehold.co/900x900/f472b6/FFFFFF?text=Ring+Light" alt="رینگ لایت موبایل" class="w-full h-full object-cover" width="900" height="900" loading="lazy">
-          </div>
-
-          <div class="product-card-color-strip" aria-label="رنگ‌های موجود">
-            <span class="color-swatch bg-white" data-color-hex="#ffffff" title="سفید" aria-label="سفید"></span>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">رینگ لایت موبایل</h3>
-          <p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Joyroom</p>
-        </div>
-
-        <div class="mt-3 flex items-end justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[10px] md:text-xs text-gray-400 line-through">۵۲۰,۰۰۰</div>
-            <div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+<article class="product-card product-card--hero has-flush-media bg-white rounded-3xl p-3.5 md:p-4 border border-gray-100 group shrink-0 snap-start w-[44vw] min-w-[44vw] sm:w-[270px] sm:min-w-[270px] md:w-[300px] md:min-w-[300px]" data-brand="Joyroom" data-category="gadget" data-compare-price="520000" data-currency="IRR" data-image="https://placehold.co/900x900/f472b6/FFFFFF?text=Ring+Light" data-name="رینگ لایت موبایل" data-pid="new-ring-light" data-price="430000" data-sku="RING-LIGHT">
+<div class="relative">
+<div class="product-media product-media--flush rounded-2xl bg-white flex items-center justify-center overflow-hidden" data-media-height="900" data-media-width="900">
+<img alt="رینگ لایت موبایل" class="w-full h-full object-cover" height="900" loading="lazy" src="https://placehold.co/900x900/f472b6/FFFFFF?text=Ring+Light" width="900"/>
+</div>
+<div aria-label="رنگ‌های موجود" class="product-card-color-strip">
+<span aria-label="سفید" class="color-swatch bg-white" data-color-hex="#ffffff" title="سفید"></span>
+</div>
+</div>
+<div class="mt-3">
+<h3 class="font-extrabold text-gray-900 text-sm md:text-base leading-tight truncate">رینگ لایت موبایل</h3>
+<p class="text-[11px] md:text-xs text-gray-500 mt-1">برند: Joyroom</p>
+</div>
+<div class="mt-3 flex items-end justify-between gap-3">
+<div class="min-w-0">
+<div class="text-[10px] md:text-xs text-gray-400 line-through">۵۲۰,۰۰۰</div>
+<div class="text-base md:text-lg font-black text-[#2563EB] leading-tight">
               ۴۳۰,۰۰۰ <span class="text-[10px] md:text-xs font-medium text-gray-500">تومان</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button" aria-label="افزودن به علاقه‌مندی">
-              <span class="material-icon text-[22px]">favorite_border</span>
-            </button>
-            <button class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button" aria-label="افزودن به سبد خرید">
-              <span class="material-icon text-[22px]">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- لنگر کمکی برای لینک علاقه‌مندی‌ها در فوتر -->
-  <div id="favorites" aria-hidden="true"></div>
-  </main>
-
-  <div data-include="footer"></div>
-  <script defer src="assets/js/layout.js"></script>
-
-
-
-
-
-
-  <script defer src="assets/js/script.js"></script>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="افزودن به علاقه‌مندی" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-white border border-gray-100 text-gray-700 flex items-center justify-center hover:bg-[#EFF6FF] transition" type="button">
+<span class="material-icon text-[22px]">favorite_border</span>
+</button>
+<button aria-label="افزودن به سبد خرید" class="nav-icon-btn ripple w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center hover:bg-[#1E3A8A] transition shadow-sm" type="button">
+<span class="material-icon text-[22px]">add</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- لنگر کمکی برای لینک علاقه‌مندی‌ها در فوتر -->
+<div aria-hidden="true" id="favorites"></div>
+</main>
+<div data-include="footer"></div>
+<script defer="" src="assets/js/layout.js"></script>
+<script defer="" src="assets/js/script.js"></script>
 </body>
 </html>
