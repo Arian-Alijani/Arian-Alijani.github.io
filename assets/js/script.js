@@ -50,7 +50,7 @@ const mahanToast = (() => {
         return stack;
     }
 
-    function show({ type = 'success', title = '', icon = '', duration = 2500, action, showCloseButton = true } = {}) {
+    function show({ type = 'success', title = '', icon = '', duration = 4000, action } = {}) {
         const root = ensureStack();
         const t = document.createElement('div');
         t.className = `toast toast--${type}`;
@@ -87,20 +87,17 @@ const mahanToast = (() => {
             actions.appendChild(btn);
         }
 
-        // Only add the dismiss/close button if showCloseButton is true
-        if (showCloseButton) {
-            const dismiss = document.createElement('button');
-            dismiss.type = 'button';
-            dismiss.className = 'toast__btn toast__btn--ghost';
-            dismiss.textContent = 'بستن';
-            dismiss.addEventListener('click', close);
-            actions.appendChild(dismiss);
-        }
+        // Close button intentionally omitted for all toasts.
+
+        const progress = document.createElement('div');
+        progress.className = 'toast__progress';
+        t.appendChild(progress);
 
         root.appendChild(t);
         requestAnimationFrame(() => t.classList.add('is-visible'));
 
-        const ttl = Math.max(1200, Number(duration) || 2500);
+        const ttl = 4000;
+        t.style.setProperty('--toast-duration', `${ttl}ms`);
         const timer = setTimeout(close, ttl);
         t.addEventListener('mouseenter', () => clearTimeout(timer), { once: true });
         return { close };
@@ -212,68 +209,6 @@ function handleMobileDropdownClick(e) {
 // Adding another DOMContentLoaded listener here prevents these initializers
 // from running (because the event has already fired).
 initMobileMenuDropdowns();
-
-
-
-
-
-
-// --- Footer Mobile Accordion ---
-function initFooterAccordion() {
-    const accordionHeaders = document.querySelectorAll('.footer-accordion-header');
-    
-    accordionHeaders.forEach(header => {
-        header.addEventListener('click', () => {
-            const content = header.nextElementSibling;
-            const parentSection = header.parentElement;
-            const isActive = header.classList.contains('active');
-            
-            if (isActive) {
-                header.classList.remove('active');
-                content.classList.remove('active');
-                parentSection.classList.remove('active-section');
-                content.style.maxHeight = content.scrollHeight + 'px';
-                setTimeout(() => { content.style.maxHeight = '0'; }, 10);
-            } else {
-                header.classList.add('active');
-                content.classList.add('active');
-                parentSection.classList.add('active-section');
-                content.style.maxHeight = content.scrollHeight + 'px';
-                setTimeout(() => { content.style.maxHeight = 'none'; }, 400);
-            }
-            
-            header.style.transform = 'scale(0.98)';
-            setTimeout(() => { header.style.transform = ''; }, 150);
-        });
-        
-        header.addEventListener('mouseenter', () => {
-            if (!header.classList.contains('active')) header.style.background = 'rgba(37, 99, 235, 0.05)';
-        });
-        
-        header.addEventListener('mouseleave', () => {
-            if (!header.classList.contains('active')) header.style.background = '';
-        });
-    });
-    
-    if (window.innerWidth <= 767 && accordionHeaders.length > 0) {
-        const firstHeader = accordionHeaders[0];
-        const firstContent = firstHeader.nextElementSibling;
-        const firstSection = firstHeader.parentElement;
-        setTimeout(() => {
-            firstHeader.classList.add('active');
-            firstContent.classList.add('active');
-            firstSection.classList.add('active-section');
-            firstContent.style.maxHeight = firstContent.scrollHeight + 'px';
-        }, 500);
-    }
-}
-initFooterAccordion();
-
-// Add layout helper when mobile footer exists
-const mobileFooter = document.getElementById('mobile-footer');
-if (mobileFooter) {
-    document.body.classList.add('has-mobile-footer');
-}
 
 // --- Navbar Bottom Hide/Show Logic (scroll down = hide bottom row) ---
 function initNavbarBottomScroll() {

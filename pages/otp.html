@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#F8FAFC" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: https:; script-src 'self' https://cdn.tailwindcss.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>تایید کد | ماهان شاپ</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -16,7 +18,7 @@
 
 
 
-  <main id="main-content" class="py-10">
+  <main id="main-content" class="min-h-screen flex items-center py-10">
     <div class="max-w-7xl mx-auto px-4">
       <div class="w-full max-w-md mx-auto bg-white rounded-3xl shadow-xl overflow-hidden">
         <div class="p-8">
@@ -37,7 +39,7 @@
 
           <form id="otp-form" class="space-y-6" novalidate>
             <div class="flex justify-center gap-3" dir="ltr">
-              <input type="text" inputmode="numeric" maxlength="1" class="otp-input w-14 h-14 text-center text-xl font-bold border-2 border-gray-300 rounded-xl focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20" required>
+              <input type="text" inputmode="numeric" maxlength="1" autocomplete="one-time-code" class="otp-input w-14 h-14 text-center text-xl font-bold border-2 border-gray-300 rounded-xl focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20" required>
               <input type="text" inputmode="numeric" maxlength="1" class="otp-input w-14 h-14 text-center text-xl font-bold border-2 border-gray-300 rounded-xl focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20" required>
               <input type="text" inputmode="numeric" maxlength="1" class="otp-input w-14 h-14 text-center text-xl font-bold border-2 border-gray-300 rounded-xl focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20" required>
               <input type="text" inputmode="numeric" maxlength="1" class="otp-input w-14 h-14 text-center text-xl font-bold border-2 border-gray-300 rounded-xl focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20" required>
@@ -62,6 +64,7 @@
       </div>
     </div>
   </main>
+
 
 
 
@@ -156,29 +159,31 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       // Timer functionality
-      let timeLeft = 120; // 2 minutes
-      const timerElement = document.getElementById('timer');
-      const resendBtn = document.getElementById('resend-otp-btn');
+      let timeLeft = 60;
+      let resendTimer = null;
+      const countdown = document.getElementById('countdown');
+      const resendBtn = document.getElementById('resend-btn');
+
+      const resetResendTimer = () => {
+        timeLeft = 60;
+        resendBtn.disabled = true;
+        resendBtn.classList.add('text-gray-400', 'cursor-not-allowed');
+        resendBtn.classList.remove('text-[#2563EB]', 'hover:underline');
+        clearInterval(resendTimer);
+        resendTimer = setInterval(() => {
+          timeLeft -= 1;
+          countdown.textContent = `ارسال مجدد تا ${timeLeft} ثانیه`;
+          if (timeLeft <= 0) {
+            clearInterval(resendTimer);
+            resendBtn.disabled = false;
+            resendBtn.classList.remove('text-gray-400', 'cursor-not-allowed');
+            resendBtn.classList.add('text-[#2563EB]', 'hover:underline');
+            countdown.textContent = 'می‌توانید دوباره درخواست دهید';
+          }
+        }, 1000);
+      };
       
-      function updateTimer() {
-        const minutes = Math.floor(timeLeft / 60);
-        const seconds = timeLeft % 60;
-        timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-        
-        if (timeLeft > 0) {
-          timeLeft--;
-          setTimeout(updateTimer, 1000);
-        } else {
-          timerElement.textContent = '00:00';
-          resendBtn.disabled = false;
-          resendBtn.classList.remove('text-gray-400', 'cursor-not-allowed');
-          resendBtn.classList.add('text-[#2563EB]', 'hover:underline');
-        }
-      }
-      
-      updateTimer();
-      resendBtn.disabled = true;
-      resendBtn.classList.add('text-gray-400', 'cursor-not-allowed');
+      resetResendTimer();
 
       // Resend OTP
       resendBtn.addEventListener('click', () => {
@@ -211,18 +216,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setTimeout(() => {
           if (type === 'register') {
-            setOtpError('ثبت نام با موفقیت انجام شد');
+            window.mahanToast.queue({
+              type: 'success',
+              title: 'ثبت نام با موفقیت انجام شد'
+            });
             // Clear registration data after successful completion
             sessionStorage.removeItem('registrationData');
             sessionStorage.removeItem('registerPhone');
             // Redirect to login page after successful registration
             window.location.href = 'login.html';
           } else {
-            setOtpError('ورود با موفقیت انجام شد');
+            window.mahanToast.queue({
+              type: 'success',
+              title: 'ورود با موفقیت انجام شد'
+            });
             // Clear login data
             sessionStorage.removeItem('loginPhone');
             // Redirect to profile or home page
-            window.location.href = 'profile.html';
+            window.location.href = '../index.html';
           }
         }, 1500);
       });
@@ -231,5 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
       otpInputs[0].focus();
     });
   </script>
+  <div data-include="footer"></div>
+
 </body>
 </html>
