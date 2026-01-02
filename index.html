@@ -1,4 +1,4 @@
-
+﻿
 <!DOCTYPE html>
 
 <html dir="rtl" lang="fa">
@@ -84,7 +84,7 @@
 </div>
 </a>
 <!-- دو کارت کنار هم: کاور ایرپاد و گجت -->
-<a aria-label="دسته‌بندی کاور ایرپاد" class="category-card lg:col-span-1 rounded-2xl h-44 md:h-48 category-ipad" data-icon="headphones" href="pages/products.html?cat=airpod">
+<a aria-label="دسته‌بندی کاور ایرپاد" class="category-card lg:col-span-1 rounded-lg md:rounded-2xl h-44 md:h-48 category-ipad" data-icon="headphones" href="pages/products.html?cat=airpod">
 <!-- ابعاد پیشنهادی تصویر: 1200x900 (نسبت 4:3) -->
 <img alt="تصویر دسته‌بندی کاور ایرپاد" class="category-img absolute inset-0 w-full h-full object-cover" height="900" loading="lazy" src="/assets/img/categories/airpod.webp" width="1200"/><span aria-hidden="true" class="category-overlay"></span>
 <div class="absolute inset-0 flex flex-col justify-center px-8 z-[3]">
@@ -521,8 +521,8 @@
 </div>
 </section>
 <!-- بنر میانی: تصویر پس‌زمینه و متن‌ها قابل مدیریت از بک‌اند -->
-<section class="page-section max-w-7xl mx-auto px-4">
-<div class="case-promo-min case-promo-min--banner rounded-2xl md:rounded-3xl p-5 md:p-7" style="--case-promo-img: url('https://placehold.co/1200x520/efe9ff/2563EB?text=Banner');">
+<section class="mid-banner-section">
+<div class="case-promo-min case-promo-min--banner rounded-2xl md:rounded-3xl p-5 md:p-7" style="--case-promo-img: url('/assets/img/mid-banner.png');">
 <div class="case-promo-grid">
 <div class="case-promo-copy case-promo-copy--glass">
 <span class="case-promo-pill">قاب و محافظ</span>
@@ -539,7 +539,6 @@
 <a class="case-promo-cta case-promo-cta--primary" href="pages/products.html?cat=case">خرید قاب گوشی</a>
 <a class="case-promo-cta case-promo-cta--ghost" href="pages/products.html?cat=glass">خرید گلس و محافظ</a>
 </div>
-<p class="case-promo-dim">ابعاد پیشنهادی بنر: 1200×520</p>
 </div>
 </div>
 </div>
@@ -737,31 +736,29 @@
 </article>
 </div>
 </section>
-<!-- کارت‌های تبلیغاتی: لینک‌ها/متن‌ها توسط بک‌اند تنظیم شوند -->
+<!-- کارت‌های تبلیغاتی: برای تصویر هر کارت مقدار --promo-card-img را تغییر دهید -->
 <section class="page-section page-section--compact max-w-7xl mx-auto px-4">
 <div class="grid md:grid-cols-2 gap-4 md:gap-6">
-<div class="bg-[#1E3A8A] rounded-2xl md:rounded-3xl p-6 md:p-8 relative overflow-hidden flex items-center text-white min-h-[200px] md:min-h-[240px] group cursor-pointer card-hover">
-<div class="absolute top-0 right-0 w-48 h-48 md:w-64 md:h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition duration-700"></div>
-<div class="relative z-10 w-3/4 md:w-2/3">
-<span class="text-[#DBEAFE] text-xs md:text-sm font-medium mb-1 md:mb-2 block">شارژ همیشه همراه</span>
-<h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">شارژر</h3>
-<a class="text-white border-b border-white pb-1 text-xs md:text-sm hover:text-[#DBEAFE] transition" href="pages/products.html?cat=gadget">مشاهده محصولات</a>
+<a aria-label="مشاهده محصولات شارژر" class="promo-card rounded-2xl md:rounded-3xl p-6 md:p-8 relative overflow-hidden flex items-center text-white min-h-[200px] md:min-h-[240px] group card-hover" href="pages/products.html?cat=charger" style="--promo-card-img: url('/assets/img/categories/charger-mid.webp'); --promo-card-bg: #1E3A8A; --promo-card-overlay: linear-gradient(120deg, rgba(15, 23, 42, 0.08), rgba(15, 23, 42, 0.3)); --promo-card-overlay-opacity: 0.25; --promo-card-glow-opacity: 0.16; --promo-card-glow-opacity-hover: 0.28; --promo-card-height: 311px; --promo-card-content-bg: rgba(15, 23, 42, 0.18); --promo-card-content-bg-mobile: rgba(15, 23, 42, 0.15); --promo-card-content-border: rgba(219, 234, 254, 0.18); --promo-card-content-text: #F8FAFC; --promo-card-content-muted: #DBEAFE; --promo-card-content-cta: #E2E8F0; --promo-card-content-cta-hover: #FFFFFF; --promo-card-content-shadow: 0 12px 18px rgba(15, 23, 42, 0.1); --promo-card-content-right: 26px; --promo-card-content-bottom: 28px; --promo-card-content-blur-offset: 1px; --promo-card-icon-color: rgba(255, 255, 255, 0.2);">
+<div class="promo-card__content">
+<span class="promo-card__eyebrow text-xs md:text-sm mb-1 md:mb-2 block">شارژ سریع و مطمئن</span>
+<h3 class="promo-card__title text-xl md:text-2xl font-bold mb-3 md:mb-4">شارژر</h3>
+        <span class="promo-card__cta text-xs md:text-sm transition">مشاهده شارژرها</span>
 </div>
-<div class="absolute left-2 md:left-4 bottom-2 md:bottom-4 w-24 h-24 md:w-32 md:h-32 flex items-center justify-center opacity-80">
-<span class="material-icon text-6xl md:text-8xl text-white/20 transform -rotate-12">bolt</span>
+<div aria-hidden="true" class="absolute left-2 md:left-4 bottom-2 md:bottom-4 w-24 h-24 md:w-32 md:h-32 flex items-center justify-center opacity-80">
+<span class="material-icon promo-card__icon transform -rotate-12">bolt</span>
 </div>
+</a>
+<a aria-label="مشاهده محصولات اکسسوری" class="promo-card rounded-2xl md:rounded-3xl p-6 md:p-8 relative overflow-hidden flex items-center text-[#1E3A8A] min-h-[200px] md:min-h-[240px] group card-hover" href="pages/products.html?cat=accessory" style="--promo-card-img: url('/assets/img/categories/accessory-mid.webp'); --promo-card-bg: #DBEAFE; --promo-card-overlay: linear-gradient(120deg, rgba(15, 23, 42, 0.05), rgba(15, 23, 42, 0.18)); --promo-card-overlay-opacity: 0.22; --promo-card-glow-opacity: 0.14; --promo-card-glow-opacity-hover: 0.26; --promo-card-height: 311px; --promo-card-content-bg: rgba(248, 250, 252, 0.32); --promo-card-content-bg-mobile: rgba(248, 250, 252, 0.25); --promo-card-content-border: rgba(148, 163, 184, 0.22); --promo-card-content-text: #0F172A; --promo-card-content-muted: #1F2937; --promo-card-content-cta: #111827; --promo-card-content-cta-hover: #0F172A; --promo-card-content-shadow: 0 10px 14px rgba(15, 23, 42, 0.06); --promo-card-content-right: 26px; --promo-card-content-bottom: 30px; --promo-card-content-blur-offset: 0.5px; --promo-card-icon-color: rgba(71, 85, 105, 0.28);">
+<div class="promo-card__content">
+<span class="promo-card__eyebrow text-xs md:text-sm mb-1 md:mb-2 block">اکسسوری‌های شیک و کاربردی</span>
+<h3 class="promo-card__title text-xl md:text-2xl font-bold mb-3 md:mb-4">اکسسوری</h3>
+        <span class="promo-card__cta text-xs md:text-sm transition">مشاهده اکسسوری‌ها</span>
 </div>
-<div class="bg-[#DBEAFE] rounded-2xl md:rounded-3xl p-6 md:p-8 relative overflow-hidden flex items-center text-[#1E3A8A] min-h-[200px] md:min-h-[240px] group cursor-pointer card-hover">
-<div class="absolute bottom-0 left-0 w-48 h-48 md:w-64 md:h-64 bg-[#2563EB]/10 rounded-full translate-y-1/2 -translate-x-1/2 group-hover:scale-110 transition duration-700"></div>
-<div class="relative z-10 w-3/4 md:w-2/3">
-<span class="text-[#2563EB] text-xs md:text-sm font-medium mb-1 md:mb-2 block">اکسسوری‌های کاربردی</span>
-<h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">اکسسوری</h3>
-<a class="text-[#1E3A8A] border-b border-[#1E3A8A] pb-1 text-xs md:text-sm hover:text-[#2563EB] transition" href="pages/products.html?cat=glass">مشاهده محصولات</a>
+<div aria-hidden="true" class="absolute left-2 md:left-4 bottom-2 md:bottom-4 w-24 h-24 md:w-32 md:h-32 flex items-center justify-center opacity-80">
+<span class="material-icon promo-card__icon promo-card__icon--dark transform rotate-12">headphones</span>
 </div>
-<div class="absolute left-2 md:left-4 bottom-2 md:bottom-4 w-24 h-24 md:w-32 md:h-32 flex items-center justify-center opacity-80">
-<span class="material-icon text-6xl md:text-8xl text-[#2563EB]/20 transform rotate-12">extension</span>
-</div>
-</div>
+</a>
 </div>
 </section>
 <!-- جدیدترین محصولات -->
@@ -995,7 +992,7 @@
 
   <script defer="" src="assets/js/layout.js"></script>
   <script defer="" src="assets/js/script.js"></script>
-  <div data-include="footer"></div>
 
 </body>
 </html>
+

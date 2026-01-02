@@ -256,17 +256,25 @@ function initNavbarBottomScroll() {
             return;
         }
 
-        // Desktop: avoid flicker on micro scrolls / trackpads
-        const threshold = 12;
-        if (Math.abs(scrollDiff) < threshold) {
+        if (currentScrollY <= 0) {
+            navbarBottom.classList.remove('navbar-hidden');
             lastScrollY = currentScrollY;
             return;
         }
 
-        if (currentScrollY <= 0 || scrollDiff < 0) {
+        // Desktop: avoid flicker on micro scrolls / trackpads
+        const threshold = 12;
+
+        if (scrollDiff < 0) {
             navbarBottom.classList.remove('navbar-hidden');
-        } else if (scrollDiff > 0) {
+            lastScrollY = currentScrollY;
+            return;
+        }
+
+        if (scrollDiff > threshold) {
             navbarBottom.classList.add('navbar-hidden');
+            lastScrollY = currentScrollY;
+            return;
         }
 
         lastScrollY = currentScrollY;

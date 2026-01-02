@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
@@ -48,7 +48,7 @@
           <div class="pd-media">
             <img
               id="main-product-image"
-              src="../assets/img/product-placeholder.svg"
+              src="../assets/img/530e29.webp"
               alt="تصویر محصول"
               class="pd-main-image"
               loading="lazy"
@@ -74,17 +74,17 @@
           </div>
 
           <div class="pd-thumbs" aria-label="تصاویر محصول">
-            <button class="pd-thumb is-active" type="button" data-full-src="../assets/img/product-placeholder.svg" aria-label="تصویر ۱">
-              <img src="../assets/img/product-placeholder.svg" alt="thumbnail 1" loading="lazy" />
+            <button class="pd-thumb is-active" type="button" data-full-src="../assets/img/530e29.webp" aria-label="تصویر 1">
+              <img src="../assets/img/530e29.webp" alt="نمای 1" loading="lazy" />
             </button>
-            <button class="pd-thumb" type="button" data-full-src="../assets/img/product-placeholder.svg" aria-label="تصویر ۲">
-              <img src="../assets/img/product-placeholder.svg" alt="thumbnail 2" loading="lazy" />
+            <button class="pd-thumb" type="button" data-full-src="../assets/img/111254.webp" aria-label="تصویر 2">
+              <img src="../assets/img/111254.webp" alt="نمای 2" loading="lazy" />
             </button>
-            <button class="pd-thumb" type="button" data-full-src="../assets/img/product-placeholder.svg" aria-label="تصویر ۳">
-              <img src="../assets/img/product-placeholder.svg" alt="thumbnail 3" loading="lazy" />
+            <button class="pd-thumb" type="button" data-full-src="../assets/img/naqashi-kamyon.jpg" aria-label="تصویر 3">
+              <img src="../assets/img/naqashi-kamyon.jpg" alt="نمای 3" loading="lazy" />
             </button>
-            <button class="pd-thumb" type="button" data-full-src="../assets/img/product-placeholder.svg" aria-label="تصویر ۴">
-              <img src="../assets/img/product-placeholder.svg" alt="thumbnail 4" loading="lazy" />
+            <button class="pd-thumb" type="button" data-full-src="../assets/img/thumbnail_baa08a95-6b6c-4525-b38d-ebc81be1de67.jpg.256x256_q85.jpg.webp" aria-label="تصویر 4">
+              <img src="../assets/img/thumbnail_baa08a95-6b6c-4525-b38d-ebc81be1de67.jpg.256x256_q85.jpg.webp" alt="نمای 4" loading="lazy" />
             </button>
           </div>
         </div>
@@ -110,26 +110,22 @@
             <div>
               <div class="flex items-center justify-between">
                 <span class="text-sm font-semibold text-gray-800">رنگ</span>
-                <span class="text-xs text-gray-500">انتخاب شده: <span id="selected-color-label" class="text-gray-700 font-medium">مشکی</span></span>
               </div>
 
-              <div class="mt-3 flex items-center gap-2 flex-wrap">
-                <label class="pd-color">
+                            <div class="mt-3 flex items-center gap-2 flex-wrap">
+                <label class="pd-color" aria-label="مشکی">
                   <input type="radio" name="color" value="مشکی" checked />
                   <span class="pd-color__dot" style="background:#111827"></span>
-                  <span class="pd-color__name">مشکی</span>
                 </label>
 
-                <label class="pd-color">
-                  <input type="radio" name="color" value="نقره‌ای" />
+                <label class="pd-color" aria-label="نقره ای">
+                  <input type="radio" name="color" value="نقره ای" />
                   <span class="pd-color__dot" style="background:#cbd5e1"></span>
-                  <span class="pd-color__name">نقره‌ای</span>
                 </label>
 
-                <label class="pd-color">
+                <label class="pd-color" aria-label="آبی">
                   <input type="radio" name="color" value="آبی" />
                   <span class="pd-color__dot" style="background:#2563eb"></span>
-                  <span class="pd-color__name">آبی</span>
                 </label>
               </div>
             </div>
@@ -151,24 +147,19 @@
                 <span class="material-icon text-[18px]" aria-hidden="true">check_circle</span>
                 <span class="font-medium">موجود در انبار</span>
               </div>
-              <div class="text-gray-500 text-xs sm:text-sm">گارانتی 18 ماهه</div>
             </div>
           </div>
         </div>
       </div>
-
       <!-- FAR LEFT: Buy box -->
       <div class="lg:col-span-3">
-        <div class="pd-buy pd-card lg:sticky lg:top-24">
+        <div class="pd-buy pd-card">
           <div class="flex items-start justify-between gap-3">
             <div>
               <div class="text-xs text-gray-500">قیمت</div>
               <div class="mt-1">
                 <span id="product-price" class="text-lg font-extrabold text-gray-900" data-price="18990000">۱۸,۹۹۰,۰۰۰</span>
                 <span class="text-sm font-semibold text-gray-600"> تومان</span>
-              </div>
-              <div class="mt-1 text-xs text-gray-500">
-                قیمت برای رنگ <span id="price-color-label" class="text-gray-700 font-medium">مشکی</span>
               </div>
             </div>
 
@@ -177,25 +168,25 @@
                 <span class="material-icon text-[18px]" aria-hidden="true">local_shipping</span>
                 ارسال سریع
               </div>
-              <div class="mt-1">تحویل ۱ تا ۳ روز کاری</div>
             </div>
           </div>
 
           <hr class="pd-divider" />
 
+          <button id="add-to-cart-btn" type="button" class="pd-cta w-full">
+            <span class="material-icon pd-cta__icon" aria-hidden="true">shopping_cart</span>
+            <span class="pd-cta__label" data-cta-label>افزودن به سبد خرید</span>
+          </button>
+
           <!-- Quantity -->
-          <div class="flex items-center justify-between gap-3">
+          <div id="qty-row" class="pd-qty-row flex items-center justify-between gap-3" aria-hidden="true">
             <span class="text-sm font-semibold text-gray-800">تعداد</span>
-            <div class="pd-qty" aria-label="انتخاب تعداد">
-              <button type="button" class="pd-qty__btn" data-qty="dec" aria-label="کم کردن">−</button>
+            <div class="pd-qty" aria-label="تعداد محصول">
+              <button type="button" class="pd-qty__btn" data-qty="dec" aria-label="کم کردن">-</button>
               <input id="qty-input" type="text" inputmode="numeric" value="1" class="pd-qty__input" aria-label="تعداد" />
               <button type="button" class="pd-qty__btn" data-qty="inc" aria-label="زیاد کردن">+</button>
             </div>
           </div>
-
-          <button id="add-to-cart-btn" type="button" class="btn btn--primary w-full mt-4">
-            افزودن به سبد خرید
-          </button>
 
           <div class="mt-3 grid gap-2 text-xs text-gray-500">
             <div class="flex items-center gap-2">
@@ -209,6 +200,7 @@
           </div>
         </div>
       </div>
+
 
       <!-- Tabs + content -->
       <div class="lg:col-span-12">
@@ -245,7 +237,6 @@
             <section id="tab-specs" class="pd-panel hidden" role="tabpanel">
               <div class="flex items-center justify-between gap-3">
                 <h2 class="text-sm font-bold text-gray-900">مشخصات</h2>
-                <span class="text-xs text-gray-500">نمایش ۵ ردیف اولیه</span>
               </div>
 
               <div class="mt-4 pd-specs" id="specs-list">
@@ -268,13 +259,41 @@
     </section>
   </main>
 
-
   <script defer src="../assets/js/layout.js"></script>
 
 
 <script defer src="../assets/js/script.js"></script>
 <script defer src="../assets/js/product-detail.js"></script>
-  <div data-include="footer"></div>
+
+  <div id="pd-lightbox" class="pd-lightbox" aria-hidden="true" role="dialog" aria-label="نمایش تصویر محصول" aria-modal="true" tabindex="-1">
+    <div class="pd-lightbox__inner" role="document">
+      <button class="pd-lightbox__close" type="button" data-lightbox-close aria-label="بستن">
+        <span class="material-icon" aria-hidden="true">close</span>
+      </button>
+
+      <div class="pd-lightbox__stage">
+        <img id="pd-lightbox-image" alt="تصویر محصول" />
+        <div id="pd-lightbox-loader" class="pd-lightbox__loader" aria-live="polite">در حال بارگذاری...</div>
+      </div>
+
+    </div>
+
+    <div class="pd-lightbox__toolbar" aria-hidden="false">
+      <button class="pd-lightbox__nav" type="button" data-lightbox-prev aria-label="تصویر قبلی">
+        <span class="material-icon" aria-hidden="true">chevron_right</span>
+      </button>
+      <span id="pd-lightbox-counter" class="pd-lightbox__counter">1 / 1</span>
+      <button class="pd-lightbox__nav" type="button" data-lightbox-next aria-label="تصویر بعدی">
+        <span class="material-icon" aria-hidden="true">chevron_left</span>
+      </button>
+    </div>
+  </div>
 
 </body>
 </html>
+
+
+
+
+
+
