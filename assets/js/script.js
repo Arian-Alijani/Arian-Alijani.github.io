@@ -1640,3 +1640,29 @@ document.querySelectorAll('.qty-selector').forEach(selector => {
     initMapRetry();
   }
 })();
+
+(() => {
+  const initFooterAccordion = () => {
+    const accordions = Array.from(document.querySelectorAll(".footer-accordion"));
+    if (!accordions.length) return;
+
+    accordions.forEach((accordion) => {
+      accordion.addEventListener("toggle", () => {
+        if (!accordion.open) return;
+        window.requestAnimationFrame(() => {
+          accordions.forEach((other) => {
+            if (other !== accordion) {
+              other.removeAttribute("open");
+            }
+          });
+        });
+      });
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initFooterAccordion);
+  } else {
+    initFooterAccordion();
+  }
+})();
